@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="projets.html">Projets</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <div class="card">
+            <h1>Contact 📩</h1>
+            <p>Envoyez-moi un message : <a href="mailto:melanied2502@gmail.com">melanied2502@gmail.com</a></p>
+        </div>
+    </main>
+</body>
+</html>
