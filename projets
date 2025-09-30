@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Projets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="accueil.html">Accueil</a>
+        <a href="projets.html">Projets</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <!-- Carte principale -->
+        <div class="card">
+            <h1>Mes projets 💻</h1>
+            <div class="projects-container">
+                <div class="project-card">
+                    <h2>Site web interactif ✨</h2>
+                    <p>Un site moderne avec animations et boutons interactifs.</p>
+                </div>
+                <div class="project-card">
+                    <h2>Mini jeux 🎮</h2>
+                    <p>Des jeux simples en HTML/CSS/JS, fun et esthétiques.</p>
+                </div>
+                <div class="project-card">
+                    <h2>Portfolio élégant 💖</h2>
+                    <p>Mon portfolio personnel et professionnel.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
