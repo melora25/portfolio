@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <a href="accueil.html">Accueil</a>
+        <a href="projets.html">Projets</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <div class="card">
+            <h1>Bienvenue 🌸</h1>
+            <p>Ceci est la page d’accueil.</p>
+        </div>
+    </main>
+</body>
+</html>
