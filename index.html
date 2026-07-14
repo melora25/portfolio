@@ -1,65 +1,345 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mélanie Dupriez | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        :root { --bg: #FDFBFB; --text: #1A1A1A; }
-        .dark { --bg: #0A0A0A; --text: #FAFAFA; }
-        body { background-color: var(--bg); color: var(--text); transition: background 0.6s ease; font-family: 'Inter', sans-serif; }
-        h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
-        /* Effet Glass Menu */
-        .glass-nav { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .dark .glass-nav { background: rgba(0, 0, 0, 0.5); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .reveal { opacity: 0; transform: translateY(20px); transition: all 1s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mélanie Dupriez — Business Data Analyst</title>
+<meta name="description" content="Portfolio de Mélanie Dupriez, Business Data Analyst — visual storytelling & stratégie data.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF6F2;
+    --ink:#3A2E33;
+    --ink-soft:#8A7A80;
+    --rose:#C79A96;
+    --rose-deep:#B07E7E;
+    --gold:#BC9256;
+    --lav:#C9BFDB;
+    --glass:rgba(255,255,255,0.48);
+    --glass-strong:rgba(255,255,255,0.68);
+    --glass-border:rgba(255,255,255,0.75);
+    --shadow: rgba(150,110,110,0.16);
+  }
+  .dark{
+    --paper:#221B1F;
+    --ink:#F3EAE7;
+    --ink-soft:#B8A6AC;
+    --rose:#D9A9A0;
+    --rose-deep:#E0B4AC;
+    --gold:#DABB84;
+    --lav:#A79AC2;
+    --glass:rgba(50,40,45,0.45);
+    --glass-strong:rgba(55,44,49,0.65);
+    --glass-border:rgba(255,255,255,0.10);
+    --shadow: rgba(0,0,0,0.35);
+  }
+  *{ -webkit-tap-highlight-color: transparent; }
+  html,body{ height:100%; }
+  body{
+    background-color:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    transition:background-color .6s ease,color .6s ease;
+    position:relative;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{ font-family:'Cormorant Garamond',serif; font-weight:500; }
+  .italic-serif{ font-family:'Cormorant Garamond',serif; font-style:italic; }
+
+  /* Floating mesh light — the signature atmosphere behind the glass */
+  .aurora{ position:fixed; inset:0; z-index:-1; overflow:hidden; }
+  .aurora span{
+    position:absolute; border-radius:50%;
+    filter:blur(70px); opacity:.55;
+    animation: drift 26s ease-in-out infinite;
+  }
+  .aurora .b1{ width:38vw; height:38vw; top:-8%; left:-6%; background:var(--rose); animation-delay:0s; }
+  .aurora .b2{ width:30vw; height:30vw; top:10%; right:-8%; background:var(--lav); animation-delay:-8s; }
+  .aurora .b3{ width:34vw; height:34vw; bottom:-10%; left:20%; background:var(--gold); opacity:.35; animation-delay:-16s; }
+  @keyframes drift{
+    0%,100%{ transform:translate(0,0) scale(1); }
+    50%{ transform:translate(3%,4%) scale(1.08); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .aurora span{ animation:none; }
+  }
+
+  /* Glass surfaces */
+  .glass{
+    background:var(--glass);
+    backdrop-filter:blur(20px) saturate(140%);
+    -webkit-backdrop-filter:blur(20px) saturate(140%);
+    border:1px solid var(--glass-border);
+    box-shadow:0 8px 32px var(--shadow);
+  }
+  .glass-nav{
+    background:var(--glass-strong);
+    backdrop-filter:blur(22px) saturate(140%);
+    -webkit-backdrop-filter:blur(22px) saturate(140%);
+    border-bottom:1px solid var(--glass-border);
+  }
+
+  .accent-underline{
+    background-image:linear-gradient(90deg, var(--gold), var(--rose-deep));
+    background-size:0% 1.5px;
+    background-repeat:no-repeat;
+    background-position:left bottom;
+    transition:background-size .4s ease;
+    padding-bottom:2px;
+  }
+  .accent-underline:hover, .accent-underline:focus-visible{ background-size:100% 1.5px; }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+    border-radius:4px;
+  }
+
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .9s ease, transform .9s ease; }
+  .reveal.active{ opacity:1; transform:translateY(0); }
+
+  .tag{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:.85rem; letter-spacing:.04em;
+    color:var(--gold);
+  }
+
+  .project-card{
+    transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease, background .5s ease;
+  }
+  .project-card:hover{
+    transform: translateY(-6px);
+    box-shadow:0 20px 44px var(--shadow);
+  }
+
+  .stat-figure{ font-variant-numeric: tabular-nums; }
+
+  ::selection{ background:var(--rose); color:#fff; }
+
+  .pill{
+    font-size:.68rem; letter-spacing:.06em;
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    padding:.3rem .8rem;
+    border-radius:999px;
+    color:var(--ink-soft);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ transition:none; opacity:1; transform:none; }
+    * { scroll-behavior:auto !important; }
+  }
+</style>
 </head>
 <body>
 
-    <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 glass-nav px-10 py-6 flex justify-between items-center transition-all">
-        <span class="text-xl tracking-[0.2em] uppercase font-light">Mélanie Dupriez</span>
-        <div class="flex gap-10 text-[11px] font-bold uppercase tracking-[0.3em]">
-            <a href="#projets" class="hover:opacity-60 transition">Projets</a>
-            <a href="#parcours" class="hover:opacity-60 transition">Parcours</a>
-            <button onclick="changeLang()" id="langBtn" class="hover:opacity-60 transition underline underline-offset-4">FR</button>
-            <button onclick="document.documentElement.classList.toggle('dark')" class="hover:opacity-60 transition">THEME</button>
-        </div>
-    </nav>
+<div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
 
-    <!-- Header -->
-    <header class="h-screen flex flex-col justify-center items-center text-center px-6">
-        <h1 id="title" class="text-[clamp(3rem,8vw,7rem)] leading-tight mb-4">Business Data Analyst</h1>
-        <p id="subtitle" class="text-sm uppercase tracking-[0.4em] opacity-60">Visual Storytelling & Strategy</p>
-    </header>
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 glass-nav px-6 md:px-10 py-5 flex justify-between items-center rounded-b-2xl">
+  <a href="#top" class="text-lg md:text-xl tracking-[0.18em] uppercase serif accent-underline">Mélanie Dupriez</a>
+  <div class="flex items-center gap-5 md:gap-9 text-[11px] font-medium uppercase tracking-[0.22em]">
+    <a href="#projets" data-i18n="nav.projects" class="hidden sm:inline accent-underline">Projets</a>
+    <a href="#parcours" data-i18n="nav.path" class="hidden sm:inline accent-underline">Parcours</a>
+    <a href="#contact" data-i18n="nav.contact" class="hidden sm:inline accent-underline">Contact</a>
+    <button onclick="changeLang()" id="langBtn" class="italic-serif accent-underline" aria-label="Changer de langue">FR</button>
+    <button onclick="toggleTheme()" id="themeBtn" aria-label="Basculer le thème clair / sombre" class="accent-underline" data-i18n="nav.theme">Thème</button>
+  </div>
+</nav>
 
-    <script>
-        // Logique de langue
-        const content = {
-            'FR': { title: 'Business Data Analyst', sub: 'Visual Storytelling & Strategy' },
-            'EN': { title: 'Business Data Analyst', sub: 'Visual Storytelling & Strategy' },
-            'NL': { title: 'Business Data Analist', sub: 'Visuele Storytelling & Strategie' }
-        };
+<!-- Header -->
+<header id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32 pb-16">
+  <div class="max-w-5xl mx-auto w-full">
+    <p class="mb-7">
+      <span class="pill" data-i18n="hero.eyebrow">Disponible pour projets freelance & CDI</span>
+    </p>
+    <h1 class="text-[clamp(2.6rem,7.5vw,6.2rem)] leading-[1.02] mb-7 font-normal">
+      <span data-i18n="hero.line1">Je transforme des</span><br>
+      <span class="italic-serif" data-i18n="hero.line2" style="color:var(--rose-deep)">colonnes de chiffres</span><br>
+      <span data-i18n="hero.line3">en décisions claires.</span>
+    </h1>
+    <p class="max-w-xl text-sm md:text-base leading-relaxed mb-12 font-light" style="color:var(--ink-soft)" data-i18n="hero.desc">
+      Business Data Analyst basée en Belgique — je conçois des tableaux de bord, des modèles de prévision et des récits visuels qui aident les équipes à décider plus vite, avec moins de doute.
+    </p>
+    <div class="flex flex-wrap gap-5">
+      <div class="glass rounded-2xl px-6 py-5 min-w-[150px]">
+        <span class="stat-figure text-3xl serif" style="color:var(--gold)">+40</span><br>
+        <span class="text-[11px] uppercase tracking-widest font-light" style="color:var(--ink-soft)" data-i18n="hero.stat1">Tableaux de bord livrés</span>
+      </div>
+      <div class="glass rounded-2xl px-6 py-5 min-w-[150px]">
+        <span class="stat-figure text-3xl serif" style="color:var(--gold)">6</span><br>
+        <span class="text-[11px] uppercase tracking-widest font-light" style="color:var(--ink-soft)" data-i18n="hero.stat2">Ans d'expérience</span>
+      </div>
+      <div class="glass rounded-2xl px-6 py-5 min-w-[150px]">
+        <span class="stat-figure text-3xl serif" style="color:var(--gold)">3</span><br>
+        <span class="text-[11px] uppercase tracking-widest font-light" style="color:var(--ink-soft)" data-i18n="hero.stat3">Secteurs — retail, santé, finance</span>
+      </div>
+    </div>
+  </div>
+</header>
 
-        function changeLang() {
-            const btn = document.getElementById('langBtn');
-            const langs = ['FR', 'EN', 'NL'];
-            let next = (langs.indexOf(btn.innerText) + 1) % langs.length;
-            btn.innerText = langs[next];
-            
-            document.getElementById('title').innerText = content[langs[next]].title;
-            document.getElementById('subtitle').innerText = content[langs[next]].sub;
-        }
+<!-- Projets -->
+<section id="projets" class="px-6 md:px-16 py-24 md:py-32 max-w-5xl mx-auto reveal">
+  <div class="flex items-baseline justify-between mb-12">
+    <h2 class="text-3xl md:text-5xl" data-i18n="projects.title">Projets sélectionnés</h2>
+    <span class="italic-serif text-sm" style="color:var(--ink-soft)" data-i18n="projects.count">quatre dossiers</span>
+  </div>
 
-        // Observer pour apparition
-        const observer = new IntersectionObserver((e) => { 
-            e.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); }); 
-        });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    </script>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <article class="project-card glass rounded-3xl p-8">
+      <span class="tag">01</span>
+      <h3 class="text-2xl mt-3 mb-3" data-i18n="p1.title">Pilotage commercial en temps réel</h3>
+      <p class="text-sm leading-relaxed mb-5 font-light" style="color:var(--ink-soft)" data-i18n="p1.desc">Refonte du reporting ventes pour une enseigne retail : tableau de bord Power BI consolidant 12 points de vente, alertes automatiques sur les ruptures de stock.</p>
+      <span class="pill">Power BI · SQL</span>
+    </article>
+    <article class="project-card glass rounded-3xl p-8">
+      <span class="tag">02</span>
+      <h3 class="text-2xl mt-3 mb-3" data-i18n="p2.title">Modèle de prévision des ventes</h3>
+      <p class="text-sm leading-relaxed mb-5 font-light" style="color:var(--ink-soft)" data-i18n="p2.desc">Modèle de prévision à 8 semaines pour une chaîne d'approvisionnement, réduisant les écarts de stock de 22 % en moyenne.</p>
+      <span class="pill">Python · Prophet</span>
+    </article>
+    <article class="project-card glass rounded-3xl p-8">
+      <span class="tag">03</span>
+      <h3 class="text-2xl mt-3 mb-3" data-i18n="p3.title">Segmentation clients</h3>
+      <p class="text-sm leading-relaxed mb-5 font-light" style="color:var(--ink-soft)" data-i18n="p3.desc">Segmentation comportementale de la base clients d'un assureur pour cibler les campagnes de rétention.</p>
+      <span class="pill">R · K-means</span>
+    </article>
+    <article class="project-card glass rounded-3xl p-8">
+      <span class="tag">04</span>
+      <h3 class="text-2xl mt-3 mb-3" data-i18n="p4.title">Automatisation du reporting</h3>
+      <p class="text-sm leading-relaxed mb-5 font-light" style="color:var(--ink-soft)" data-i18n="p4.desc">Pipeline ETL remplaçant 15 heures de compilation manuelle par mois par un rapport automatisé et versionné.</p>
+      <span class="pill">Python · Airflow</span>
+    </article>
+  </div>
+</section>
+
+<!-- Parcours -->
+<section id="parcours" class="px-6 md:px-16 py-24 md:py-32 max-w-5xl mx-auto reveal">
+  <h2 class="text-3xl md:text-5xl mb-12" data-i18n="path.title">Parcours</h2>
+  <div class="glass rounded-3xl p-8 md:p-12 space-y-10">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+      <span class="italic-serif text-base md:col-span-2 pt-1" style="color:var(--gold)">2023 — <span data-i18n="path.today">Aujourd'hui</span></span>
+      <div class="md:col-span-10">
+        <h3 class="text-xl serif" data-i18n="path.job1">Business Data Analyst — Groupe Delatte</h3>
+        <p class="text-sm mt-1 font-light" style="color:var(--ink-soft)" data-i18n="path.job1desc">Pilotage des indicateurs commerciaux et conception des tableaux de bord direction.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-3 pt-8 border-t" style="border-color:var(--glass-border)">
+      <span class="italic-serif text-base md:col-span-2 pt-1" style="color:var(--gold)">2020 — 2023</span>
+      <div class="md:col-span-10">
+        <h3 class="text-xl serif" data-i18n="path.job2">Data Analyst — Cabinet Ferron Conseil</h3>
+        <p class="text-sm mt-1 font-light" style="color:var(--ink-soft)" data-i18n="path.job2desc">Missions de conseil en analyse de données pour des clients retail et santé.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-3 pt-8 border-t" style="border-color:var(--glass-border)">
+      <span class="italic-serif text-base md:col-span-2 pt-1" style="color:var(--gold)">2018 — 2020</span>
+      <div class="md:col-span-10">
+        <h3 class="text-xl serif" data-i18n="path.edu">Master en Sciences des données — UMons</h3>
+        <p class="text-sm mt-1 font-light" style="color:var(--ink-soft)" data-i18n="path.edudesc">Spécialisation en statistique appliquée et visualisation de l'information.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<footer id="contact" class="px-6 md:px-16 py-24">
+  <div class="max-w-5xl mx-auto glass rounded-3xl p-10 md:p-14 flex flex-col md:flex-row justify-between gap-10">
+    <div>
+      <h2 class="text-3xl md:text-4xl mb-4" data-i18n="contact.title">Un projet data à mettre en clarté ?</h2>
+      <a href="mailto:melanie.dupriez@example.com" class="italic-serif text-lg accent-underline" style="color:var(--gold)">melanie.dupriez@example.com</a>
+    </div>
+    <div class="flex md:flex-col gap-6 md:gap-3 text-xs uppercase tracking-widest font-light" style="color:var(--ink-soft)">
+      <a href="#" class="accent-underline">LinkedIn</a>
+      <a href="#" class="accent-underline">GitHub</a>
+    </div>
+  </div>
+  <p class="max-w-5xl mx-auto mt-10 italic-serif text-sm text-center" style="color:var(--ink-soft)">© 2026 Mélanie Dupriez</p>
+</footer>
+
+<script>
+  (function initTheme(){
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) document.documentElement.classList.add('dark');
+  })();
+  function toggleTheme(){ document.documentElement.classList.toggle('dark'); }
+
+  const translations = {
+    FR: {
+      'nav.projects':'Projets','nav.path':'Parcours','nav.contact':'Contact','nav.theme':'Thème',
+      'hero.eyebrow':'Disponible pour projets freelance & CDI',
+      'hero.line1':'Je transforme des','hero.line2':'colonnes de chiffres','hero.line3':'en décisions claires.',
+      'hero.desc':"Business Data Analyst basée en Belgique — je conçois des tableaux de bord, des modèles de prévision et des récits visuels qui aident les équipes à décider plus vite, avec moins de doute.",
+      'hero.stat1':'Tableaux de bord livrés','hero.stat2':"Ans d'expérience",'hero.stat3':'Secteurs — retail, santé, finance',
+      'projects.title':'Projets sélectionnés','projects.count':'quatre dossiers',
+      'p1.title':'Pilotage commercial en temps réel','p1.desc':"Refonte du reporting ventes pour une enseigne retail : tableau de bord Power BI consolidant 12 points de vente, alertes automatiques sur les ruptures de stock.",
+      'p2.title':'Modèle de prévision des ventes','p2.desc':"Modèle de prévision à 8 semaines pour une chaîne d'approvisionnement, réduisant les écarts de stock de 22 % en moyenne.",
+      'p3.title':'Segmentation clients','p3.desc':"Segmentation comportementale de la base clients d'un assureur pour cibler les campagnes de rétention.",
+      'p4.title':'Automatisation du reporting','p4.desc':"Pipeline ETL remplaçant 15 heures de compilation manuelle par mois par un rapport automatisé et versionné.",
+      'path.title':'Parcours','path.today':"Aujourd'hui",
+      'path.job1':'Business Data Analyst — Groupe Delatte','path.job1desc':'Pilotage des indicateurs commerciaux et conception des tableaux de bord direction.',
+      'path.job2':'Data Analyst — Cabinet Ferron Conseil','path.job2desc':'Missions de conseil en analyse de données pour des clients retail et santé.',
+      'path.edu':'Master en Sciences des données — UMons','path.edudesc':"Spécialisation en statistique appliquée et visualisation de l'information.",
+      'contact.title':'Un projet data à mettre en clarté ?'
+    },
+    EN: {
+      'nav.projects':'Projects','nav.path':'Path','nav.contact':'Contact','nav.theme':'Theme',
+      'hero.eyebrow':'Available for freelance & full-time roles',
+      'hero.line1':'I turn columns of','hero.line2':'raw numbers','hero.line3':'into clear decisions.',
+      'hero.desc':"Business Data Analyst based in Belgium — I build dashboards, forecasting models and visual narratives that help teams decide faster, with less doubt.",
+      'hero.stat1':'Dashboards shipped','hero.stat2':'Years of experience','hero.stat3':'Industries — retail, healthcare, finance',
+      'projects.title':'Selected projects','projects.count':'four cases',
+      'p1.title':'Real-time sales steering','p1.desc':"Rebuilt sales reporting for a retail chain: a Power BI dashboard consolidating 12 stores, with automatic stock-out alerts.",
+      'p2.title':'Sales forecasting model','p2.desc':"8-week forecasting model for a supply chain, cutting stock discrepancies by 22% on average.",
+      'p3.title':'Customer segmentation','p3.desc':"Behavioural segmentation of an insurer's customer base to target retention campaigns.",
+      'p4.title':'Reporting automation','p4.desc':"ETL pipeline replacing 15 hours of manual monthly compilation with an automated, versioned report.",
+      'path.title':'Path','path.today':'Today',
+      'path.job1':'Business Data Analyst — Delatte Group','path.job1desc':'Steering commercial KPIs and designing executive dashboards.',
+      'path.job2':'Data Analyst — Ferron Consulting','path.job2desc':'Data analysis consulting missions for retail and healthcare clients.',
+      'path.edu':'MSc in Data Science — UMons','path.edudesc':'Specialised in applied statistics and information visualisation.',
+      'contact.title':'A data project to bring into focus?'
+    },
+    NL: {
+      'nav.projects':'Projecten','nav.path':'Traject','nav.contact':'Contact','nav.theme':'Thema',
+      'hero.eyebrow':'Beschikbaar voor freelance & vaste functies',
+      'hero.line1':'Ik verander kolommen','hero.line2':'ruwe cijfers','hero.line3':'in heldere beslissingen.',
+      'hero.desc':"Business Data Analist in België — ik bouw dashboards, voorspellingsmodellen en visuele verhalen die teams helpen sneller te beslissen, met minder twijfel.",
+      'hero.stat1':'Dashboards opgeleverd','hero.stat2':'Jaar ervaring','hero.stat3':'Sectoren — retail, zorg, finance',
+      'projects.title':'Geselecteerde projecten','projects.count':'vier dossiers',
+      'p1.title':'Real-time commerciële sturing','p1.desc':"Herbouw van de verkooprapportage voor een retailketen: een Power BI-dashboard voor 12 winkels, met automatische voorraadmeldingen.",
+      'p2.title':'Verkoopvoorspellingsmodel','p2.desc':"Voorspellingsmodel over 8 weken voor een supply chain, met een gemiddelde daling van 22% in voorraadafwijkingen.",
+      'p3.title':'Klantsegmentatie','p3.desc':"Gedragsgerichte segmentatie van het klantenbestand van een verzekeraar voor retentiecampagnes.",
+      'p4.title':'Automatisering van rapportage','p4.desc':"ETL-pipeline die 15 uur handmatige maandelijkse compilatie vervangt door een geautomatiseerd, geversioneerd rapport.",
+      'path.title':'Traject','path.today':'Vandaag',
+      'path.job1':'Business Data Analist — Groep Delatte','path.job1desc':'Opvolging van commerciële KPI\'s en ontwerp van directiedashboards.',
+      'path.job2':'Data Analist — Ferron Consulting','path.job2desc':'Consultancyopdrachten data-analyse voor retail- en zorgklanten.',
+      'path.edu':'Master Data Science — UMons','path.edudesc':'Specialisatie in toegepaste statistiek en informatievisualisatie.',
+      'contact.title':'Een dataproject om scherp te stellen?'
+    }
+  };
+
+  function applyLang(lang){
+    document.documentElement.lang = lang.toLowerCase();
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(translations[lang][key]) el.textContent = translations[lang][key];
+    });
+  }
+  function changeLang(){
+    const btn = document.getElementById('langBtn');
+    const langs = ['FR','EN','NL'];
+    const next = langs[(langs.indexOf(btn.textContent) + 1) % langs.length];
+    btn.textContent = next;
+    applyLang(next);
+  }
+  applyLang('FR');
+
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('active'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
