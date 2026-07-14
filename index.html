@@ -7,90 +7,79 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #FFF2F0; --text: #2D1D20; }
-        .dark { --bg: #0f0f0f; --text: #f5f5f5; }
-        body { background-color: var(--bg); color: var(--text); transition: background 0.5s ease; font-family: 'Inter', sans-serif; }
+        :root { --bg: #FFFBFB; --text: #2D1D20; }
+        .dark { --bg: #0a0a0a; --text: #f0f0f0; }
+        body { background-color: var(--bg); color: var(--text); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); font-family: 'Inter', sans-serif; }
         h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
-        .glass { background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .dark .glass { background: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body class="selection:bg-[#7A1C36] selection:text-white">
 
-    <!-- Nav -->
-    <nav class="fixed w-full z-50 p-6 flex justify-between items-center glass">
-        <span class="text-xl font-serif">MD.</span>
-        <div class="flex items-center gap-6 text-[10px] uppercase tracking-[0.2em]">
-            <a href="#projets" class="hover:opacity-50">Projets</a>
-            <a href="#parcours" class="hover:opacity-50">Parcours</a>
-            <button onclick="toggleLang()" class="hover:opacity-50">🌐 FR</button>
-            <button onclick="document.documentElement.classList.toggle('dark')" class="text-lg">☾</button>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center mix-blend-difference">
+        <span class="text-xl font-light tracking-widest">MÉLANIE DUPRIEZ</span>
+        <div class="flex gap-8 text-[10px] uppercase tracking-[0.3em]">
+            <a href="#projets" class="hover:opacity-50 transition">Projets</a>
+            <a href="#parcours" class="hover:opacity-50 transition">Parcours</a>
+            <button onclick="toggleLang()" id="langBtn" class="hover:opacity-50 transition">FR</button>
+            <button onclick="document.documentElement.classList.toggle('dark')" class="hover:opacity-50 transition">MODE</button>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <header class="h-screen flex flex-col justify-center items-center text-center px-6">
-        <h1 class="text-8xl mb-6 font-light">Mélanie Dupriez</h1>
-        <p class="text-lg italic opacity-70">Business Data Analyst & Visual Storyteller</p>
+    <!-- Header -->
+    <header class="h-screen flex flex-col justify-center items-center text-center">
+        <h1 class="text-8xl md:text-9xl font-light mb-6">Business Data Analyst</h1>
+        <p class="text-sm uppercase tracking-[0.4em] opacity-60">Visual Storytelling & Strategy</p>
     </header>
 
     <!-- Projets -->
-    <section id="projets" class="fade-in max-w-5xl mx-auto py-20 px-6">
-        <h2 class="text-5xl mb-16 text-center italic">Projets</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="glass p-10 rounded-[40px]">
-                <h3 class="text-3xl mb-4">Analyse Économique</h3>
-                <p class="opacity-70 text-sm mb-6">Tendances macro-économiques via Python & SQL.</p>
-                <a href="#" class="border-b border-current pb-1 text-xs uppercase">Voir le projet</a>
+    <section id="projets" class="reveal max-w-6xl mx-auto py-32 px-8">
+        <h2 class="text-6xl italic mb-20 text-center">Sélection de projets</h2>
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="glass p-12 rounded-[20px] hover:-translate-y-2 transition duration-500">
+                <h3 class="text-4xl mb-4">Analyse Économique</h3>
+                <p class="opacity-60 mb-8 leading-relaxed">Modélisation de données macro-économiques avec Python et SQL.</p>
+                <a href="#" class="border-b border-current pb-1 text-[10px] uppercase tracking-widest">Découvrir</a>
             </div>
-            <div class="glass p-10 rounded-[40px]">
-                <h3 class="text-3xl mb-4">Dashboard Ventes</h3>
-                <p class="opacity-70 text-sm mb-6">Optimisation commerciale avec Power BI.</p>
-                <a href="#" class="border-b border-current pb-1 text-xs uppercase">Voir le projet</a>
+            <div class="glass p-12 rounded-[20px] hover:-translate-y-2 transition duration-500">
+                <h3 class="text-4xl mb-4">Dashboard Ventes</h3>
+                <p class="opacity-60 mb-8 leading-relaxed">Visualisation interactive et pilotage stratégique sous Power BI.</p>
+                <a href="#" class="border-b border-current pb-1 text-[10px] uppercase tracking-widest">Découvrir</a>
             </div>
         </div>
     </section>
 
     <!-- Parcours -->
-    <section id="parcours" class="fade-in max-w-3xl mx-auto py-20 px-6">
-        <h2 class="text-5xl mb-16 text-center italic">Parcours</h2>
-        <div class="space-y-8">
-            <div class="border-l border-current pl-8">
-                <h4 class="text-xl">Master Ingénieur de Gestion</h4>
-                <p class="opacity-50 text-sm">2024 - 2026</p>
+    <section id="parcours" class="reveal max-w-3xl mx-auto py-32 px-8">
+        <h2 class="text-6xl italic mb-20 text-center">Parcours</h2>
+        <div class="space-y-16">
+            <div class="flex justify-between items-baseline border-b border-black/10 dark:border-white/10 pb-8">
+                <h4 class="text-2xl">Master Ingénieur de Gestion</h4>
+                <span class="text-xs opacity-50">2024 — 2026</span>
             </div>
-            <div class="border-l border-current pl-8">
-                <h4 class="text-xl">Photographie Freelance</h4>
-                <p class="opacity-50 text-sm">4 ans d'expérience</p>
+            <div class="flex justify-between items-baseline border-b border-black/10 dark:border-white/10 pb-8">
+                <h4 class="text-2xl">Photographie Freelance</h4>
+                <span class="text-xs opacity-50">4 ans d'expérience</span>
             </div>
         </div>
     </section>
 
-    <!-- Halo & Scripts -->
-    <div id="halo" class="fixed w-[500px] h-[500px] rounded-full pointer-events-none opacity-10 transition-all duration-700" style="background: radial-gradient(circle, #7A1C36 0%, transparent 70%); transform: translate(-50%, -50%); z-index: -1;"></div>
-
     <script>
-        // Halo souris
-        document.addEventListener('mousemove', (e) => {
-            const halo = document.getElementById('halo');
-            halo.style.left = e.clientX + 'px';
-            halo.style.top = e.clientY + 'px';
-        });
-
-        // Apparition fluide
+        // Apparition au scroll
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
         });
-        document.querySelectorAll('.fade-in').forEach(section => observer.observe(section));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         // Langue
         function toggleLang() {
-            const btn = event.target;
-            if(btn.innerText.includes('FR')) btn.innerText = '🌐 EN';
-            else if(btn.innerText.includes('EN')) btn.innerText = '🌐 NL';
-            else btn.innerText = '🌐 FR';
+            const btn = document.getElementById('langBtn');
+            if(btn.innerText === 'FR') btn.innerText = 'EN';
+            else if(btn.innerText === 'EN') btn.innerText = 'NL';
+            else btn.innerText = 'FR';
         }
     </script>
 </body>
