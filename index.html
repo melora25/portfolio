@@ -11,78 +11,55 @@
         .dark { --bg: #0A0A0A; --text: #FAFAFA; }
         body { background-color: var(--bg); color: var(--text); transition: background 0.6s ease; font-family: 'Inter', sans-serif; }
         h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .dark .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); }
+        /* Effet Glass Menu */
+        .glass-nav { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .dark .glass-nav { background: rgba(0, 0, 0, 0.5); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .reveal { opacity: 0; transform: translateY(20px); transition: all 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="leading-relaxed">
+<body>
 
     <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 px-10 py-8 flex justify-between items-center">
-        <span class="text-xl tracking-[0.2em] uppercase">Mélanie Dupriez</span>
-        <div class="flex gap-10 text-[11px] font-medium uppercase tracking-[0.3em]">
-            <a href="#projets" class="hover:underline underline-offset-4">Projets</a>
-            <a href="#parcours" class="hover:underline underline-offset-4">Parcours</a>
-            <button onclick="toggleLang()" id="langBtn" class="hover:opacity-60">FR</button>
-            <button onclick="document.documentElement.classList.toggle('dark')" class="hover:opacity-60">THEME</button>
+    <nav class="fixed top-0 w-full z-50 glass-nav px-10 py-6 flex justify-between items-center transition-all">
+        <span class="text-xl tracking-[0.2em] uppercase font-light">Mélanie Dupriez</span>
+        <div class="flex gap-10 text-[11px] font-bold uppercase tracking-[0.3em]">
+            <a href="#projets" class="hover:opacity-60 transition">Projets</a>
+            <a href="#parcours" class="hover:opacity-60 transition">Parcours</a>
+            <button onclick="changeLang()" id="langBtn" class="hover:opacity-60 transition underline underline-offset-4">FR</button>
+            <button onclick="document.documentElement.classList.toggle('dark')" class="hover:opacity-60 transition">THEME</button>
         </div>
     </nav>
 
     <!-- Header -->
     <header class="h-screen flex flex-col justify-center items-center text-center px-6">
-        <h1 class="text-[clamp(3rem,10vw,8rem)] leading-tight mb-8">Business Data Analyst</h1>
-        <p class="text-sm uppercase tracking-[0.5em] opacity-60">Visual Storytelling & Strategy</p>
+        <h1 id="title" class="text-[clamp(3rem,8vw,7rem)] leading-tight mb-4">Business Data Analyst</h1>
+        <p id="subtitle" class="text-sm uppercase tracking-[0.4em] opacity-60">Visual Storytelling & Strategy</p>
     </header>
 
-    <!-- Projets -->
-    <section id="projets" class="reveal max-w-6xl mx-auto py-32 px-10">
-        <h2 class="text-5xl italic mb-20">Sélection de projets</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="glass p-12 rounded-[25px]">
-                <h3 class="text-4xl mb-6">Analyse Économique</h3>
-                <p class="text-lg opacity-70 mb-10 leading-relaxed">Exploration de données macro-économiques complexes transformées en insights stratégiques.</p>
-                <a href="#" class="border-b border-current pb-1 text-[11px] font-bold uppercase tracking-[0.2em]">Lire le cas</a>
-            </div>
-            <div class="glass p-12 rounded-[25px]">
-                <h3 class="text-4xl mb-6">Dashboard Ventes</h3>
-                <p class="text-lg opacity-70 mb-10 leading-relaxed">Conception d'outils de pilotage interactifs pour une prise de décision rapide.</p>
-                <a href="#" class="border-b border-current pb-1 text-[11px] font-bold uppercase tracking-[0.2em]">Lire le cas</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Parcours -->
-    <section id="parcours" class="reveal max-w-4xl mx-auto py-32 px-10">
-        <h2 class="text-5xl italic mb-20 text-center">Parcours</h2>
-        <div class="space-y-12">
-            <div class="group flex justify-between items-start border-b border-black/10 dark:border-white/10 pb-10">
-                <div>
-                    <h4 class="text-2xl font-medium mb-2">Master Ingénieur de Gestion</h4>
-                    <p class="opacity-60">Focus sur l'analyse de données et la stratégie.</p>
-                </div>
-                <span class="text-sm font-light opacity-40">2024 — 2026</span>
-            </div>
-            <div class="group flex justify-between items-start border-b border-black/10 dark:border-white/10 pb-10">
-                <div>
-                    <h4 class="text-2xl font-medium mb-2">Photographie Freelance</h4>
-                    <p class="opacity-60">Maîtrise de la composition et du détail visuel.</p>
-                </div>
-                <span class="text-sm font-light opacity-40">4 ans</span>
-            </div>
-        </div>
-    </section>
-
     <script>
-        const observer = new IntersectionObserver((e) => { e.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); }); });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        function toggleLang() {
+        // Logique de langue
+        const content = {
+            'FR': { title: 'Business Data Analyst', sub: 'Visual Storytelling & Strategy' },
+            'EN': { title: 'Business Data Analyst', sub: 'Visual Storytelling & Strategy' },
+            'NL': { title: 'Business Data Analist', sub: 'Visuele Storytelling & Strategie' }
+        };
+
+        function changeLang() {
             const btn = document.getElementById('langBtn');
             const langs = ['FR', 'EN', 'NL'];
             let next = (langs.indexOf(btn.innerText) + 1) % langs.length;
             btn.innerText = langs[next];
+            
+            document.getElementById('title').innerText = content[langs[next]].title;
+            document.getElementById('subtitle').innerText = content[langs[next]].sub;
         }
+
+        // Observer pour apparition
+        const observer = new IntersectionObserver((e) => { 
+            e.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); }); 
+        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
