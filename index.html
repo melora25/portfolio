@@ -5,81 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mélanie Dupriez | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        :root { --bg: #FFFBFB; --text: #2D1D20; }
-        .dark { --bg: #0a0a0a; --text: #f0f0f0; }
-        body { background-color: var(--bg); color: var(--text); transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1); font-family: 'Inter', sans-serif; }
+        :root { --bg: #FDFBFB; --text: #1A1A1A; }
+        .dark { --bg: #0A0A0A; --text: #FAFAFA; }
+        body { background-color: var(--bg); color: var(--text); transition: background 0.6s ease; font-family: 'Inter', sans-serif; }
         h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .dark .glass { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
-<body class="selection:bg-[#7A1C36] selection:text-white">
+<body class="leading-relaxed">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 px-8 py-6 flex justify-between items-center mix-blend-difference">
-        <span class="text-xl font-light tracking-widest">MÉLANIE DUPRIEZ</span>
-        <div class="flex gap-8 text-[10px] uppercase tracking-[0.3em]">
-            <a href="#projets" class="hover:opacity-50 transition">Projets</a>
-            <a href="#parcours" class="hover:opacity-50 transition">Parcours</a>
-            <button onclick="toggleLang()" id="langBtn" class="hover:opacity-50 transition">FR</button>
-            <button onclick="document.documentElement.classList.toggle('dark')" class="hover:opacity-50 transition">MODE</button>
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 px-10 py-8 flex justify-between items-center">
+        <span class="text-xl tracking-[0.2em] uppercase">Mélanie Dupriez</span>
+        <div class="flex gap-10 text-[11px] font-medium uppercase tracking-[0.3em]">
+            <a href="#projets" class="hover:underline underline-offset-4">Projets</a>
+            <a href="#parcours" class="hover:underline underline-offset-4">Parcours</a>
+            <button onclick="toggleLang()" id="langBtn" class="hover:opacity-60">FR</button>
+            <button onclick="document.documentElement.classList.toggle('dark')" class="hover:opacity-60">THEME</button>
         </div>
     </nav>
 
     <!-- Header -->
-    <header class="h-screen flex flex-col justify-center items-center text-center">
-        <h1 class="text-8xl md:text-9xl font-light mb-6">Business Data Analyst</h1>
-        <p class="text-sm uppercase tracking-[0.4em] opacity-60">Visual Storytelling & Strategy</p>
+    <header class="h-screen flex flex-col justify-center items-center text-center px-6">
+        <h1 class="text-[clamp(3rem,10vw,8rem)] leading-tight mb-8">Business Data Analyst</h1>
+        <p class="text-sm uppercase tracking-[0.5em] opacity-60">Visual Storytelling & Strategy</p>
     </header>
 
     <!-- Projets -->
-    <section id="projets" class="reveal max-w-6xl mx-auto py-32 px-8">
-        <h2 class="text-6xl italic mb-20 text-center">Sélection de projets</h2>
-        <div class="grid md:grid-cols-2 gap-12">
-            <div class="glass p-12 rounded-[20px] hover:-translate-y-2 transition duration-500">
-                <h3 class="text-4xl mb-4">Analyse Économique</h3>
-                <p class="opacity-60 mb-8 leading-relaxed">Modélisation de données macro-économiques avec Python et SQL.</p>
-                <a href="#" class="border-b border-current pb-1 text-[10px] uppercase tracking-widest">Découvrir</a>
+    <section id="projets" class="reveal max-w-6xl mx-auto py-32 px-10">
+        <h2 class="text-5xl italic mb-20">Sélection de projets</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="glass p-12 rounded-[25px]">
+                <h3 class="text-4xl mb-6">Analyse Économique</h3>
+                <p class="text-lg opacity-70 mb-10 leading-relaxed">Exploration de données macro-économiques complexes transformées en insights stratégiques.</p>
+                <a href="#" class="border-b border-current pb-1 text-[11px] font-bold uppercase tracking-[0.2em]">Lire le cas</a>
             </div>
-            <div class="glass p-12 rounded-[20px] hover:-translate-y-2 transition duration-500">
-                <h3 class="text-4xl mb-4">Dashboard Ventes</h3>
-                <p class="opacity-60 mb-8 leading-relaxed">Visualisation interactive et pilotage stratégique sous Power BI.</p>
-                <a href="#" class="border-b border-current pb-1 text-[10px] uppercase tracking-widest">Découvrir</a>
+            <div class="glass p-12 rounded-[25px]">
+                <h3 class="text-4xl mb-6">Dashboard Ventes</h3>
+                <p class="text-lg opacity-70 mb-10 leading-relaxed">Conception d'outils de pilotage interactifs pour une prise de décision rapide.</p>
+                <a href="#" class="border-b border-current pb-1 text-[11px] font-bold uppercase tracking-[0.2em]">Lire le cas</a>
             </div>
         </div>
     </section>
 
     <!-- Parcours -->
-    <section id="parcours" class="reveal max-w-3xl mx-auto py-32 px-8">
-        <h2 class="text-6xl italic mb-20 text-center">Parcours</h2>
-        <div class="space-y-16">
-            <div class="flex justify-between items-baseline border-b border-black/10 dark:border-white/10 pb-8">
-                <h4 class="text-2xl">Master Ingénieur de Gestion</h4>
-                <span class="text-xs opacity-50">2024 — 2026</span>
+    <section id="parcours" class="reveal max-w-4xl mx-auto py-32 px-10">
+        <h2 class="text-5xl italic mb-20 text-center">Parcours</h2>
+        <div class="space-y-12">
+            <div class="group flex justify-between items-start border-b border-black/10 dark:border-white/10 pb-10">
+                <div>
+                    <h4 class="text-2xl font-medium mb-2">Master Ingénieur de Gestion</h4>
+                    <p class="opacity-60">Focus sur l'analyse de données et la stratégie.</p>
+                </div>
+                <span class="text-sm font-light opacity-40">2024 — 2026</span>
             </div>
-            <div class="flex justify-between items-baseline border-b border-black/10 dark:border-white/10 pb-8">
-                <h4 class="text-2xl">Photographie Freelance</h4>
-                <span class="text-xs opacity-50">4 ans d'expérience</span>
+            <div class="group flex justify-between items-start border-b border-black/10 dark:border-white/10 pb-10">
+                <div>
+                    <h4 class="text-2xl font-medium mb-2">Photographie Freelance</h4>
+                    <p class="opacity-60">Maîtrise de la composition et du détail visuel.</p>
+                </div>
+                <span class="text-sm font-light opacity-40">4 ans</span>
             </div>
         </div>
     </section>
 
     <script>
-        // Apparition au scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('active'); });
-        });
+        const observer = new IntersectionObserver((e) => { e.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('active'); }); });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Langue
         function toggleLang() {
             const btn = document.getElementById('langBtn');
-            if(btn.innerText === 'FR') btn.innerText = 'EN';
-            else if(btn.innerText === 'EN') btn.innerText = 'NL';
-            else btn.innerText = 'FR';
+            const langs = ['FR', 'EN', 'NL'];
+            let next = (langs.indexOf(btn.innerText) + 1) % langs.length;
+            btn.innerText = langs[next];
         }
     </script>
 </body>
