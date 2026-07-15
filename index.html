@@ -517,7 +517,7 @@
         </div>
       </div>
 
-   <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="text-left">
+<form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="text-left" novalidate>
     <div class="mb-4">
         <input type="text" name="nom" class="field-input" placeholder="Votre nom" required>
     </div>
@@ -525,31 +525,38 @@
         <input type="email" name="email" class="field-input" placeholder="Votre e-mail" required>
     </div>
     <div class="mb-5">
-        <textarea name="message" name="message" rows="4" class="field-input" placeholder="Votre message" required></textarea>
+        <textarea name="message" rows="4" class="field-input" placeholder="Votre message" required></textarea>
     </div>
 
-    <button type="submit" class="btn-grad">Envoyer</button>
-    
-    <p id="success-msg" style="display:none; color: green; font-weight: bold;">
+    <!-- Ton bouton d'origine -->
+    <button type="submit" class="btn-grad rounded-full px-7 py-3 text-sm w-full sm:w-auto" data-i18n="form.submit">
+        Envoyer
+    </button>
+
+    <!-- Ton message de succès (masqué par défaut) -->
+    <p id="form-success" class="form-success text-sm mt-4 font-semibold" style="display:none; color:var(--g1);">
         Merci ! Votre message a bien été envoyé.
     </p>
 </form>
 
 <script>
     const form = document.getElementById("contactForm");
+    const successMsg = document.getElementById("form-success");
+
     async function handleSubmit(event) {
         event.preventDefault();
         const data = new FormData(event.target);
+        
         fetch(event.target.action, {
             method: form.method,
             body: data,
             headers: { 'Accept': 'application/json' }
         }).then(response => {
             if (response.ok) {
-                form.reset(); // Vide le formulaire
-                document.getElementById("success-msg").style.display = "block"; // Affiche le succès
+                form.reset(); // Vide les champs
+                successMsg.style.display = "block"; // Affiche ton message de succès
             } else {
-                alert("Oups, une erreur est survenue.");
+                alert("Une erreur est survenue, veuillez réessayer.");
             }
         });
     }
