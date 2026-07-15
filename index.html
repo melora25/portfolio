@@ -166,14 +166,32 @@
       <span class="dot"></span> <span data-i18n="hero.eyebrow">Étudiante en Ingénieur de gestion — Data & BI</span>
     </span>
 
-    <h1 class="text-[clamp(2.4rem,7vw,5.2rem)] leading-[1.06] mb-7">
-      <span data-i18n="hero.line1">Je transforme des chiffres bruts</span><br>
-      <span class="grad-text" data-i18n="hero.line2">en histoires claires,</span><br>
-      <span data-i18n="hero.line3" class="text-[0.65em] font-semibold" style="color:var(--ink-soft)">en dashboards lisibles et en décisions concrètes.</span>
+    <h1 class="text-[clamp(2rem,5.6vw,4.2rem)] leading-[1.15] mb-10 max-w-4xl mx-auto">
+      <span data-i18n="hero.line1">Ingénieure de gestion spécialisée en Data, je transforme</span>
+      <span class="grad-text" data-i18n="hero.line2"> vos données en diagnostics précis et en recommandations concrètes</span>
+      <span data-i18n="hero.line3"> pour optimiser vos processus et maximiser votre performance.</span>
     </h1>
 
-    <div class="flex flex-wrap justify-center gap-4 mt-10">
-      <a href="#contact" class="btn-grad rounded-full px-7 py-3 text-sm" data-i18n="hero.cta1">Me contacter ↗</a>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto mb-10 text-left">
+      <div class="card rounded-2xl p-6">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="mb-4"><defs><linearGradient id="gradIcon1" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+        <h3 class="text-sm font-extrabold mb-2" data-i18n="proof.data.title">Data Analysis</h3>
+        <p class="text-xs leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.data.desc">Traduction de données brutes en insights décisionnels.</p>
+      </div>
+      <div class="card rounded-2xl p-6">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="mb-4"><defs><linearGradient id="gradIcon2" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M8 5L2 12l6 7M16 5l6 7-6 7"/></svg>
+        <h3 class="text-sm font-extrabold mb-2" data-i18n="proof.web.title">Web Development</h3>
+        <p class="text-xs leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.web.desc">Conception d'interfaces web pour présenter vos résultats.</p>
+      </div>
+      <div class="card rounded-2xl p-6">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="mb-4"><defs><linearGradient id="gradIcon3" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg>
+        <h3 class="text-sm font-extrabold mb-2" data-i18n="proof.strategy.title">Business Strategy</h3>
+        <p class="text-xs leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.strategy.desc">Optimisation des processus basée sur des diagnostics précis.</p>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-4 mt-2">
+      <a href="#contact" class="btn-grad rounded-full px-8 py-3.5 text-sm" data-i18n="hero.cta1">Discutons de vos projets</a>
       <a href="#projets" class="btn-ghost rounded-full px-7 py-3 text-sm font-semibold" data-i18n="hero.cta2">Voir mes projets ↓</a>
     </div>
   </div>
@@ -247,25 +265,38 @@
 <!-- Projets -->
 <section id="projets" class="px-6 md:px-14 py-20 md:py-28 max-w-5xl mx-auto reveal">
   <h2 class="text-3xl md:text-5xl text-center mb-4" data-i18n="projects.title">Mes projets personnels</h2>
-  <p class="text-center text-sm mb-14" style="color:var(--ink-soft)" data-i18n="projects.sub">Un aperçu de mon travail</p>
+  <p class="text-center text-sm mb-3" style="color:var(--ink-soft)" data-i18n="projects.sub">Un aperçu de mon travail</p>
+  <p class="text-center text-xs mb-10 flex items-center justify-center gap-2" style="color:var(--ink-soft)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l-7 7 7 7M15 5l7 7-7 7"/></svg>
+    <span data-i18n="projects.drag">Faites glisser pour parcourir</span>
+  </p>
 
-  <article class="card rounded-3xl p-8 md:p-12 relative overflow-hidden">
-    <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full opacity-30" style="background:linear-gradient(135deg,var(--g1),var(--g3)); filter:blur(30px)"></div>
-    <div class="relative">
-      <h3 class="text-2xl md:text-3xl font-extrabold mb-4" data-i18n="p1.title">Analyse économique de la Belgique</h3>
-      <p class="text-sm leading-relaxed mb-7 max-w-2xl" style="color:var(--ink-soft)" data-i18n="p1.desc">
-        Storytelling dashboard interactif présentant l'évolution des indicateurs économiques belges (PIB, chômage, inflation) avec des visualisations dynamiques et une narration guidée.
-      </p>
-      <div class="flex flex-wrap gap-2">
-        <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">Python</span>
-        <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">Power BI</span>
-        <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">SQL</span>
-        <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">Excel</span>
+  <div id="projectsTrack" class="flex gap-6 overflow-x-auto pb-6 px-1 cursor-grab select-none" style="scroll-snap-type:x mandatory; scrollbar-width:none;">
+    <article class="card rounded-3xl p-8 md:p-10 relative overflow-hidden shrink-0 w-[85%] sm:w-[420px]" style="scroll-snap-align:center;">
+      <div class="absolute -top-16 -right-16 w-56 h-56 rounded-full opacity-30 pointer-events-none" style="background:linear-gradient(135deg,var(--g1),var(--g3)); filter:blur(30px)"></div>
+      <div class="relative flex flex-col h-full">
+        <h3 class="text-2xl font-extrabold mb-4" data-i18n="p1.title">Analyse économique de la Belgique</h3>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--ink-soft)" data-i18n="p1.desc">
+          Storytelling dashboard interactif présentant l'évolution des indicateurs économiques belges (PIB, chômage, inflation) avec des visualisations dynamiques et une narration guidée.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">Python</span>
+          <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">Power BI</span>
+          <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">SQL</span>
+          <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">Excel</span>
+        </div>
+        <a href="#" onclick="return !document.body.classList.contains('was-dragging')" class="btn-grad rounded-full px-6 py-3 text-sm text-center mt-auto" data-i18n="projects.view">Voir le projet ↗</a>
       </div>
-    </div>
-  </article>
+    </article>
 
-  <p class="text-center mt-8 text-sm font-semibold" style="color:var(--ink-soft)" data-i18n="projects.more">D'autres projets à venir.</p>
+    <article class="card rounded-3xl p-8 md:p-10 relative overflow-hidden shrink-0 w-[85%] sm:w-[420px] flex flex-col items-center justify-center text-center" style="scroll-snap-align:center;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon4)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="mb-5"><defs><linearGradient id="gradIcon4" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M12 5v14M5 12h14"/></svg>
+      <h3 class="text-xl font-extrabold mb-2" data-i18n="projects.more.title">Prochain projet</h3>
+      <p class="text-sm max-w-xs" style="color:var(--ink-soft)" data-i18n="projects.more">D'autres projets à venir.</p>
+    </article>
+  </div>
+
+  <style>#projectsTrack::-webkit-scrollbar{ display:none; }</style>
 </section>
 
 <!-- Compétences -->
@@ -402,8 +433,13 @@
     FR: {
       'nav.path':'Parcours','nav.projects':'Projets','nav.skills':'Compétences','nav.contact':'Contact','nav.theme':'Thème',
       'hero.eyebrow':'Étudiante en Ingénieur de gestion — Data & BI',
-      'hero.line1':'Je transforme des chiffres bruts','hero.line2':'en histoires claires,','hero.line3':'en dashboards lisibles et en décisions concrètes.',
-      'hero.cta1':'Me contacter ↗','hero.cta2':'Voir mes projets ↓',
+      'hero.line1':'Ingénieure de gestion spécialisée en Data, je transforme',
+      'hero.line2':' vos données en diagnostics précis et en recommandations concrètes',
+      'hero.line3':' pour optimiser vos processus et maximiser votre performance.',
+      'hero.cta1':'Discutons de vos projets','hero.cta2':'Voir mes projets ↓',
+      'proof.data.title':'Data Analysis','proof.data.desc':'Traduction de données brutes en insights décisionnels.',
+      'proof.web.title':'Web Development','proof.web.desc':"Conception d'interfaces web pour présenter vos résultats.",
+      'proof.strategy.title':'Business Strategy','proof.strategy.desc':'Optimisation des processus basée sur des diagnostics précis.',
       'hero.seeking.label':'Ce que je recherche',
       'hero.seeking.desc':"Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à la donnée.",
       'stat.grad':'Diplôme prévu','stat.langs':'Langues parlées','stat.tools':'Outils maîtrisés','stat.certs':'Certifications en cours',
@@ -415,6 +451,7 @@
       'path.edu2.title':'Diplôme de Photographe','path.edu2.sub':'5e — 6e secondaire',
       'path.edu2.desc':'Photographie, montage photo & vidéo, notions de marketing et publicité.',
       'projects.title':'Mes projets personnels','projects.sub':'Un aperçu de mon travail','projects.more':"D'autres projets à venir.",
+      'projects.drag':'Faites glisser pour parcourir','projects.view':'Voir le projet ↗','projects.more.title':'Prochain projet',
       'p1.title':'Analyse économique de la Belgique',
       'p1.desc':"Storytelling dashboard interactif présentant l'évolution des indicateurs économiques belges (PIB, chômage, inflation) avec des visualisations dynamiques et une narration guidée.",
       'skills.title':'Compétences','skills.sub':'Langues, outils & qualités',
@@ -428,8 +465,13 @@
     EN: {
       'nav.path':'Path','nav.projects':'Projects','nav.skills':'Skills','nav.contact':'Contact','nav.theme':'Theme',
       'hero.eyebrow':'Management Engineering student — Data & BI',
-      'hero.line1':'I turn raw numbers','hero.line2':'into clear stories,','hero.line3':'readable dashboards and concrete decisions.',
-      'hero.cta1':'Get in touch ↗','hero.cta2':'See my projects ↓',
+      'hero.line1':'Management Engineer specialised in Data, I turn',
+      'hero.line2':' your data into precise diagnostics and concrete recommendations',
+      'hero.line3':' to optimise your processes and maximise your performance.',
+      'hero.cta1':"Let's talk about your project",'hero.cta2':'See my projects ↓',
+      'proof.data.title':'Data Analysis','proof.data.desc':'Turning raw data into decision-ready insights.',
+      'proof.web.title':'Web Development','proof.web.desc':'Designing web interfaces to present your results.',
+      'proof.strategy.title':'Business Strategy','proof.strategy.desc':'Process optimisation grounded in precise diagnostics.',
       'hero.seeking.label':"What I'm looking for",
       'hero.seeking.desc':"An internship or role in data analysis / business intelligence, ideally remote or in Belgium. Happy to discuss any data-related project.",
       'stat.grad':'Expected graduation','stat.langs':'Languages spoken','stat.tools':'Tools mastered','stat.certs':'Certifications in progress',
@@ -441,6 +483,7 @@
       'path.edu2.title':'Photography Diploma','path.edu2.sub':'Upper secondary school',
       'path.edu2.desc':'Photography, photo & video editing, notions of marketing and advertising.',
       'projects.title':'Personal projects','projects.sub':'A glimpse of my work','projects.more':'More projects coming soon.',
+      'projects.drag':'Drag to browse','projects.view':'View project ↗','projects.more.title':'Next project',
       'p1.title':'Economic analysis of Belgium',
       'p1.desc':"Interactive storytelling dashboard presenting the evolution of Belgian economic indicators (GDP, unemployment, inflation) with dynamic visualisations and a guided narrative.",
       'skills.title':'Skills','skills.sub':'Languages, tools & qualities',
@@ -454,8 +497,13 @@
     NL: {
       'nav.path':'Traject','nav.projects':'Projecten','nav.skills':'Vaardigheden','nav.contact':'Contact','nav.theme':'Thema',
       'hero.eyebrow':'Student Handelsingenieur — Data & BI',
-      'hero.line1':'Ik verander ruwe cijfers','hero.line2':'in heldere verhalen,','hero.line3':'leesbare dashboards en concrete beslissingen.',
-      'hero.cta1':'Contacteer mij ↗','hero.cta2':'Bekijk mijn projecten ↓',
+      'hero.line1':'Handelsingenieur gespecialiseerd in Data, ik verander',
+      'hero.line2':' uw data in nauwkeurige diagnoses en concrete aanbevelingen',
+      'hero.line3':' om uw processen te optimaliseren en uw prestaties te maximaliseren.',
+      'hero.cta1':'Laten we uw project bespreken','hero.cta2':'Bekijk mijn projecten ↓',
+      'proof.data.title':'Data Analysis','proof.data.desc':'Ruwe data omzetten in bruikbare inzichten.',
+      'proof.web.title':'Web Development','proof.web.desc':'Ontwerp van webinterfaces om uw resultaten te presenteren.',
+      'proof.strategy.title':'Business Strategy','proof.strategy.desc':'Procesoptimalisatie op basis van nauwkeurige diagnoses.',
       'hero.seeking.label':'Wat ik zoek',
       'hero.seeking.desc':"Stage of job in data-analyse / business intelligence, bij voorkeur op afstand of in België. Beschikbaar om elk dataproject te bespreken.",
       'stat.grad':'Verwacht diploma','stat.langs':'Gesproken talen','stat.tools':'Beheerste tools','stat.certs':'Certificeringen bezig',
@@ -467,6 +515,7 @@
       'path.edu2.title':'Diploma Fotografie','path.edu2.sub':'5e — 6e middelbaar',
       'path.edu2.desc':'Fotografie, foto- & videomontage, basisbegrippen marketing en reclame.',
       'projects.title':'Mijn persoonlijke projecten','projects.sub':'Een blik op mijn werk','projects.more':'Meer projecten binnenkort.',
+      'projects.drag':'Sleep om te bladeren','projects.view':'Bekijk project ↗','projects.more.title':'Volgend project',
       'p1.title':'Economische analyse van België',
       'p1.desc':"Interactief storytelling-dashboard over de evolutie van de Belgische economische indicatoren (bbp, werkloosheid, inflatie) met dynamische visualisaties en een geleid verhaal.",
       'skills.title':'Vaardigheden','skills.sub':'Talen, tools & kwaliteiten',
@@ -514,6 +563,33 @@
   const _applyLang = applyLang;
   applyLang = function(lang){ _applyLang(lang); updateLangChecks(lang); };
   applyLang('FR');
+
+  (function setupDragCarousel(){
+    const track = document.getElementById('projectsTrack');
+    if(!track) return;
+    let isDown = false, startX, scrollStart, moved = false;
+    const start = (x)=>{ isDown = true; moved = false; startX = x; scrollStart = track.scrollLeft; track.classList.add('cursor-grabbing'); };
+    const move = (x)=>{
+      if(!isDown) return;
+      const dx = x - startX;
+      if(Math.abs(dx) > 5) moved = true;
+      track.scrollLeft = scrollStart - dx;
+    };
+    const end = ()=>{
+      isDown = false;
+      track.classList.remove('cursor-grabbing');
+      if(moved){
+        document.body.classList.add('was-dragging');
+        setTimeout(()=>document.body.classList.remove('was-dragging'), 50);
+      }
+    };
+    track.addEventListener('mousedown', e=>start(e.pageX));
+    window.addEventListener('mousemove', e=>move(e.pageX));
+    window.addEventListener('mouseup', end);
+    track.addEventListener('touchstart', e=>start(e.touches[0].pageX), {passive:true});
+    track.addEventListener('touchmove', e=>move(e.touches[0].pageX), {passive:true});
+    track.addEventListener('touchend', end);
+  })();
 
   const observer = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('active'); });
