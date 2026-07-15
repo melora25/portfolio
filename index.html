@@ -13,6 +13,7 @@
     --bg1:#EAF1FF; --bg2:#F1E8FB; --bg3:#FDEAF3; --bg4:#FFF4E9;
     --ink:#241E33; --ink-soft:#6E6480;
     --glass:rgba(255,255,255,0.55); --glass-strong:rgba(255,255,255,0.75); --glass-border:rgba(255,255,255,0.85);
+    --menu-bg:rgba(255,255,255,0.92);
     --shadow:rgba(120,100,190,0.18);
     --g1:#6E7BF2; --g2:#C179D9; --g3:#F08FB0;
     --card:rgba(255,255,255,0.6);
@@ -21,6 +22,7 @@
     --bg1:#171326; --bg2:#1E1730; --bg3:#241A2C; --bg4:#1A1520;
     --ink:#F1ECFB; --ink-soft:#B3A7C7;
     --glass:rgba(40,32,58,0.5); --glass-strong:rgba(45,36,64,0.7); --glass-border:rgba(255,255,255,0.10);
+    --menu-bg:rgba(30,23,44,0.92);
     --shadow:rgba(0,0,0,0.4);
     --g1:#8B93F7; --g2:#D08FE6; --g3:#F5A5C0;
     --card:rgba(40,32,58,0.55);
@@ -115,6 +117,15 @@
     .reveal{ transition:none; opacity:1; transform:none; }
     * { scroll-behavior:auto !important; }
   }
+  .lang-menu-surface{
+    background:var(--menu-bg);
+    backdrop-filter:blur(28px) saturate(180%);
+    -webkit-backdrop-filter:blur(28px) saturate(180%);
+    border:1px solid var(--glass-border);
+    box-shadow:0 16px 40px var(--shadow);
+  }
+  .lang-option{ background:transparent; }
+  .lang-option:hover{ background:var(--glass); }
 </style>
 </head>
 <body>
@@ -134,7 +145,7 @@
           <path d="M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/>
         </svg>
       </button>
-      <div id="langMenu" role="listbox" class="hidden absolute right-0 mt-3 w-32 card rounded-2xl overflow-hidden py-1.5 z-50">
+      <div id="langMenu" role="listbox" class="hidden absolute right-0 mt-3 w-36 rounded-2xl overflow-hidden py-1.5 z-50 lang-menu-surface">
         <button role="option" onclick="selectLang('FR')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">Français <span class="check text-xs" style="color:var(--g2)"></span></button>
         <button role="option" onclick="selectLang('EN')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">English <span class="check text-xs" style="color:var(--g2)"></span></button>
         <button role="option" onclick="selectLang('NL')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">Nederlands <span class="check text-xs" style="color:var(--g2)"></span></button>
