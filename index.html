@@ -517,7 +517,7 @@
         </div>
       </div>
 
-<form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="text-left" novalidate>
+<form id="contactForm" action="https://formspree.io/f/mjvndzjw" method="POST" class="text-left" novalidate>
     <div class="mb-4">
         <input type="text" name="nom" class="field-input" data-i18n-placeholder="form.name" placeholder="Votre nom" required>
     </div>
@@ -537,6 +537,26 @@
     </p>
 </form>
 
+<script>
+    const form = document.getElementById("contactForm");
+    const successMsg = document.getElementById("form-success");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            form.reset();
+            successMsg.style.display = "block";
+            // Si tu as une fonction de traduction globale, appelle-la ici
+            if (typeof updateTranslations === 'function') updateTranslations();
+        }
+    });
+</script>
 <script>
     const form = document.getElementById("contactForm");
     const successMsg = document.getElementById("form-success");
