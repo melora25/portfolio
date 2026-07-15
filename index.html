@@ -10,30 +10,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#FBF6F2;
-    --ink:#3A2E33;
-    --ink-soft:#8A7A80;
-    --rose:#C79A96;
-    --rose-deep:#B07E7E;
-    --gold:#BC9256;
-    --lav:#C9BFDB;
-    --glass:rgba(255,255,255,0.48);
-    --glass-strong:rgba(255,255,255,0.68);
-    --glass-border:rgba(255,255,255,0.75);
-    --shadow: rgba(150,110,110,0.16);
+    --paper:#F7F3EE;
+    --ink:#2B2226;
+    --ink-soft:#75686C;
+    --line:#DCD4C9;
+    --wine:#7A3B41;
+    --gold:#A9814B;
+    --card:#FCFAF6;
   }
   .dark{
-    --paper:#221B1F;
-    --ink:#F3EAE7;
-    --ink-soft:#B8A6AC;
-    --rose:#D9A9A0;
-    --rose-deep:#E0B4AC;
-    --gold:#DABB84;
-    --lav:#A79AC2;
-    --glass:rgba(50,40,45,0.45);
-    --glass-strong:rgba(55,44,49,0.65);
-    --glass-border:rgba(255,255,255,0.10);
-    --shadow: rgba(0,0,0,0.35);
+    --paper:#1B1518;
+    --ink:#F0E9E4;
+    --ink-soft:#A79B9E;
+    --line:#3A2F33;
+    --wine:#C97F82;
+    --gold:#CBA469;
+    --card:#221A1E;
   }
   *{ -webkit-tap-highlight-color: transparent; }
   html,body{ height:100%; }
@@ -44,87 +36,67 @@
     font-weight:300;
     transition:background-color .6s ease,color .6s ease;
     position:relative;
-    overflow-x:hidden;
   }
   h1,h2,h3,.serif{ font-family:'Cormorant Garamond',serif; font-weight:500; }
   .italic-serif{ font-family:'Cormorant Garamond',serif; font-style:italic; }
 
-  .aurora{ position:fixed; inset:0; z-index:-1; overflow:hidden; }
-  .aurora span{
-    position:absolute; border-radius:50%;
-    filter:blur(70px); opacity:.55;
-    animation: drift 26s ease-in-out infinite;
+  /* Fine paper grain — the tactile signature instead of glossy blur orbs */
+  .grain{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    opacity:.5; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   }
-  .aurora .b1{ width:38vw; height:38vw; top:-8%; left:-6%; background:var(--rose); animation-delay:0s; }
-  .aurora .b2{ width:30vw; height:30vw; top:10%; right:-8%; background:var(--lav); animation-delay:-8s; }
-  .aurora .b3{ width:34vw; height:34vw; bottom:-10%; left:20%; background:var(--gold); opacity:.35; animation-delay:-16s; }
-  @keyframes drift{
-    0%,100%{ transform:translate(0,0) scale(1); }
-    50%{ transform:translate(3%,4%) scale(1.08); }
-  }
-  @media (prefers-reduced-motion: reduce){ .aurora span{ animation:none; } }
+  .dark .grain{ mix-blend-mode:overlay; opacity:.35; }
 
-  .glass{
-    background:var(--glass);
-    backdrop-filter:blur(20px) saturate(140%);
-    -webkit-backdrop-filter:blur(20px) saturate(140%);
-    border:1px solid var(--glass-border);
-    box-shadow:0 8px 32px var(--shadow);
+  .hairline{ border-color:var(--line); }
+
+  .nav-surface{
+    background:color-mix(in srgb, var(--paper) 82%, transparent);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
   }
-  .glass-nav{
-    background:var(--glass-strong);
-    backdrop-filter:blur(22px) saturate(140%);
-    -webkit-backdrop-filter:blur(22px) saturate(140%);
-    border-bottom:1px solid var(--glass-border);
+
+  .index-num{
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:.95rem; color:var(--gold);
   }
 
   .accent-underline{
-    background-image:linear-gradient(90deg, var(--gold), var(--rose-deep));
-    background-size:0% 1.5px;
+    background-image:linear-gradient(var(--gold), var(--gold));
+    background-size:0% 1px;
     background-repeat:no-repeat;
     background-position:left bottom;
     transition:background-size .4s ease;
     padding-bottom:2px;
   }
-  .accent-underline:hover, .accent-underline:focus-visible{ background-size:100% 1.5px; }
+  .accent-underline:hover, .accent-underline:focus-visible{ background-size:100% 1px; }
 
   a:focus-visible, button:focus-visible{
-    outline:2px solid var(--gold);
-    outline-offset:3px;
-    border-radius:4px;
+    outline:1px solid var(--gold);
+    outline-offset:4px;
   }
 
-  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .9s ease, transform .9s ease; }
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .9s ease, transform .9s ease; }
   .reveal.active{ opacity:1; transform:translateY(0); }
 
-  .tag{
-    font-family:'Cormorant Garamond',serif; font-style:italic;
-    font-size:.85rem; letter-spacing:.04em;
-    color:var(--gold);
+  .row{ border-top:1px solid var(--line); }
+  .row:last-child{ border-bottom:1px solid var(--line); }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
   }
 
-  .project-card, .cert-card{
-    transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease;
-  }
-  .project-card:hover, .cert-card:hover{
-    transform: translateY(-6px);
-    box-shadow:0 20px 44px var(--shadow);
-  }
+  .swatch{ width:6px; align-self:stretch; background:linear-gradient(var(--gold),var(--wine)); }
 
-  ::selection{ background:var(--rose); color:#fff; }
+  .bar-track{ height:1px; background:var(--line); }
+  .bar-fill{ height:1px; background:var(--wine); }
 
-  .pill{
-    font-size:.72rem; letter-spacing:.03em;
-    background:var(--glass);
-    border:1px solid var(--glass-border);
-    padding:.4rem .9rem;
-    border-radius:999px;
-    color:var(--ink-soft);
-    display:inline-block;
-  }
+  .skill-item{ border-bottom:1px solid var(--line); }
+  .skill-item:first-child{ border-top:1px solid var(--line); }
 
-  .bar-track{ height:4px; border-radius:999px; background:var(--glass-border); overflow:hidden; }
-  .bar-fill{ height:100%; border-radius:999px; background:linear-gradient(90deg,var(--gold),var(--rose-deep)); }
+  ::selection{ background:var(--wine); color:#fff; }
 
   @media (prefers-reduced-motion: reduce){
     .reveal{ transition:none; opacity:1; transform:none; }
@@ -134,12 +106,12 @@
 </head>
 <body>
 
-<div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+<div class="grain" aria-hidden="true"></div>
 
 <!-- Nav -->
-<nav class="fixed top-0 w-full z-50 glass-nav px-6 md:px-10 py-5 flex justify-between items-center rounded-b-2xl">
-  <a href="#top" class="text-lg md:text-xl tracking-[0.18em] uppercase serif accent-underline">Mélanie Dupriez</a>
-  <div class="flex items-center gap-4 md:gap-8 text-[10px] md:text-[11px] font-medium uppercase tracking-[0.2em]">
+<nav class="fixed top-0 w-full z-50 nav-surface px-6 md:px-14 py-5 flex justify-between items-center">
+  <a href="#top" class="text-base md:text-lg tracking-[0.16em] uppercase serif accent-underline">Mélanie Dupriez</a>
+  <div class="flex items-center gap-5 md:gap-9 text-[10px] md:text-[11px] font-medium uppercase tracking-[0.2em]">
     <a href="#parcours" data-i18n="nav.path" class="hidden sm:inline accent-underline">Parcours</a>
     <a href="#projets" data-i18n="nav.projects" class="hidden sm:inline accent-underline">Projets</a>
     <a href="#competences" data-i18n="nav.skills" class="hidden md:inline accent-underline">Compétences</a>
@@ -150,20 +122,29 @@
 </nav>
 
 <!-- Header -->
-<header id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32 pb-16">
-  <div class="max-w-5xl mx-auto w-full">
-    <p class="mb-7">
-      <span class="pill" data-i18n="hero.eyebrow">Étudiante en Ingénieur de gestion — Data & BI</span>
-    </p>
-    <h1 class="text-[clamp(2.4rem,7vw,5.6rem)] leading-[1.05] mb-7 font-normal">
-      <span data-i18n="hero.line1">Je transforme des chiffres bruts</span><br>
-      <span class="italic-serif" data-i18n="hero.line2" style="color:var(--rose-deep)">en histoires claires,</span><br>
-      <span data-i18n="hero.line3">en dashboards lisibles et en décisions concrètes.</span>
-    </h1>
+<header id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-14 pt-28 pb-20">
+  <div class="max-w-6xl mx-auto w-full">
 
-    <div class="glass rounded-3xl p-8 md:p-10 max-w-2xl mt-10">
-      <span class="tag" data-i18n="hero.seeking.label">Ce que je recherche</span>
-      <p class="text-sm md:text-base leading-relaxed mt-3 font-light" style="color:var(--ink-soft)" data-i18n="hero.seeking.desc">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-end mb-10">
+      <div class="md:col-span-4">
+        <p class="text-[11px] uppercase tracking-[0.3em] mb-3" style="color:var(--ink-soft)" data-i18n="hero.eyebrow">Étudiante en Ingénieur de gestion</p>
+        <p class="text-[11px] uppercase tracking-[0.3em]" style="color:var(--gold)" data-i18n="hero.field">Data & Business Intelligence</p>
+      </div>
+      <div class="md:col-span-8">
+        <h1 class="text-[clamp(2.1rem,5.4vw,4.4rem)] leading-[1.12] font-normal">
+          <span data-i18n="hero.line1">Je transforme des chiffres bruts</span>
+          <span class="italic-serif" data-i18n="hero.line2" style="color:var(--wine)"> en histoires claires,</span>
+          <span data-i18n="hero.line3"> en dashboards lisibles et en décisions concrètes.</span>
+        </h1>
+      </div>
+    </div>
+
+    <div class="border-t hairline pt-8 grid grid-cols-1 md:grid-cols-12 gap-6">
+      <div class="md:col-span-4">
+        <span class="index-num">01</span>
+        <p class="text-[11px] uppercase tracking-[0.25em] mt-2" style="color:var(--ink-soft)" data-i18n="hero.seeking.label">Ce que je recherche</p>
+      </div>
+      <p class="md:col-span-8 text-sm md:text-base leading-relaxed font-light" style="color:var(--ink-soft)" data-i18n="hero.seeking.desc">
         Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à la donnée.
       </p>
     </div>
@@ -171,56 +152,59 @@
 </header>
 
 <!-- Parcours -->
-<section id="parcours" class="px-6 md:px-16 py-24 md:py-32 max-w-5xl mx-auto reveal">
-  <h2 class="text-3xl md:text-5xl mb-12" data-i18n="path.title">Parcours</h2>
-  <div class="glass rounded-3xl p-8 md:p-12 space-y-10">
+<section id="parcours" class="px-6 md:px-14 py-24 md:py-32 max-w-6xl mx-auto reveal">
+  <div class="flex items-baseline gap-4 mb-14 border-b hairline pb-5">
+    <span class="index-num">02</span>
+    <h2 class="text-3xl md:text-4xl" data-i18n="path.title">Parcours</h2>
+  </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
-      <span class="italic-serif text-base md:col-span-3 pt-1" style="color:var(--gold)">2024 — 2027</span>
-      <div class="md:col-span-9">
-        <h3 class="text-xl serif" data-i18n="path.edu1.title">Ingénieur de gestion</h3>
+  <div>
+    <div class="row grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 py-9">
+      <span class="italic-serif text-base md:col-span-2 pt-1" style="color:var(--gold)">2024 — 2027</span>
+      <div class="md:col-span-10">
+        <h3 class="text-xl md:text-2xl serif" data-i18n="path.edu1.title">Ingénieur de gestion</h3>
         <p class="text-sm mt-1" style="color:var(--ink-soft)" data-i18n="path.edu1.sub">Université de Mons — Bachelier, 3 ans</p>
-        <p class="text-sm mt-2 font-light leading-relaxed" style="color:var(--ink-soft)" data-i18n="path.edu1.desc">Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information.</p>
+        <p class="text-sm mt-3 font-light leading-relaxed max-w-2xl" style="color:var(--ink-soft)" data-i18n="path.edu1.desc">Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information.</p>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-3 pt-8 border-t" style="border-color:var(--glass-border)">
-      <span class="italic-serif text-base md:col-span-3 pt-1" style="color:var(--gold)"><span data-i18n="path.stage.date">Fév. — avr. 2023</span></span>
-      <div class="md:col-span-9">
-        <h3 class="text-xl serif" data-i18n="path.stage.title">Social Media Manager — GabyLuxxy</h3>
+    <div class="row grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 py-9">
+      <span class="italic-serif text-base md:col-span-2 pt-1" style="color:var(--gold)" data-i18n="path.stage.date">Fév. — avr. 2023</span>
+      <div class="md:col-span-10">
+        <h3 class="text-xl md:text-2xl serif" data-i18n="path.stage.title">Social Media Manager — GabyLuxxy</h3>
         <p class="text-sm mt-1" style="color:var(--ink-soft)" data-i18n="path.stage.sub">Stage en télétravail · Revente de luxe</p>
-        <p class="text-sm mt-2 font-light leading-relaxed" style="color:var(--ink-soft)" data-i18n="path.stage.desc">Gestion des réseaux sociaux, création de contenu, analyse des performances.</p>
+        <p class="text-sm mt-3 font-light leading-relaxed max-w-2xl" style="color:var(--ink-soft)" data-i18n="path.stage.desc">Gestion des réseaux sociaux, création de contenu, analyse des performances.</p>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-3 pt-8 border-t" style="border-color:var(--glass-border)">
-      <span class="italic-serif text-base md:col-span-3 pt-1" style="color:var(--gold)">2022 — 2024</span>
-      <div class="md:col-span-9">
-        <h3 class="text-xl serif" data-i18n="path.edu2.title">Diplôme de Photographe</h3>
+    <div class="row grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 py-9">
+      <span class="italic-serif text-base md:col-span-2 pt-1" style="color:var(--gold)">2022 — 2024</span>
+      <div class="md:col-span-10">
+        <h3 class="text-xl md:text-2xl serif" data-i18n="path.edu2.title">Diplôme de Photographe</h3>
         <p class="text-sm mt-1" style="color:var(--ink-soft)" data-i18n="path.edu2.sub">5e — 6e secondaire</p>
-        <p class="text-sm mt-2 font-light leading-relaxed" style="color:var(--ink-soft)" data-i18n="path.edu2.desc">Photographie, montage photo & vidéo, notions de marketing et publicité.</p>
+        <p class="text-sm mt-3 font-light leading-relaxed max-w-2xl" style="color:var(--ink-soft)" data-i18n="path.edu2.desc">Photographie, montage photo & vidéo, notions de marketing et publicité.</p>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- Projets -->
-<section id="projets" class="px-6 md:px-16 py-24 md:py-32 max-w-5xl mx-auto reveal">
-  <div class="flex items-baseline justify-between mb-12">
-    <h2 class="text-3xl md:text-5xl" data-i18n="projects.title">Mes projets personnels</h2>
+<section id="projets" class="px-6 md:px-14 py-24 md:py-32 max-w-6xl mx-auto reveal">
+  <div class="flex items-baseline gap-4 mb-14 border-b hairline pb-5">
+    <span class="index-num">03</span>
+    <h2 class="text-3xl md:text-4xl" data-i18n="projects.title">Mes projets personnels</h2>
   </div>
 
-  <article class="project-card glass rounded-3xl p-8 md:p-10">
-    <h3 class="text-2xl md:text-3xl mb-3" data-i18n="p1.title">Analyse économique de la Belgique</h3>
-    <p class="text-sm leading-relaxed mb-6 font-light max-w-2xl" style="color:var(--ink-soft)" data-i18n="p1.desc">
-      Storytelling dashboard interactif présentant l'évolution des indicateurs économiques belges (PIB, chômage, inflation) avec des visualisations dynamiques et une narration guidée.
-    </p>
-    <div class="flex flex-wrap gap-2">
-      <span class="pill">Python</span>
-      <span class="pill">Power BI</span>
-      <span class="pill">SQL</span>
-      <span class="pill">Excel</span>
+  <article class="card flex flex-col md:flex-row">
+    <div class="swatch"></div>
+    <div class="p-8 md:p-12 flex-1">
+      <h3 class="text-2xl md:text-3xl mb-4 serif" data-i18n="p1.title">Analyse économique de la Belgique</h3>
+      <p class="text-sm leading-relaxed mb-8 font-light max-w-2xl" style="color:var(--ink-soft)" data-i18n="p1.desc">
+        Storytelling dashboard interactif présentant l'évolution des indicateurs économiques belges (PIB, chômage, inflation) avec des visualisations dynamiques et une narration guidée.
+      </p>
+      <div class="flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.2em]" style="color:var(--ink-soft)">
+        <span>Python</span><span>·</span><span>Power BI</span><span>·</span><span>SQL</span><span>·</span><span>Excel</span>
+      </div>
     </div>
   </article>
 
@@ -228,100 +212,103 @@
 </section>
 
 <!-- Compétences -->
-<section id="competences" class="px-6 md:px-16 py-24 md:py-32 max-w-5xl mx-auto reveal">
-  <h2 class="text-3xl md:text-5xl mb-12" data-i18n="skills.title">Compétences</h2>
+<section id="competences" class="px-6 md:px-14 py-24 md:py-32 max-w-6xl mx-auto reveal">
+  <div class="flex items-baseline gap-4 mb-14 border-b hairline pb-5">
+    <span class="index-num">04</span>
+    <h2 class="text-3xl md:text-4xl" data-i18n="skills.title">Compétences</h2>
+  </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
 
-    <div class="glass rounded-3xl p-8">
-      <span class="tag" data-i18n="skills.langs.label">Langues</span>
-      <div class="mt-6 space-y-5">
+    <div class="md:col-span-4">
+      <p class="text-[11px] uppercase tracking-[0.25em] mb-6" style="color:var(--gold)" data-i18n="skills.langs.label">Langues</p>
+      <div class="space-y-6">
         <div>
-          <div class="flex justify-between text-sm mb-2"><span data-i18n="skills.lang.fr">Français</span><span class="italic-serif" style="color:var(--gold)" data-i18n="skills.lang.fr.level">C2 — Langue maternelle</span></div>
+          <div class="flex justify-between text-sm mb-2"><span data-i18n="skills.lang.fr">Français</span><span class="italic-serif" style="color:var(--ink-soft)" data-i18n="skills.lang.fr.level">C2 — Langue maternelle</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
         </div>
         <div>
-          <div class="flex justify-between text-sm mb-2"><span data-i18n="skills.lang.en">Anglais</span><span class="italic-serif" style="color:var(--gold)" data-i18n="skills.lang.en.level">B2 — Courant</span></div>
+          <div class="flex justify-between text-sm mb-2"><span data-i18n="skills.lang.en">Anglais</span><span class="italic-serif" style="color:var(--ink-soft)" data-i18n="skills.lang.en.level">B2 — Courant</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:78%"></div></div>
         </div>
         <div>
-          <div class="flex justify-between text-sm mb-2"><span data-i18n="skills.lang.nl">Néerlandais</span><span class="italic-serif" style="color:var(--gold)" data-i18n="skills.lang.nl.level">B1 — Intermédiaire</span></div>
+          <div class="flex justify-between text-sm mb-2"><span data-i18n="skills.lang.nl">Néerlandais</span><span class="italic-serif" style="color:var(--ink-soft)" data-i18n="skills.lang.nl.level">B1 — Intermédiaire</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
         </div>
       </div>
     </div>
 
-    <div class="glass rounded-3xl p-8">
-      <span class="tag" data-i18n="skills.tools.label">Outils</span>
-      <div class="mt-6 flex flex-wrap gap-2">
-        <span class="pill">Python</span>
-        <span class="pill">SQL</span>
-        <span class="pill">Power BI</span>
-        <span class="pill">Tableau</span>
-        <span class="pill">Excel</span>
-        <span class="pill">Canva</span>
-      </div>
+    <div class="md:col-span-4">
+      <p class="text-[11px] uppercase tracking-[0.25em] mb-6" style="color:var(--gold)" data-i18n="skills.tools.label">Outils</p>
+      <ul class="text-sm">
+        <li class="skill-item py-3">Python</li>
+        <li class="skill-item py-3">SQL</li>
+        <li class="skill-item py-3">Power BI</li>
+        <li class="skill-item py-3">Tableau</li>
+        <li class="skill-item py-3">Excel</li>
+        <li class="skill-item py-3">Canva</li>
+      </ul>
     </div>
 
-    <div class="glass rounded-3xl p-8">
-      <span class="tag" data-i18n="skills.qualities.label">Qualités</span>
-      <div class="mt-6 flex flex-wrap gap-2">
-        <span class="pill" data-i18n="skills.q1">Rigueur</span>
-        <span class="pill" data-i18n="skills.q2">Curiosité</span>
-        <span class="pill" data-i18n="skills.q3">Autonomie</span>
-        <span class="pill" data-i18n="skills.q4">Sens du détail</span>
-        <span class="pill" data-i18n="skills.q5">Créativité</span>
-        <span class="pill" data-i18n="skills.q6">Adaptabilité</span>
-      </div>
+    <div class="md:col-span-4">
+      <p class="text-[11px] uppercase tracking-[0.25em] mb-6" style="color:var(--gold)" data-i18n="skills.qualities.label">Qualités</p>
+      <ul class="text-sm">
+        <li class="skill-item py-3" data-i18n="skills.q1">Rigueur</li>
+        <li class="skill-item py-3" data-i18n="skills.q2">Curiosité</li>
+        <li class="skill-item py-3" data-i18n="skills.q3">Autonomie</li>
+        <li class="skill-item py-3" data-i18n="skills.q4">Sens du détail</li>
+        <li class="skill-item py-3" data-i18n="skills.q5">Créativité</li>
+        <li class="skill-item py-3" data-i18n="skills.q6">Adaptabilité</li>
+      </ul>
     </div>
 
   </div>
 
   <!-- Certifications -->
-  <div class="mt-16">
+  <div class="mt-20">
     <div class="flex items-baseline gap-4 mb-8">
-      <h3 class="text-2xl md:text-3xl serif" data-i18n="certs.title">Certifications</h3>
+      <h3 class="text-xl md:text-2xl serif" data-i18n="certs.title">Certifications</h3>
       <span class="italic-serif text-sm" style="color:var(--gold)" data-i18n="certs.status">En cours d'obtention</span>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="cert-card glass rounded-2xl px-6 py-5">
-        <p class="text-[10px] uppercase tracking-widest mb-1" style="color:var(--ink-soft)">Microsoft</p>
-        <p class="text-base serif">Power BI Data Analyst Associate</p>
+    <div>
+      <div class="row flex items-center justify-between py-4 text-sm">
+        <span class="uppercase tracking-widest text-[11px]" style="color:var(--ink-soft)">Microsoft</span>
+        <span class="serif text-base md:text-lg">Power BI Data Analyst Associate</span>
       </div>
-      <div class="cert-card glass rounded-2xl px-6 py-5">
-        <p class="text-[10px] uppercase tracking-widest mb-1" style="color:var(--ink-soft)">Google</p>
-        <p class="text-base serif">Data Analytics Professional Certificate</p>
+      <div class="row flex items-center justify-between py-4 text-sm">
+        <span class="uppercase tracking-widest text-[11px]" style="color:var(--ink-soft)">Google</span>
+        <span class="serif text-base md:text-lg">Data Analytics Professional Certificate</span>
       </div>
-      <div class="cert-card glass rounded-2xl px-6 py-5">
-        <p class="text-[10px] uppercase tracking-widest mb-1" style="color:var(--ink-soft)">Meta</p>
-        <p class="text-base serif" data-i18n="certs.meta">Certificat professionnel Data Analyst</p>
+      <div class="row flex items-center justify-between py-4 text-sm">
+        <span class="uppercase tracking-widest text-[11px]" style="color:var(--ink-soft)">Meta</span>
+        <span class="serif text-base md:text-lg" data-i18n="certs.meta">Certificat professionnel Data Analyst</span>
       </div>
-      <div class="cert-card glass rounded-2xl px-6 py-5">
-        <p class="text-[10px] uppercase tracking-widest mb-1" style="color:var(--ink-soft)">IBM</p>
-        <p class="text-base serif">Data Analyst Professional Certificate</p>
+      <div class="row flex items-center justify-between py-4 text-sm">
+        <span class="uppercase tracking-widest text-[11px]" style="color:var(--ink-soft)">IBM</span>
+        <span class="serif text-base md:text-lg">Data Analyst Professional Certificate</span>
       </div>
-      <div class="cert-card glass rounded-2xl px-6 py-5">
-        <p class="text-[10px] uppercase tracking-widest mb-1" style="color:var(--ink-soft)">Tableau</p>
-        <p class="text-base serif" data-i18n="certs.tableau">Certified Data Analyst</p>
+      <div class="row flex items-center justify-between py-4 text-sm">
+        <span class="uppercase tracking-widest text-[11px]" style="color:var(--ink-soft)">Tableau</span>
+        <span class="serif text-base md:text-lg" data-i18n="certs.tableau">Certified Data Analyst</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Contact -->
-<footer id="contact" class="px-6 md:px-16 py-24">
-  <div class="max-w-5xl mx-auto glass rounded-3xl p-10 md:p-14 flex flex-col md:flex-row justify-between gap-10">
-    <div>
-      <h2 class="text-3xl md:text-4xl mb-4" data-i18n="contact.title">Ouverte à un stage ou un emploi en data analyse.</h2>
-      <p class="text-sm font-light mb-5" style="color:var(--ink-soft)" data-i18n="contact.sub">N'hésitez pas à me contacter.</p>
-      <a href="mailto:melanie.dupriez@example.com" class="italic-serif text-lg accent-underline" style="color:var(--gold)">melanie.dupriez@example.com</a>
+<footer id="contact" class="px-6 md:px-14 py-24 border-t hairline">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10">
+    <div class="md:col-span-8">
+      <h2 class="text-3xl md:text-5xl mb-5 leading-tight" data-i18n="contact.title">Ouverte à un stage ou un emploi en data analyse.</h2>
+      <p class="text-sm font-light mb-6" style="color:var(--ink-soft)" data-i18n="contact.sub">N'hésitez pas à me contacter.</p>
+      <a href="mailto:melanied2502@gmail.com" class="italic-serif text-xl md:text-2xl accent-underline" style="color:var(--wine)">melanied2502@gmail.com</a>
     </div>
-    <div class="flex md:flex-col gap-6 md:gap-3 text-xs uppercase tracking-widest font-light" style="color:var(--ink-soft)">
+    <div class="md:col-span-4 flex md:flex-col gap-6 md:gap-3 md:items-end text-xs uppercase tracking-widest font-light" style="color:var(--ink-soft)">
       <a href="#" class="accent-underline">LinkedIn</a>
       <a href="#" class="accent-underline">GitHub</a>
     </div>
   </div>
-  <p class="max-w-5xl mx-auto mt-10 italic-serif text-sm text-center" style="color:var(--ink-soft)">© 2026 Mélanie Dupriez</p>
+  <p class="max-w-6xl mx-auto mt-16 pt-6 border-t hairline italic-serif text-sm text-center" style="color:var(--ink-soft)">© 2026 Mélanie Dupriez</p>
 </footer>
 
 <script>
@@ -334,8 +321,8 @@
   const translations = {
     FR: {
       'nav.path':'Parcours','nav.projects':'Projets','nav.skills':'Compétences','nav.contact':'Contact','nav.theme':'Thème',
-      'hero.eyebrow':'Étudiante en Ingénieur de gestion — Data & BI',
-      'hero.line1':'Je transforme des chiffres bruts','hero.line2':'en histoires claires,','hero.line3':'en dashboards lisibles et en décisions concrètes.',
+      'hero.eyebrow':'Étudiante en Ingénieur de gestion','hero.field':'Data & Business Intelligence',
+      'hero.line1':'Je transforme des chiffres bruts','hero.line2':' en histoires claires,','hero.line3':' en dashboards lisibles et en décisions concrètes.',
       'hero.seeking.label':'Ce que je recherche',
       'hero.seeking.desc':"Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à la donnée.",
       'path.title':'Parcours',
@@ -359,8 +346,8 @@
     },
     EN: {
       'nav.path':'Path','nav.projects':'Projects','nav.skills':'Skills','nav.contact':'Contact','nav.theme':'Theme',
-      'hero.eyebrow':'Management Engineering student — Data & BI',
-      'hero.line1':'I turn raw numbers','hero.line2':'into clear stories,','hero.line3':'readable dashboards and concrete decisions.',
+      'hero.eyebrow':'Management Engineering student','hero.field':'Data & Business Intelligence',
+      'hero.line1':'I turn raw numbers','hero.line2':' into clear stories,','hero.line3':' readable dashboards and concrete decisions.',
       'hero.seeking.label':"What I'm looking for",
       'hero.seeking.desc':"An internship or role in data analysis / business intelligence, ideally remote or in Belgium. Happy to discuss any data-related project.",
       'path.title':'Path',
@@ -384,8 +371,8 @@
     },
     NL: {
       'nav.path':'Traject','nav.projects':'Projecten','nav.skills':'Vaardigheden','nav.contact':'Contact','nav.theme':'Thema',
-      'hero.eyebrow':'Student Handelsingenieur — Data & BI',
-      'hero.line1':'Ik verander ruwe cijfers','hero.line2':'in heldere verhalen,','hero.line3':'leesbare dashboards en concrete beslissingen.',
+      'hero.eyebrow':'Student Handelsingenieur','hero.field':'Data & Business Intelligence',
+      'hero.line1':'Ik verander ruwe cijfers','hero.line2':' in heldere verhalen,','hero.line3':' leesbare dashboards en concrete beslissingen.',
       'hero.seeking.label':'Wat ik zoek',
       'hero.seeking.desc':"Stage of job in data-analyse / business intelligence, bij voorkeur op afstand of in België. Beschikbaar om elk dataproject te bespreken.",
       'path.title':'Traject',
