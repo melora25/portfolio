@@ -126,8 +126,24 @@
     <a href="#parcours" data-i18n="nav.path" class="hidden sm:inline hover:opacity-70 transition">Parcours</a>
     <a href="#projets" data-i18n="nav.projects" class="hidden sm:inline hover:opacity-70 transition">Projets</a>
     <a href="#competences" data-i18n="nav.skills" class="hidden md:inline hover:opacity-70 transition">Compétences</a>
-    <button onclick="changeLang()" id="langBtn" class="hover:opacity-70 transition" aria-label="Changer de langue">FR</button>
-    <button onclick="toggleTheme()" id="themeBtn" aria-label="Basculer le thème clair / sombre" class="hover:opacity-70 transition" data-i18n="nav.theme">Thème</button>
+    <div class="relative">
+      <button onclick="toggleLangMenu()" id="langBtn" class="hover:opacity-70 transition flex items-center justify-center" aria-haspopup="listbox" aria-expanded="false" aria-label="Changer de langue">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M3 12h18"/>
+          <path d="M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/>
+        </svg>
+      </button>
+      <div id="langMenu" role="listbox" class="hidden absolute right-0 mt-3 w-32 card rounded-2xl overflow-hidden py-1.5 z-50">
+        <button role="option" onclick="selectLang('FR')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">Français <span class="check text-xs" style="color:var(--g2)"></span></button>
+        <button role="option" onclick="selectLang('EN')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">English <span class="check text-xs" style="color:var(--g2)"></span></button>
+        <button role="option" onclick="selectLang('NL')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">Nederlands <span class="check text-xs" style="color:var(--g2)"></span></button>
+      </div>
+    </div>
+    <button onclick="toggleTheme()" id="themeBtn" aria-label="Basculer le thème clair / sombre" class="hover:opacity-70 transition flex items-center justify-center">
+      <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
     <a href="#contact" data-i18n="nav.contact" class="btn-grad rounded-full px-5 py-2 normal-case tracking-normal font-semibold text-[12px]">Contact</a>
   </div>
 </nav>
@@ -359,11 +375,17 @@
 </footer>
 
 <script>
+  function syncThemeIcon(){
+    const isDark = document.documentElement.classList.contains('dark');
+    document.getElementById('iconMoon').classList.toggle('hidden', isDark);
+    document.getElementById('iconSun').classList.toggle('hidden', !isDark);
+  }
   (function initTheme(){
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (prefersDark) document.documentElement.classList.add('dark');
+    syncThemeIcon();
   })();
-  function toggleTheme(){ document.documentElement.classList.toggle('dark'); }
+  function toggleTheme(){ document.documentElement.classList.toggle('dark'); syncThemeIcon(); }
 
   const translations = {
     FR: {
@@ -453,13 +475,33 @@
       if(translations[lang][key]) el.innerHTML = translations[lang][key];
     });
   }
-  function changeLang(){
+  function toggleLangMenu(){
+    const menu = document.getElementById('langMenu');
     const btn = document.getElementById('langBtn');
-    const langs = ['FR','EN','NL'];
-    const next = langs[(langs.indexOf(btn.textContent) + 1) % langs.length];
-    btn.textContent = next;
-    applyLang(next);
+    const isHidden = menu.classList.contains('hidden');
+    menu.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
   }
+  function selectLang(lang){
+    applyLang(lang);
+    document.getElementById('langMenu').classList.add('hidden');
+    document.getElementById('langBtn').setAttribute('aria-expanded','false');
+  }
+  document.addEventListener('click', (e)=>{
+    const wrapper = document.getElementById('langMenu')?.parentElement;
+    if(wrapper && !wrapper.contains(e.target)){
+      document.getElementById('langMenu').classList.add('hidden');
+      document.getElementById('langBtn').setAttribute('aria-expanded','false');
+    }
+  });
+  function updateLangChecks(lang){
+    document.querySelectorAll('.lang-option').forEach(opt=>{
+      const optLang = opt.textContent.trim().startsWith('Fran') ? 'FR' : opt.textContent.trim().startsWith('Eng') ? 'EN' : 'NL';
+      opt.querySelector('.check').textContent = optLang === lang ? '✓' : '';
+    });
+  }
+  const _applyLang = applyLang;
+  applyLang = function(lang){ _applyLang(lang); updateLangChecks(lang); };
   applyLang('FR');
 
   const observer = new IntersectionObserver((entries)=>{
