@@ -226,6 +226,23 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
  </div>
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburgerBtn');
+    
+    // On bascule les classes pour l'animation
+    menu.classList.toggle('max-h-0');
+    menu.classList.toggle('max-h-[500px]'); // Permet au menu de prendre de la hauteur
+    menu.classList.toggle('opacity-0');
+    menu.classList.toggle('opacity-100');
+    
+    // On met à jour l'accessibilité
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !expanded);
+  }
+</script>
+
 </nav>
 
           <button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
