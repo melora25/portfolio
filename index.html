@@ -209,13 +209,14 @@
     </button>
       <a href="#contact" data-i18n="nav.contact" class="hidden sm:inline btn-grad rounded-full px-5 py-2 normal-case tracking-normal font-semibold text-[12px]">Contact</a>
       <button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
-<nav class="navbar">
-  <button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+<button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
   <span class="hamburger-line" id="hLine1"></span>
   <span class="hamburger-line" id="hLine2"></span>
   <span class="hamburger-line" id="hLine3"></span>
+
 </button>
-  <div id="mobileMenu" class="hidden"> 
+
+<div id="mobileMenu" class="hidden md:hidden"> 
   <ul>
     <li><a href="#parcours">Parcours</a></li>
     <li><a href="#competences">Compétences</a></li>
@@ -223,19 +224,14 @@
     <li><a href="#certifications">Certifications</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-</div>
-
+ </div>
 </nav>
 
     </div>
-  </div>
-
   <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 opacity-0">
     <div class="flex flex-col gap-1 pt-5 pb-3 text-sm font-semibold" style="color:var(--ink-soft)">
       <a href="#parcours" data-i18n="nav.path" class="py-2" onclick="closeMobileMenu()">Parcours</a>
-      <a href="#projets" data-i18n="nav.projects" class="py-2" onclick="closeMobileMenu()">Projets</a>
-      <a href="#competences" data-i18n="nav.skills" class="py-2" onclick="closeMobileMenu()">Compétences</a>
-      <a href="#contact" data-i18n="nav.contact" class="py-2" onclick="closeMobileMenu()">Contact</a>
+      <a href="#projets" data-i18n="nav.projects" class="py-2" onclick="closeMobileMenu
     </div>
   </div>
 </nav>
@@ -249,7 +245,7 @@
     </span>
 
     <h1 class="text-[clamp(2.2rem,6vw,4.6rem)] leading-[1.1] mb-6">
-      <span data-i18n="hero.line1">Je transforme la donnée</span><br>
+      <span data-i18n="hero.line1">Je transforme les données</span><br>
       <span class="italic-serif grad-text" data-i18n="hero.line2">en décisions claires.</span>
     </h1>
 
