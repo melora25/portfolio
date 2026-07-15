@@ -209,11 +209,22 @@
     </button>
       <a href="#contact" data-i18n="nav.contact" class="hidden sm:inline btn-grad rounded-full px-5 py-2 normal-case tracking-normal font-semibold text-[12px]">Contact</a>
       <button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
-        <button class="hamburger-button" id="hamburger">
-          <span class="hamburger-line" id="hLine1"></span>
-        <span class="hamburger-line" id="hLine2"></span>
-        <span class="hamburger-line" id="hLine3"></span>
-      </button>
+<nav class="navbar">
+  <button class="hamburger-button" id="hamburger">
+    <span class="hamburger-line" id="hLine1"></span>
+    <span class="hamburger-line" id="hLine2"></span>
+    <span class="hamburger-line" id="hLine3"></span>
+  </button>
+
+  <ul class="nav-menu" id="nav-menu">
+    <li><a href="#parcours">Parcours</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#projets">Projets</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
     </div>
   </div>
 
@@ -320,7 +331,7 @@
     <div class="card rounded-3xl p-8 md:p-10 text-center">
       <p class="text-[11px] uppercase tracking-[0.2em] font-bold grad-text mb-3" data-i18n="hero.seeking.label">Ce que je recherche</p>
       <p class="text-sm md:text-base leading-relaxed" style="color:var(--ink-soft)" data-i18n="hero.seeking.desc">
-        Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à la donnée.
+        Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à l'analyse de données.
       </p>
     </div>
   </div>
