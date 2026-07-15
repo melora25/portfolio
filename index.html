@@ -210,11 +210,12 @@
       <a href="#contact" data-i18n="nav.contact" class="hidden sm:inline btn-grad rounded-full px-5 py-2 normal-case tracking-normal font-semibold text-[12px]">Contact</a>
       <button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
 <nav class="navbar">
-  <button class="hamburger-button" id="hamburger">
-    <span class="hamburger-line" id="hLine1"></span>
-    <span class="hamburger-line" id="hLine2"></span>
-    <span class="hamburger-line" id="hLine3"></span>
-  </button>
+  <button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+  <span class="hamburger-line" id="hLine1"></span>
+  <span class="hamburger-line" id="hLine2"></span>
+  <span class="hamburger-line" id="hLine3"></span>
+</button>
+
 
   <ul class="nav-menu" id="nav-menu">
     <li><a href="#parcours">Parcours</a></li>
