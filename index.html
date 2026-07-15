@@ -517,22 +517,23 @@
         </div>
       </div>
 
-      <form id="contactForm" class="text-left" novalidate>
-        <div class="mb-4">
-          <input type="text" id="cf-name" class="field-input" data-i18n-placeholder="form.name" placeholder="Votre nom">
-          <p class="field-error-msg" data-i18n="form.err.name">Merci d'indiquer votre nom.</p>
-        </div>
-        <div class="mb-4">
-          <input type="email" id="cf-email" class="field-input" data-i18n-placeholder="form.email" placeholder="Votre e-mail">
-          <p class="field-error-msg" data-i18n="form.err.email">Merci d'indiquer un e-mail valide.</p>
-        </div>
-        <div class="mb-5">
-          <textarea id="cf-message" rows="4" class="field-input" data-i18n-placeholder="form.message" placeholder="Votre message"></textarea>
-          <p class="field-error-msg" data-i18n="form.err.message">Merci d'écrire un message.</p>
-        </div>
-        <button type="submit" class="btn-grad rounded-full px-7 py-3 text-sm w-full sm:w-auto" data-i18n="form.submit">Envoyer</button>
-        <p class="form-success text-sm mt-4 font-semibold" style="color:var(--g1)" data-i18n="form.success">Merci ! Votre message a bien été noté — pensez à vérifier votre client mail par défaut, ou écrivez directement à melanied2502@gmail.com.</p>
-      </form>
+    <form action="https://formspree.io/f/xkodnpbj" method="POST" class="text-left">
+    <div class="mb-4">
+        <input type="text" name="nom" class="field-input" placeholder="Votre nom" required>
+    </div>
+    
+    <div class="mb-4">
+        <input type="email" name="email" class="field-input" placeholder="Votre e-mail" required>
+    </div>
+    
+    <div class="mb-5">
+        <textarea name="message" rows="4" class="field-input" placeholder="Votre message" required></textarea>
+    </div>
+
+    <button type="submit" class="btn-grad rounded-full px-7 py-3 text-sm w-full sm:w-auto">
+        Envoyer
+    </button>
+</form>
 
     </div>
   </div>
