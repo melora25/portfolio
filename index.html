@@ -209,6 +209,7 @@
     </button>
       <a href="#contact" data-i18n="nav.contact" class="hidden sm:inline btn-grad rounded-full px-5 py-2 normal-case tracking-normal font-semibold text-[12px]">Contact</a>
       <button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+
 <button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
   <span class="hamburger-line" id="hLine1"></span>
   <span class="hamburger-line" id="hLine2"></span>
@@ -227,11 +228,21 @@
  </div>
 </nav>
 
+          <button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="hamburger-line" id="hLine1"></span>
+        <span class="hamburger-line" id="hLine2"></span>
+        <span class="hamburger-line" id="hLine3"></span>
+      </button>
     </div>
-  <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 opacity-0">
+  </div>
+
+  <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 opacity-0 transition-all duration-300">
     <div class="flex flex-col gap-1 pt-5 pb-3 text-sm font-semibold" style="color:var(--ink-soft)">
-      <a href="#parcours" data-i18n="nav.path" class="py-2" onclick="closeMobileMenu()">Parcours</a>
-      <a href="#projets" data-i18n="nav.projects" class="py-2" onclick="closeMobileMenu
+      <a href="#parcours" data-i18n="nav.path" class="py-2" onclick="toggleMobileMenu()">Parcours</a>
+      <a href="#competences" data-i18n="nav.skills" class="py-2" onclick="toggleMobileMenu()">Compétences</a>
+      <a href="#projets" data-i18n="nav.projects" class="py-2" onclick="toggleMobileMenu()">Projets</a>
+      <a href="#certifications" data-i18n="nav.certs" class="py-2" onclick="toggleMobileMenu()">Certifications</a>
+      <a href="#contact" data-i18n="nav.contact" class="py-2" onclick="toggleMobileMenu()">Contact</a>
     </div>
   </div>
 </nav>
