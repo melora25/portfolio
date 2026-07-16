@@ -523,20 +523,36 @@
         </div>
       </div>
 
-       <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="text-left" novalidate>
+             <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="text-left" novalidate>
+        <!-- Nom -->
         <div class="mb-4">
-          <input type="text" id="cf-name" name="name" class="field-input" data-i18n-placeholder="form.name" placeholder="Votre nom">
+          <input type="text" id="cf-name" name="name" class="field-input w-full" data-i18n-placeholder="form.name" placeholder="Votre nom">
           <p class="field-error-msg" data-i18n="form.err.name">Merci d'indiquer votre nom.</p>
         </div>
+        
+        <!-- Email -->
         <div class="mb-4">
-          <input type="email" id="cf-email" name="email" class="field-input" data-i18n-placeholder="form.email" placeholder="Votre e-mail">
+          <input type="email" id="cf-email" name="email" class="field-input w-full" data-i18n-placeholder="form.email" placeholder="Votre e-mail">
           <p class="field-error-msg" data-i18n="form.err.email">Merci d'indiquer un e-mail valide.</p>
         </div>
+        
+        <!-- Message -->
         <div class="mb-5">
-          <textarea id="cf-message" name="message" rows="4" class="field-input" data-i18n-placeholder="form.message" placeholder="Votre message"></textarea>
+          <textarea id="cf-message" name="message" rows="4" class="field-input w-full" data-i18n-placeholder="form.message" placeholder="Votre message"></textarea>
           <p class="field-error-msg" data-i18n="form.err.message">Merci d'écrire un message.</p>
         </div>
-        <button type="submit" class
+        
+        <!-- Bouton d'envoi -->
+        <button type="submit" class="btn-grad rounded-full px-7 py-3 text-sm w-full sm:w-auto" data-i18n="form.submit">Envoyer</button>
+        
+        <!-- Message de succès -->
+        <p class="form-success text-sm mt-4 font-semibold" style="color:var(--g1)" data-i18n="form.success">Merci ! Votre message a bien été noté.</p>
+      </form>
+
+    </div> <!-- Ferme la grille -->
+  </div> <!-- Ferme la carte -->
+  <p class="text-center mt-10 text-xs font-semibold" style="color:var(--ink-soft)">© 2026 Mélanie Dupriez</p>
+</footer>
 
     </div>
   </div>
