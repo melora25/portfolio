@@ -3,688 +3,820 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mélanie Dupriez — Business Data Analyst</title>
-<meta name="description" content="Portfolio de Mélanie Dupriez, étudiante en Ingénieur de gestion, Business Data Analyst spécialisée en analyse décisionnelle et conception d'interfaces web.">
+<title>Mélanie Dupriez — Étudiante en Ingénieur de gestion, Data & BI</title>
+<meta name="description" content="Portfolio de Mélanie Dupriez, étudiante en Ingénieur de gestion passionnée par la data et la visualisation. Ouverte à un stage ou un emploi en data analyse.">
+<meta name="theme-color" content="#F2F9FF">
+<meta property="og:title" content="Mélanie Dupriez — Portfolio">
+<meta property="og:description" content="Portfolio de data analyste — je transforme la donnée en décisions claires.">
+<meta property="og:type" content="website">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #FCFBF9; /* Blanc chaud, lin très clair */
-    --text: #1C1B19; /* Noir doux/charbon */
-    --text-muted: #706E6A; /* Taupe/Gris chaud */
-    --line: rgba(28, 27, 25, 0.08);
-    --accent: #C4A484; /* Or bronze doux, élégant et chaleureux */
-    --accent-glow: rgba(196, 164, 132, 0.12);
-    --nav-bg: rgba(252, 251, 249, 0.85);
+  :root{
+    --bg1:#F2F9FF; --bg2:#FFF5D7; --bg3:#FFCCE1; --bg4:#F2F9FF;
+    --ink:#3B2A34; --ink-soft:#8A7480;
+    --glass:rgba(255,255,255,0.6); --glass-strong:rgba(255,255,255,0.8); --glass-border:rgba(255,255,255,0.9);
+    --menu-bg:rgba(255,255,255,0.94);
+    --shadow:rgba(225,149,171,0.22);
+    --g1:#E195AB; --g2:#EDAFC0; --g3:#FFCCE1;
+    --card:rgba(255,255,255,0.65);
   }
-  .dark {
-    --bg: #121110; /* Noir chaud organique */
-    --text: #F4F3F0; /* Blanc de soie */
-    --text-muted: #9E9B96;
-    --line: rgba(244, 243, 240, 0.08);
-    --accent: #D4B99B; /* Bronze doré plus lumineux pour le mode sombre */
-    --accent-glow: rgba(212, 185, 155, 0.15);
-    --nav-bg: rgba(18, 17, 16, 0.85);
+  .dark{
+    --bg1:#221A1F; --bg2:#241C22; --bg3:#2A1E26; --bg4:#1E171B;
+    --ink:#FBF1F4; --ink-soft:#C7ABB6;
+    --glass:rgba(45,32,40,0.55); --glass-strong:rgba(50,36,45,0.75); --glass-border:rgba(255,255,255,0.10);
+    --menu-bg:rgba(35,25,32,0.94);
+    --shadow:rgba(0,0,0,0.4);
+    --g1:#E9A7BB; --g2:#F2C4A8; --g3:#F6D9A8;
+    --card:rgba(45,32,40,0.6);
   }
-  
-  body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    overflow-x: hidden;
+  *{ -webkit-tap-highlight-color: transparent; }
+  html,body{ height:100%; }
+  body{
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    font-weight:400;
+    transition:background-color .6s ease,color .6s ease;
+    position:relative;
+    background:
+      radial-gradient(50% 45% at 8% 5%, var(--bg1) 0%, transparent 100%),
+      radial-gradient(45% 40% at 90% 10%, var(--bg3) 0%, transparent 100%),
+      radial-gradient(55% 45% at 30% 95%, var(--bg4) 0%, transparent 100%),
+      radial-gradient(45% 40% at 95% 85%, var(--bg2) 0%, transparent 100%),
+      var(--bg1);
+    background-attachment:fixed;
+  }
+  h1,h2,h3{ font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.02em; }
+  .logo-serif{ font-family:'Cormorant Garamond',serif; font-weight:600; }
+  .italic-serif{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; }
+
+  .icon-box{
+    width:38px; height:38px; border-radius:11px;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid var(--glass-border);
+    background:var(--glass);
   }
 
-  /* Curseur intelligent fluide */
-  @media (min-width: 1024px) {
-    #custom-cursor {
-      width: 5px;
-      height: 5px;
-      background-color: var(--accent);
-      border-radius: 50%;
-      position: fixed;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 9999;
-      transition: width 0.2s ease, height 0.2s ease;
-    }
-    #custom-cursor-ring {
-      width: 28px;
-      height: 28px;
-      border: 1px solid var(--accent);
-      opacity: 0.35;
-      border-radius: 50%;
-      position: fixed;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 9998;
-      transition: transform 0.08s ease-out, width 0.2s ease, height 0.2s ease, opacity 0.2s;
-    }
-    .hover-active #custom-cursor {
-      width: 10px;
-      height: 10px;
-    }
-    .hover-active #custom-cursor-ring {
-      width: 42px;
-      height: 42px;
-      opacity: 0.7;
-    }
-    a, button, input, textarea, .project-row, .lang-btn, .burger-btn, .skill-tag, #back-to-top {
-      cursor: none !important;
-    }
-    body {
-      cursor: none;
-    }
+  .grad-text{
+    background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
   }
 
-  .serif {
-    font-family: 'Playfair Display', serif;
+  .glass{
+    background:var(--glass);
+    backdrop-filter:blur(18px) saturate(160%);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    border:1px solid var(--glass-border);
+    box-shadow:0 10px 34px var(--shadow);
+  }
+  .nav-surface{
+    background:var(--glass-strong);
+    backdrop-filter:blur(20px) saturate(160%);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);
+    border-bottom:1px solid var(--glass-border);
   }
 
-  /* Ligne de survol poétique */
-  .hover-link {
-    position: relative;
-    transition: color 0.3s ease;
+  .btn-grad{
+    background:linear-gradient(90deg,var(--g1),var(--g2));
+    color:#fff; font-weight:600;
+    box-shadow:0 10px 26px var(--shadow);
+    transition:transform .3s ease, box-shadow .3s ease;
   }
-  .hover-link::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--accent);
-    transform-origin: bottom right;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .hover-link:hover::after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-  }
+  .btn-grad:hover{ transform:translateY(-2px); box-shadow:0 16px 34px var(--shadow); }
 
-  /* Révélation de section */
-  .reveal-section {
+  .btn-ghost{
+    border:1px solid var(--glass-border);
+    background:var(--glass);
+    transition:transform .3s ease;
+  }
+  .btn-ghost:hover{ transform:translateY(-2px); }
+
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--g2); outline-offset:3px; border-radius:6px; }
+
+  /* Smooth scroll reveal effect */
+  .reveal {
     opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(30px);
+    transition: opacity 1s cubic-bezier(0.215, 0.61, 0.355, 1), transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
-  .reveal-section.active {
+  .reveal.active {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* Menu de navigation plein écran */
-  #menu-overlay {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+  .card{
+    background:var(--card);
+    backdrop-filter:blur(18px) saturate(160%);
+    -webkit-backdrop-filter:blur(18px) saturate(160%);
+    border:1px solid var(--glass-border);
+    box-shadow:0 10px 30px var(--shadow);
+    transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .45s ease;
   }
-  #menu-overlay.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+  .card:hover{ transform:translateY(-5px); box-shadow:0 22px 46px var(--shadow); }
+
+  .bar-track{ height:8px; border-radius:999px; background:var(--glass); border:1px solid var(--glass-border); overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:999px; background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3)); }
+
+  .badge{
+    width:52px; height:52px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800; font-size:.72rem; color:#fff;
+    box-shadow:0 8px 18px var(--shadow);
   }
 
-  /* Entrées de formulaire épurées */
-  .minimal-input {
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--line);
-    border-radius: 0;
-    padding: 0.8rem 0;
-    color: var(--text);
-    transition: border-color 0.3s ease;
-  }
-  .minimal-input:focus {
-    outline: none;
-    border-color: var(--accent);
+  .dot{
+    width:6px; height:6px; border-radius:999px;
+    background:linear-gradient(90deg,var(--g1),var(--g2));
+    display:inline-block;
   }
 
-  /* Badges de compétences minimalistes */
-  .skill-tag {
-    border: 1px solid var(--line);
-    background-color: transparent;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .skill-tag:hover {
-    border-color: var(--accent);
-    background-color: var(--accent-glow);
-    transform: translateY(-1px);
-  }
+  ::selection{ background:var(--g2); color:#fff; }
 
-  /* Ligne de progression en haut */
-  #scroll-progress {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 1.5px;
-    background: var(--accent);
-    width: 0%;
-    transition: width 0.1s ease-out;
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ transition:none !important; opacity:1 !important; transform:none !important; }
+    * { scroll-behavior:auto !important; }
   }
+  .lang-menu-surface{
+    background:var(--menu-bg);
+    backdrop-filter:blur(28px) saturate(180%);
+    -webkit-backdrop-filter:blur(28px) saturate(180%);
+    border:1px solid var(--glass-border);
+    box-shadow:0 16px 40px var(--shadow);
+  }
+  .lang-option{ background:transparent; }
+  .lang-option:hover{ background:var(--glass); }
 
-  /* Bouton retour en haut */
-  #back-to-top {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Parallax hero blobs */
+  .parallax-layer{ position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
+  .parallax-layer span{ position:absolute; border-radius:50%; filter:blur(60px); opacity:.5; }
+  .parallax-layer .p1{ width:34vw; height:34vw; top:-6%; left:-4%; background:var(--bg3); }
+  .parallax-layer .p2{ width:28vw; height:28vw; top:14%; right:-6%; background:var(--bg2); }
+  .parallax-layer .p3{ width:30vw; height:30vw; bottom:-8%; left:22%; background:var(--g1); opacity:.25; }
+  @media (prefers-reduced-motion: reduce){ .parallax-layer span{ transition:none !important; } }
+
+  /* Mobile hamburger menu */
+  .hamburger-line{ display:block; width:20px; height:2px; background:currentColor; border-radius:2px; transition:transform .3s ease, opacity .3s ease; }
+  #mobileMenu{ transition:max-height .4s ease, opacity .3s ease; }
+
+  /* Back to top */
+  #backToTop{
+    position:fixed; right:22px; bottom:22px; z-index:40;
+    width:44px; height:44px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    opacity:0; pointer-events:none; transform:translateY(10px);
+    transition:opacity .35s ease, transform .35s ease;
   }
-  #back-to-top.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+  #backToTop.show{ opacity:1; pointer-events:auto; transform:translateY(0); }
+
+  /* Contact form */
+  .field-input{
+    width:100%; padding:.85rem 1.1rem; border-radius:14px;
+    background:var(--glass); border:1px solid var(--glass-border);
+    color:var(--ink); font-size:.875rem; font-family:'Manrope',sans-serif;
+    outline:none; transition:border-color .25s ease, box-shadow .25s ease;
   }
+  .field-input::placeholder{ color:var(--ink-soft); }
+  .field-input:focus{ border-color:var(--g1); box-shadow:0 0 0 3px rgba(225,149,171,0.25); }
+  .field-input.field-error{ border-color:#D9534F; }
+  .field-error-msg{ display:none; color:#D9534F; font-size:.72rem; margin-top:.35rem; text-align:left; }
+  .field-error-msg.show{ display:block; }
+  .form-success{ display:none; }
+  .form-success.show{ display:block; }
 </style>
 </head>
-<body class="selection:bg-[var(--accent-glow)] selection:text-[var(--text)]">
+<body>
 
-<!-- Curseur personnalisé -->
-<div id="custom-cursor" class="hidden lg:block opacity-0"></div>
-<div id="custom-cursor-ring" class="hidden lg:block opacity-0"></div>
+<div class="parallax-layer" aria-hidden="true"><span class="p1" data-speed="0.15"></span><span class="p2" data-speed="0.25"></span><span class="p3" data-speed="0.1"></span></div>
 
-<!-- Barre de navigation avec ligne de progression -->
-<nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-5 border-b border-[rgba(28,27,25,0.03)] dark:border-[rgba(244,243,240,0.03)] backdrop-blur-md transition-all duration-300" style="background-color: var(--nav-bg);">
-  <div class="max-w-7xl mx-auto flex justify-between items-center">
-    <a href="#top" class="text-xs font-semibold tracking-[0.3em] uppercase hover-target text-[var(--text)]">M.D<span class="text-[var(--accent)]">.</span></a>
-    
-    <div class="flex items-center gap-8">
-      <!-- Sélecteur de langue -->
-      <div class="flex gap-2 text-[9px] tracking-[0.2em] font-medium">
-        <button onclick="setLanguage('fr')" class="lang-btn hover-target opacity-100 transition" id="lang-fr">FR</button>
-        <span class="opacity-20">|</span>
-        <button onclick="setLanguage('en')" class="lang-btn hover-target opacity-40 transition" id="lang-en">EN</button>
-        <span class="opacity-20">|</span>
-        <button onclick="setLanguage('nl')" class="lang-btn hover-target opacity-40 transition" id="lang-nl">NL</button>
-      </div>
-
-      <!-- Sélecteur de thème -->
-      <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-1 hover:text-[var(--accent)] transition hover-target">
-        <svg id="themeIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
+<nav class="fixed top-0 w-full z-50 nav-surface px-6 md:px-14 py-4">
+  <div class="flex justify-between items-center">
+    <a href="#top" class="text-lg md:text-xl tracking-wide logo-serif">Mélanie Dupriez</a>
+    <div class="flex items-center gap-4 md:gap-7 text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.12em]" style="color:var(--ink-soft)">
+      <a href="#parcours" data-i18n="nav.path" class="hidden md:inline hover:opacity-70 transition">Parcours</a>
+      <a href="#projets" data-i18n="nav.projects" class="hidden md:inline hover:opacity-70 transition">Projets</a>
+      <a href="#competences" data-i18n="nav.skills" class="hidden md:inline hover:opacity-70 transition">Compétences</a>
+    <div class="relative">
+      <button onclick="toggleLangMenu()" id="langBtn" class="hover:opacity-70 transition flex items-center justify-center" aria-haspopup="listbox" aria-expanded="false" aria-label="Changer de langue">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M3 12h18"/>
+          <path d="M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/>
+        </svg>
       </button>
-
-      <!-- Hamburger -->
-      <button onclick="toggleMenu()" class="burger-btn flex flex-col justify-between w-5 h-3 z-50 hover-target focus:outline-none" aria-label="Menu">
-        <span id="burger-line-1" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left"></span>
-        <span id="burger-line-2" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left mt-[4px]"></span>
+      <div id="langMenu" role="listbox" class="hidden absolute right-0 mt-3 w-36 rounded-2xl overflow-hidden py-1.5 z-50 lang-menu-surface">
+        <button role="option" onclick="selectLang('FR')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">Français <span class="check text-xs" style="color:var(--g2)"></span></button>
+        <button role="option" onclick="selectLang('EN')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">English <span class="check text-xs" style="color:var(--g2)"></span></button>
+        <button role="option" onclick="selectLang('NL')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">Nederlands <span class="check text-xs" style="color:var(--g2)"></span></button>
+      </div>
+    </div>
+    <button onclick="toggleTheme()" id="themeBtn" aria-label="Basculer le thème clair / sombre" class="hover:opacity-70 transition flex items-center justify-center">
+      <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
+      <a href="#contact" data-i18n="nav.contact" class="hidden sm:inline btn-grad rounded-full px-5 py-2 normal-case tracking-normal font-semibold text-[12px]">Contact</a>
+      <button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span class="hamburger-line" id="hLine1"></span>
+        <span class="hamburger-line" id="hLine2"></span>
+        <span class="hamburger-line" id="hLine3"></span>
       </button>
     </div>
   </div>
-  <div id="scroll-progress"></div>
+
+  <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 opacity-0">
+    <div class="flex flex-col gap-1 pt-5 pb-3 text-sm font-semibold" style="color:var(--ink-soft)">
+      <a href="#parcours" data-i18n="nav.path" class="py-2" onclick="closeMobileMenu()">Parcours</a>
+      <a href="#projets" data-i18n="nav.projects" class="py-2" onclick="closeMobileMenu()">Projets</a>
+      <a href="#competences" data-i18n="nav.skills" class="py-2" onclick="closeMobileMenu()">Compétences</a>
+      <a href="#contact" data-i18n="nav.contact" class="py-2" onclick="closeMobileMenu()">Contact</a>
+    </div>
+  </div>
 </nav>
 
-<!-- Menu plein écran -->
-<div id="menu-overlay" class="fixed inset-0 z-40 flex flex-col justify-center px-6 md:px-20" style="background-color: var(--bg);">
-  <div class="max-w-4xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-16">
-    <nav class="flex flex-col gap-6 text-3xl md:text-4xl font-light">
-      <a href="#parcours" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-parcours">Mon Parcours</a>
-      <a href="#projets" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-projets">Projets</a>
-      <a href="#competences" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-competences">Compétences</a>
-      <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-contact">Contact</a>
-    </nav>
-    <div class="text-[10px] uppercase tracking-[0.25em] space-y-6 font-medium" style="color: var(--text-muted)">
-      <div>
-        <p class="mb-1 text-[var(--accent)]" data-i18n="menu-location-title">Localisation</p>
-        <p class="text-[var(--text)] font-light" data-i18n="menu-location-val">Belgique — Distanciel accepté</p>
-      </div>
-      <div>
-        <p class="mb-1 text-[var(--accent)]" data-i18n="menu-social-title">Réseaux</p>
-        <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" target="_blank" class="block hover-target text-[var(--text)] hover-link">LinkedIn ↗</a>
-      </div>
-    </div>
-  </div>
-</div>
+<header id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-14 pt-28 pb-16">
+  <div class="max-w-5xl mx-auto w-full text-center">
+    <span class="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold mb-8 reveal" style="color:var(--ink-soft)">
+      <span data-i18n="hero.eyebrow">Étudiante en Ingénieur de gestion — Data & BI</span>
+    </span>
 
-<!-- Section Hero -->
-<main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-24">
-  <div class="max-w-5xl mx-auto w-full">
-    <div class="inline-flex items-center gap-2.5 mb-6">
-      <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
-      <span class="text-[9px] tracking-[0.25em] uppercase font-semibold text-[var(--accent)]" data-i18n="hero-status">Business Data Analyst</span>
-    </div>
-    
-    <h1 class="text-[clamp(1.8rem,5vw,4rem)] font-light leading-[1.2] tracking-tight mb-12 text-[var(--text)]">
-      <span data-i18n="hero-title-1">Donner un sens aux données pour</span><br>
-      <span class="serif italic text-[var(--accent)]" data-i18n="hero-title-2">optimiser chaque décision stratégique.</span>
+    <h1 class="text-[clamp(2.2rem,6vw,4.6rem)] leading-[1.1] mb-6 reveal">
+      <span data-i18n="hero.line1">Je transforme les données</span><br>
+      <span class="italic-serif grad-text" data-i18n="hero.line2">en décisions claires.</span>
     </h1>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end border-t border-[var(--line)] pt-12">
-      <p class="text-[13px] md:text-[14px] leading-relaxed font-light max-w-md text-[var(--text-muted)]" data-i18n="hero-desc">
-        Étudiante en Ingénieur de gestion à l'Université de Mons. J'allie rigueur analytique et design d'interface pour transformer des jeux de données complexes en leviers de croissance clairs et exploitables.
+    <p class="max-w-2xl mx-auto text-sm md:text-base leading-relaxed mb-10 reveal" style="color:var(--ink-soft)" data-i18n="hero.sub">
+      Ingénieure de gestion spécialisée en Data, je transforme vos données en diagnostics précis et en recommandations concrètes pour optimiser vos processus et maximiser votre performance.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4 mb-6 reveal">
+      <a href="#contact" class="btn-grad rounded-full px-8 py-3.5 text-sm" data-i18n="hero.cta1">Discutons de vos projets</a>
+      <a href="#projets" class="btn-ghost rounded-full px-7 py-3 text-sm font-semibold" data-i18n="hero.cta2">Voir mes projets ↓</a>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[12px] font-semibold mb-14 reveal" style="color:var(--ink-soft)">
+      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check1">Disponible immédiatement</span></span>
+      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check2">Télétravail possible</span></span>
+      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check3">Basée en Belgique</span></span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-4xl mx-auto text-left reveal">
+      <div class="card rounded-2xl p-6 flex flex-col">
+        <div class="icon-box mb-5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon1)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon1" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
+        <h3 class="text-sm font-extrabold mb-2" data-i18n="proof.data.title">Data Analysis</h3>
+        <p class="text-xs leading-relaxed mb-6" style="color:var(--ink-soft)" data-i18n="proof.data.desc">Traduction de données brutes en insights décisionnels.</p>
+        <div class="mt-auto glass rounded-xl p-3 flex items-end gap-1 h-14">
+          <div class="flex-1 rounded-sm" style="height:35%;background:linear-gradient(180deg,var(--g1),var(--g3));opacity:.5"></div>
+          <div class="flex-1 rounded-sm" style="height:60%;background:linear-gradient(180deg,var(--g1),var(--g3));opacity:.65"></div>
+          <div class="flex-1 rounded-sm" style="height:45%;background:linear-gradient(180deg,var(--g1),var(--g3));opacity:.8"></div>
+          <div class="flex-1 rounded-sm" style="height:90%;background:linear-gradient(180deg,var(--g1),var(--g3))"></div>
+        </div>
+      </div>
+
+      <div class="card rounded-2xl p-6 flex flex-col">
+        <div class="icon-box mb-5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon2)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon2" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M8 5L2 12l6 7M16 5l6 7-6 7"/></svg></div>
+        <h3 class="text-sm font-extrabold mb-2" data-i18n="proof.web.title">Web Development</h3>
+        <p class="text-xs leading-relaxed mb-6" style="color:var(--ink-soft)" data-i18n="proof.web.desc">Conception d'interfaces web pour présenter vos résultats.</p>
+        <div class="mt-auto glass rounded-xl p-3 h-14 flex items-center justify-center">
+          <svg width="60" height="32" viewBox="0 0 60 32" fill="none">
+            <path d="M2 26 L18 12 L30 20 L58 5" stroke="url(#gradIcon2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <circle cx="2" cy="26" r="2" fill="var(--g1)"/><circle cx="18" cy="12" r="2" fill="var(--g2)"/><circle cx="30" cy="20" r="2" fill="var(--g2)"/><circle cx="58" cy="5" r="2" fill="var(--g3)"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="card rounded-2xl p-6 flex flex-col">
+        <div class="icon-box mb-5"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon3)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon3" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg></div>
+        <h3 class="text-sm font-extrabold mb-2" data-i18n="proof.strategy.title">Business Strategy</h3>
+        <p class="text-xs leading-relaxed mb-6" style="color:var(--ink-soft)" data-i18n="proof.strategy.desc">Optimisation des processus basée sur des diagnostics précis.</p>
+        <div class="mt-auto glass rounded-xl p-3 h-14 flex items-center justify-center">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="18" stroke="url(#gradIcon3)" stroke-width="1" opacity=".35"/>
+            <circle cx="22" cy="22" r="11" stroke="url(#gradIcon3)" stroke-width="1" opacity=".6"/>
+            <circle cx="22" cy="22" r="3" fill="url(#gradIcon3)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-5xl mx-auto w-full mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+    <div class="card rounded-2xl px-5 py-6 text-center">
+      <p class="text-3xl font-extrabold grad-text">2027</p>
+      <p class="text-[11px] uppercase tracking-widest mt-1 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.grad">Diplôme prévu</p>
+    </div>
+    <div class="card rounded-2xl px-5 py-6 text-center">
+      <p class="text-3xl font-extrabold grad-text">3</p>
+      <p class="text-[11px] uppercase tracking-widest mt-1 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.langs">Langues parlées</p>
+    </div>
+    <div class="card rounded-2xl px-5 py-6 text-center">
+      <p class="text-3xl font-extrabold grad-text">6</p>
+      <p class="text-[11px] uppercase tracking-widest mt-1 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.tools">Outils maîtrisés</p>
+    </div>
+    <div class="card rounded-2xl px-5 py-6 text-center">
+      <p class="text-3xl font-extrabold grad-text">5</p>
+      <p class="text-[11px] uppercase tracking-widest mt-1 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.certs">Certifications en cours</p>
+    </div>
+  </div>
+
+  <div class="max-w-3xl mx-auto w-full mt-8 reveal">
+    <div class="card rounded-3xl p-8 md:p-10 text-center">
+      <p class="text-[11px] uppercase tracking-[0.2em] font-bold grad-text mb-3" data-i18n="hero.seeking.label">Ce que je recherche</p>
+      <p class="text-sm md:text-base leading-relaxed" style="color:var(--ink-soft)" data-i18n="hero.seeking.desc">
+        Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à la donnée.
       </p>
-      <div class="flex md:justify-end gap-6 text-[10px] uppercase tracking-[0.2em] font-semibold">
-        <a href="#projets" class="hover-link hover-target text-[var(--accent)]" data-i18n="hero-cta-1">Découvrir mes travaux ↓</a>
-        <a href="#contact" class="hover-link hover-target text-[var(--text)]" data-i18n="hero-cta-2">Me contacter →</a>
-      </div>
     </div>
   </div>
-</main>
+</header>
 
-<!-- Section 1 : Parcours -->
-<section id="parcours" class="px-6 md:px-16 py-32 max-w-5xl mx-auto reveal-section">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-12">
-    <div>
-      <h2 class="text-[10px] uppercase tracking-[0.3em] font-semibold sticky top-28 text-[var(--accent)]">01 / PARCOURS</h2>
-    </div>
-    <div class="md:col-span-2 space-y-12">
-      <!-- Études -->
-      <div class="group border-l border-[var(--line)] pl-5 hover:border-[var(--accent)] transition-colors duration-300">
-        <span class="text-[10px] font-medium tracking-[0.2em] block mb-1.5 text-[var(--accent)]">2024 — 2027</span>
-        <h3 class="text-xl font-light mb-2 text-[var(--text)]" data-i18n="edu-title">Bachelier en Ingénieur de gestion</h3>
-        <p class="text-[10px] uppercase tracking-[0.15em] mb-3 text-[var(--text-muted)]">Université de Mons</p>
-        <p class="text-[13px] leading-relaxed font-light max-w-lg text-[var(--text-muted)]" data-i18n="edu-desc">
-          Formation d'excellence combinant les sciences économiques, l'analyse de données et la modélisation mathématique.
-        </p>
-      </div>
+<section id="parcours" class="px-6 md:px-14 py-20 md:py-28 max-w-5xl mx-auto reveal">
+  <h2 class="text-3xl md:text-5xl text-center mb-4" data-i18n="path.title">Parcours</h2>
+  <p class="text-center text-sm mb-14" style="color:var(--ink-soft)" data-i18n="path.sub">Formation & expérience</p>
 
-      <!-- Expérience -->
-      <div class="group border-l border-[var(--line)] pl-5 hover:border-[var(--accent)] transition-colors duration-300">
-        <span class="text-[10px] font-medium tracking-[0.2em] block mb-1.5 text-[var(--accent)]">2023</span>
-        <h3 class="text-xl font-light mb-2 text-[var(--text)]" data-i18n="exp-title">Social Media & Analytics</h3>
-        <p class="text-[10px] uppercase tracking-[0.15em] mb-3 text-[var(--text-muted)]">GabyLuxxy</p>
-        <p class="text-[13px] leading-relaxed font-light max-w-lg text-[var(--text-muted)]" data-i18n="exp-desc">
-          Gestion de l'image de marque et exploitation des données analytiques d'audience pour optimiser l'engagement client.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Section 2 : Projets -->
-<section id="projets" class="px-6 md:px-16 py-32 max-w-5xl mx-auto reveal-section">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-12 mb-12">
-    <div>
-      <h2 class="text-[10px] uppercase tracking-[0.3em] font-semibold text-[var(--accent)]">02 / PORTFOLIO</h2>
-    </div>
-    <div class="md:col-span-2">
-      <p class="text-[13px] font-light leading-relaxed max-w-md text-[var(--text-muted)]" data-i18n="work-intro">
-        Visualiser les flux, identifier les tendances, et concevoir des espaces de lecture digitaux propices à la prise de décision.
-      </p>
-    </div>
-  </div>
-
-  <div class="mt-12 border-t border-[var(--line)]">
-    <!-- Projet 1 -->
-    <div class="py-8 border-b border-[var(--line)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover-target hover:bg-[var(--accent-glow)] transition-colors duration-300 px-2 rounded-sm">
+  <div class="space-y-5">
+    <div class="card rounded-3xl p-7 md:p-9 flex flex-col md:flex-row gap-4 md:gap-10 reveal">
+      <span class="text-sm font-bold grad-text md:w-40 shrink-0">2024 — 2027</span>
       <div>
-        <span class="text-[9px] tracking-[0.15em] block mb-1 text-[var(--accent)] font-semibold">PYTHON / SQL / BI</span>
-        <h3 class="text-lg font-light text-[var(--text)]" data-i18n="p1-title">Visualisation de l'économie Belge</h3>
-      </div>
-      <div class="flex items-center gap-10 w-full md:w-auto justify-between md:justify-end">
-        <span class="text-[12px] font-light text-[var(--text-muted)]">2026</span>
-        <span class="text-[10px] uppercase tracking-[0.15em] font-semibold text-[var(--text)]" data-i18n="p-view">Consulter ↗</span>
+        <h3 class="text-xl md:text-2xl font-extrabold" data-i18n="path.edu1.title">Ingénieur de gestion</h3>
+        <p class="text-sm mt-1 font-semibold" style="color:var(--ink-soft)" data-i18n="path.edu1.sub">Université de Mons — Bachelier, 3 ans</p>
+        <p class="text-sm mt-3 leading-relaxed" style="color:var(--ink-soft)" data-i18n="path.edu1.desc">Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information.</p>
       </div>
     </div>
 
-    <!-- Projet 2 -->
-    <div class="py-8 border-b border-[var(--line)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover-target hover:bg-[var(--accent-glow)] transition-colors duration-300 px-2 rounded-sm">
+    <div class="card rounded-3xl p-7 md:p-9 flex flex-col md:flex-row gap-4 md:gap-10 reveal">
+      <span class="text-sm font-bold grad-text md:w-40 shrink-0" data-i18n="path.stage.date">Fév. — avr. 2023</span>
       <div>
-        <span class="text-[9px] tracking-[0.15em] block mb-1 text-[var(--accent)] font-semibold">LOOKER STUDIO / ANALYTICS</span>
-        <h3 class="text-lg font-light text-[var(--text)]" data-i18n="p2-title">Dashboard de performance E-Commerce</h3>
+        <h3 class="text-xl md:text-2xl font-extrabold" data-i18n="path.stage.title">Social Media Manager — GabyLuxxy</h3>
+        <p class="text-sm mt-1 font-semibold" style="color:var(--ink-soft)" data-i18n="path.stage.sub">Stage en télétravail · Revente de luxe</p>
+        <p class="text-sm mt-3 leading-relaxed" style="color:var(--ink-soft)" data-i18n="path.stage.desc">Gestion des réseaux sociaux, création de contenu, analyse des performances.</p>
       </div>
-      <div class="flex items-center gap-10 w-full md:w-auto justify-between md:justify-end">
-        <span class="text-[12px] font-light text-[var(--text-muted)]" data-i18n="p-soon">En cours</span>
-        <span class="text-[10px] uppercase tracking-[0.15em] font-semibold opacity-30">—</span>
+    </div>
+
+    <div class="card rounded-3xl p-7 md:p-9 flex flex-col md:flex-row gap-4 md:gap-10 reveal">
+      <span class="text-sm font-bold grad-text md:w-40 shrink-0">2022 — 2024</span>
+      <div>
+        <h3 class="text-xl md:text-2xl font-extrabold" data-i18n="path.edu2.title">Diplôme de Photographe</h3>
+        <p class="text-sm mt-1 font-semibold" style="color:var(--ink-soft)" data-i18n="path.edu2.sub">5e — 6e secondaire</p>
+        <p class="text-sm mt-3 leading-relaxed" style="color:var(--ink-soft)" data-i18n="path.edu2.desc">Photographie, montage photo & vidéo, notions de marketing et publicité.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Section 3 : Compétences -->
-<section id="competences" class="px-6 md:px-16 py-32 max-w-5xl mx-auto reveal-section">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-12">
-    <div>
-      <h2 class="text-[10px] uppercase tracking-[0.3em] font-semibold sticky top-28 text-[var(--accent)]" data-i18n="nav-competences">Compétences</h2>
+<section id="projets" class="px-6 md:px-14 py-20 md:py-28 max-w-5xl mx-auto reveal">
+  <h2 class="text-3xl md:text-5xl text-center mb-4" data-i18n="projects.title">Mes projets personnels</h2>
+  <p class="text-center text-sm mb-3" style="color:var(--ink-soft)" data-i18n="projects.sub">Un aperçu de mon travail</p>
+  <p class="text-center text-xs mb-10 flex items-center justify-center gap-2" style="color:var(--ink-soft)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l-7 7 7 7M15 5l7 7-7 7"/></svg>
+    <span data-i18n="projects.drag">Faites glisser pour parcourir</span>
+  </p>
+
+  <div id="projectsTrack" class="flex gap-6 overflow-x-auto pb-6 px-1 cursor-grab select-none reveal" style="scroll-snap-type:x mandatory; scrollbar-width:none;">
+    <article class="card rounded-3xl overflow-hidden shrink-0 w-[85%] sm:w-[420px] flex flex-col" style="scroll-snap-align:center;">
+      <img src="https://picsum.photos/seed/melanie-belgique-data/760/420" alt="Aperçu du dashboard Analyse économique de la Belgique" class="w-full h-44 object-cover" loading="lazy">
+      <div class="relative flex flex-col flex-1 p-8">
+        <h3 class="text-2xl font-extrabold mb-4" data-i18n="p1.title">Analyse économique de la Belgique</h3>
+        <p class="text-sm leading-relaxed mb-6" style="color:var(--ink-soft)" data-i18n="p1.desc">
+          Storytelling dashboard interactif présentant l'évolution des indicateurs économiques belges (PIB, chômage, inflation) avec des visualisations dynamiques et une narration guidée.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">Python</span>
+          <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">Power BI</span>
+          <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">SQL</span>
+          <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)">Excel</span>
+        </div>
+        <a href="#" onclick="return !document.body.classList.contains('was-dragging')" class="btn-grad rounded-full px-6 py-3 text-sm text-center mt-auto" data-i18n="projects.view">Voir le projet ↗</a>
+      </div>
+    </article>
+
+    <article class="card rounded-3xl overflow-hidden shrink-0 w-[85%] sm:w-[420px] flex flex-col" style="scroll-snap-align:center;">
+      <div class="relative h-44">
+        <img src="https://picsum.photos/seed/melanie-next-project/760/420" alt="" class="w-full h-full object-cover" style="filter:grayscale(60%) opacity(.55)" loading="lazy">
+        <div class="absolute inset-0 flex items-center justify-center" style="background:linear-gradient(180deg, transparent, var(--card))">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon4)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon4" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M12 5v14M5 12h14"/></svg>
+        </div>
+      </div>
+      <div class="flex-1 flex flex-col items-center justify-center text-center p-8">
+        <h3 class="text-xl font-extrabold mb-2" data-i18n="projects.more.title">Prochain projet</h3>
+        <p class="text-sm max-w-xs" style="color:var(--ink-soft)" data-i18n="projects.more">D'autres projets à venir.</p>
+      </div>
+    </article>
+  </div>
+
+  <style>#projectsTrack::-webkit-scrollbar{ display:none; }</style>
+</section>
+
+<section id="competences" class="px-6 md:px-14 py-20 md:py-28 max-w-5xl mx-auto reveal">
+  <h2 class="text-3xl md:text-5xl text-center mb-4" data-i18n="skills.title">Compétences</h2>
+  <p class="text-center text-sm mb-14" style="color:var(--ink-soft)" data-i18n="skills.sub">Langues, outils & qualités</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+    <div class="card rounded-3xl p-7 reveal">
+      <p class="text-xs uppercase tracking-widest font-bold grad-text mb-6" data-i18n="skills.langs.label">Langues</p>
+      <div class="space-y-5">
+        <div>
+          <div class="flex justify-between text-sm mb-2 font-semibold"><span data-i18n="skills.lang.fr">Français</span><span style="color:var(--ink-soft)">C2</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2 font-semibold"><span data-i18n="skills.lang.en">Anglais</span><span style="color:var(--ink-soft)">B2</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:78%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-2 font-semibold"><span data-i18n="skills.lang.nl">Néerlandais</span><span style="color:var(--ink-soft)">B1</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
+        </div>
+      </div>
     </div>
-    <div class="md:col-span-2 space-y-12">
-      
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
-        <!-- Expertise Business Data Analyst -->
-        <div>
-          <h4 class="text-[10px] uppercase tracking-[0.2em] font-semibold mb-5 text-[var(--text-muted)]" data-i18n="skills-core">Expertise Décisionnelle</h4>
-          <ul class="space-y-4 text-[13px] font-light">
-            <li class="border-b border-[var(--line)] pb-2.5">
-              <span class="font-medium text-[var(--text)] block" data-i18n="core-1-title">Analyse & Optimisation</span>
-              <span class="text-[11px] text-[var(--text-muted)]" data-i18n="core-1-desc">Interprétation de données complexes pour orienter les décisions d'affaires stratégiques.</span>
-            </li>
-            <li class="border-b border-[var(--line)] pb-2.5">
-              <span class="font-medium text-[var(--text)] block" data-i18n="core-2-title">Conception d'Interfaces Web</span>
-              <span class="text-[11px] text-[var(--text-muted)]" data-i18n="core-2-desc">Création de solutions web modernes et intuitives pour présenter et rendre vos rapports digestes.</span>
-            </li>
-          </ul>
+
+    <div class="card rounded-3xl p-7 reveal">
+      <p class="text-xs uppercase tracking-widest font-bold grad-text mb-6" data-i18n="skills.tools.label">Outils</p>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="flex flex-col items-center gap-2">
+          <div class="badge" style="background:linear-gradient(135deg,#3776AB,#FFD43B)">Py</div>
+          <span class="text-[11px] font-semibold" style="color:var(--ink-soft)">Python</span>
         </div>
-        
-        <!-- Outils Techniques -->
-        <div>
-          <h4 class="text-[10px] uppercase tracking-[0.2em] font-semibold mb-5 text-[var(--text-muted)]" data-i18n="skills-tools">Outils & Langages</h4>
-          <div class="flex flex-wrap gap-2">
-            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">SQL & Modélisation</span>
-            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">Python (Pandas, NumPy)</span>
-            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">Power BI & DAX</span>
-            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">Excel Avancé</span>
-            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">Looker Studio</span>
-            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">HTML / CSS / Tailwind</span>
-          </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="badge" style="background:linear-gradient(135deg,#00758F,#F29111)">SQL</div>
+          <span class="text-[11px] font-semibold" style="color:var(--ink-soft)">SQL</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="badge" style="background:linear-gradient(135deg,#F2C811,#E6A200)">PBI</div>
+          <span class="text-[11px] font-semibold" style="color:var(--ink-soft)">Power BI</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="badge" style="background:linear-gradient(135deg,#1F77B4,#0A5A8A)">Tb</div>
+          <span class="text-[11px] font-semibold" style="color:var(--ink-soft)">Tableau</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="badge" style="background:linear-gradient(135deg,#1D6F42,#2E9E5B)">Xl</div>
+          <span class="text-[11px] font-semibold" style="color:var(--ink-soft)">Excel</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="badge" style="background:linear-gradient(135deg,#8B3DFF,#00C4CC)">Cv</div>
+          <span class="text-[11px] font-semibold" style="color:var(--ink-soft)">Canva</span>
         </div>
       </div>
+    </div>
 
-      <!-- Langues & Certifs -->
-      <div class="border-t border-[var(--line)] pt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
-        <div>
-          <h4 class="text-[10px] uppercase tracking-[0.2em] font-semibold mb-4 text-[var(--text-muted)]" data-i18n="skills-lang">Langues</h4>
-          <div class="text-[12px] space-y-2">
-            <p><span class="font-medium" data-i18n="lang-fr-val">Français</span> — <span class="text-[var(--text-muted)]" data-i18n="lang-native">Maternelle</span></p>
-            <p><span class="font-medium" data-i18n="lang-en-val">Anglais</span> — <span class="text-[var(--text-muted)]" data-i18n="lang-b2">Niveau B2</span></p>
-            <p><span class="font-medium" data-i18n="lang-nl-val">Néerlandais</span> — <span class="text-[var(--text-muted)]" data-i18n="lang-b1">Niveau B1</span></p>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-[10px] uppercase tracking-[0.2em] font-semibold mb-4 text-[var(--text-muted)]">Certifications</h4>
-          <div class="text-[12px] space-y-2">
-            <p>Google Data Analytics — <span class="text-[var(--accent)] font-medium" data-i18n="cert-progress">En cours</span></p>
-            <p>Microsoft Power BI Associate — <span class="text-[var(--accent)] font-medium" data-i18n="cert-progress">En cours</span></p>
-          </div>
-        </div>
+    <div class="card rounded-3xl p-7 reveal">
+      <p class="text-xs uppercase tracking-widest font-bold grad-text mb-6" data-i18n="skills.qualities.label">Qualités</p>
+      <div class="flex flex-wrap gap-2">
+        <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q1">Rigueur</span>
+        <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q2">Curiosité</span>
+        <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q3">Autonomie</span>
+        <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q4">Sens du détail</span>
+        <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q5">Créativité</span>
+        <span class="glass rounded-full px-4 py-1.5 text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q6">Adaptabilité</span>
       </div>
+    </div>
 
+  </div>
+
+  <div class="mt-14 reveal">
+    <div class="flex items-center justify-center gap-3 mb-8">
+      <h3 class="text-2xl md:text-3xl font-extrabold" data-i18n="certs.title">Certifications</h3>
+      <span class="glass rounded-full px-4 py-1 text-[11px] font-bold grad-text" data-i18n="certs.status">En cours d'obtention</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="card rounded-2xl px-6 py-5 flex items-center justify-between">
+        <span class="text-[11px] uppercase tracking-widest font-bold flex items-center gap-2" style="color:var(--ink-soft)"><span class="dot"></span>Microsoft</span>
+        <span class="text-sm font-semibold text-right">Power BI Data Analyst Associate</span>
+      </div>
+      <div class="card rounded-2xl px-6 py-5 flex items-center justify-between">
+        <span class="text-[11px] uppercase tracking-widest font-bold flex items-center gap-2" style="color:var(--ink-soft)"><span class="dot"></span>Google</span>
+        <span class="text-sm font-semibold text-right">Data Analytics Professional Certificate</span>
+      </div>
+      <div class="card rounded-2xl px-6 py-5 flex items-center justify-between">
+        <span class="text-[11px] uppercase tracking-widest font-bold flex items-center gap-2" style="color:var(--ink-soft)"><span class="dot"></span>Meta</span>
+        <span class="text-sm font-semibold text-right" data-i18n="certs.meta">Certificat professionnel Data Analyst</span>
+      </div>
+      <div class="card rounded-2xl px-6 py-5 flex items-center justify-between">
+        <span class="text-[11px] uppercase tracking-widest font-bold flex items-center gap-2" style="color:var(--ink-soft)"><span class="dot"></span>IBM</span>
+        <span class="text-sm font-semibold text-right">Data Analyst Professional Certificate</span>
+      </div>
+      <div class="card rounded-2xl px-6 py-5 flex items-center justify-between md:col-span-2">
+        <span class="text-[11px] uppercase tracking-widest font-bold flex items-center gap-2" style="color:var(--ink-soft)"><span class="dot"></span>Tableau</span>
+        <span class="text-sm font-semibold text-right" data-i18n="certs.tableau">Certified Data Analyst</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Section Contact -->
-<footer id="contact" class="px-6 md:px-16 py-32 max-w-5xl mx-auto border-t border-[var(--line)]">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-    <div>
-      <h2 class="text-[10px] uppercase tracking-[0.3em] font-semibold text-[var(--accent)]">03 / CONTACT</h2>
-    </div>
-    <div class="md:col-span-2">
-      <h3 class="text-2xl md:text-3xl font-light leading-snug mb-12 text-[var(--text)]">
-        <span data-i18n="contact-cta-1">Collaborons pour transformer</span> <br class="hidden md:inline">
-        <span class="serif italic text-[var(--accent)]" data-i18n="contact-cta-2">vos données en décisions intelligentes.</span>
-      </h3>
+<footer id="contact" class="px-6 md:px-14 py-20 md:py-28 reveal">
+  <div class="max-w-4xl mx-auto card rounded-3xl p-10 md:p-16 relative overflow-hidden">
+    <div class="absolute -bottom-20 -left-20 w-64 h-64 rounded-full opacity-30" style="background:linear-gradient(135deg,var(--g2),var(--g3)); filter:blur(40px)"></div>
+    <div class="relative grid grid-cols-1 md:grid-cols-2 gap-12">
 
-      <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="space-y-10 max-w-md mb-16" novalidate>
-        <div class="flex flex-col">
-          <label for="name" class="text-[9px] uppercase tracking-[0.15em] font-semibold" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
-          <input type="text" id="name" name="name" class="minimal-input hover-target" required>
+      <div class="text-center md:text-left">
+        <h2 class="text-3xl md:text-4xl mb-5" data-i18n="contact.title">Ouverte à un stage ou<br>un emploi en data analyse.</h2>
+        <p class="text-sm mb-8" style="color:var(--ink-soft)" data-i18n="contact.sub">N'hésitez pas à me contacter.</p>
+        <a href="mailto:melanied2502@gmail.com" class="btn-grad inline-block rounded-full px-8 py-3.5 text-sm mb-9">melanied2502@gmail.com</a>
+        <div class="flex justify-center md:justify-start gap-4">
+          <a href="#" aria-label="LinkedIn" class="glass rounded-full w-10 h-10 flex items-center justify-center hover:opacity-70 transition">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="color:var(--ink-soft)"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          </a>
+          <a href="#" aria-label="GitHub" class="glass rounded-full w-10 h-10 flex items-center justify-center hover:opacity-70 transition">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="color:var(--ink-soft)"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.01-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a10.98 10.98 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+          </a>
         </div>
-        <div class="flex flex-col">
-          <label for="email" class="text-[9px] uppercase tracking-[0.15em] font-semibold" style="color: var(--text-muted)" data-i18n="form-email">Adresse email</label>
-          <input type="email" id="email" name="email" class="minimal-input hover-target" required>
+      </div>
+
+      <form id="contactForm" class="text-left" novalidate>
+        <div class="mb-4">
+          <input type="text" id="cf-name" class="field-input" data-i18n-placeholder="form.name" placeholder="Votre nom">
+          <p class="field-error-msg" data-i18n="form.err.name">Merci d'indiquer votre nom.</p>
         </div>
-        <div class="flex flex-col">
-          <label for="message" class="text-[9px] uppercase tracking-[0.15em] font-semibold" style="color: var(--text-muted)" data-i18n="form-message">Votre message</label>
-          <textarea id="message" name="message" rows="3" class="minimal-input resize-none hover-target" required></textarea>
+        <div class="mb-4">
+          <input type="email" id="cf-email" class="field-input" data-i18n-placeholder="form.email" placeholder="Votre e-mail">
+          <p class="field-error-msg" data-i18n="form.err.email">Merci d'indiquer un e-mail valide.</p>
         </div>
-        <button type="submit" class="text-[10px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-2 text-[var(--accent)]" data-i18n="form-submit">
-          Envoyer le message →
-        </button>
+        <div class="mb-5">
+          <textarea id="cf-message" rows="4" class="field-input" data-i18n-placeholder="form.message" placeholder="Votre message"></textarea>
+          <p class="field-error-msg" data-i18n="form.err.message">Merci d'écrire un message.</p>
+        </div>
+        <button type="submit" class="btn-grad rounded-full px-7 py-3 text-sm w-full sm:w-auto" data-i18n="form.submit">Envoyer</button>
+        <p class="form-success text-sm mt-4 font-semibold" style="color:var(--g1)" data-i18n="form.success">Merci ! Votre message a bien été noté — pensez à vérifier votre client mail par défaut, ou écrivez directement à melanied2502@gmail.com.</p>
       </form>
 
-      <div class="flex flex-wrap gap-10 text-[12px] font-medium">
-        <a href="mailto:melanied2502@gmail.com" class="hover-link hover-target">melanied2502@gmail.com</a>
-        <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" class="hover-link hover-target" target="_blank" rel="noopener">LinkedIn ↗</a>
-      </div>
     </div>
   </div>
+  <p class="text-center mt-10 text-xs font-semibold" style="color:var(--ink-soft)">© 2026 Mélanie Dupriez</p>
 </footer>
 
-<!-- Bouton Retour En Haut Élégant -->
-<button id="back-to-top" onclick="scrollToTop()" aria-label="Retourner en haut" class="fixed bottom-8 right-8 z-50 p-3 rounded-full border border-[var(--line)] bg-[var(--bg)] shadow-sm text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all hover-target">
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <line x1="12" y1="19" x2="12" y2="5"></line>
-    <polyline points="5 12 12 5 19 12"></polyline>
-  </svg>
+<button id="backToTop" class="btn-grad" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut de page">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
 <script>
-  // Dictionnaire multilingue mis à jour
+  function syncThemeIcon(){
+    const isDark = document.documentElement.classList.contains('dark');
+    document.getElementById('iconMoon').classList.toggle('hidden', isDark);
+    document.getElementById('iconSun').classList.toggle('hidden', !isDark);
+  }
+  (function initTheme(){
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (prefersDark) document.documentElement.classList.add('dark');
+    syncThemeIcon();
+  })();
+  function toggleTheme(){ document.documentElement.classList.toggle('dark'); syncThemeIcon(); }
+
   const translations = {
-    fr: {
-      "nav-parcours": "Mon Parcours",
-      "nav-projets": "Projets",
-      "nav-competences": "Compétences",
-      "nav-contact": "Contact",
-      "menu-location-title": "Localisation",
-      "menu-location-val": "Belgique — Distanciel accepté",
-      "menu-social-title": "Réseaux",
-      "hero-status": "Business Data Analyst",
-      "hero-title-1": "Donner un sens aux données pour",
-      "hero-title-2": "optimiser chaque décision stratégique.",
-      "hero-desc": "Étudiante en Ingénieur de gestion à l'Université de Mons. J'allie rigueur analytique et design d'interface pour transformer des jeux de données complexes en leviers de croissance clairs et exploitables.",
-      "hero-cta-1": "Découvrir mes travaux ↓",
-      "hero-cta-2": "Me contacter →",
-      "edu-title": "Bachelier en Ingénieur de gestion",
-      "edu-desc": "Formation d'excellence combinant les sciences économiques, l'analyse de données et la modélisation mathématique.",
-      "exp-title": "Social Media & Analytics",
-      "exp-desc": "Gestion de l'image de marque et exploitation des données analytiques d'audience pour optimiser l'engagement client.",
-      "work-intro": "Visualiser les flux, identifier les tendances, et concevoir des espaces de lecture digitaux propices à la prise de décision.",
-      "p1-title": "Visualisation de l'économie Belge",
-      "p2-title": "Dashboard de performance E-Commerce",
-      "p-view": "Consulter ↗",
-      "p-soon": "En cours",
-      "skills-core": "Expertise Décisionnelle",
-      "skills-tools": "Outils & Langages",
-      "skills-lang": "Langues",
-      "core-1-title": "Analyse & Optimisation",
-      "core-1-desc": "Interprétation de données complexes pour orienter les décisions d'affaires stratégiques.",
-      "core-2-title": "Conception d'Interfaces Web",
-      "core-2-desc": "Création de solutions web modernes et intuitives pour présenter et rendre vos rapports digestes.",
-      "lang-fr-val": "Français",
-      "lang-en-val": "Anglais",
-      "lang-nl-val": "Néerlandais",
-      "lang-native": "Maternelle",
-      "lang-b2": "Niveau B2",
-      "lang-b1": "Niveau B1",
-      "cert-progress": "En cours",
-      "contact-cta-1": "Collaborons pour transformer",
-      "contact-cta-2": "vos données en décisions intelligentes.",
-      "form-name": "Nom complet",
-      "form-email": "Adresse email",
-      "form-message": "Votre message",
-      "form-submit": "Envoyer le message →"
+    FR: {
+      'nav.path':'Parcours','nav.projects':'Projets','nav.skills':'Compétences','nav.contact':'Contact','nav.theme':'Thème',
+      'hero.eyebrow':'Étudiante en Ingénieur de gestion — Data & BI',
+      'hero.line1':'Je transforme les données','hero.line2':' en décisions claires.',
+      'hero.sub':"Ingénieure de gestion spécialisée en Data, je transforme vos données en diagnostics précis et en recommandations concrètes pour optimiser vos processus et maximiser votre performance.",
+      'hero.cta1':'Discutons de vos projets','hero.cta2':'Voir mes projets ↓',
+      'proof.data.title':'Data Analysis','proof.data.desc':'Traduction de données brutes en insights décisionnels.',
+      'proof.web.title':'Web Development','proof.web.desc':"Conception d'interfaces web pour présenter vos résultats.",
+      'proof.strategy.title':'Business Strategy','proof.strategy.desc':'Optimisation des processus basée sur des diagnostics précis.',
+      'hero.check1':'Disponible immédiatement','hero.check2':'Télétravail possible','hero.check3':'Basée en Belgique',
+      'form.name':'Votre nom','form.email':'Votre e-mail','form.message':'Votre message','form.submit':'Envoyer',
+      'form.err.name':'Merci d\'indiquer votre nom.','form.err.email':'Merci d\'indiquer un e-mail valide.','form.err.message':'Merci d\'écrire un message.',
+      'form.success':'Merci ! Votre message a bien été noté — pensez à vérifier votre client mail par défaut, ou écrivez directement à melanied2502@gmail.com.',
+      'hero.seeking.label':'Ce que je recherche',
+      'hero.seeking.desc':"Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à la donnée.",
+      'stat.grad':'Diplôme prévu','stat.langs':'Langues parlées','stat.tools':'Outils maîtrisés','stat.certs':'Certifications en cours',
+      'path.title':'Parcours','path.sub':'Formation & expérience',
+      'path.edu1.title':'Ingénieur de gestion','path.edu1.sub':'Université de Mons — Bachelier, 3 ans',
+      'path.edu1.desc':"Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information.",
+      'path.stage.date':'Fév. — avr. 2023','path.stage.title':'Social Media Manager — GabyLuxxy','path.stage.sub':'Stage en télétravail · Revente de luxe',
+      'path.stage.desc':'Gestion des réseaux sociaux, création de contenu, analyse des performances.',
+      'path.edu2.title':'Diplôme de Photographe','path.edu2.sub':'5e — 6e secondaire',
+      'path.edu2.desc':'Photographie, montage photo & vidéo, notions de marketing et publicité.',
+      'projects.title':'Mes projets personnels','projects.sub':'Un aperçu de mon travail','projects.more':"D'autres projets à venir.",
+      'projects.drag':'Faites glisser pour parcourir','projects.view':'Voir le projet ↗','projects.more.title':'Prochain projet',
+      'p1.title':'Analyse économique de la Belgique',
+      'p1.desc':"Storytelling dashboard interactif présentant l'évolution des indicateurs économiques belges (PIB, chômage, inflation) avec des visualisations dynamiques et une narration guidée.",
+      'skills.title':'Compétences','skills.sub':'Langues, outils & qualités',
+      'skills.langs.label':'Langues','skills.lang.fr':'Français','skills.lang.en':'Anglais','skills.lang.nl':'Néerlandais',
+      'skills.tools.label':'Outils','skills.qualities.label':'Qualités',
+      'skills.q1':'Rigueur','skills.q2':'Curiosité','skills.q3':'Autonomie','skills.q4':'Sens du détail','skills.q5':'Créativité','skills.q6':'Adaptabilité',
+      'certs.title':'Certifications','certs.status':"En cours d'obtention",
+      'certs.meta':'Certificat professionnel Data Analyst','certs.tableau':'Certified Data Analyst',
+      'contact.title':'Ouverte à un stage ou<br>un emploi en data analyse.','contact.sub':"N'hésitez pas à me contacter."
     },
-    en: {
-      "nav-parcours": "My Path",
-      "nav-projets": "Projects",
-      "nav-competences": "Skills",
-      "nav-contact": "Contact",
-      "menu-location-title": "Location",
-      "menu-location-val": "Belgium — Remote Friendly",
-      "menu-social-title": "Socials",
-      "hero-status": "Business Data Analyst",
-      "hero-title-1": "Giving meaning to data to",
-      "hero-title-2": "optimize every strategic decision.",
-      "hero-desc": "Business Engineering student at the University of Mons. Combining analytical rigor and interface design to transform complex datasets into clear, actionable growth drivers.",
-      "hero-cta-1": "Explore my work ↓",
-      "hero-cta-2": "Get in touch →",
-      "edu-title": "Bachelor's in Business Engineering",
-      "edu-desc": "Elite curriculum combining economic sciences, data analysis, and mathematical modeling.",
-      "exp-title": "Social Media & Analytics",
-      "exp-desc": "Brand design management and analytical audience parsing to optimize customer engagement.",
-      "work-intro": "Visualizing data streams, identifying patterns, and crafting digital spaces for optimal decision making.",
-      "p1-title": "Belgian Economic Data Visuals",
-      "p2-title": "E-Commerce Acquisition Insights",
-      "p-view": "View Project ↗",
-      "p-soon": "In progress",
-      "skills-core": "Strategic Expertise",
-      "skills-tools": "Tools & Languages",
-      "skills-lang": "Languages",
-      "core-1-title": "Analysis & Optimization",
-      "core-1-desc": "Interpreting complex data matrices to guide strategic corporate actions.",
-      "core-2-title": "Web Interface Design",
-      "core-2-desc": "Building custom, elegant, and intuitive web solutions to host and present key insights beautifully.",
-      "lang-fr-val": "French",
-      "lang-en-val": "English",
-      "lang-nl-val": "Dutch",
-      "lang-native": "Native speaker",
-      "lang-b2": "B2 Upper-Intermediate",
-      "lang-b1": "B1 Intermediate",
-      "cert-progress": "In Progress",
-      "contact-cta-1": "Let's work together to turn",
-      "contact-cta-2": "raw data into intelligent actions.",
-      "form-name": "Full name",
-      "form-email": "Email address",
-      "form-message": "Your message",
-      "form-submit": "Send Message →"
+    EN: {
+      'nav.path':'Path','nav.projects':'Projects','nav.skills':'Skills','nav.contact':'Contact','nav.theme':'Theme',
+      'hero.eyebrow':'Management Engineering student — Data & BI',
+      'hero.line1':'I turn data','hero.line2':' into clear decisions.',
+      'hero.sub':"Management Engineer specialised in Data, I turn your data into precise diagnostics and concrete recommendations to optimise your processes and maximise your performance.",
+      'hero.cta1':"Let's talk about your project",'hero.cta2':'See my projects ↓',
+      'proof.data.title':'Data Analysis','proof.data.desc':'Turning raw data into decision-ready insights.',
+      'proof.web.title':'Web Development','proof.web.desc':'Designing web interfaces to present your results.',
+      'proof.strategy.title':'Business Strategy','proof.strategy.desc':'Process optimisation grounded in precise diagnostics.',
+      'hero.check1':'Available immediately','hero.check2':'Remote work possible','hero.check3':'Based in Belgium',
+      'form.name':'Your name','form.email':'Your email','form.message':'Your message','form.submit':'Send',
+      'form.err.name':'Please enter your name.','form.err.email':'Please enter a valid email.','form.err.message':'Please write a message.',
+      'form.success':'Thank you! Your message has been noted — please check your default mail client, or write directly to melanied2502@gmail.com.',
+      'hero.seeking.label':"What I'm looking for",
+      'hero.seeking.desc':"An internship or role in data analysis / business intelligence, ideally remote or in Belgium. Happy to discuss any data-related project.",
+      'stat.grad':'Expected graduation','stat.langs':'Languages spoken','stat.tools':'Tools mastered','stat.certs':'Certifications in progress',
+      'path.title':'Path','path.sub':'Education & experience',
+      'path.edu1.title':'Management Engineering','path.edu1.sub':'University of Mons — Bachelor, 3 years',
+      'path.edu1.desc':"Specialisation in data & computer science. Multidisciplinary training in economics, finance, management and information systems.",
+      'path.stage.date':'Feb. — Apr. 2023','path.stage.title':'Social Media Manager — GabyLuxxy','path.stage.sub':'Remote internship · Luxury resale',
+      'path.stage.desc':'Social media management, content creation, performance analysis.',
+      'path.edu2.title':'Photography Diploma','path.edu2.sub':'Upper secondary school',
+      'path.edu2.desc':'Photography, photo & video editing, notions of marketing and advertising.',
+      'projects.title':'Personal projects','projects.sub':'A glimpse of my work','projects.more':'More projects coming soon.',
+      'projects.drag':'Drag to browse','projects.view':'View project ↗','projects.more.title':'Next project',
+      'p1.title':'Economic analysis of Belgium',
+      'p1.desc':"Interactive storytelling dashboard presenting the evolution of Belgian economic indicators (GDP, unemployment, inflation) with dynamic visualisations and a guided narrative.",
+      'skills.title':'Skills','skills.sub':'Languages, tools & qualities',
+      'skills.langs.label':'Languages','skills.lang.fr':'French','skills.lang.en':'English','skills.lang.nl':'Dutch',
+      'skills.tools.label':'Tools','skills.qualities.label':'Qualities',
+      'skills.q1':'Rigour','skills.q2':'Curiosity','skills.q3':'Autonomy','skills.q4':'Attention to detail','skills.q5':'Creativity','skills.q6':'Adaptability',
+      'certs.title':'Certifications','certs.status':'In progress',
+      'certs.meta':'Data Analyst Professional Certificate','certs.tableau':'Certified Data Analyst',
+      'contact.title':'Open to an internship or<br>role in data analysis.','contact.sub':'Feel free to reach out.'
     },
-    nl: {
-      "nav-parcours": "Mijn Traject",
-      "nav-projets": "Projecten",
-      "nav-competences": "Vaardigheden",
-      "nav-contact": "Contact",
-      "menu-location-title": "Locatie",
-      "menu-location-val": "België — Remote mogelijk",
-      "menu-social-title": "Socials",
-      "hero-status": "Business Data Analyst",
-      "hero-title-1": "Betekenis geven aan data om",
-      "hero-title-2": "elke strategische beslissing te optimaliseren.",
-      "hero-desc": "Studente Handelsingenieur aan de Universiteit van Bergen (UMons). Een combinatie van analytische precisie en interface-ontwerp om data om te zetten in duidelijke inzichten.",
-      "hero-cta-1": "Ontdek mijn werk ↓",
-      "hero-cta-2": "Neem contact op →",
-      "edu-title": "Bachelor in de Handelsingenieur",
-      "edu-desc": "Hoogwaardige opleiding die economische wetenschappen, data-analyse en wiskundige modellering combineert.",
-      "exp-title": "Social Media & Analytics",
-      "exp-desc": "Beheer van merkimago en analyse van doelgroepdata om de klantbetrokkenheid te optimaliseren.",
-      "work-intro": "Het visualiseren van stromen, het identificeren van trends en het ontwerpen van digitale ruimtes voor optimale besluitvorming.",
-      "p1-title": "Visuele Analyse van de Belgische Economie",
-      "p2-title": "E-Commerce Prestatie Dashboard",
-      "p-view": "Bekijken ↗",
-      "p-soon": "In uitvoering",
-      "skills-core": "Besluitvormings-expertise",
-      "skills-tools": "Tools & Talen",
-      "skills-lang": "Talen",
-      "core-1-title": "Analyse & Optimalisatie",
-      "core-1-desc": "Complexe gegevens interpreteren om strategische zakelijke beslissingen te sturen.",
-      "core-2-title": "Web Interface Ontwerp",
-      "core-2-desc": "Het creëren van moderne, intuïtieve weboplossingen om uw rapporten vlot te presenteren.",
-      "lang-fr-val": "Frans",
-      "lang-en-val": "Engels",
-      "lang-nl-val": "Nederlands",
-      "lang-native": "Moedertaal",
-      "lang-b2": "B2-niveau",
-      "lang-b1": "B1-niveau",
-      "cert-progress": "In uitvoering",
-      "contact-cta-1": "Laten we samenwerken om",
-      "contact-cta-2": "uw data om te zetten in slimme beslissingen.",
-      "form-name": "Volledige naam",
-      "form-email": "E-mailadres",
-      "form-message": "Uw bericht",
-      "form-submit": "Bericht verzenden →"
+    NL: {
+      'nav.path':'Traject','nav.projects':'Projecten','nav.skills':'Vaardigheden','nav.contact':'Contact','nav.theme':'Thema',
+      'hero.eyebrow':'Student Handelsingenieur — Data & BI',
+      'hero.line1':'Ik verander data','hero.line2':' in heldere beslissingen.',
+      'hero.sub':"Handelsingenieur gespecialiseerd in Data, ik verander uw data in nauwkeurige diagnoses en concrete aanbevelingen om uw processen te optimaliseren en uw prestaties te maximaliseren.",
+      'hero.cta1':'Laten we uw project bespreken','hero.cta2':'Bekijk mijn projecten ↓',
+      'proof.data.title':'Data Analysis','proof.data.desc':'Ruwe data omzetten in bruikbare inzichten.',
+      'proof.web.title':'Web Development','proof.web.desc':'Ontwerp van webinterfaces om uw resultaten te presenteren.',
+      'proof.strategy.title':'Business Strategy','proof.strategy.desc':'Procesoptimalisatie op basis van nauwkeurige diagnoses.',
+      'hero.check1':'Onmiddellijk beschikbaar','hero.check2':'Werken op afstand mogelijk','hero.check3':'Gevestigd in België',
+      'form.name':'Uw naam','form.email':'Uw e-mail','form.message':'Uw bericht','form.submit':'Verzenden',
+      'form.err.name':'Vermeld uw naam.','form.err.email':'Vermeld een geldig e-mailadres.','form.err.message':'Schrijf een bericht.',
+      'form.success':'Bedankt! Uw bericht is genoteerd — controleer uw standaard e-mailprogramma, of schrijf rechtstreeks naar melanied2502@gmail.com.',
+      'hero.seeking.label':'Wat ik zoek',
+      'hero.seeking.desc':"Stage of job in data-analyse / business intelligence, bij voorkeur op afstand of in België. Beschikbaar om elk dataproject te bespreken.",
+      'stat.grad':'Verwacht diploma','stat.langs':'Gesproken talen','stat.tools':'Beheerste tools','stat.certs':'Certificeringen bezig',
+      'path.title':'Traject','path.sub':'Opleiding & ervaring',
+      'path.edu1.title':'Handelsingenieur','path.edu1.sub':'Universiteit Bergen (UMons) — Bachelor, 3 jaar',
+      'path.edu1.desc':"Specialisatie data & informatica. Multidisciplinaire opleiding in economie, finance, management en informatiesystemen.",
+      'path.stage.date':'Feb. — apr. 2023','path.stage.title':'Social Media Manager — GabyLuxxy','path.stage.sub':'Stage op afstand · Luxe wederverkoop',
+      'path.stage.desc':'Beheer van sociale media, contentcreatie, prestatieanalyse.',
+      'path.edu2.title':'Diploma Fotografie','path.edu2.sub':'5e — 6e middelbaar',
+      'path.edu2.desc':'Fotografie, foto- & videomontage, basisbegrippen marketing en reclame.',
+      'projects.title':'Mijn persoonlijke projecten','projects.sub':'Een blik op mijn werk','projects.more':'Meer projecten binnenkort.',
+      'projects.drag':'Sleep om te bladeren','projects.view':'Bekijk project ↗','projects.more.title':'Volgend project',
+      'p1.title':'Economische analyse van België',
+      'p1.desc':"Interactief storytelling-dashboard over de evolutie van de Belgische economische indicatoren (bbp, werkloosheid, inflatie) met dynamische visualisaties en un geleid verhaal.",
+      'skills.title':'Vaardigheden','skills.sub':'Talen, tools & kwaliteiten',
+      'skills.langs.label':'Talen','skills.lang.fr':'Frans','skills.lang.en':'Engels','skills.lang.nl':'Nederlands',
+      'skills.tools.label':'Tools','skills.qualities.label':'Kwaliteiten',
+      'skills.q1':'Nauwkeurigheid','skills.q2':'Nieuwsgierigheid','skills.q3':'Zelfstandigheid','skills.q4':'Oog voor detail','skills.q5':'Creativiteit','skills.q6':'Aanpassingsvermogen',
+      'certs.title':'Certificeringen','certs.status':'In uitvoering',
+      'certs.meta':'Professioneel certificaat Data Analyst','certs.tableau':'Certified Data Analyst',
+      'contact.title':'Open voor een stage of<br>job in data-analyse.','contact.sub':'Aarzel niet om contact op te nemen.'
     }
   };
 
-  // Langue active par défaut
-  let currentLang = 'fr';
-  function setLanguage(lang) {
-    currentLang = lang;
-    document.querySelectorAll('[data-i18n]').forEach(el => {
+  function applyLang(lang){
+    document.documentElement.lang = lang.toLowerCase();
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
       const key = el.getAttribute('data-i18n');
-      if (translations[lang] && translations[lang][key]) {
-        el.innerHTML = translations[lang][key];
+      if(translations[lang][key]) el.innerHTML = translations[lang][key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-placeholder');
+      if(translations[lang][key]) el.setAttribute('placeholder', translations[lang][key]);
+    });
+  }
+  function toggleLangMenu(){
+    const menu = document.getElementById('langMenu');
+    const btn = document.getElementById('langBtn');
+    const isHidden = menu.classList.contains('hidden');
+    menu.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+  }
+  function selectLang(lang){
+    applyLang(lang);
+    document.getElementById('langMenu').classList.add('hidden');
+    document.getElementById('langBtn').setAttribute('aria-expanded','false');
+  }
+  document.addEventListener('click', (e)=>{
+    const wrapper = document.getElementById('langMenu')?.parentElement;
+    if(wrapper && !wrapper.contains(e.target)){
+      document.getElementById('langMenu').classList.add('hidden');
+      document.getElementById('langBtn').setAttribute('aria-expanded','false');
+    }
+  });
+  function updateLangChecks(lang){
+    document.querySelectorAll('.lang-option').forEach(opt=>{
+      const optLang = opt.textContent.trim().startsWith('Fran') ? 'FR' : opt.textContent.trim().startsWith('Eng') ? 'EN' : 'NL';
+      opt.querySelector('.check').textContent = optLang === lang ? '✓' : '';
+    });
+  }
+  const _applyLang = applyLang;
+  applyLang = function(lang){ _applyLang(lang); updateLangChecks(lang); };
+  applyLang('FR');
+
+  function toggleMobileMenu(){
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburgerBtn');
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    if(isOpen){ closeMobileMenu(); return; }
+    menu.style.maxHeight = menu.scrollHeight + 'px';
+    menu.style.opacity = '1';
+    btn.setAttribute('aria-expanded','true');
+    document.getElementById('hLine1').style.transform = 'translateY(7px) rotate(45deg)';
+    document.getElementById('hLine2').style.opacity = '0';
+    document.getElementById('hLine3').style.transform = 'translateY(-7px) rotate(-45deg)';
+  }
+  function closeMobileMenu(){
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburgerBtn');
+    menu.style.maxHeight = '0px';
+    menu.style.opacity = '0';
+    btn.setAttribute('aria-expanded','false');
+    document.getElementById('hLine1').style.transform = '';
+    document.getElementById('hLine2').style.opacity = '1';
+    document.getElementById('hLine3').style.transform = '';
+  }
+
+  // Back to top + parallax on scroll
+  window.addEventListener('scroll', ()=>{
+    const y = window.scrollY;
+    const btt = document.getElementById('backToTop');
+    if(btt) btt.classList.toggle('show', y > 500);
+    document.querySelectorAll('.parallax-layer span[data-speed]').forEach(el=>{
+      const speed = parseFloat(el.getAttribute('data-speed'));
+      el.style.transform = `translateY(${y * speed}px)`;
+    });
+  }, { passive:true });
+
+  // Contact form validation (mailto fallback — no backend available)
+  (function setupContactForm(){
+    const form = document.getElementById('contactForm');
+    if(!form) return;
+    const name = document.getElementById('cf-name');
+    const email = document.getElementById('cf-email');
+    const message = document.getElementById('cf-message');
+    const success = document.querySelector('.form-success');
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function setError(field, hasError){
+      field.classList.toggle('field-error', hasError);
+      const msg = field.parentElement.querySelector('.field-error-msg');
+      if(msg) msg.classList.toggle('show', hasError);
+    }
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const nameOk = name.value.trim().length > 1;
+      const emailOk = emailRe.test(email.value.trim());
+      const msgOk = message.value.trim().length > 3;
+      setError(name, !nameOk);
+      setError(email, !emailOk);
+      setError(message, !msgOk);
+      if(!(nameOk && emailOk && msgOk)) return;
+
+      const subject = encodeURIComponent('Contact via portfolio — ' + name.value.trim());
+      const body = encodeURIComponent(message.value.trim() + '\n\n— ' + name.value.trim() + ' (' + email.value.trim() + ')');
+      window.location.href = `mailto:melanied2502@gmail.com?subject=${subject}&body=${body}`;
+      success.classList.add('show');
+      form.reset();
+    });
+
+    [name, email, message].forEach(f=>{
+      f.addEventListener('input', ()=> setError(f, false));
+    });
+  })();
+
+  (function setupDragCarousel(){
+    const track = document.getElementById('projectsTrack');
+    if(!track) return;
+    let isDown = false, startX, scrollStart, moved = false;
+    const start = (x)=>{ isDown = true; moved = false; startX = x; scrollStart = track.scrollLeft; track.classList.add('cursor-grabbing'); };
+    const move = (x)=>{
+      if(!isDown) return;
+      const dx = x - startX;
+      if(Math.abs(dx) > 5) moved = true;
+      track.scrollLeft = scrollStart - dx;
+    };
+    const end = ()=>{
+      isDown = false;
+      track.classList.remove('cursor-grabbing');
+      if(moved){
+        document.body.classList.add('was-dragging');
+        setTimeout(()=>document.body.classList.remove('was-dragging'), 50);
+      }
+    };
+    track.addEventListener('mousedown', e=>start(e.pageX));
+    window.addEventListener('mousemove', e=>move(e.pageX));
+    window.addEventListener('mouseup', end);
+    track.addEventListener('touchstart', e=>start(e.touches[0].pageX), {passive:true});
+    track.addEventListener('touchmove', e=>move(e.touches[0].pageX), {passive:true});
+    track.addEventListener('touchend', end);
+  })();
+
+  // IntersectionObserver for modern scroll animation (Scroll Reveal)
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{ 
+      if(entry.isIntersecting) {
+        entry.target.classList.add('active'); 
       }
     });
-
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.remove('opacity-100', 'font-semibold');
-      btn.classList.add('opacity-40');
-    });
-    const activeBtn = document.getElementById(`lang-${lang}`);
-    if (activeBtn) {
-      activeBtn.classList.remove('opacity-40');
-      activeBtn.classList.add('opacity-100', 'font-semibold');
-    }
-  }
-
-  // Hamburger menu toggle
-  function toggleMenu() {
-    const overlay = document.getElementById('menu-overlay');
-    const line1 = document.getElementById('burger-line-1');
-    const line2 = document.getElementById('burger-line-2');
-
-    overlay.classList.toggle('open');
-    
-    if (overlay.classList.contains('open')) {
-      line1.style.transform = 'translateY(2.5px) rotate(45deg)';
-      line2.style.transform = 'translateY(-2.5px) rotate(-45deg)';
-    } else {
-      line1.style.transform = 'none';
-      line2.style.transform = 'none';
-    }
-  }
-
-  // Jauge de progression de scroll + Bouton Back-to-Top
-  window.addEventListener('scroll', () => {
-    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-    document.getElementById('scroll-progress').style.width = scrollPercent + '%';
-
-    const bttBtn = document.getElementById('back-to-top');
-    if (window.scrollY > 300) {
-      bttBtn.classList.add('show');
-    } else {
-      bttBtn.classList.remove('show');
-    }
-  });
-
-  function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // Mode sombre
-  function toggleTheme() {
-    document.documentElement.classList.toggle('dark');
-    const isDark = document.documentElement.classList.contains('dark');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  }
-
-  if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark');
-  }
-
-  // Fade-in scroll observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.05 });
-
-  document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
-
-  // Physique fluide pour le curseur
-  const cursor = document.getElementById('custom-cursor');
-  const ring = document.getElementById('custom-cursor-ring');
-  let mouseX = 0, mouseY = 0;
-  let ringX = 0, ringY = 0;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    if (cursor) {
-      cursor.style.left = mouseX + 'px';
-      cursor.style.top = mouseY + 'px';
-    }
-  });
-
-  function animateRing() {
-    if (ring) {
-      ringX += (mouseX - ringX) * 0.14;
-      ringY += (mouseY - ringY) * 0.14;
-      ring.style.left = ringX + 'px';
-      ring.style.top = ringY + 'px';
-    }
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
-
-  document.querySelectorAll('.hover-target').forEach(item => {
-    item.addEventListener('mouseenter', () => document.body.classList.add('hover-active'));
-    item.addEventListener('mouseleave', () => document.body.classList.remove('hover-active'));
-  });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
