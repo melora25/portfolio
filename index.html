@@ -10,30 +10,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght=200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #FAFAF9;
-  --bg-gradient: radial-gradient(circle at 20% 30%, rgba(255, 235, 240, 0.4) 0%, transparent 40%),
-                  radial-gradient(circle at 80% 70%, rgba(230, 242, 255, 0.3) 0%, transparent 50%),
-                  #FAF8F9;
-  --text: #171214;
-  --text-muted: #6E6266;
-  --line: rgba(23, 18, 20, 0.05);
-  --accent: #E5A9B7; /* Rose Diamant */
-  --accent-secondary: #D4AF37; /* Or Fin */
-  --nav-bg: rgba(250, 248, 249, 0.8);
-  --card-bg: rgba(255, 255, 255, 0.65);
+  --bg: #FDFBFB;
+  --bg-gradient: linear-gradient(135deg, #FDFBFB 0%, #FFF5F7 50%, #FAF6F8 100%);
+  --text: #1C1417;
+  --text-muted: #7C6E74;
+  --line: rgba(28, 20, 23, 0.06);
+  --accent: #DDA0AD;
+  --accent-glow: rgba(221, 160, 173, 0.15);
+  --nav-bg: rgba(253, 251, 251, 0.75);
+  --card-bg: rgba(255, 255, 255, 0.4);
 }
 .dark {
-  --bg: #070506;
-  --bg-gradient: radial-gradient(circle at 10% 20%, rgba(229, 169, 183, 0.08) 0%, transparent 40%),
-                  radial-gradient(circle at 90% 80%, rgba(100, 150, 255, 0.05) 0%, transparent 50%),
-                  #070506;
-  --text: #FAF6F7;
-  --text-muted: #A39297;
-  --line: rgba(250, 246, 247, 0.05);
-  --accent: #F1C6D1;
-  --accent-secondary: #F3E5AB;
-  --nav-bg: rgba(7, 5, 6, 0.8);
-  --card-bg: rgba(15, 11, 13, 0.7);
+  --bg: #0A0708;
+  --bg-gradient: linear-gradient(135deg, #0A0708 0%, #140D10 50%, #080607 100%);
+  --text: #F3ECEF;
+  --text-muted: #9E8E94;
+  --line: rgba(243, 236, 239, 0.06);
+  --accent: #E5A9B7;
+  --accent-glow: rgba(229, 169, 183, 0.15);
+  --nav-bg: rgba(10, 7, 8, 0.75);
+  --card-bg: rgba(20, 13, 16, 0.4);
 }
 
 body {
@@ -44,43 +40,42 @@ body {
   overflow-x: hidden;
 }
 
-/* Curseur personnalisé "Bijou" avec sillage */
+/* Curseur personnalisé ultra-fluide */
 @media (min-width: 1024px) {
   #custom-cursor {
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     background-color: var(--text);
     border-radius: 50%;
     position: fixed;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 9999;
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
   }
   #custom-cursor-ring {
-    width: 28px;
-    height: 28px;
-    border: 1px solid rgba(229, 169, 183, 0.3);
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--line);
     border-radius: 50%;
     position: fixed;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 9998;
-    transition: transform 0.08s cubic-bezier(0.25, 1, 0.5, 1);
+    transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
   }
   .hover-active #custom-cursor {
-    width: 8px;
-    height: 8px;
+    width: 4px;
+    height: 4px;
     background-color: var(--accent);
-    box-shadow: 0 0 10px var(--accent);
   }
   .hover-active #custom-cursor-ring {
-    width: 44px;
-    height: 44px;
+    width: 50px;
+    height: 50px;
     border-color: var(--accent);
-    background: rgba(241, 198, 209, 0.05);
+    background-color: rgba(221, 160, 173, 0.05);
   }
-  a, button, input, textarea, .project-row, .lang-btn, .burger-btn, .glass-card, .skill-item {
+  a, button, input, textarea, .project-row, .lang-btn, .burger-btn, .card-interactive, .skill-item {
     cursor: none !important;
   }
   body {
@@ -92,68 +87,74 @@ body {
   font-family: 'Playfair Display', serif;
 }
 
-/* Éclats de lumière précieux (Scintillements) */
-.sparkle {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background-color: white;
-  box-shadow: 0 0 4px 1px #FFF, 0 0 10px 2px var(--accent);
-  border-radius: 50%;
-  animation: shine-pulse 3s infinite ease-in-out;
-  pointer-events: none;
+/* Liens avec lignes élégantes et effet "shimmer" */
+.hover-link {
+  position: relative;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-@keyframes shine-pulse {
-  0%, 100% { transform: scale(0); opacity: 0; }
-  50% { transform: scale(1.2); opacity: 0.9; }
+.hover-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -3px;
+  left: 0;
+  background-color: var(--accent);
+  transform-origin: bottom right;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
-/* Cartes Haute-Joaillerie : Coupe nette, Bordure Métallique et Reflet Laser */
+/* Cartes Premium Glassmorphism avec Reflet Lumineux */
 .glass-card {
   background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid transparent;
-  background-image: linear-gradient(var(--card-bg), var(--card-bg)), 
-                    linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(229,169,183,0.3) 50%, rgba(255,255,255,0.1) 100%);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  box-shadow: 0 8px 32px -4px rgba(229, 169, 183, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.01);
   transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
 }
-.glass-card::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -60%;
-  width: 30%;
-  height: 200%;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4) 50%, transparent);
-  transform: rotate(30deg);
-  transition: none;
-  pointer-events: none;
-  opacity: 0.6;
-}
-.glass-card:hover::after {
-  left: 130%;
-  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-}
 .glass-card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 20px 40px -10px rgba(229, 169, 183, 0.2), 
-              0 0 2px 1px rgba(229, 169, 183, 0.25);
-  background-image: linear-gradient(var(--card-bg), var(--card-bg)), 
-                    linear-gradient(135deg, rgba(255,255,255,0.6) 0%, var(--accent) 50%, rgba(255,255,255,0.2) 100%);
+  border-color: var(--accent);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px var(--accent-glow);
 }
 
-/* Lignes de projets d'exception */
+/* Effet de brillance dynamique au survol */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 150%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08) 30%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.08) 70%,
+    transparent
+  );
+  transition: none;
+  pointer-events: none;
+}
+.glass-card:hover::before {
+  left: 150%;
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Lignes de projets animées */
 .project-row {
   border-bottom: 1px solid var(--line);
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
-  overflow: hidden;
 }
 .project-row::before {
   content: '';
@@ -162,35 +163,54 @@ body {
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  background-color: var(--accent);
   transform: scaleX(0);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .project-row:hover::before {
   transform: scaleX(1);
 }
 .project-row:hover {
-  padding-left: 24px;
+  padding-left: 20px;
   color: var(--accent);
+  background: linear-gradient(90deg, rgba(221, 160, 173, 0.03) 0%, transparent 100%);
 }
 
-/* Menu Plein Écran */
+/* Menu plein écran moderne et épuré */
 #menu-overlay {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+  transform: translateY(-10px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
 }
 #menu-overlay.open {
   opacity: 1;
   visibility: visible;
+  transform: translateY(0);
 }
 
-/* Sections Animations */
+#menu-overlay nav a {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#menu-overlay.open nav a {
+  opacity: 1;
+  transform: translateY(0);
+}
+#menu-overlay.open nav a:nth-child(1) { transition-delay: 0.05s; }
+#menu-overlay.open nav a:nth-child(2) { transition-delay: 0.1s; }
+#menu-overlay.open nav a:nth-child(3) { transition-delay: 0.15s; }
+#menu-overlay.open nav a:nth-child(4) { transition-delay: 0.2s; }
+#menu-overlay.open nav a:nth-child(5) { transition-delay: 0.25s; }
+
+/* Apparition progressive fluide au scroll */
 .reveal-section {
   opacity: 0;
-  filter: blur(8px);
-  transform: translateY(30px);
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(5px);
+  transform: translateY(40px);
+  transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), filter 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal-section.active {
   opacity: 1;
@@ -198,7 +218,7 @@ body {
   transform: translateY(0);
 }
 
-/* Inputs minimalistes chic */
+/* Formulaire épuré & chic */
 .minimal-input {
   background: transparent;
   border: none;
@@ -207,39 +227,20 @@ body {
   padding: 1rem 0;
   color: var(--text);
   transition: border-color 0.4s ease, padding-left 0.4s ease;
+  font-weight: 300;
 }
 .minimal-input:focus {
   outline: none;
   border-color: var(--accent);
-  padding-left: 10px;
+  padding-left: 8px;
 }
 
-/* Effet ligne animée élégante sous les liens */
-.hover-link {
-  position: relative;
-}
-.hover-link::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 1px;
-  bottom: -2px;
-  left: 0;
-  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
-  transform-origin: bottom right;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.hover-link:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
-}
-
+/* Animations des puces compétences */
 .skill-item {
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease, border-color 0.4s ease;
 }
 .skill-item:hover {
-  transform: translateX(8px);
+  transform: translateX(6px);
   color: var(--accent);
   border-color: var(--accent);
 }
@@ -247,26 +248,17 @@ body {
 </head>
 <body class="selection:bg-[var(--accent)] selection:text-white">
 
-<!-- Curseur Premium -->
+<!-- Curseur personnalisé -->
 <div id="custom-cursor" class="hidden lg:block opacity-0"></div>
 <div id="custom-cursor-ring" class="hidden lg:block opacity-0"></div>
 
-<!-- Effet scintillations d'arrière-plan précieux -->
-<div class="fixed inset-0 pointer-events-none z-10 overflow-hidden">
-  <div class="sparkle" style="top: 15%; left: 25%; animation-delay: 0s;"></div>
-  <div class="sparkle" style="top: 40%; left: 80%; animation-delay: 1.5s;"></div>
-  <div class="sparkle" style="top: 75%; left: 15%; animation-delay: 0.8s;"></div>
-  <div class="sparkle" style="top: 60%; left: 65%; animation-delay: 2.2s;"></div>
-  <div class="sparkle" style="top: 85%; left: 85%; animation-delay: 0.3s;"></div>
-</div>
-
-<!-- Header / Navigation -->
-<nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-6 backdrop-blur-md transition-all duration-500" style="background-color: var(--nav-bg); border-b: 1px solid var(--line);">
+<!-- Navigation Haute (Glassmorphism & Ligne Floue) -->
+<nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-6 border-b border-[rgba(28,20,23,0.03)] dark:border-[rgba(243,236,239,0.03)] backdrop-blur-md transition-all duration-500" style="background-color: var(--nav-bg);">
 <div class="max-w-7xl mx-auto flex justify-between items-center">
-  <a href="#top" class="text-md font-light tracking-[0.4em] uppercase hover-target transition-all duration-300 hover:text-[var(--accent)]">M.D</a>
+  <a href="#top" class="text-md font-light tracking-[0.3em] uppercase hover-target transition-all duration-300 hover:tracking-[0.4em] hover:text-[var(--accent)]">M.D</a>
 
   <div class="flex items-center gap-8">
-    <!-- Langues -->
+    <!-- Sélecteur de langue -->
     <div class="flex gap-2.5 text-[10px] tracking-[0.2em] font-medium">
       <button onclick="setLanguage('fr')" class="lang-btn hover-target opacity-100 transition font-semibold" id="lang-fr">FR</button>
       <span class="opacity-20">|</span>
@@ -275,12 +267,12 @@ body {
       <button onclick="setLanguage('nl')" class="lang-btn hover-target opacity-40 transition" id="lang-nl">NL</button>
     </div>
 
-    <!-- Switch Thème -->
+    <!-- Mode Sombre / Clair -->
     <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-1 hover:scale-110 transition-transform duration-300 hover-target">
       <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
     </button>
 
-    <!-- Menu Hamburger -->
+    <!-- Hamburger Menu Button -->
     <button onclick="toggleMenu()" class="burger-btn flex flex-col justify-between w-6 h-3.5 z-50 hover-target focus:outline-none" aria-label="Menu">
       <span id="burger-line-1" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left"></span>
       <span id="burger-line-2" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left mt-[5px]"></span>
@@ -289,7 +281,7 @@ body {
 </div>
 </nav>
 
-<!-- Menu Overlay -->
+<!-- Menu Plein Écran Épuré -->
 <div id="menu-overlay" class="fixed inset-0 z-40 flex flex-col justify-center px-6 md:px-20" style="background: var(--bg-gradient);">
 <div class="max-w-4xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
   <nav class="flex flex-col gap-6 text-2xl md:text-4xl font-light">
@@ -311,6 +303,7 @@ body {
         <a href="https://github.com" target="_blank" class="block hover-target text-[var(--text)] hover-link">GitHub ↗</a>
       </div>
     </div>
+    <!-- Bouton Thème Intégré au Menu -->
     <div class="pt-2">
       <button onclick="toggleTheme()" class="flex items-center gap-2 hover-target hover:text-[var(--accent)] transition duration-300 text-[10px] uppercase font-bold tracking-[0.2em]">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
@@ -321,21 +314,21 @@ body {
 </div>
 </div>
 
-<!-- Hero Section -->
+<!-- Section d'Accueil (Hero) -->
 <main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32 pb-16">
-<div class="max-w-5xl mx-auto w-full relative">
-  <!-- Glowing Badge -->
-  <div class="inline-flex items-center gap-3 mb-10 px-5 py-2 rounded-full border border-pink-200/40 dark:border-pink-900/40 bg-[rgba(229,169,183,0.06)] shadow-[0_0_15px_rgba(229,169,183,0.15)] transition-all duration-300 hover:border-[var(--accent)]">
-    <span class="w-2 h-2 rounded-full bg-[#E5A9B7] animate-ping absolute"></span>
-    <span class="w-2 h-2 rounded-full bg-[#E5A9B7] relative"></span>
-    <span class="text-[9px] tracking-[0.3em] uppercase font-bold" style="color: var(--text-muted)" data-i18n="hero-status">Ouverte aux opportunités de stage et d'emploi</span>
+<div class="max-w-5xl mx-auto w-full">
+  <!-- Badge recrutement lumineux -->
+  <div class="inline-flex items-center gap-3 mb-10 px-5 py-2 rounded-full border border-[var(--line)] bg-[rgba(221,160,173,0.06)] shadow-inner transition-all duration-300 hover:border-[var(--accent)]">
+    <span class="w-2.5 h-2.5 rounded-full bg-[#A2D2A1] animate-ping absolute"></span>
+    <span class="w-2.5 h-2.5 rounded-full bg-[#A2D2A1] relative"></span>
+    <span class="text-[10px] tracking-[0.25em] uppercase font-medium" style="color: var(--text-muted)" data-i18n="hero-status">Ouverte aux opportunités de stage et d'emploi</span>
   </div>
 
-  <h1 class="text-[clamp(2.5rem,8vw,6.5rem)] font-extralight leading-[0.95] tracking-tight mb-4">
+  <h1 class="text-[clamp(2.5rem,8vw,6rem)] font-extralight leading-[1.02] tracking-tight mb-4">
     Mélanie Dupriez
   </h1>
-  <p class="text-[clamp(1.2rem,3vw,2.2rem)] font-light mb-14" style="color: var(--text-muted)">
-    Business Data Analyst · <span class="serif italic text-[var(--accent)] font-normal" data-i18n="hero-subtitle-serif">Ingénieure de gestion</span>
+  <p class="text-[clamp(1.2rem,3vw,2rem)] font-light mb-14" style="color: var(--text-muted)">
+    Business Data Analyst · <span class="serif italic text-[var(--accent)]" data-i18n="hero-subtitle-serif">Ingénieure de gestion</span>
   </p>
 
   <h2 class="text-3xl md:text-5xl font-extralight tracking-tight mb-14 max-w-3xl leading-snug">
@@ -343,40 +336,40 @@ body {
     <span class="serif italic font-normal text-[var(--accent)]" data-i18n="hero-title-2">je guide vos décisions pour optimiser vos performances.</span>
   </h2>
 
-  <!-- Description -->
+  <!-- Descriptif -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end border-t border-[var(--line)] pt-12 pb-16">
     <p class="text-[14px] md:text-[15px] leading-relaxed font-light max-w-md" style="color: var(--text-muted)" data-i18n="hero-desc">
       Ingénieure de gestion et Business Data Analyst, je traduis des architectures de données complexes en leviers de performance stratégique. Je conçois également des interfaces web sur mesure pour fluidifier et simplifier la visualisation de vos indicateurs clés.
     </p>
-    <div class="flex md:justify-end gap-8 text-[11px] uppercase tracking-[0.25em] font-bold">
+    <div class="flex md:justify-end gap-8 text-[11px] uppercase tracking-[0.25em] font-semibold">
       <a href="#projets" class="hover-link hover-target" data-i18n="hero-cta-1">Découvrir mes travaux ↓</a>
       <a href="#contact" class="hover-link hover-target" data-i18n="hero-cta-2">Me recruter / Collaborer →</a>
     </div>
   </div>
 
-  <!-- Statistiques (Cartes Bijou Facettées) -->
+  <!-- Statistiques clés (Cartes interactives avec reflet) -->
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-    <div class="glass-card p-6 rounded-lg">
+    <div class="glass-card p-6 rounded-xl">
       <p class="text-3xl font-light mb-1">2027</p>
-      <p class="text-[10px] uppercase tracking-[0.2em] font-bold" style="color: var(--text-muted)" data-i18n="stat-grad">Diplôme prévu</p>
+      <p class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="stat-grad">Diplôme prévu</p>
     </div>
-    <div class="glass-card p-6 rounded-lg">
+    <div class="glass-card p-6 rounded-xl">
       <p class="text-3xl font-light mb-1">3</p>
-      <p class="text-[10px] uppercase tracking-[0.2em] font-bold" style="color: var(--text-muted)" data-i18n="stat-langs">Langues parlées</p>
+      <p class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="stat-langs">Langues parlées</p>
     </div>
-    <div class="glass-card p-6 rounded-lg">
+    <div class="glass-card p-6 rounded-xl">
       <p class="text-3xl font-light mb-1">6</p>
-      <p class="text-[10px] uppercase tracking-[0.2em] font-bold" style="color: var(--text-muted)" data-i18n="stat-tools">Outils maîtrisés</p>
+      <p class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="stat-tools">Outils maîtrisés</p>
     </div>
-    <div class="glass-card p-6 rounded-lg">
+    <div class="glass-card p-6 rounded-xl">
       <p class="text-3xl font-light mb-1">5</p>
-      <p class="text-[10px] uppercase tracking-[0.2em] font-bold" style="color: var(--text-muted)" data-i18n="stat-certs">Certifications visées</p>
+      <p class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="stat-certs">Certifications visées</p>
     </div>
   </div>
 
-  <!-- Objectif -->
-  <div class="mt-24 pt-12 border-t border-[var(--line)] max-w-3xl">
-    <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold mb-4 text-[var(--accent)]" data-i18n="seeking-title">Objectif & Disponibilité</h4>
+  <!-- Section Objectif & Disponibilité -->
+  <div class="mt-24 pt-12 border-t border-[rgba(221,160,173,0.12)] max-w-3xl">
+    <h4 class="text-[10px] uppercase tracking-[0.3em] font-bold mb-4" style="color: var(--accent)" data-i18n="seeking-title">Objectif & Disponibilité</h4>
     <p class="text-lg md:text-xl font-light leading-relaxed mb-4" data-i18n="seeking-desc">
       Je recherche activement un stage ou un premier emploi en tant que <strong class="font-normal text-[var(--accent)]">Business Data Analyst</strong> ou en <strong class="font-normal text-[var(--accent)]">Business Intelligence</strong>.
     </p>
@@ -395,14 +388,15 @@ body {
 </div>
 </main>
 
-<!-- Parcours Section -->
+<!-- Section Parcours (Formation & Expérience) -->
 <section id="parcours" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.3em] font-bold sticky top-32" style="color: var(--text-muted)" data-i18n="section-01">01 / Formation & Expérience</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold sticky top-32" style="color: var(--text-muted)" data-i18n="section-01">01 / Formation & Expérience</h2>
   </div>
   <div class="md:col-span-2 space-y-20">
-    <div class="group relative transition-all duration-300">
+    <!-- Études Actuelles -->
+    <div class="group relative pl-0 transition-all duration-300">
       <span class="text-[11px] tracking-[0.2em] block mb-4" style="color: var(--text-muted)">2024 — 2027</span>
       <h3 class="text-2xl font-light mb-3 transition-colors duration-300 group-hover:text-[var(--accent)]" data-i18n="edu-title">Bachelier en Ingénieur de gestion</h3>
       <p class="text-[11px] uppercase tracking-[0.18em] mb-4" style="color: var(--text-muted)" data-i18n="edu-school">Université de Mons — Bachelier, 3 ans</p>
@@ -411,6 +405,7 @@ body {
       </p>
     </div>
 
+    <!-- Expérience Pro -->
     <div class="group border-t border-[var(--line)] pt-12 transition-all duration-300">
       <span class="text-[11px] tracking-[0.2em] block mb-4" style="color: var(--text-muted)" data-i18n="exp-date">Fév. — Avr. 2023</span>
       <h3 class="text-2xl font-light mb-3 transition-colors duration-300 group-hover:text-[var(--accent)]" data-i18n="exp-title">Social Media Manager</h3>
@@ -420,6 +415,7 @@ body {
       </p>
     </div>
 
+    <!-- Diplôme Photographe -->
     <div class="group border-t border-[var(--line)] pt-12 transition-all duration-300">
       <span class="text-[11px] tracking-[0.2em] block mb-4" style="color: var(--text-muted)" data-i18n="photo-date">2022 — 2024</span>
       <h3 class="text-2xl font-light mb-3 transition-colors duration-300 group-hover:text-[var(--accent)]" data-i18n="photo-title">Diplôme de Photographe</h3>
@@ -432,11 +428,11 @@ body {
 </div>
 </section>
 
-<!-- Projets Section -->
+<!-- Section Projets -->
 <section id="projets" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16 mb-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.3em] font-bold" style="color: var(--text-muted)" data-i18n="section-02">02 / WORK</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold" style="color: var(--text-muted)" data-i18n="section-02">02 / WORK</h2>
   </div>
   <div class="md:col-span-2">
     <h3 class="text-2xl font-light mb-4" data-i18n="project-section-title">Un aperçu de mon travail</h3>
@@ -450,36 +446,37 @@ body {
   <!-- Projet 1 -->
   <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
     <div>
-      <span class="text-[10px] tracking-[0.2em] block mb-2" style="color: var(--accent); font-weight: 600;">PYTHON / SQL / POWER BI</span>
+      <span class="text-[10px] tracking-[0.2em] block mb-2" style="color: var(--text-muted)">PYTHON / SQL / POWER BI</span>
       <h3 class="text-xl font-light" data-i18n="p1-title">Visualisation de l'économie Belge</h3>
     </div>
     <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
       <span class="text-[13px] font-light" style="color: var(--text-muted)">2026</span>
-      <span class="text-[11px] uppercase tracking-[0.2em] font-bold" data-i18n="p-view">Consulter ↗</span>
+      <span class="text-[11px] uppercase tracking-[0.2em] font-semibold" data-i18n="p-view">Consulter ↗</span>
     </div>
   </div>
 
   <!-- Projet 2 -->
   <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
     <div>
-      <span class="text-[10px] tracking-[0.2em] block mb-2" style="color: var(--accent); font-weight: 600;">LOOKER STUDIO / BIGQUERY</span>
+      <span class="text-[10px] tracking-[0.2em] block mb-2" style="color: var(--text-muted)">LOOKER STUDIO / BIGQUERY</span>
       <h3 class="text-xl font-light" data-i18n="p2-title">Dashboard d'acquisition E-Commerce</h3>
     </div>
     <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
       <span class="text-[13px] font-light" style="color: var(--text-muted)" data-i18n="p-soon">Bientôt</span>
-      <span class="text-[11px] uppercase tracking-[0.2em] font-bold opacity-40">—</span>
+      <span class="text-[11px] uppercase tracking-[0.2em] font-semibold opacity-40">—</span>
     </div>
   </div>
 </div>
 </section>
 
-<!-- Compétences Section -->
+<!-- Section Compétences & Outils -->
 <section id="competences" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.3em] font-bold sticky top-32" style="color: var(--text-muted)" data-i18n="section-03">03 / COMPETENCES</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold sticky top-32" style="color: var(--text-muted)" data-i18n="section-03">03 / COMPETENCES</h2>
   </div>
   <div class="md:col-span-2 space-y-20">
+
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
       <!-- Outils -->
       <div>
@@ -517,31 +514,32 @@ body {
         </ul>
       </div>
     </div>
+
   </div>
 </div>
 </section>
 
-<!-- Certifications Section -->
+<!-- Section Certifications (Cartes Glassmorphism au scroll) -->
 <section id="certifications" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.3em] font-bold sticky top-32" style="color: var(--text-muted)" data-i18n="section-04">04 / CERTIFICATIONS</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold sticky top-32" style="color: var(--text-muted)" data-i18n="section-04">04 / CERTIFICATIONS</h2>
   </div>
   <div class="md:col-span-2">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div class="glass-card p-6 rounded-lg flex items-center min-h-[90px]">
+      <div class="glass-card p-6 rounded-xl flex items-center min-h-[90px]">
         <span class="text-[13px] font-light leading-relaxed">Microsoft Certified: Power BI Data Analyst Associate</span>
       </div>
-      <div class="glass-card p-6 rounded-lg flex items-center min-h-[90px]">
+      <div class="glass-card p-6 rounded-xl flex items-center min-h-[90px]">
         <span class="text-[13px] font-light leading-relaxed">Google Data Analytics Professional Certificate</span>
       </div>
-      <div class="glass-card p-6 rounded-lg flex items-center min-h-[90px]">
+      <div class="glass-card p-6 rounded-xl flex items-center min-h-[90px]">
         <span class="text-[13px] font-light leading-relaxed">Meta Data Analyst Professional Certificate</span>
       </div>
-      <div class="glass-card p-6 rounded-lg flex items-center min-h-[90px]">
+      <div class="glass-card p-6 rounded-xl flex items-center min-h-[90px]">
         <span class="text-[13px] font-light leading-relaxed">IBM Data Analyst Professional Certificate</span>
       </div>
-      <div class="glass-card p-6 rounded-lg sm:col-span-2 flex items-center min-h-[90px]">
+      <div class="glass-card p-6 rounded-xl sm:col-span-2 flex items-center min-h-[90px]">
         <span class="text-[13px] font-light leading-relaxed">Tableau Certified Data Analyst</span>
       </div>
     </div>
@@ -549,11 +547,11 @@ body {
 </div>
 </section>
 
-<!-- Contact Footer -->
+<!-- Section Contact / Pied de page -->
 <footer id="contact" class="px-6 md:px-16 py-36 max-w-5xl mx-auto border-t border-[var(--line)]">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.3em] font-bold" style="color: var(--text-muted)" data-i18n="section-05">05 / RECRUTEMENT</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold" style="color: var(--text-muted)" data-i18n="section-05">05 / RECRUTEMENT</h2>
   </div>
   <div class="md:col-span-2">
     <h3 class="text-3xl md:text-5xl font-light leading-tight mb-16">
@@ -561,33 +559,34 @@ body {
       <span class="serif italic font-normal text-[var(--accent)]" data-i18n="contact-cta-2">ou discutons d'un recrutement.</span>
     </h3>
 
+    <!-- Formulaire Formspree -->
     <form id="contactForm" class="space-y-12 max-w-lg mb-20" novalidate>
       <div class="flex flex-col">
-        <label for="name" class="text-[10px] uppercase tracking-[0.2em] font-bold" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
+        <label for="name" class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
         <input type="text" id="name" name="name" class="minimal-input hover-target" required>
       </div>
       <div class="flex flex-col">
-        <label for="email" class="text-[10px] uppercase tracking-[0.2em] font-bold" style="color: var(--text-muted)" data-i18n="form-email">Adresse email</label>
+        <label for="email" class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="form-email">Adresse email</label>
         <input type="email" id="email" name="email" class="minimal-input hover-target" required>
       </div>
       <div class="flex flex-col">
-        <label for="subject" class="text-[10px] uppercase tracking-[0.2em] font-bold" style="color: var(--text-muted)" data-i18n="form-subject">Sujet</label>
+        <label for="subject" class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="form-subject">Sujet</label>
         <input type="text" id="subject" name="subject" class="minimal-input hover-target" required>
       </div>
       <div class="flex flex-col">
-        <label for="message" class="text-[10px] uppercase tracking-[0.2em] font-bold" style="color: var(--text-muted)" data-i18n="form-message">Votre message</label>
+        <label for="message" class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="form-message">Votre message</label>
         <textarea id="message" name="message" rows="3" class="minimal-input resize-none hover-target" required></textarea>
       </div>
       
       <div id="formStatus" class="text-[12px] font-light hidden"></div>
 
-      <button type="submit" id="submitBtn" class="text-[11px] uppercase tracking-[0.25em] font-bold hover-link hover-target pt-4" data-i18n="form-submit">
+      <button type="submit" id="submitBtn" class="text-[11px] uppercase tracking-[0.25em] font-semibold hover-link hover-target pt-4" data-i18n="form-submit">
         Envoyer le message →
       </button>
     </form>
 
     <div class="flex flex-col gap-6 mb-16">
-      <p class="text-[11px] uppercase tracking-[0.2em] font-bold" style="color: var(--text-muted)" data-i18n="footer-info-title">Ou retrouvez-moi sur :</p>
+      <p class="text-[11px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="footer-info-title">Ou retrouvez-moi sur :</p>
       <div class="flex flex-wrap gap-12 text-[13px] font-light">
         <a href="mailto:melanied2502@gmail.com" class="hover-link hover-target">melanied2502@gmail.com</a>
         <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" class="hover-link hover-target" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -597,20 +596,21 @@ body {
   </div>
 </div>
 
+<!-- Pied de page -->
 <div class="border-t border-[var(--line)] pt-16 mt-20 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
   <div>
-    <p class="text-md font-light tracking-[0.4em] uppercase">Mélanie Dupriez</p>
+    <p class="text-md font-light tracking-[0.3em] uppercase">Mélanie Dupriez</p>
     <p class="text-[11px] font-light mt-1 max-w-md" style="color: var(--text-muted)" data-i18n="footer-sub">Business Data Analyst, je transforme vos données en leviers de performance stratégique.</p>
   </div>
   <p class="text-[11px] font-light text-right" style="color: var(--text-muted)">
     &copy; 2026 Mélanie Dupriez. <span data-i18n="footer-rights">Tous droits réservés.</span><br>
-    <span class="italic text-[var(--accent)] font-semibold" data-i18n="footer-credit">Made with care in Belgium</span>
+    <span class="italic text-[var(--accent)]" data-i18n="footer-credit">Made with care in Belgium</span>
   </p>
 </div>
 </footer>
 
 <script>
-// Dictionnaire de traduction identique
+// Dictionnaire de traduction
 const translations = {
 fr: {
   "nav-parcours": "Mon Parcours",
@@ -767,7 +767,7 @@ nl: {
   "nav-certs": "Certificeringen",
   "nav-contact": "Werving & Contact",
   "menu-location-title": "Locatie",
-  "menu-location-val": "België — Beschikbaar voor remote werk",
+  "menu-location-val": "België — Beschikbaar pour remote werk",
   "menu-social-title": "Netwerken",
   "menu-theme-btn": "Sfeer Wijzigen",
   "hero-status": "Beschikbaar voor een stage of baan in Data",
@@ -893,7 +893,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
 
-// Gestion physique du curseur avec trainée scintillante
+// Gestion physique du curseur (Inertie ajustée)
 const cursor = document.getElementById('custom-cursor');
 const ring = document.getElementById('custom-cursor-ring');
 let mouseX = 0, mouseY = 0;
@@ -916,8 +916,8 @@ window.addEventListener('mousemove', (e) => {
 
 function animateRing() {
   if (ring) {
-    ringX += (mouseX - ringX) * 0.15;
-    ringY += (mouseY - ringY) * 0.15;
+    ringX += (mouseX - ringX) * 0.1;
+    ringY += (mouseY - ringY) * 0.1;
     ring.style.left = ringX + 'px';
     ring.style.top = ringY + 'px';
   }
@@ -930,7 +930,7 @@ document.querySelectorAll('.hover-target').forEach(item => {
   item.addEventListener('mouseleave', () => document.body.classList.remove('hover-active'));
 });
 
-// Formspree
+// Envoi asynchrone Formspree
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 const submitBtn = document.getElementById('submitBtn');
