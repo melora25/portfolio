@@ -3,72 +3,75 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mélanie Dupriez — Portfolio</title>
-<meta name="description" content="Portfolio de Mélanie Dupriez, étudiante en Ingénieur de gestion passionnée par la data et la visualisation.">
+<title>Mélanie Dupriez — Portfolio Data</title>
+<meta name="description" content="Portfolio de Mélanie Dupriez, étudiante en Ingénieur de gestion spécialisée en Data Analytics et Business Intelligence.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FDFBFB;
-    --text: #1C1417;
-    --text-muted: #7C6E74;
-    --line: rgba(28, 20, 23, 0.08);
-    --accent: #DDA0AD;
-    --nav-bg: rgba(253, 251, 251, 0.75);
+    --bg: #F8FAFC; /* Ardoise très clair */
+    --text: #0F172A; /* Ardoise foncé */
+    --text-muted: #64748B; /* Gris acier */
+    --line: rgba(15, 23, 42, 0.08);
+    --accent: #06B6D4; /* Cyan électrique moderne */
+    --accent-glow: rgba(6, 182, 212, 0.15);
+    --nav-bg: rgba(248, 250, 252, 0.8);
   }
   .dark {
-    --bg: #0B0809;
-    --text: #F3ECEF;
-    --text-muted: #9E8E94;
-    --line: rgba(243, 236, 239, 0.08);
-    --accent: #E5A9B7;
-    --nav-bg: rgba(11, 8, 9, 0.75);
+    --bg: #030712; /* Noir d'encre profond */
+    --text: #F3F4F6; /* Blanc cassé */
+    --text-muted: #9CA3AF;
+    --line: rgba(243, 244, 246, 0.08);
+    --accent: #22D3EE; /* Cyan plus vif pour le mode sombre */
+    --accent-glow: rgba(34, 211, 238, 0.2);
+    --nav-bg: rgba(3, 7, 18, 0.8);
   }
   
   body {
     background-color: var(--bg);
     color: var(--text);
     font-family: 'Plus Jakarta Sans', sans-serif;
-    transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     overflow-x: hidden;
   }
 
-  /* Curseur personnalisé fluide (uniquement sur PC) */
+  /* Curseur intelligent (uniquement PC) */
   @media (min-width: 1024px) {
     #custom-cursor {
-      width: 8px;
-      height: 8px;
-      background-color: var(--text);
+      width: 6px;
+      height: 6px;
+      background-color: var(--accent);
       border-radius: 50%;
       position: fixed;
       transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 9999;
-      transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+      transition: width 0.2s ease, height 0.2s ease;
     }
     #custom-cursor-ring {
-      width: 40px;
-      height: 40px;
-      border: 1px solid var(--line);
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--accent);
+      opacity: 0.4;
       border-radius: 50%;
       position: fixed;
       transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 9998;
-      transition: transform 0.08s ease-out, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+      transition: transform 0.08s ease-out, width 0.2s ease, height 0.2s ease, opacity 0.2s;
     }
     .hover-active #custom-cursor {
-      width: 4px;
-      height: 4px;
+      width: 12px;
+      height: 12px;
       background-color: var(--accent);
     }
     .hover-active #custom-cursor-ring {
-      width: 55px;
-      height: 55px;
-      border-color: var(--accent);
+      width: 48px;
+      height: 48px;
+      opacity: 0.8;
     }
-    a, button, input, textarea, .project-row, .lang-btn, .burger-btn {
+    a, button, input, textarea, .project-row, .lang-btn, .burger-btn, .skill-tag {
       cursor: none !important;
     }
     body {
@@ -80,225 +83,247 @@
     font-family: 'Playfair Display', serif;
   }
 
-  /* Liens avec lignes élégantes */
+  /* Liens technologiques */
   .hover-link {
     position: relative;
-    transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: color 0.3s ease;
   }
   .hover-link::after {
     content: '';
     position: absolute;
     width: 100%;
     transform: scaleX(0);
-    height: 1px;
-    bottom: -3px;
+    height: 1.5px;
+    bottom: -2px;
     left: 0;
     background-color: var(--accent);
     transform-origin: bottom right;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .hover-link:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
 
-  /* Lignes de projets animées */
+  /* Lignes de projets type Dashboard */
   .project-row {
     border-bottom: 1px solid var(--line);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     position: relative;
   }
   .project-row::before {
     content: '';
     position: absolute;
-    bottom: -1px;
+    top: 0;
     left: 0;
-    width: 100%;
-    height: 1px;
+    width: 3px;
+    height: 100%;
     background-color: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .project-row:hover::before {
-    transform: scaleX(1);
+    transform: scaleY(1);
   }
   .project-row:hover {
-    padding-left: 16px;
-    color: var(--accent);
+    background-color: rgba(6, 182, 212, 0.02);
+    padding-left: 20px;
+  }
+  .dark .project-row:hover {
+    background-color: rgba(34, 211, 238, 0.01);
   }
 
-  /* Menu plein écran */
+  /* Overlay de Menu */
   #menu-overlay {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-20px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+    transform: scale(0.98);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
   }
   #menu-overlay.open {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: scale(1);
   }
 
-  /* Éléments du menu qui glissent légèrement à l'ouverture */
+  /* Menu items slide in */
   #menu-overlay nav a {
     opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-20px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   #menu-overlay.open nav a {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
-  #menu-overlay.open nav a:nth-child(1) { transition-delay: 0.1s; }
-  #menu-overlay.open nav a:nth-child(2) { transition-delay: 0.2s; }
-  #menu-overlay.open nav a:nth-child(3) { transition-delay: 0.3s; }
-  #menu-overlay.open nav a:nth-child(4) { transition-delay: 0.4s; }
+  #menu-overlay.open nav a:nth-child(1) { transition-delay: 0.05s; }
+  #menu-overlay.open nav a:nth-child(2) { transition-delay: 0.1s; }
+  #menu-overlay.open nav a:nth-child(3) { transition-delay: 0.15s; }
+  #menu-overlay.open nav a:nth-child(4) { transition-delay: 0.2s; }
 
-  /* Apparition au scroll ultra-fluide */
+  /* Révélation de section */
   .reveal-section {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal-section.active {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* Inputs sans bordure */
+  /* Inputs de formulaire modernisés */
   .minimal-input {
     background: transparent;
     border: none;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1.5px solid var(--line);
     border-radius: 0;
     padding: 1rem 0;
     color: var(--text);
-    transition: border-color 0.4s ease;
-    font-weight: 300;
+    transition: border-color 0.3s ease;
+    font-weight: 400;
   }
   .minimal-input:focus {
     outline: none;
     border-color: var(--accent);
   }
 
-  /* Animation délicate des items de liste au survol */
-  .skill-item {
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  /* Badges de compétences */
+  .skill-tag {
+    border: 1px solid var(--line);
+    background-color: rgba(15, 23, 42, 0.01);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .skill-item:hover {
-    transform: translateX(8px);
-    color: var(--accent);
+  .skill-tag:hover {
+    border-color: var(--accent);
+    background-color: var(--accent-glow);
+    transform: translateY(-2px);
+  }
+  .dark .skill-tag {
+    background-color: rgba(243, 244, 246, 0.01);
+  }
+
+  /* Ligne de progression dynamique de scroll */
+  #scroll-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent));
+    width: 0%;
+    transition: width 0.1s ease-out;
   }
 </style>
 </head>
-<body class="selection:bg-[var(--accent)] selection:text-white">
+<body class="selection:bg-[var(--accent)] selection:text-slate-900">
 
-<!-- Curseur personnalisé -->
+<!-- Curseur sur mesure -->
 <div id="custom-cursor" class="hidden lg:block opacity-0"></div>
 <div id="custom-cursor-ring" class="hidden lg:block opacity-0"></div>
 
-<!-- Navigation Haute en Verre Dépoli (Glassmorphism) -->
-<nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-6 border-b border-[rgba(28,20,23,0.04)] dark:border-[rgba(243,236,239,0.04)] backdrop-blur-md transition-all duration-500" style="background-color: var(--nav-bg);">
+<!-- Barre de navigation avec flou dynamique et jauge de progression -->
+<nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-5 border-b border-[rgba(15,23,42,0.04)] dark:border-[rgba(243,244,246,0.04)] backdrop-blur-lg transition-all duration-300" style="background-color: var(--nav-bg);">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
-    <a href="#top" class="text-md font-light tracking-[0.25em] uppercase hover-target">M.D</a>
+    <a href="#top" class="text-sm font-bold tracking-[0.3em] uppercase hover-target text-[var(--text)]">M.D<span class="text-[var(--accent)]">_</span></a>
     
     <div class="flex items-center gap-8">
       <!-- Sélecteur de langue -->
-      <div class="flex gap-2.5 text-[10px] tracking-[0.2em] font-medium">
-        <button onclick="setLanguage('fr')" class="lang-btn hover-target opacity-100 transition font-semibold" id="lang-fr">FR</button>
+      <div class="flex gap-2.5 text-[10px] tracking-[0.2em] font-semibold">
+        <button onclick="setLanguage('fr')" class="lang-btn hover-target opacity-100 transition" id="lang-fr">FR</button>
         <span class="opacity-20">|</span>
         <button onclick="setLanguage('en')" class="lang-btn hover-target opacity-40 transition" id="lang-en">EN</button>
         <span class="opacity-20">|</span>
         <button onclick="setLanguage('nl')" class="lang-btn hover-target opacity-40 transition" id="lang-nl">NL</button>
       </div>
 
-      <!-- Mode Sombre / Clair -->
-      <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-1 hover:opacity-60 transition hover-target">
+      <!-- Sélecteur de thème -->
+      <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-1 hover:text-[var(--accent)] transition hover-target">
         <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
       </button>
 
-      <!-- Hamburger Menu Button -->
+      <!-- Bouton Menu hamburger isolé -->
       <button onclick="toggleMenu()" class="burger-btn flex flex-col justify-between w-6 h-3.5 z-50 hover-target focus:outline-none" aria-label="Menu">
-        <span id="burger-line-1" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left"></span>
-        <span id="burger-line-2" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left mt-[5px]"></span>
+        <span id="burger-line-1" class="w-full h-[1.5px] bg-[var(--text)] transition-all duration-300 origin-left"></span>
+        <span id="burger-line-2" class="w-full h-[1.5px] bg-[var(--text)] transition-all duration-300 origin-left mt-[5px]"></span>
       </button>
     </div>
   </div>
+  <!-- Jauge de scroll connectée en bas de barre -->
+  <div id="scroll-progress"></div>
 </nav>
 
-<!-- Menu Plein Écran (Overlay) -->
+<!-- Menu de navigation plein écran -->
 <div id="menu-overlay" class="fixed inset-0 z-40 flex flex-col justify-center px-6 md:px-20" style="background-color: var(--bg);">
   <div class="max-w-4xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-16">
-    <nav class="flex flex-col gap-6 text-4xl md:text-6xl font-extralight">
-      <a href="#parcours" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-parcours">Mon Parcours</a>
-      <a href="#projets" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-projets">Mes Projets</a>
-      <a href="#competences" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-competences">Expertise & Outils</a>
-      <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-contact">Me Contacter</a>
+    <nav class="flex flex-col gap-6 text-4xl md:text-5xl font-light">
+      <a href="#parcours" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-parcours">Mon Parcours</a>
+      <a href="#projets" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-projets">Mes Projets</a>
+      <a href="#competences" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-competences">Compétences</a>
+      <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-contact">Me Contacter</a>
     </nav>
-    <div class="text-[12px] uppercase tracking-[0.2em] space-y-6 font-light" style="color: var(--text-muted)">
+    <div class="text-[11px] uppercase tracking-[0.25em] space-y-6 font-semibold" style="color: var(--text-muted)">
       <div>
-        <p class="font-bold mb-1" data-i18n="menu-location-title">Localisation</p>
+        <p class="mb-1 text-[var(--accent)]" data-i18n="menu-location-title">Localisation</p>
         <p class="text-[var(--text)] font-light" data-i18n="menu-location-val">Belgique — Disponible à distance</p>
       </div>
       <div>
-        <p class="font-bold mb-1" data-i18n="menu-social-title">Réseaux</p>
+        <p class="mb-1 text-[var(--accent)]" data-i18n="menu-social-title">Réseaux</p>
         <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" target="_blank" class="block hover-target text-[var(--text)] hover-link">LinkedIn ↗</a>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Section d'Accueil (Hero) -->
+<!-- Section Hero (Accueil) -->
 <main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32">
   <div class="max-w-5xl mx-auto w-full">
-    <!-- Badge recrutement -->
-    <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[rgba(221,160,173,0.04)]">
-      <span class="w-2 h-2 rounded-full bg-[#A2D2A1] animate-pulse"></span>
-      <span class="text-[10px] tracking-[0.2em] uppercase font-medium" style="color: var(--text-muted)" data-i18n="hero-status">Disponible pour un stage / alternance en Data</span>
+    <!-- Statut Data -->
+    <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-md border border-[var(--line)] bg-[rgba(6,182,212,0.03)]">
+      <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping"></span>
+      <span class="text-[10px] tracking-[0.25em] uppercase font-bold text-[var(--accent)] animate-pulse" data-i18n="hero-status">Disponible pour un stage / alternance en Data</span>
     </div>
     
-    <h1 class="text-[clamp(2.3rem,7vw,5.5rem)] font-extralight leading-[1.05] tracking-tight mb-16">
+    <h1 class="text-[clamp(2.2rem,6.5vw,5rem)] font-extrabold leading-[1.1] tracking-tight mb-16 text-[var(--text)]">
       <span data-i18n="hero-title-1">Je structure la donnée,</span><br>
-      <span class="serif italic font-normal" data-i18n="hero-title-2">je clarifie les décisions stratégiques.</span>
+      <span class="text-[var(--accent)] font-medium" data-i18n="hero-title-2">je clarifie les décisions stratégiques.</span>
     </h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end border-t border-[var(--line)] pt-12">
-      <p class="text-[14px] md:text-[15px] leading-relaxed font-light max-w-md" style="color: var(--text-muted)" data-i18n="hero-desc">
+      <p class="text-[14px] md:text-[15px] leading-relaxed font-normal max-w-md text-[var(--text-muted)]" data-i18n="hero-desc">
         Étudiante en Ingénieur de gestion à l'Université de Mons. Mon objectif est de transformer le bruit de la donnée brute en récits visuels limpides et porteurs de valeur pour l'entreprise.
       </p>
-      <div class="flex md:justify-end gap-8 text-[11px] uppercase tracking-[0.2em] font-semibold">
-        <a href="#projets" class="hover-link hover-target" data-i18n="hero-cta-1">Consulter mes travaux ↓</a>
-        <a href="#contact" class="hover-link hover-target" data-i18n="hero-cta-2">Me contacter →</a>
+      <div class="flex md:justify-end gap-8 text-[11px] uppercase tracking-[0.2em] font-bold">
+        <a href="#projets" class="hover-link hover-target text-[var(--accent)]" data-i18n="hero-cta-1">Consulter mes travaux ↓</a>
+        <a href="#contact" class="hover-link hover-target text-[var(--text)]" data-i18n="hero-cta-2">Me contacter →</a>
       </div>
     </div>
   </div>
 </main>
 
-<!-- Section Parcours (Académique & Pro) -->
+<!-- Section 1 : Parcours -->
 <section id="parcours" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)">01 / PROFILE & PATH</h2>
+      <h2 class="text-[11px] uppercase tracking-[0.3em] font-extrabold sticky top-32 text-[var(--accent)]">01 / PROFIL & ACADÉMIQUE</h2>
     </div>
-    <div class="md:col-span-2 space-y-20">
+    <div class="md:col-span-2 space-y-16">
       <!-- Études -->
-      <div class="group">
-        <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)">2024 — 2027</span>
-        <h3 class="text-2xl font-light mb-3" data-i18n="edu-title">Bachelier en Ingénieur de gestion</h3>
-        <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)">Université de Mons</p>
-        <p class="text-[14px] leading-relaxed font-light max-w-lg" style="color: var(--text-muted)" data-i18n="edu-desc">
+      <div class="group border-l-2 border-[var(--line)] pl-6 hover:border-[var(--accent)] transition-colors duration-300">
+        <span class="text-[11px] font-bold tracking-[0.2em] block mb-2 text-[var(--accent)]">2024 — 2027</span>
+        <h3 class="text-2xl font-bold mb-3 text-[var(--text)]" data-i18n="edu-title">Bachelier en Ingénieur de gestion</h3>
+        <p class="text-[11px] uppercase tracking-[0.15em] mb-4 text-[var(--text-muted)]">Université de Mons</p>
+        <p class="text-[14px] leading-relaxed font-normal max-w-lg text-[var(--text-muted)]" data-i18n="edu-desc">
           Formation d'excellence combinant les sciences économiques et mathématiques de l'ingénieur. Modélisation statistique avancée et analyse des structures d'information d'entreprise.
         </p>
       </div>
 
       <!-- Expérience -->
-      <div class="group border-t border-[var(--line)] pt-12">
-        <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)">2023</span>
-        <h3 class="text-2xl font-light mb-3" data-i18n="exp-title">Social Media Management</h3>
-        <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)">GabyLuxxy</p>
-        <p class="text-[14px] leading-relaxed font-light max-w-lg" style="color: var(--text-muted)" data-i18n="exp-desc">
+      <div class="group border-l-2 border-[var(--line)] pl-6 hover:border-[var(--accent)] transition-colors duration-300">
+        <span class="text-[11px] font-bold tracking-[0.2em] block mb-2 text-[var(--accent)]">2023</span>
+        <h3 class="text-2xl font-bold mb-3 text-[var(--text)]" data-i18n="exp-title">Social Media Management</h3>
+        <p class="text-[11px] uppercase tracking-[0.15em] mb-4 text-[var(--text-muted)]">GabyLuxxy</p>
+        <p class="text-[14px] leading-relaxed font-normal max-w-lg text-[var(--text-muted)]" data-i18n="exp-desc">
           Traitement d'images, direction de la charte esthétique et exploitation d'analytics pour guider l'impact visuel et l'engagement d'une audience e-commerce de luxe.
         </p>
       </div>
@@ -306,14 +331,14 @@
   </div>
 </section>
 
-<!-- Section Projets -->
+<!-- Section 2 : Projets / Réalisations -->
 <section id="projets" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16 mb-16">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)">02 / WORK</h2>
+      <h2 class="text-[11px] uppercase tracking-[0.3em] font-extrabold text-[var(--accent)]">02 / DATA WORK</h2>
     </div>
     <div class="md:col-span-2">
-      <p class="text-[14px] font-light leading-relaxed max-w-md" style="color: var(--text-muted)" data-i18n="work-intro">
+      <p class="text-[14px] font-normal leading-relaxed max-w-md text-[var(--text-muted)]" data-i18n="work-intro">
         Sélection de réalisations analytiques alliant rigueur technique, requêtes complexes et sens de la lisibilité graphique.
       </p>
     </div>
@@ -323,85 +348,94 @@
     <!-- Projet 1 -->
     <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
       <div>
-        <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">PYTHON / SQL / POWER BI</span>
-        <h3 class="text-xl font-light" data-i18n="p1-title">Visualisation de l'économie Belge</h3>
+        <span class="text-[10px] tracking-[0.2em] block mb-2 text-[var(--accent)] font-bold">PYTHON / SQL / POWER BI</span>
+        <h3 class="text-xl font-bold text-[var(--text)]" data-i18n="p1-title">Visualisation de l'économie Belge</h3>
       </div>
       <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
-        <span class="text-[13px] font-light" style="color: var(--text-muted)">2026</span>
-        <span class="text-[11px] uppercase tracking-[0.15em] font-semibold" data-i18n="p-view">Consulter ↗</span>
+        <span class="text-[13px] font-normal text-[var(--text-muted)]">2026</span>
+        <span class="text-[11px] uppercase tracking-[0.2em] font-bold text-[var(--text)]" data-i18n="p-view">Consulter ↗</span>
       </div>
     </div>
 
     <!-- Projet 2 -->
     <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
       <div>
-        <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">LOOKER STUDIO / BIGQUERY</span>
-        <h3 class="text-xl font-light" data-i18n="p2-title">Dashboard d'acquisition E-Commerce</h3>
+        <span class="text-[10px] tracking-[0.2em] block mb-2 text-[var(--accent)] font-bold">LOOKER STUDIO / BIGQUERY</span>
+        <h3 class="text-xl font-bold text-[var(--text)]" data-i18n="p2-title">Dashboard d'acquisition E-Commerce</h3>
       </div>
       <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
-        <span class="text-[13px] font-light" style="color: var(--text-muted)" data-i18n="p-soon">Bientôt</span>
+        <span class="text-[13px] font-normal text-[var(--text-muted)]" data-i18n="p-soon">Bientôt</span>
         <span class="text-[11px] uppercase tracking-[0.15em] font-semibold opacity-40">—</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Section Compétences & Qualités (Optimisée pour recruteur) -->
+<!-- Section 3 : Compétences (Traduit et Stylisé en badges tech) -->
 <section id="competences" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)">03 / CAPABILITIES</h2>
+      <h2 class="text-[11px] uppercase tracking-[0.3em] font-extrabold sticky top-32 text-[var(--accent)]" data-i18n="nav-competences">Compétences</h2>
     </div>
-    <div class="md:col-span-2 space-y-20">
+    <div class="md:col-span-2 space-y-16">
       
-      <!-- Outils, Qualités & Langues -->
+      <!-- Listes et Badges -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
         <!-- Compétences Techniques -->
         <div>
-          <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-tech">Technique</h4>
-          <ul class="space-y-4 text-[14px] font-light">
-            <li class="skill-item hover-target">Python</li>
-            <li class="skill-item hover-target">SQL & Modélisation</li>
-            <li class="skill-item hover-target">Power BI</li>
-            <li class="skill-item hover-target">Excel Avancé</li>
-            <li class="skill-item hover-target">Looker Studio</li>
-          </ul>
+          <h4 class="text-[11px] uppercase tracking-[0.2em] font-extrabold mb-6 text-[var(--text-muted)]" data-i18n="skills-tech">Technique</h4>
+          <div class="flex flex-wrap gap-2.5 sm:flex-col sm:items-start">
+            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target">Python (Pandas, NumPy)</span>
+            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target">SQL & Modélisation</span>
+            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target">Power BI & DAX</span>
+            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target">Excel Avancé</span>
+            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target">Looker Studio</span>
+          </div>
         </div>
         
-        <!-- Qualités / Forces professionnelles -->
+        <!-- Qualités -->
         <div>
-          <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-soft">Atouts</h4>
-          <ul class="space-y-4 text-[14px] font-light">
-            <li class="skill-item hover-target" data-i18n="soft-1">Rigueur quantitative</li>
-            <li class="skill-item hover-target" data-i18n="soft-2">Esprit de synthèse</li>
-            <li class="skill-item hover-target" data-i18n="soft-3">Aisance visuelle</li>
-            <li class="skill-item hover-target" data-i18n="soft-4">Autonomie</li>
-            <li class="skill-item hover-target" data-i18n="soft-5">Adaptabilité</li>
-          </ul>
+          <h4 class="text-[11px] uppercase tracking-[0.2em] font-extrabold mb-6 text-[var(--text-muted)]" data-i18n="skills-soft">Atouts</h4>
+          <div class="flex flex-wrap gap-2.5 sm:flex-col sm:items-start">
+            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target" data-i18n="soft-1">Rigueur quantitative</span>
+            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target" data-i18n="soft-2">Esprit de synthèse</span>
+            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target" data-i18n="soft-3">Aisance visuelle</span>
+            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target" data-i18n="soft-4">Autonomie de travail</span>
+            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target" data-i18n="soft-5">Forte adaptabilité</span>
+          </div>
         </div>
 
         <!-- Langues -->
         <div>
-          <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-lang">Langues</h4>
-          <ul class="space-y-5 text-[14px] font-light">
-            <li class="skill-item hover-target"><span data-i18n="lang-fr-val">Français</span> <span class="text-[11px] opacity-50 block" data-i18n="lang-native">Langue maternelle</span></li>
-            <li class="skill-item hover-target"><span data-i18n="lang-en-val">Anglais</span> <span class="text-[11px] opacity-50 block" data-i18n="lang-b2">Niveau B2</span></li>
-            <li class="skill-item hover-target"><span data-i18n="lang-nl-val">Néerlandais</span> <span class="text-[11px] opacity-50 block" data-i18n="lang-b1">Niveau B1</span></li>
-          </ul>
+          <h4 class="text-[11px] uppercase tracking-[0.2em] font-extrabold mb-6 text-[var(--text-muted)]" data-i18n="skills-lang">Langues</h4>
+          <div class="space-y-4">
+            <div class="p-3 border border-[var(--line)] rounded-md hover-target hover:border-[var(--accent)] transition-all">
+              <span class="text-[13px] font-bold block" data-i18n="lang-fr-val">Français</span> 
+              <span class="text-[10px] text-[var(--text-muted)]" data-i18n="lang-native">Langue maternelle</span>
+            </div>
+            <div class="p-3 border border-[var(--line)] rounded-md hover-target hover:border-[var(--accent)] transition-all">
+              <span class="text-[13px] font-bold block" data-i18n="lang-en-val">Anglais</span> 
+              <span class="text-[10px] text-[var(--text-muted)]" data-i18n="lang-b2">Niveau B2</span>
+            </div>
+            <div class="p-3 border border-[var(--line)] rounded-md hover-target hover:border-[var(--accent)] transition-all">
+              <span class="text-[13px] font-bold block" data-i18n="lang-nl-val">Néerlandais</span> 
+              <span class="text-[10px] text-[var(--text-muted)]" data-i18n="lang-b1">Niveau B1</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Certifications -->
-      <div class="border-t border-[var(--line)] pt-16">
-        <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)">Certifications</h4>
-        <div class="space-y-6 text-[14px] font-light">
-          <div class="flex justify-between items-center py-3 border-b border-[var(--line)] hover-target skill-item">
-            <span>Google Data Analytics Professional</span>
-            <span class="text-[11px] uppercase tracking-[0.15em] opacity-60 font-semibold" data-i18n="cert-progress">En cours</span>
+      <div class="border-t border-[var(--line)] pt-12">
+        <h4 class="text-[11px] uppercase tracking-[0.2em] font-extrabold mb-6 text-[var(--text-muted)]">Certifications</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 border border-[var(--line)] rounded-md flex justify-between items-center hover-target hover:border-[var(--accent)] transition-all">
+            <span class="text-[13px] font-semibold">Google Data Analytics</span>
+            <span class="text-[10px] uppercase tracking-[0.1em] font-bold text-[var(--accent)]" data-i18n="cert-progress">En cours</span>
           </div>
-          <div class="flex justify-between items-center py-3 border-b border-[var(--line)] hover-target skill-item">
-            <span>Microsoft Certified: Power BI Data Analyst Associate</span>
-            <span class="text-[11px] uppercase tracking-[0.15em] opacity-60 font-semibold" data-i18n="cert-progress">En cours</span>
+          <div class="p-4 border border-[var(--line)] rounded-md flex justify-between items-center hover-target hover:border-[var(--accent)] transition-all">
+            <span class="text-[13px] font-semibold">Microsoft Power BI Associate</span>
+            <span class="text-[10px] uppercase tracking-[0.1em] font-bold text-[var(--accent)]" data-i18n="cert-progress">En cours</span>
           </div>
         </div>
       </div>
@@ -414,33 +448,33 @@
 <footer id="contact" class="px-6 md:px-16 py-36 max-w-5xl mx-auto border-t border-[var(--line)]">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)">04 / CONNECT</h2>
+      <h2 class="text-[11px] uppercase tracking-[0.3em] font-extrabold text-[var(--accent)]">04 / CONNECT</h2>
     </div>
     <div class="md:col-span-2">
-      <h3 class="text-3xl md:text-5xl font-light leading-tight mb-16">
+      <h3 class="text-3xl md:text-5xl font-extrabold leading-tight mb-16 text-[var(--text)]">
         <span data-i18n="contact-cta-1">Discutons d'un projet</span> <br class="hidden md:inline">
-        <span class="serif italic font-normal" data-i18n="contact-cta-2">ou d'une opportunité de stage.</span>
+        <span class="text-[var(--accent)] font-medium" data-i18n="contact-cta-2">ou d'une opportunité de stage.</span>
       </h3>
 
       <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="space-y-12 max-w-lg mb-20" novalidate>
         <div class="flex flex-col">
-          <label for="name" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
+          <label for="name" class="text-[10px] uppercase tracking-[0.15em] font-bold" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
           <input type="text" id="name" name="name" class="minimal-input hover-target" required>
         </div>
         <div class="flex flex-col">
-          <label for="email" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-email">Adresse email</label>
+          <label for="email" class="text-[10px] uppercase tracking-[0.15em] font-bold" style="color: var(--text-muted)" data-i18n="form-email">Adresse email</label>
           <input type="email" id="email" name="email" class="minimal-input hover-target" required>
         </div>
         <div class="flex flex-col">
-          <label for="message" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-message">Votre message</label>
+          <label for="message" class="text-[10px] uppercase tracking-[0.15em] font-bold" style="color: var(--text-muted)" data-i18n="form-message">Votre message</label>
           <textarea id="message" name="message" rows="3" class="minimal-input resize-none hover-target" required></textarea>
         </div>
-        <button type="submit" class="text-[11px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-4" data-i18n="form-submit">
+        <button type="submit" class="text-[11px] uppercase tracking-[0.2em] font-bold hover-link hover-target pt-4 text-[var(--accent)]" data-i18n="form-submit">
           Envoyer le message →
         </button>
       </form>
 
-      <div class="flex flex-wrap gap-12 text-[13px] font-light">
+      <div class="flex flex-wrap gap-12 text-[13px] font-medium">
         <a href="mailto:melanied2502@gmail.com" class="hover-link hover-target">melanied2502@gmail.com</a>
         <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" class="hover-link hover-target" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
@@ -449,12 +483,12 @@
 </footer>
 
 <script>
-  // Dictionnaire de traduction (FR / EN / NL)
+  // Dictionnaire multilingue actualisé
   const translations = {
     fr: {
       "nav-parcours": "Mon Parcours",
       "nav-projets": "Mes Projets",
-      "nav-competences": "Expertise & Outils",
+      "nav-competences": "Compétences",
       "nav-contact": "Me Contacter",
       "menu-location-title": "Localisation",
       "menu-location-val": "Belgique — Disponible à distance",
@@ -499,7 +533,7 @@
     en: {
       "nav-parcours": "My Path",
       "nav-projets": "My Projects",
-      "nav-competences": "Skills & Expertise",
+      "nav-competences": "Skills",
       "nav-contact": "Contact Me",
       "menu-location-title": "Location",
       "menu-location-val": "Belgium — Remote Friendly",
@@ -519,7 +553,7 @@
       "p2-title": "E-Commerce Acquisition Dashboard",
       "p-view": "View Project ↗",
       "p-soon": "Coming Soon",
-      "skills-tech": "Technical Skills",
+      "skills-tech": "Technical",
       "skills-soft": "Key Assets",
       "skills-lang": "Languages",
       "soft-1": "Quantitative rigor",
@@ -544,7 +578,7 @@
     nl: {
       "nav-parcours": "Mijn Traject",
       "nav-projets": "Mijn Projecten",
-      "nav-competences": "Expertise & Tools",
+      "nav-competences": "Vaardigheden",
       "nav-contact": "Contact",
       "menu-location-title": "Locatie",
       "menu-location-val": "België — Beschikbaar voor remote werk",
@@ -564,7 +598,7 @@
       "p2-title": "E-Commerce Acquisitie Dashboard",
       "p-view": "Bekijken ↗",
       "p-soon": "Binnenkort",
-      "skills-tech": "Technische Vaardigheden",
+      "skills-tech": "Technische",
       "skills-soft": "Sterke punten",
       "skills-lang": "Talen",
       "soft-1": "Kwantitatieve precisie",
@@ -588,7 +622,7 @@
     }
   };
 
-  // Changement dynamique de langue
+  // Langue active par défaut
   let currentLang = 'fr';
   function setLanguage(lang) {
     currentLang = lang;
@@ -599,19 +633,18 @@
       }
     });
 
-    // Mettre à jour l'état visuel des boutons de langue
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.remove('opacity-100', 'font-semibold');
+      btn.classList.remove('opacity-100', 'font-bold');
       btn.classList.add('opacity-40');
     });
     const activeBtn = document.getElementById(`lang-${lang}`);
     if (activeBtn) {
       activeBtn.classList.remove('opacity-40');
-      activeBtn.classList.add('opacity-100', 'font-semibold');
+      activeBtn.classList.add('opacity-100', 'font-bold');
     }
   }
 
-  // Toggle du menu hamburger plein écran
+  // Hamburger menu toggle
   function toggleMenu() {
     const overlay = document.getElementById('menu-overlay');
     const line1 = document.getElementById('burger-line-1');
@@ -620,7 +653,6 @@
     overlay.classList.toggle('open');
     
     if (overlay.classList.contains('open')) {
-      // Rotation fluide en croix
       line1.style.transform = 'translateY(2px) rotate(45deg)';
       line2.style.transform = 'translateY(-2px) rotate(-45deg)';
     } else {
@@ -629,7 +661,13 @@
     }
   }
 
-  // Gestion du Thème Sombre / Clair
+  // Jauge de scroll connectée
+  window.addEventListener('scroll', () => {
+    const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+  });
+
+  // Mode sombre
   function toggleTheme() {
     document.documentElement.classList.toggle('dark');
     const isDark = document.documentElement.classList.contains('dark');
@@ -640,18 +678,18 @@
     document.documentElement.classList.add('dark');
   }
 
-  // Animation d'apparition au défilement
+  // Fade-in scroll observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
       }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0.05 });
 
   document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
 
-  // Curseur avec physique fluide (uniquement si l'appareil supporte le hover / grand écran)
+  // Curseur Fluide (Physics)
   const cursor = document.getElementById('custom-cursor');
   const ring = document.getElementById('custom-cursor-ring');
   let mouseX = 0, mouseY = 0;
@@ -668,8 +706,8 @@
 
   function animateRing() {
     if (ring) {
-      ringX += (mouseX - ringX) * 0.12;
-      ringY += (mouseY - ringY) * 0.12;
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
       ring.style.left = ringX + 'px';
       ring.style.top = ringY + 'px';
     }
