@@ -178,27 +178,59 @@ body {
 <body class="selection:bg-[var(--accent)] selection:text-white">
 
 <!-- Navigation -->
-<nav class="fixed top-0 w-full z-50 px-6 md:px-12 py-5 border-b border-[var(--line)] backdrop-blur-md transition-all duration-300" style="background-color: var(--nav-bg);">
-<div class="max-w-7xl mx-auto flex justify-between items-center">
-  <a href="#top" class="text-sm font-medium tracking-widest uppercase hover-link">Mélanie Dupriez</a>
+<!-- Navigation -->
+<nav id="navbar" class="fixed top-0 w-full z-50 px-6 md:px-12 py-5 border-b border-[var(--line)] backdrop-blur-md transition-all duration-300" style="background-color: var(--nav-bg);">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <a href="#top" class="text-sm font-medium tracking-widest uppercase hover-link">Mélanie Dupriez</a>
 
-  <div class="flex items-center gap-6">
-    <div class="hidden md:flex gap-4 text-[11px] tracking-wider font-medium">
-      <button onclick="setLanguage('fr')" class="lang-btn opacity-100 transition" id="lang-fr">FR</button>
-      <button onclick="setLanguage('en')" class="lang-btn opacity-40 hover:opacity-100 transition" id="lang-en">EN</button>
-      <button onclick="setLanguage('nl')" class="lang-btn opacity-40 hover:opacity-100 transition" id="lang-nl">NL</button>
+    <div class="flex items-center gap-2 md:gap-4">
+      
+      <!-- Globe pour les langues -->
+      <div class="relative group">
+        <button class="p-2 hover:text-[var(--accent)] transition rounded-full hover:bg-[var(--accent-light)]">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </button>
+        <div class="absolute right-0 top-full mt-2 bg-[var(--bg-card)] border border-[var(--line)] rounded-xl py-2 w-24 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all text-[11px] font-medium tracking-wider text-center z-50">
+          <button onclick="setLanguage('fr')" class="block w-full py-2 hover:bg-[var(--accent-light)]">FR</button>
+          <button onclick="setLanguage('en')" class="block w-full py-2 hover:bg-[var(--accent-light)]">EN</button>
+          <button onclick="setLanguage('nl')" class="block w-full py-2 hover:bg-[var(--accent-light)]">NL</button>
+        </div>
+      </div>
+
+      <!-- Lune pour mode sombre -->
+      <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-2 hover:text-[var(--accent)] transition rounded-full hover:bg-[var(--accent-light)]">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+
+      <!-- Menu 3 barres -->
+      <button onclick="toggleMenu()" class="flex flex-col justify-center items-center w-10 h-10 z-50 focus:outline-none rounded-full hover:bg-[var(--accent-light)] transition">
+        <div id="burger-container" class="relative w-5 h-4 flex flex-col justify-between">
+          <span id="b1" class="w-full h-[1.5px] bg-[var(--text)] transition-all duration-300 origin-left"></span>
+          <span id="b2" class="w-full h-[1.5px] bg-[var(--text)] transition-all duration-300"></span>
+          <span id="b3" class="w-full h-[1.5px] bg-[var(--text)] transition-all duration-300 origin-left"></span>
+        </div>
+      </button>
     </div>
-    <span class="hidden md:block w-px h-4 bg-[var(--line)]"></span>
-    <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-2 hover:text-[var(--accent)] transition rounded-full hover:bg-[var(--accent-light)]">
-      <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-    </button>
-    <button onclick="toggleMenu()" class="flex flex-col justify-center items-center w-8 h-8 z-50 focus:outline-none rounded-full hover:bg-[var(--accent-light)] transition">
-      <span id="burger-line-1" class="w-4 h-[1.5px] bg-[var(--text)] transition-all duration-300 mb-1"></span>
-      <span id="burger-line-2" class="w-4 h-[1.5px] bg-[var(--text)] transition-all duration-300"></span>
-    </button>
   </div>
-</div>
 </nav>
+
+<style>
+/* Animation Burger vers Flèche */
+.menu-open #b1 { transform: rotate(45deg); width: 12px; }
+.menu-open #b2 { opacity: 0; }
+.menu-open #b3 { transform: rotate(-45deg); width: 12px; }
+</style>
+
+<script>
+function toggleMenu() {
+  const overlay = document.getElementById('menu-overlay');
+  const navbar = document.getElementById('navbar');
+  
+  overlay.classList.toggle('open');
+  navbar.classList.toggle('menu-open');
+}
+</script>
+
 
 <!-- Menu Overlay -->
 <div id="menu-overlay" class="fixed inset-0 z-40 flex flex-col justify-center px-6 md:px-12" style="background-color: var(--nav-bg);">
