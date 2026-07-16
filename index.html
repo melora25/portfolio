@@ -7,7 +7,7 @@
 <meta name="description" content="Portfolio de Mélanie Dupriez, Business Data Analyst spécialisée en Business Intelligence, structuration de données et interfaces décisionnelles.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght=200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght=200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #FDFBFB;
@@ -32,6 +32,37 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-x: hidden;
+}
+
+.glass-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 999px;
+  overflow: hidden;
+
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.25);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.35),
+      rgba(255,255,255,0.05)
+    );
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  box-shadow:
+    inset 1px 1px 10px rgba(255,255,255,0.4),
+    0 10px 30px rgba(221,160,173,0.15);
+
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease;
 }
 
 /* Curseur personnalisé fluide (uniquement sur PC) */
@@ -241,7 +272,7 @@ body {
     <a href="#projets" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-projets">Mes Projets</a>
     <a href="#competences" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-competences">Compétences & Outils</a>
     <a href="#certifications" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-certs">Certifications</a>
-    <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-contact">Recrutement & Collaboration</a>
+    <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-contact">Contact</a>
   </nav>
   <div class="text-[11px] uppercase tracking-[0.2em] space-y-5 font-light" style="color: var(--text-muted)">
     <div>
@@ -290,7 +321,7 @@ body {
     </p>
     <div class="flex md:justify-end gap-8 text-[11px] uppercase tracking-[0.2em] font-semibold">
       <a href="#projets" class="hover-link hover-target" data-i18n="hero-cta-1">Découvrir mes travaux ↓</a>
-      <a href="#contact" class="hover-link hover-target" data-i18n="hero-cta-2">Me recruter / Collaborer →</a>
+      <a href="#contact" class="hover-link hover-target" data-i18n="hero-cta-2">Me contacter →</a>
     </div>
   </div>
 
@@ -414,40 +445,141 @@ body {
   </div>
   <div class="md:col-span-2 space-y-20">
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
-      <div>
-        <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-tech">Outils</h4>
-        <ul class="space-y-4 text-[14px] font-light">
-          <li class="skill-item hover-target">Python</li>
-          <li class="skill-item hover-target">SQL & Modélisation</li>
-          <li class="skill-item hover-target">Power BI</li>
-          <li class="skill-item hover-target">Tableau</li>
-          <li class="skill-item hover-target">Excel</li>
-          <li class="skill-item hover-target">Canva</li>
-        </ul>
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-      <div>
-        <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-soft">Qualités</h4>
-        <ul class="space-y-4 text-[14px] font-light">
-          <li class="skill-item hover-target" data-i18n="soft-1">Rigueur</li>
-          <li class="skill-item hover-target" data-i18n="soft-2">Curiosité</li>
-          <li class="skill-item hover-target" data-i18n="soft-3">Autonomie</li>
-          <li class="skill-item hover-target" data-i18n="soft-4">Sens du détail</li>
-          <li class="skill-item hover-target" data-i18n="soft-5">Créativité</li>
-          <li class="skill-item hover-target" data-i18n="soft-6">Adaptabilité</li>
-        </ul>
-      </div>
+  <div class="border border-[var(--line)] p-8 rounded-2xl hover:border-[var(--accent)] transition-all duration-500">
 
-      <div>
-        <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-lang">Langues</h4>
-        <ul class="space-y-5 text-[14px] font-light">
-          <li class="skill-item hover-target"><span data-i18n="lang-fr-val">Français</span> <span class="text-[11px] opacity-50 block" data-i18n="lang-native">C2 / Langue maternelle</span></li>
-          <li class="skill-item hover-target"><span data-i18n="lang-en-val">Anglais</span> <span class="text-[11px] opacity-50 block" data-i18n="lang-b2">Niveau B2</span></li>
-          <li class="skill-item hover-target"><span data-i18n="lang-nl-val">Néerlandais</span> <span class="text-[11px] opacity-50 block" data-i18n="lang-b1">Niveau B1</span></li>
-        </ul>
-      </div>
+    <p class="text-[10px] uppercase tracking-[0.25em] mb-6" style="color:var(--accent)" data-i18n="skills-data-title">
+      Data & Intelligence
+    </p>
+
+    <h3 class="text-2xl font-light mb-6">
+      <span data-i18n="skills-data-main">Transformer les données</span><br>
+      <span class="serif italic" data-i18n="skills-data-italic">en décisions.</span>
+    </h3>
+
+    <div class="flex flex-wrap gap-3">
+      <span class="px-4 py-2 rounded-full border border-[var(--line)] text-sm">Python</span>
+      <span class="px-4 py-2 rounded-full border border-[var(--line)] text-sm">SQL</span>
+      <span class="px-4 py-2 rounded-full border border-[var(--line)] text-sm">Power BI</span>
+      <span class="px-4 py-2 rounded-full border border-[var(--line)] text-sm">Tableau</span>
+      <span class="px-4 py-2 rounded-full border border-[var(--line)] text-sm">Excel</span>
+      <span class="px-4 py-2 rounded-full border border-[var(--line)] text-sm">DAX</span>
     </div>
+
+  </div>
+
+
+  <div class="border border-[var(--line)] p-8 rounded-2xl hover:border-[var(--accent)] transition-all duration-500">
+
+    <p class="text-[10px] uppercase tracking-[0.25em] mb-6" style="color:var(--accent)" data-i18n="skills-creative-title">
+      Création & Communication
+    </p>
+
+    <h3 class="text-2xl font-light mb-6">
+      <span data-i18n="skills-creative-main">Une approche analytique</span><br>
+      <span class="serif italic" data-i18n="skills-creative-italic">avec une sensibilité visuelle.</span>
+    </h3>
+
+    <div class="flex flex-wrap gap-3">
+      <span class="px-4 py-2 rounded-full border border-[var(--line)] text-sm">Canva</span>
+      <span class="px-4 py-2 rounded-full border border-[var(--line)] text-sm" data-i18n="skill-photo">Photographie</span>
+      <span class="px-4 py-2 rounded-full border border-[var(--line)] text-sm" data-i18n="skill-video">Montage vidéo</span>
+    </div>
+
+  </div>
+
+
+  <div class="md:col-span-2 border-t border-[var(--line)] pt-12">
+
+    <p class="text-[10px] uppercase tracking-[0.25em] mb-8" style="color:var(--text-muted)" data-i18n="skills-method-title">
+      Manière de travailler
+    </p>
+
+
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-6">
+
+      <div>
+        <span class="text-3xl serif italic">01</span>
+        <p class="mt-2 text-sm" data-i18n="soft-1">Rigueur</p>
+      </div>
+
+      <div>
+        <span class="text-3xl serif italic">02</span>
+        <p class="mt-2 text-sm" data-i18n="soft-2">Curiosité</p>
+      </div>
+
+      <div>
+        <span class="text-3xl serif italic">03</span>
+        <p class="mt-2 text-sm" data-i18n="soft-3">Autonomie</p>
+      </div>
+
+      <div>
+        <span class="text-3xl serif italic">04</span>
+        <p class="mt-2 text-sm" data-i18n="soft-4">Sens du détail</p>
+      </div>
+
+      <div>
+        <span class="text-3xl serif italic">05</span>
+        <p class="mt-2 text-sm" data-i18n="soft-5">Créativité</p>
+      </div>
+
+      <div>
+        <span class="text-3xl serif italic">06</span>
+        <p class="mt-2 text-sm" data-i18n="soft-6">Adaptabilité</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+      
+
+      <div class="md:col-span-3 border-t border-[var(--line)] pt-12">
+
+  <p class="text-[10px] uppercase tracking-[0.25em] mb-8" style="color:var(--text-muted)" data-i18n="skills-languages-title">
+    Langues
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+
+    <div class="skill-item hover-target">
+      <span class="text-3xl serif italic">FR</span>
+      <p class="mt-3 text-lg font-light" data-i18n="lang-fr-val">
+        Français
+      </p>
+      <span class="text-[11px] uppercase tracking-[0.15em] opacity-50" data-i18n="lang-native">
+        Langue maternelle · C2
+      </span>
+    </div>
+
+
+    <div class="skill-item hover-target">
+      <span class="text-3xl serif italic">EN</span>
+      <p class="mt-3 text-lg font-light" data-i18n="lang-en-val">
+        Anglais
+      </p>
+      <span class="text-[11px] uppercase tracking-[0.15em] opacity-50" data-i18n="lang-b2">
+        Niveau B2
+      </span>
+    </div>
+
+
+    <div class="skill-item hover-target">
+      <span class="text-3xl serif italic">NL</span>
+      <p class="mt-3 text-lg font-light" data-i18n="lang-nl-val">
+        Néerlandais
+      </p>
+      <span class="text-[11px] uppercase tracking-[0.15em] opacity-50" data-i18n="lang-b1">
+        Niveau B1
+      </span>
+    </div>
+
+  </div>
+
+</div>
 
   </div>
 </div>
@@ -483,7 +615,7 @@ body {
 <footer id="contact" class="px-6 md:px-16 py-36 max-w-5xl mx-auto border-t border-[var(--line)]">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)" data-i18n="section-05">05 / RECRUTEMENT</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)" data-i18n="section-05">05 / CONTACT</h2>
   </div>
   <div class="md:col-span-2">
     <h3 class="text-3xl md:text-5xl font-light leading-tight mb-16">
@@ -511,9 +643,18 @@ body {
       
       <div id="formStatus" class="text-[12px] font-light hidden"></div>
 
-      <button type="submit" id="submitBtn" class="text-[11px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-4" data-i18n="form-submit">
-        Envoyer le message →
-      </button>
+      <button 
+type="submit" 
+id="submitBtn"
+class="group relative overflow-hidden rounded-full px-8 py-4 text-[11px] uppercase tracking-[0.2em] font-semibold border border-[var(--line)] transition-all duration-500 hover:border-[var(--accent)]"
+>
+<span class="relative z-10 group-hover:text-white transition-colors duration-500">
+Envoyer le message →
+</span>
+
+<span class="absolute inset-0 bg-[var(--accent)] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+
+</button>
     </form>
 
     <div class="flex flex-col gap-6 mb-16">
@@ -547,7 +688,7 @@ fr: {
   "nav-projets": "Mes Projets",
   "nav-competences": "Compétences & Outils",
   "nav-certs": "Certifications",
-  "nav-contact": "Recrutement & Collaboration",
+  "nav-contact": "Contact",
   "menu-location-title": "Localisation",
   "menu-location-val": "Belgique — Disponible en télétravail",
   "menu-social-title": "Réseaux",
@@ -558,7 +699,7 @@ fr: {
   "hero-title-2": "je guide vos décisions pour optimiser vos performances.",
   "hero-desc": "Ingénieure de gestion et Business Data Analyst, je traduis des architectures de données complexes en leviers de performance stratégique. Je conçois également des interfaces web sur mesure pour fluidifier et simplifier la visualisation de vos indicateurs clés.",
   "hero-cta-1": "Découvrir mes travaux ↓",
-  "hero-cta-2": "Me recruter / Collaborer →",
+  "hero-cta-2": "Me contacter →",
   "stat-grad": "Diplôme prévu",
   "stat-langs": "Langues parlées",
   "stat-tools": "Outils maîtrisés",
@@ -590,6 +731,16 @@ fr: {
   "skills-tech": "Outils",
   "skills-soft": "Qualités",
   "skills-lang": "Langues",
+"skills-data-title": "Data & Intelligence",
+"skills-data-main": "Transformer les données",
+"skills-data-italic": "en décisions.",
+"skills-creative-title": "Création & Communication",
+"skills-creative-main": "Une approche analytique",
+"skills-creative-italic": "avec une sensibilité visuelle.",
+"skill-photo": "Photographie",
+"skill-video": "Montage vidéo",
+"skills-method-title": "Manière de travailler",
+"skills-languages-title": "Langues",
   "soft-1": "Rigueur",
   "soft-2": "Curiosité",
   "soft-3": "Autonomie",
@@ -603,7 +754,7 @@ fr: {
   "lang-b2": "Niveau B2",
   "lang-b1": "Niveau B1",
   "section-04": "04 / CERTIFICATIONS",
-  "section-05": "05 / RECRUTEMENT",
+  "section-05": "05 / CONTACT",
   "contact-cta-1": "Collaborons ensemble",
   "contact-cta-2": "ou discutons d'un recrutement.",
   "form-name": "Nom complet",
@@ -621,7 +772,7 @@ en: {
   "nav-projets": "My Projects",
   "nav-competences": "Skills & Tools",
   "nav-certs": "Certifications",
-  "nav-contact": "Recruitment & Contact",
+  "nav-contact": "Contact",
   "menu-location-title": "Location",
   "menu-location-val": "Belgium — Remote Friendly",
   "menu-social-title": "Socials",
@@ -632,7 +783,7 @@ en: {
   "hero-title-2": "guiding your decisions to optimize performance.",
   "hero-desc": "Management Engineer and Business Data Analyst, I translate complex data architectures into strategic performance drivers. I also build custom web interfaces to simplify and fluidify key indicator visualization.",
   "hero-cta-1": "See my work ↓",
-  "hero-cta-2": "Hire Me / Collaborate →",
+  "hero-cta-2": "Contact me →",
   "stat-grad": "Expected Graduation",
   "stat-langs": "Languages spoken",
   "stat-tools": "Tools mastered",
@@ -664,6 +815,16 @@ en: {
   "skills-tech": "Tools",
   "skills-soft": "Traits",
   "skills-lang": "Languages",
+"skills-data-title": "Data & Intelligence",
+"skills-data-main": "Transforming data",
+"skills-data-italic": "into decisions.",
+"skills-creative-title": "Creation & Communication",
+"skills-creative-main": "An analytical approach",
+"skills-creative-italic": "with visual sensitivity.",
+"skill-photo": "Photography",
+"skill-video": "Video Editing",
+"skills-method-title": "Working style",
+"skills-languages-title": "Languages",
   "soft-1": "Rigor",
   "soft-2": "Curiosity",
   "soft-3": "Autonomy",
@@ -677,7 +838,7 @@ en: {
   "lang-b2": "B2 Upper-Intermediate",
   "lang-b1": "B1 Intermediate",
   "section-04": "04 / CERTIFICATIONS",
-  "section-05": "05 / RECRUITMENT",
+  "section-05": "05 / CONTACT",
   "contact-cta-1": "Let's build together",
   "contact-cta-2": "or discuss recruitment.",
   "form-name": "Full name",
@@ -695,7 +856,7 @@ nl: {
   "nav-projets": "Mijn Projecten",
   "nav-competences": "Expertise & Tools",
   "nav-certs": "Certificeringen",
-  "nav-contact": "Werving & Contact",
+  "nav-contact": "Contact",
   "menu-location-title": "Locatie",
   "menu-location-val": "België — Beschikbaar pour remote werk",
   "menu-social-title": "Netwerken",
@@ -706,7 +867,7 @@ nl: {
   "hero-title-2": "ik leid uw beslissingen om prestaties te optimaliseren.",
   "hero-desc": "Handelsingenieur en Business Data Analyst, ik vertaal complexe data-architecturen in strategische prestatie-indicatoren. Ik ontwerp ook webinterfaces om de visualisatie van uw data te vereenvoudigen.",
   "hero-cta-1": "Ontdek mijn werk ↓",
-  "hero-cta-2": "Werk samen / Rekruteer →",
+  "hero-cta-2": "Contacteer mij →",
   "stat-grad": "Verwacht Diploma",
   "stat-langs": "Gesproken talen",
   "stat-tools": "Beheerste tools",
@@ -738,6 +899,16 @@ nl: {
   "skills-tech": "Tools",
   "skills-soft": "Kwaliteiten",
   "skills-lang": "Talen",
+"skills-data-title": "Data & Intelligence",
+"skills-data-main": "Gegevens omzetten",
+"skills-data-italic": "in beslissingen.",
+"skills-creative-title": "Creatie & Communicatie",
+"skills-creative-main": "Een analytische aanpak",
+"skills-creative-italic": "met visuele gevoeligheid.",
+"skill-photo": "Fotografie",
+"skill-video": "Videobewerking",
+"skills-method-title": "Manier van werken",
+"skills-languages-title": "Talen",
   "soft-1": "Rigor",
   "soft-2": "Nieuwsgierigheid",
   "soft-3": "Zelfstandigheid",
@@ -751,7 +922,7 @@ nl: {
   "lang-b2": "B2-niveau",
   "lang-b1": "B1-niveau",
   "section-04": "04 / CERTIFICERINGEN",
-  "section-05": "05 / WERVING",
+  "section-05": "05 / CONTACT",
   "contact-cta-1": "Laten we samenwerken",
   "contact-cta-2": "of rekrutering bespreken.",
   "form-name": "Volledige naam",
