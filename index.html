@@ -3,29 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mélanie Dupriez — Portfolio Data</title>
-<meta name="description" content="Portfolio de Mélanie Dupriez, étudiante en Ingénieur de gestion spécialisée en Data Analytics et Business Intelligence.">
+<title>Mélanie Dupriez — Business Data Analyst</title>
+<meta name="description" content="Portfolio de Mélanie Dupriez, étudiante en Ingénieur de gestion, Business Data Analyst spécialisée en analyse décisionnelle et conception d'interfaces web.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F8FAFC; /* Ardoise très clair */
-    --text: #0F172A; /* Ardoise foncé */
-    --text-muted: #64748B; /* Gris acier */
-    --line: rgba(15, 23, 42, 0.08);
-    --accent: #06B6D4; /* Cyan électrique moderne */
-    --accent-glow: rgba(6, 182, 212, 0.15);
-    --nav-bg: rgba(248, 250, 252, 0.8);
+    --bg: #FCFBF9; /* Blanc chaud, lin très clair */
+    --text: #1C1B19; /* Noir doux/charbon */
+    --text-muted: #706E6A; /* Taupe/Gris chaud */
+    --line: rgba(28, 27, 25, 0.08);
+    --accent: #C4A484; /* Or bronze doux, élégant et chaleureux */
+    --accent-glow: rgba(196, 164, 132, 0.12);
+    --nav-bg: rgba(252, 251, 249, 0.85);
   }
   .dark {
-    --bg: #030712; /* Noir d'encre profond */
-    --text: #F3F4F6; /* Blanc cassé */
-    --text-muted: #9CA3AF;
-    --line: rgba(243, 244, 246, 0.08);
-    --accent: #22D3EE; /* Cyan plus vif pour le mode sombre */
-    --accent-glow: rgba(34, 211, 238, 0.2);
-    --nav-bg: rgba(3, 7, 18, 0.8);
+    --bg: #121110; /* Noir chaud organique */
+    --text: #F4F3F0; /* Blanc de soie */
+    --text-muted: #9E9B96;
+    --line: rgba(244, 243, 240, 0.08);
+    --accent: #D4B99B; /* Bronze doré plus lumineux pour le mode sombre */
+    --accent-glow: rgba(212, 185, 155, 0.15);
+    --nav-bg: rgba(18, 17, 16, 0.85);
   }
   
   body {
@@ -36,11 +36,11 @@
     overflow-x: hidden;
   }
 
-  /* Curseur intelligent (uniquement PC) */
+  /* Curseur intelligent fluide */
   @media (min-width: 1024px) {
     #custom-cursor {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       background-color: var(--accent);
       border-radius: 50%;
       position: fixed;
@@ -50,10 +50,10 @@
       transition: width 0.2s ease, height 0.2s ease;
     }
     #custom-cursor-ring {
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       border: 1px solid var(--accent);
-      opacity: 0.4;
+      opacity: 0.35;
       border-radius: 50%;
       position: fixed;
       transform: translate(-50%, -50%);
@@ -62,16 +62,15 @@
       transition: transform 0.08s ease-out, width 0.2s ease, height 0.2s ease, opacity 0.2s;
     }
     .hover-active #custom-cursor {
-      width: 12px;
-      height: 12px;
-      background-color: var(--accent);
+      width: 10px;
+      height: 10px;
     }
     .hover-active #custom-cursor-ring {
-      width: 48px;
-      height: 48px;
-      opacity: 0.8;
+      width: 42px;
+      height: 42px;
+      opacity: 0.7;
     }
-    a, button, input, textarea, .project-row, .lang-btn, .burger-btn, .skill-tag {
+    a, button, input, textarea, .project-row, .lang-btn, .burger-btn, .skill-tag, #back-to-top {
       cursor: none !important;
     }
     body {
@@ -83,7 +82,7 @@
     font-family: 'Playfair Display', serif;
   }
 
-  /* Liens technologiques */
+  /* Ligne de survol poétique */
   .hover-link {
     position: relative;
     transition: color 0.3s ease;
@@ -93,79 +92,22 @@
     position: absolute;
     width: 100%;
     transform: scaleX(0);
-    height: 1.5px;
+    height: 1px;
     bottom: -2px;
     left: 0;
     background-color: var(--accent);
     transform-origin: bottom right;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .hover-link:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
 
-  /* Lignes de projets type Dashboard */
-  .project-row {
-    border-bottom: 1px solid var(--line);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-  }
-  .project-row::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background-color: var(--accent);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .project-row:hover::before {
-    transform: scaleY(1);
-  }
-  .project-row:hover {
-    background-color: rgba(6, 182, 212, 0.02);
-    padding-left: 20px;
-  }
-  .dark .project-row:hover {
-    background-color: rgba(34, 211, 238, 0.01);
-  }
-
-  /* Overlay de Menu */
-  #menu-overlay {
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.98);
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
-  }
-  #menu-overlay.open {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-  }
-
-  /* Menu items slide in */
-  #menu-overlay nav a {
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  #menu-overlay.open nav a {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  #menu-overlay.open nav a:nth-child(1) { transition-delay: 0.05s; }
-  #menu-overlay.open nav a:nth-child(2) { transition-delay: 0.1s; }
-  #menu-overlay.open nav a:nth-child(3) { transition-delay: 0.15s; }
-  #menu-overlay.open nav a:nth-child(4) { transition-delay: 0.2s; }
-
   /* Révélation de section */
   .reveal-section {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(15px);
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal-section.active {
@@ -173,63 +115,85 @@
     transform: translateY(0);
   }
 
-  /* Inputs de formulaire modernisés */
+  /* Menu de navigation plein écran */
+  #menu-overlay {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+  }
+  #menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Entrées de formulaire épurées */
   .minimal-input {
     background: transparent;
     border: none;
-    border-bottom: 1.5px solid var(--line);
+    border-bottom: 1px solid var(--line);
     border-radius: 0;
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     color: var(--text);
     transition: border-color 0.3s ease;
-    font-weight: 400;
   }
   .minimal-input:focus {
     outline: none;
     border-color: var(--accent);
   }
 
-  /* Badges de compétences */
+  /* Badges de compétences minimalistes */
   .skill-tag {
     border: 1px solid var(--line);
-    background-color: rgba(15, 23, 42, 0.01);
+    background-color: transparent;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .skill-tag:hover {
     border-color: var(--accent);
     background-color: var(--accent-glow);
-    transform: translateY(-2px);
-  }
-  .dark .skill-tag {
-    background-color: rgba(243, 244, 246, 0.01);
+    transform: translateY(-1px);
   }
 
-  /* Ligne de progression dynamique de scroll */
+  /* Ligne de progression en haut */
   #scroll-progress {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--accent));
+    height: 1.5px;
+    background: var(--accent);
     width: 0%;
     transition: width 0.1s ease-out;
   }
+
+  /* Bouton retour en haut */
+  #back-to-top {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 </style>
 </head>
-<body class="selection:bg-[var(--accent)] selection:text-slate-900">
+<body class="selection:bg-[var(--accent-glow)] selection:text-[var(--text)]">
 
-<!-- Curseur sur mesure -->
+<!-- Curseur personnalisé -->
 <div id="custom-cursor" class="hidden lg:block opacity-0"></div>
 <div id="custom-cursor-ring" class="hidden lg:block opacity-0"></div>
 
-<!-- Barre de navigation avec flou dynamique et jauge de progression -->
-<nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-5 border-b border-[rgba(15,23,42,0.04)] dark:border-[rgba(243,244,246,0.04)] backdrop-blur-lg transition-all duration-300" style="background-color: var(--nav-bg);">
+<!-- Barre de navigation avec ligne de progression -->
+<nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-5 border-b border-[rgba(28,27,25,0.03)] dark:border-[rgba(244,243,240,0.03)] backdrop-blur-md transition-all duration-300" style="background-color: var(--nav-bg);">
   <div class="max-w-7xl mx-auto flex justify-between items-center">
-    <a href="#top" class="text-sm font-bold tracking-[0.3em] uppercase hover-target text-[var(--text)]">M.D<span class="text-[var(--accent)]">_</span></a>
+    <a href="#top" class="text-xs font-semibold tracking-[0.3em] uppercase hover-target text-[var(--text)]">M.D<span class="text-[var(--accent)]">.</span></a>
     
     <div class="flex items-center gap-8">
       <!-- Sélecteur de langue -->
-      <div class="flex gap-2.5 text-[10px] tracking-[0.2em] font-semibold">
+      <div class="flex gap-2 text-[9px] tracking-[0.2em] font-medium">
         <button onclick="setLanguage('fr')" class="lang-btn hover-target opacity-100 transition" id="lang-fr">FR</button>
         <span class="opacity-20">|</span>
         <button onclick="setLanguage('en')" class="lang-btn hover-target opacity-40 transition" id="lang-en">EN</button>
@@ -239,33 +203,32 @@
 
       <!-- Sélecteur de thème -->
       <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-1 hover:text-[var(--accent)] transition hover-target">
-        <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
+        <svg id="themeIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
       </button>
 
-      <!-- Bouton Menu hamburger isolé -->
-      <button onclick="toggleMenu()" class="burger-btn flex flex-col justify-between w-6 h-3.5 z-50 hover-target focus:outline-none" aria-label="Menu">
-        <span id="burger-line-1" class="w-full h-[1.5px] bg-[var(--text)] transition-all duration-300 origin-left"></span>
-        <span id="burger-line-2" class="w-full h-[1.5px] bg-[var(--text)] transition-all duration-300 origin-left mt-[5px]"></span>
+      <!-- Hamburger -->
+      <button onclick="toggleMenu()" class="burger-btn flex flex-col justify-between w-5 h-3 z-50 hover-target focus:outline-none" aria-label="Menu">
+        <span id="burger-line-1" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left"></span>
+        <span id="burger-line-2" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left mt-[4px]"></span>
       </button>
     </div>
   </div>
-  <!-- Jauge de scroll connectée en bas de barre -->
   <div id="scroll-progress"></div>
 </nav>
 
-<!-- Menu de navigation plein écran -->
+<!-- Menu plein écran -->
 <div id="menu-overlay" class="fixed inset-0 z-40 flex flex-col justify-center px-6 md:px-20" style="background-color: var(--bg);">
   <div class="max-w-4xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-16">
-    <nav class="flex flex-col gap-6 text-4xl md:text-5xl font-light">
+    <nav class="flex flex-col gap-6 text-3xl md:text-4xl font-light">
       <a href="#parcours" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-parcours">Mon Parcours</a>
-      <a href="#projets" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-projets">Mes Projets</a>
+      <a href="#projets" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-projets">Projets</a>
       <a href="#competences" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-competences">Compétences</a>
-      <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-contact">Me Contacter</a>
+      <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-contact">Contact</a>
     </nav>
-    <div class="text-[11px] uppercase tracking-[0.25em] space-y-6 font-semibold" style="color: var(--text-muted)">
+    <div class="text-[10px] uppercase tracking-[0.25em] space-y-6 font-medium" style="color: var(--text-muted)">
       <div>
         <p class="mb-1 text-[var(--accent)]" data-i18n="menu-location-title">Localisation</p>
-        <p class="text-[var(--text)] font-light" data-i18n="menu-location-val">Belgique — Disponible à distance</p>
+        <p class="text-[var(--text)] font-light" data-i18n="menu-location-val">Belgique — Distanciel accepté</p>
       </div>
       <div>
         <p class="mb-1 text-[var(--accent)]" data-i18n="menu-social-title">Réseaux</p>
@@ -275,26 +238,25 @@
   </div>
 </div>
 
-<!-- Section Hero (Accueil) -->
-<main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32">
+<!-- Section Hero -->
+<main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-24">
   <div class="max-w-5xl mx-auto w-full">
-    <!-- Statut Data -->
-    <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-md border border-[var(--line)] bg-[rgba(6,182,212,0.03)]">
-      <span class="w-2 h-2 rounded-full bg-[var(--accent)] animate-ping"></span>
-      <span class="text-[10px] tracking-[0.25em] uppercase font-bold text-[var(--accent)] animate-pulse" data-i18n="hero-status">Disponible pour un stage / alternance en Data</span>
+    <div class="inline-flex items-center gap-2.5 mb-6">
+      <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>
+      <span class="text-[9px] tracking-[0.25em] uppercase font-semibold text-[var(--accent)]" data-i18n="hero-status">Business Data Analyst</span>
     </div>
     
-    <h1 class="text-[clamp(2.2rem,6.5vw,5rem)] font-extrabold leading-[1.1] tracking-tight mb-16 text-[var(--text)]">
-      <span data-i18n="hero-title-1">Je structure la donnée,</span><br>
-      <span class="text-[var(--accent)] font-medium" data-i18n="hero-title-2">je clarifie les décisions stratégiques.</span>
+    <h1 class="text-[clamp(1.8rem,5vw,4rem)] font-light leading-[1.2] tracking-tight mb-12 text-[var(--text)]">
+      <span data-i18n="hero-title-1">Donner un sens aux données pour</span><br>
+      <span class="serif italic text-[var(--accent)]" data-i18n="hero-title-2">optimiser chaque décision stratégique.</span>
     </h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end border-t border-[var(--line)] pt-12">
-      <p class="text-[14px] md:text-[15px] leading-relaxed font-normal max-w-md text-[var(--text-muted)]" data-i18n="hero-desc">
-        Étudiante en Ingénieur de gestion à l'Université de Mons. Mon objectif est de transformer le bruit de la donnée brute en récits visuels limpides et porteurs de valeur pour l'entreprise.
+      <p class="text-[13px] md:text-[14px] leading-relaxed font-light max-w-md text-[var(--text-muted)]" data-i18n="hero-desc">
+        Étudiante en Ingénieur de gestion à l'Université de Mons. J'allie rigueur analytique et design d'interface pour transformer des jeux de données complexes en leviers de croissance clairs et exploitables.
       </p>
-      <div class="flex md:justify-end gap-8 text-[11px] uppercase tracking-[0.2em] font-bold">
-        <a href="#projets" class="hover-link hover-target text-[var(--accent)]" data-i18n="hero-cta-1">Consulter mes travaux ↓</a>
+      <div class="flex md:justify-end gap-6 text-[10px] uppercase tracking-[0.2em] font-semibold">
+        <a href="#projets" class="hover-link hover-target text-[var(--accent)]" data-i18n="hero-cta-1">Découvrir mes travaux ↓</a>
         <a href="#contact" class="hover-link hover-target text-[var(--text)]" data-i18n="hero-cta-2">Me contacter →</a>
       </div>
     </div>
@@ -302,140 +264,128 @@
 </main>
 
 <!-- Section 1 : Parcours -->
-<section id="parcours" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
+<section id="parcours" class="px-6 md:px-16 py-32 max-w-5xl mx-auto reveal-section">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-12">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.3em] font-extrabold sticky top-32 text-[var(--accent)]">01 / PROFIL & ACADÉMIQUE</h2>
+      <h2 class="text-[10px] uppercase tracking-[0.3em] font-semibold sticky top-28 text-[var(--accent)]">01 / PARCOURS</h2>
     </div>
-    <div class="md:col-span-2 space-y-16">
+    <div class="md:col-span-2 space-y-12">
       <!-- Études -->
-      <div class="group border-l-2 border-[var(--line)] pl-6 hover:border-[var(--accent)] transition-colors duration-300">
-        <span class="text-[11px] font-bold tracking-[0.2em] block mb-2 text-[var(--accent)]">2024 — 2027</span>
-        <h3 class="text-2xl font-bold mb-3 text-[var(--text)]" data-i18n="edu-title">Bachelier en Ingénieur de gestion</h3>
-        <p class="text-[11px] uppercase tracking-[0.15em] mb-4 text-[var(--text-muted)]">Université de Mons</p>
-        <p class="text-[14px] leading-relaxed font-normal max-w-lg text-[var(--text-muted)]" data-i18n="edu-desc">
-          Formation d'excellence combinant les sciences économiques et mathématiques de l'ingénieur. Modélisation statistique avancée et analyse des structures d'information d'entreprise.
+      <div class="group border-l border-[var(--line)] pl-5 hover:border-[var(--accent)] transition-colors duration-300">
+        <span class="text-[10px] font-medium tracking-[0.2em] block mb-1.5 text-[var(--accent)]">2024 — 2027</span>
+        <h3 class="text-xl font-light mb-2 text-[var(--text)]" data-i18n="edu-title">Bachelier en Ingénieur de gestion</h3>
+        <p class="text-[10px] uppercase tracking-[0.15em] mb-3 text-[var(--text-muted)]">Université de Mons</p>
+        <p class="text-[13px] leading-relaxed font-light max-w-lg text-[var(--text-muted)]" data-i18n="edu-desc">
+          Formation d'excellence combinant les sciences économiques, l'analyse de données et la modélisation mathématique.
         </p>
       </div>
 
       <!-- Expérience -->
-      <div class="group border-l-2 border-[var(--line)] pl-6 hover:border-[var(--accent)] transition-colors duration-300">
-        <span class="text-[11px] font-bold tracking-[0.2em] block mb-2 text-[var(--accent)]">2023</span>
-        <h3 class="text-2xl font-bold mb-3 text-[var(--text)]" data-i18n="exp-title">Social Media Management</h3>
-        <p class="text-[11px] uppercase tracking-[0.15em] mb-4 text-[var(--text-muted)]">GabyLuxxy</p>
-        <p class="text-[14px] leading-relaxed font-normal max-w-lg text-[var(--text-muted)]" data-i18n="exp-desc">
-          Traitement d'images, direction de la charte esthétique et exploitation d'analytics pour guider l'impact visuel et l'engagement d'une audience e-commerce de luxe.
+      <div class="group border-l border-[var(--line)] pl-5 hover:border-[var(--accent)] transition-colors duration-300">
+        <span class="text-[10px] font-medium tracking-[0.2em] block mb-1.5 text-[var(--accent)]">2023</span>
+        <h3 class="text-xl font-light mb-2 text-[var(--text)]" data-i18n="exp-title">Social Media & Analytics</h3>
+        <p class="text-[10px] uppercase tracking-[0.15em] mb-3 text-[var(--text-muted)]">GabyLuxxy</p>
+        <p class="text-[13px] leading-relaxed font-light max-w-lg text-[var(--text-muted)]" data-i18n="exp-desc">
+          Gestion de l'image de marque et exploitation des données analytiques d'audience pour optimiser l'engagement client.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Section 2 : Projets / Réalisations -->
-<section id="projets" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16 mb-16">
+<!-- Section 2 : Projets -->
+<section id="projets" class="px-6 md:px-16 py-32 max-w-5xl mx-auto reveal-section">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-12 mb-12">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.3em] font-extrabold text-[var(--accent)]">02 / DATA WORK</h2>
+      <h2 class="text-[10px] uppercase tracking-[0.3em] font-semibold text-[var(--accent)]">02 / PORTFOLIO</h2>
     </div>
     <div class="md:col-span-2">
-      <p class="text-[14px] font-normal leading-relaxed max-w-md text-[var(--text-muted)]" data-i18n="work-intro">
-        Sélection de réalisations analytiques alliant rigueur technique, requêtes complexes et sens de la lisibilité graphique.
+      <p class="text-[13px] font-light leading-relaxed max-w-md text-[var(--text-muted)]" data-i18n="work-intro">
+        Visualiser les flux, identifier les tendances, et concevoir des espaces de lecture digitaux propices à la prise de décision.
       </p>
     </div>
   </div>
 
-  <div class="mt-16 border-t border-[var(--line)]">
+  <div class="mt-12 border-t border-[var(--line)]">
     <!-- Projet 1 -->
-    <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
+    <div class="py-8 border-b border-[var(--line)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover-target hover:bg-[var(--accent-glow)] transition-colors duration-300 px-2 rounded-sm">
       <div>
-        <span class="text-[10px] tracking-[0.2em] block mb-2 text-[var(--accent)] font-bold">PYTHON / SQL / POWER BI</span>
-        <h3 class="text-xl font-bold text-[var(--text)]" data-i18n="p1-title">Visualisation de l'économie Belge</h3>
+        <span class="text-[9px] tracking-[0.15em] block mb-1 text-[var(--accent)] font-semibold">PYTHON / SQL / BI</span>
+        <h3 class="text-lg font-light text-[var(--text)]" data-i18n="p1-title">Visualisation de l'économie Belge</h3>
       </div>
-      <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
-        <span class="text-[13px] font-normal text-[var(--text-muted)]">2026</span>
-        <span class="text-[11px] uppercase tracking-[0.2em] font-bold text-[var(--text)]" data-i18n="p-view">Consulter ↗</span>
+      <div class="flex items-center gap-10 w-full md:w-auto justify-between md:justify-end">
+        <span class="text-[12px] font-light text-[var(--text-muted)]">2026</span>
+        <span class="text-[10px] uppercase tracking-[0.15em] font-semibold text-[var(--text)]" data-i18n="p-view">Consulter ↗</span>
       </div>
     </div>
 
     <!-- Projet 2 -->
-    <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
+    <div class="py-8 border-b border-[var(--line)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4 hover-target hover:bg-[var(--accent-glow)] transition-colors duration-300 px-2 rounded-sm">
       <div>
-        <span class="text-[10px] tracking-[0.2em] block mb-2 text-[var(--accent)] font-bold">LOOKER STUDIO / BIGQUERY</span>
-        <h3 class="text-xl font-bold text-[var(--text)]" data-i18n="p2-title">Dashboard d'acquisition E-Commerce</h3>
+        <span class="text-[9px] tracking-[0.15em] block mb-1 text-[var(--accent)] font-semibold">LOOKER STUDIO / ANALYTICS</span>
+        <h3 class="text-lg font-light text-[var(--text)]" data-i18n="p2-title">Dashboard de performance E-Commerce</h3>
       </div>
-      <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
-        <span class="text-[13px] font-normal text-[var(--text-muted)]" data-i18n="p-soon">Bientôt</span>
-        <span class="text-[11px] uppercase tracking-[0.15em] font-semibold opacity-40">—</span>
+      <div class="flex items-center gap-10 w-full md:w-auto justify-between md:justify-end">
+        <span class="text-[12px] font-light text-[var(--text-muted)]" data-i18n="p-soon">En cours</span>
+        <span class="text-[10px] uppercase tracking-[0.15em] font-semibold opacity-30">—</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Section 3 : Compétences (Traduit et Stylisé en badges tech) -->
-<section id="competences" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
+<!-- Section 3 : Compétences -->
+<section id="competences" class="px-6 md:px-16 py-32 max-w-5xl mx-auto reveal-section">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-12">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.3em] font-extrabold sticky top-32 text-[var(--accent)]" data-i18n="nav-competences">Compétences</h2>
+      <h2 class="text-[10px] uppercase tracking-[0.3em] font-semibold sticky top-28 text-[var(--accent)]" data-i18n="nav-competences">Compétences</h2>
     </div>
-    <div class="md:col-span-2 space-y-16">
+    <div class="md:col-span-2 space-y-12">
       
-      <!-- Listes et Badges -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
-        <!-- Compétences Techniques -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
+        <!-- Expertise Business Data Analyst -->
         <div>
-          <h4 class="text-[11px] uppercase tracking-[0.2em] font-extrabold mb-6 text-[var(--text-muted)]" data-i18n="skills-tech">Technique</h4>
-          <div class="flex flex-wrap gap-2.5 sm:flex-col sm:items-start">
-            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target">Python (Pandas, NumPy)</span>
-            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target">SQL & Modélisation</span>
-            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target">Power BI & DAX</span>
-            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target">Excel Avancé</span>
-            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target">Looker Studio</span>
-          </div>
+          <h4 class="text-[10px] uppercase tracking-[0.2em] font-semibold mb-5 text-[var(--text-muted)]" data-i18n="skills-core">Expertise Décisionnelle</h4>
+          <ul class="space-y-4 text-[13px] font-light">
+            <li class="border-b border-[var(--line)] pb-2.5">
+              <span class="font-medium text-[var(--text)] block" data-i18n="core-1-title">Analyse & Optimisation</span>
+              <span class="text-[11px] text-[var(--text-muted)]" data-i18n="core-1-desc">Interprétation de données complexes pour orienter les décisions d'affaires stratégiques.</span>
+            </li>
+            <li class="border-b border-[var(--line)] pb-2.5">
+              <span class="font-medium text-[var(--text)] block" data-i18n="core-2-title">Conception d'Interfaces Web</span>
+              <span class="text-[11px] text-[var(--text-muted)]" data-i18n="core-2-desc">Création de solutions web modernes et intuitives pour présenter et rendre vos rapports digestes.</span>
+            </li>
+          </ul>
         </div>
         
-        <!-- Qualités -->
+        <!-- Outils Techniques -->
         <div>
-          <h4 class="text-[11px] uppercase tracking-[0.2em] font-extrabold mb-6 text-[var(--text-muted)]" data-i18n="skills-soft">Atouts</h4>
-          <div class="flex flex-wrap gap-2.5 sm:flex-col sm:items-start">
-            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target" data-i18n="soft-1">Rigueur quantitative</span>
-            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target" data-i18n="soft-2">Esprit de synthèse</span>
-            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target" data-i18n="soft-3">Aisance visuelle</span>
-            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target" data-i18n="soft-4">Autonomie de travail</span>
-            <span class="skill-tag px-3 py-1.5 rounded-md text-[13px] font-medium hover-target" data-i18n="soft-5">Forte adaptabilité</span>
-          </div>
-        </div>
-
-        <!-- Langues -->
-        <div>
-          <h4 class="text-[11px] uppercase tracking-[0.2em] font-extrabold mb-6 text-[var(--text-muted)]" data-i18n="skills-lang">Langues</h4>
-          <div class="space-y-4">
-            <div class="p-3 border border-[var(--line)] rounded-md hover-target hover:border-[var(--accent)] transition-all">
-              <span class="text-[13px] font-bold block" data-i18n="lang-fr-val">Français</span> 
-              <span class="text-[10px] text-[var(--text-muted)]" data-i18n="lang-native">Langue maternelle</span>
-            </div>
-            <div class="p-3 border border-[var(--line)] rounded-md hover-target hover:border-[var(--accent)] transition-all">
-              <span class="text-[13px] font-bold block" data-i18n="lang-en-val">Anglais</span> 
-              <span class="text-[10px] text-[var(--text-muted)]" data-i18n="lang-b2">Niveau B2</span>
-            </div>
-            <div class="p-3 border border-[var(--line)] rounded-md hover-target hover:border-[var(--accent)] transition-all">
-              <span class="text-[13px] font-bold block" data-i18n="lang-nl-val">Néerlandais</span> 
-              <span class="text-[10px] text-[var(--text-muted)]" data-i18n="lang-b1">Niveau B1</span>
-            </div>
+          <h4 class="text-[10px] uppercase tracking-[0.2em] font-semibold mb-5 text-[var(--text-muted)]" data-i18n="skills-tools">Outils & Langages</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">SQL & Modélisation</span>
+            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">Python (Pandas, NumPy)</span>
+            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">Power BI & DAX</span>
+            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">Excel Avancé</span>
+            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">Looker Studio</span>
+            <span class="skill-tag px-2.5 py-1 rounded-sm text-[12px] font-light hover-target">HTML / CSS / Tailwind</span>
           </div>
         </div>
       </div>
 
-      <!-- Certifications -->
-      <div class="border-t border-[var(--line)] pt-12">
-        <h4 class="text-[11px] uppercase tracking-[0.2em] font-extrabold mb-6 text-[var(--text-muted)]">Certifications</h4>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="p-4 border border-[var(--line)] rounded-md flex justify-between items-center hover-target hover:border-[var(--accent)] transition-all">
-            <span class="text-[13px] font-semibold">Google Data Analytics</span>
-            <span class="text-[10px] uppercase tracking-[0.1em] font-bold text-[var(--accent)]" data-i18n="cert-progress">En cours</span>
+      <!-- Langues & Certifs -->
+      <div class="border-t border-[var(--line)] pt-8 grid grid-cols-1 sm:grid-cols-2 gap-8">
+        <div>
+          <h4 class="text-[10px] uppercase tracking-[0.2em] font-semibold mb-4 text-[var(--text-muted)]" data-i18n="skills-lang">Langues</h4>
+          <div class="text-[12px] space-y-2">
+            <p><span class="font-medium" data-i18n="lang-fr-val">Français</span> — <span class="text-[var(--text-muted)]" data-i18n="lang-native">Maternelle</span></p>
+            <p><span class="font-medium" data-i18n="lang-en-val">Anglais</span> — <span class="text-[var(--text-muted)]" data-i18n="lang-b2">Niveau B2</span></p>
+            <p><span class="font-medium" data-i18n="lang-nl-val">Néerlandais</span> — <span class="text-[var(--text-muted)]" data-i18n="lang-b1">Niveau B1</span></p>
           </div>
-          <div class="p-4 border border-[var(--line)] rounded-md flex justify-between items-center hover-target hover:border-[var(--accent)] transition-all">
-            <span class="text-[13px] font-semibold">Microsoft Power BI Associate</span>
-            <span class="text-[10px] uppercase tracking-[0.1em] font-bold text-[var(--accent)]" data-i18n="cert-progress">En cours</span>
+        </div>
+        <div>
+          <h4 class="text-[10px] uppercase tracking-[0.2em] font-semibold mb-4 text-[var(--text-muted)]">Certifications</h4>
+          <div class="text-[12px] space-y-2">
+            <p>Google Data Analytics — <span class="text-[var(--accent)] font-medium" data-i18n="cert-progress">En cours</span></p>
+            <p>Microsoft Power BI Associate — <span class="text-[var(--accent)] font-medium" data-i18n="cert-progress">En cours</span></p>
           </div>
         </div>
       </div>
@@ -445,36 +395,36 @@
 </section>
 
 <!-- Section Contact -->
-<footer id="contact" class="px-6 md:px-16 py-36 max-w-5xl mx-auto border-t border-[var(--line)]">
+<footer id="contact" class="px-6 md:px-16 py-32 max-w-5xl mx-auto border-t border-[var(--line)]">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.3em] font-extrabold text-[var(--accent)]">04 / CONNECT</h2>
+      <h2 class="text-[10px] uppercase tracking-[0.3em] font-semibold text-[var(--accent)]">03 / CONTACT</h2>
     </div>
     <div class="md:col-span-2">
-      <h3 class="text-3xl md:text-5xl font-extrabold leading-tight mb-16 text-[var(--text)]">
-        <span data-i18n="contact-cta-1">Discutons d'un projet</span> <br class="hidden md:inline">
-        <span class="text-[var(--accent)] font-medium" data-i18n="contact-cta-2">ou d'une opportunité de stage.</span>
+      <h3 class="text-2xl md:text-3xl font-light leading-snug mb-12 text-[var(--text)]">
+        <span data-i18n="contact-cta-1">Collaborons pour transformer</span> <br class="hidden md:inline">
+        <span class="serif italic text-[var(--accent)]" data-i18n="contact-cta-2">vos données en décisions intelligentes.</span>
       </h3>
 
-      <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="space-y-12 max-w-lg mb-20" novalidate>
+      <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="space-y-10 max-w-md mb-16" novalidate>
         <div class="flex flex-col">
-          <label for="name" class="text-[10px] uppercase tracking-[0.15em] font-bold" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
+          <label for="name" class="text-[9px] uppercase tracking-[0.15em] font-semibold" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
           <input type="text" id="name" name="name" class="minimal-input hover-target" required>
         </div>
         <div class="flex flex-col">
-          <label for="email" class="text-[10px] uppercase tracking-[0.15em] font-bold" style="color: var(--text-muted)" data-i18n="form-email">Adresse email</label>
+          <label for="email" class="text-[9px] uppercase tracking-[0.15em] font-semibold" style="color: var(--text-muted)" data-i18n="form-email">Adresse email</label>
           <input type="email" id="email" name="email" class="minimal-input hover-target" required>
         </div>
         <div class="flex flex-col">
-          <label for="message" class="text-[10px] uppercase tracking-[0.15em] font-bold" style="color: var(--text-muted)" data-i18n="form-message">Votre message</label>
+          <label for="message" class="text-[9px] uppercase tracking-[0.15em] font-semibold" style="color: var(--text-muted)" data-i18n="form-message">Votre message</label>
           <textarea id="message" name="message" rows="3" class="minimal-input resize-none hover-target" required></textarea>
         </div>
-        <button type="submit" class="text-[11px] uppercase tracking-[0.2em] font-bold hover-link hover-target pt-4 text-[var(--accent)]" data-i18n="form-submit">
+        <button type="submit" class="text-[10px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-2 text-[var(--accent)]" data-i18n="form-submit">
           Envoyer le message →
         </button>
       </form>
 
-      <div class="flex flex-wrap gap-12 text-[13px] font-medium">
+      <div class="flex flex-wrap gap-10 text-[12px] font-medium">
         <a href="mailto:melanied2502@gmail.com" class="hover-link hover-target">melanied2502@gmail.com</a>
         <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" class="hover-link hover-target" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
@@ -482,49 +432,56 @@
   </div>
 </footer>
 
+<!-- Bouton Retour En Haut Élégant -->
+<button id="back-to-top" onclick="scrollToTop()" aria-label="Retourner en haut" class="fixed bottom-8 right-8 z-50 p-3 rounded-full border border-[var(--line)] bg-[var(--bg)] shadow-sm text-[var(--text-muted)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all hover-target">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
 <script>
-  // Dictionnaire multilingue actualisé
+  // Dictionnaire multilingue mis à jour
   const translations = {
     fr: {
       "nav-parcours": "Mon Parcours",
-      "nav-projets": "Mes Projets",
+      "nav-projets": "Projets",
       "nav-competences": "Compétences",
-      "nav-contact": "Me Contacter",
+      "nav-contact": "Contact",
       "menu-location-title": "Localisation",
-      "menu-location-val": "Belgique — Disponible à distance",
+      "menu-location-val": "Belgique — Distanciel accepté",
       "menu-social-title": "Réseaux",
-      "hero-status": "Disponible pour un stage / alternance en Data",
-      "hero-title-1": "Je structure la donnée,",
-      "hero-title-2": "je clarifie les décisions stratégiques.",
-      "hero-desc": "Étudiante en Ingénieur de gestion à l'Université de Mons. Mon objectif est de transformer le bruit de la donnée brute en récits visuels limpides et porteurs de valeur pour l'entreprise.",
-      "hero-cta-1": "Consulter mes travaux ↓",
+      "hero-status": "Business Data Analyst",
+      "hero-title-1": "Donner un sens aux données pour",
+      "hero-title-2": "optimiser chaque décision stratégique.",
+      "hero-desc": "Étudiante en Ingénieur de gestion à l'Université de Mons. J'allie rigueur analytique et design d'interface pour transformer des jeux de données complexes en leviers de croissance clairs et exploitables.",
+      "hero-cta-1": "Découvrir mes travaux ↓",
       "hero-cta-2": "Me contacter →",
       "edu-title": "Bachelier en Ingénieur de gestion",
-      "edu-desc": "Formation d'excellence combinant les sciences économiques et mathématiques de l'ingénieur. Modélisation statistique avancée et analyse des structures d'information d'entreprise.",
-      "exp-title": "Social Media Management",
-      "exp-desc": "Traitement d'images, direction de la charte esthétique et exploitation d'analytics pour guider l'impact visuel et l'engagement d'une audience e-commerce de luxe.",
-      "work-intro": "Sélection de réalisations analytiques alliant rigueur technique, requêtes complexes et sens de la lisibilité graphique.",
+      "edu-desc": "Formation d'excellence combinant les sciences économiques, l'analyse de données et la modélisation mathématique.",
+      "exp-title": "Social Media & Analytics",
+      "exp-desc": "Gestion de l'image de marque et exploitation des données analytiques d'audience pour optimiser l'engagement client.",
+      "work-intro": "Visualiser les flux, identifier les tendances, et concevoir des espaces de lecture digitaux propices à la prise de décision.",
       "p1-title": "Visualisation de l'économie Belge",
-      "p2-title": "Dashboard d'acquisition E-Commerce",
+      "p2-title": "Dashboard de performance E-Commerce",
       "p-view": "Consulter ↗",
-      "p-soon": "Bientôt",
-      "skills-tech": "Technique",
-      "skills-soft": "Atouts",
+      "p-soon": "En cours",
+      "skills-core": "Expertise Décisionnelle",
+      "skills-tools": "Outils & Langages",
       "skills-lang": "Langues",
-      "soft-1": "Rigueur quantitative",
-      "soft-2": "Esprit de synthèse",
-      "soft-3": "Aisance visuelle",
-      "soft-4": "Autonomie de travail",
-      "soft-5": "Forte adaptabilité",
+      "core-1-title": "Analyse & Optimisation",
+      "core-1-desc": "Interprétation de données complexes pour orienter les décisions d'affaires stratégiques.",
+      "core-2-title": "Conception d'Interfaces Web",
+      "core-2-desc": "Création de solutions web modernes et intuitives pour présenter et rendre vos rapports digestes.",
       "lang-fr-val": "Français",
       "lang-en-val": "Anglais",
       "lang-nl-val": "Néerlandais",
-      "lang-native": "Langue maternelle",
+      "lang-native": "Maternelle",
       "lang-b2": "Niveau B2",
       "lang-b1": "Niveau B1",
       "cert-progress": "En cours",
-      "contact-cta-1": "Discutons d'un projet",
-      "contact-cta-2": "ou d'une opportunité de stage.",
+      "contact-cta-1": "Collaborons pour transformer",
+      "contact-cta-2": "vos données en décisions intelligentes.",
       "form-name": "Nom complet",
       "form-email": "Adresse email",
       "form-message": "Votre message",
@@ -532,35 +489,34 @@
     },
     en: {
       "nav-parcours": "My Path",
-      "nav-projets": "My Projects",
+      "nav-projets": "Projects",
       "nav-competences": "Skills",
-      "nav-contact": "Contact Me",
+      "nav-contact": "Contact",
       "menu-location-title": "Location",
       "menu-location-val": "Belgium — Remote Friendly",
       "menu-social-title": "Socials",
-      "hero-status": "Open for a Data Internship / Apprenticeship",
-      "hero-title-1": "Structuring data,",
-      "hero-title-2": "empowering strategic decisions.",
-      "hero-desc": "Business Engineering student at the University of Mons. Focused on turning complex data noise into elegant, valuable, and actionable visual narratives.",
+      "hero-status": "Business Data Analyst",
+      "hero-title-1": "Giving meaning to data to",
+      "hero-title-2": "optimize every strategic decision.",
+      "hero-desc": "Business Engineering student at the University of Mons. Combining analytical rigor and interface design to transform complex datasets into clear, actionable growth drivers.",
       "hero-cta-1": "Explore my work ↓",
       "hero-cta-2": "Get in touch →",
       "edu-title": "Bachelor's in Business Engineering",
-      "edu-desc": "Elite curriculum bridging quantitative methods, economics, and analytical engineering. Advanced statistical modeling and corporate information systems study.",
-      "exp-title": "Social Media Management",
-      "exp-desc": "Visual content design, aesthetic branding guidance, and data analytics parsing to steer luxury e-commerce audience acquisition and engagement.",
-      "work-intro": "A tailored selection of analytical projects combining tech proficiency, advanced querying, and clean design.",
-      "p1-title": "Belgian Economic Data Engine",
-      "p2-title": "E-Commerce Acquisition Dashboard",
+      "edu-desc": "Elite curriculum combining economic sciences, data analysis, and mathematical modeling.",
+      "exp-title": "Social Media & Analytics",
+      "exp-desc": "Brand design management and analytical audience parsing to optimize customer engagement.",
+      "work-intro": "Visualizing data streams, identifying patterns, and crafting digital spaces for optimal decision making.",
+      "p1-title": "Belgian Economic Data Visuals",
+      "p2-title": "E-Commerce Acquisition Insights",
       "p-view": "View Project ↗",
-      "p-soon": "Coming Soon",
-      "skills-tech": "Technical",
-      "skills-soft": "Key Assets",
+      "p-soon": "In progress",
+      "skills-core": "Strategic Expertise",
+      "skills-tools": "Tools & Languages",
       "skills-lang": "Languages",
-      "soft-1": "Quantitative rigor",
-      "soft-2": "Synthesis mindset",
-      "soft-3": "Visual design sense",
-      "soft-4": "Self-reliance",
-      "soft-5": "High adaptability",
+      "core-1-title": "Analysis & Optimization",
+      "core-1-desc": "Interpreting complex data matrices to guide strategic corporate actions.",
+      "core-2-title": "Web Interface Design",
+      "core-2-desc": "Building custom, elegant, and intuitive web solutions to host and present key insights beautifully.",
       "lang-fr-val": "French",
       "lang-en-val": "English",
       "lang-nl-val": "Dutch",
@@ -568,8 +524,8 @@
       "lang-b2": "B2 Upper-Intermediate",
       "lang-b1": "B1 Intermediate",
       "cert-progress": "In Progress",
-      "contact-cta-1": "Let's build together",
-      "contact-cta-2": "or discuss internship openings.",
+      "contact-cta-1": "Let's work together to turn",
+      "contact-cta-2": "raw data into intelligent actions.",
       "form-name": "Full name",
       "form-email": "Email address",
       "form-message": "Your message",
@@ -577,35 +533,34 @@
     },
     nl: {
       "nav-parcours": "Mijn Traject",
-      "nav-projets": "Mijn Projecten",
+      "nav-projets": "Projecten",
       "nav-competences": "Vaardigheden",
       "nav-contact": "Contact",
       "menu-location-title": "Locatie",
-      "menu-location-val": "België — Beschikbaar voor remote werk",
-      "menu-social-title": "Netwerk",
-      "hero-status": "Beschikbaar voor een stage / leerwerkplek in Data",
-      "hero-title-1": "Ik structureer data,",
-      "hero-title-2": "ik verhelder strategische beslissingen.",
-      "hero-desc": "Studente Handelsingenieur aan de Universiteit van Bergen (UMons). Mijn missie is om complexe ruwe data om te zetten in heldere en waardevolle visuele verhalen.",
-      "hero-cta-1": "Bekijk mijn projecten ↓",
+      "menu-location-val": "België — Remote mogelijk",
+      "menu-social-title": "Socials",
+      "hero-status": "Business Data Analyst",
+      "hero-title-1": "Betekenis geven aan data om",
+      "hero-title-2": "elke strategische beslissing te optimaliseren.",
+      "hero-desc": "Studente Handelsingenieur aan de Universiteit van Bergen (UMons). Een combinatie van analytische precisie en interface-ontwerp om data om te zetten in duidelijke inzichten.",
+      "hero-cta-1": "Ontdek mijn werk ↓",
       "hero-cta-2": "Neem contact op →",
       "edu-title": "Bachelor in de Handelsingenieur",
-      "edu-desc": "Hoogwaardige opleiding die economische wetenschappen combineert met wiskundige ingenieurstechnieken. Geavanceerde statistische modellering en analyse van informatiestructuren.",
-      "exp-title": "Social Media Management",
-      "exp-desc": "Visueel ontwerp, esthetische branding en data-analyse om de impact en betrokkenheid van een luxe e-commerce publiek te vergroten.",
-      "work-intro": "Een selectie van analytische projecten die technische precisie, complexe queries en grafische helderheid combineren.",
+      "edu-desc": "Hoogwaardige opleiding die economische wetenschappen, data-analyse en wiskundige modellering combineert.",
+      "exp-title": "Social Media & Analytics",
+      "exp-desc": "Beheer van merkimago en analyse van doelgroepdata om de klantbetrokkenheid te optimaliseren.",
+      "work-intro": "Het visualiseren van stromen, het identificeren van trends en het ontwerpen van digitale ruimtes voor optimale besluitvorming.",
       "p1-title": "Visuele Analyse van de Belgische Economie",
-      "p2-title": "E-Commerce Acquisitie Dashboard",
+      "p2-title": "E-Commerce Prestatie Dashboard",
       "p-view": "Bekijken ↗",
-      "p-soon": "Binnenkort",
-      "skills-tech": "Technische",
-      "skills-soft": "Sterke punten",
+      "p-soon": "In uitvoering",
+      "skills-core": "Besluitvormings-expertise",
+      "skills-tools": "Tools & Talen",
       "skills-lang": "Talen",
-      "soft-1": "Kwantitatieve precisie",
-      "soft-2": "Synthetisch denkvermogen",
-      "soft-3": "Visueel inzicht",
-      "soft-4": "Zelfstandigheid",
-      "soft-5": "Groot aanpassingsvermogen",
+      "core-1-title": "Analyse & Optimalisatie",
+      "core-1-desc": "Complexe gegevens interpreteren om strategische zakelijke beslissingen te sturen.",
+      "core-2-title": "Web Interface Ontwerp",
+      "core-2-desc": "Het creëren van moderne, intuïtieve weboplossingen om uw rapporten vlot te presenteren.",
       "lang-fr-val": "Frans",
       "lang-en-val": "Engels",
       "lang-nl-val": "Nederlands",
@@ -613,8 +568,8 @@
       "lang-b2": "B2-niveau",
       "lang-b1": "B1-niveau",
       "cert-progress": "In uitvoering",
-      "contact-cta-1": "Laten we praten",
-      "contact-cta-2": "over een project of stagekans.",
+      "contact-cta-1": "Laten we samenwerken om",
+      "contact-cta-2": "uw data om te zetten in slimme beslissingen.",
       "form-name": "Volledige naam",
       "form-email": "E-mailadres",
       "form-message": "Uw bericht",
@@ -634,13 +589,13 @@
     });
 
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.remove('opacity-100', 'font-bold');
+      btn.classList.remove('opacity-100', 'font-semibold');
       btn.classList.add('opacity-40');
     });
     const activeBtn = document.getElementById(`lang-${lang}`);
     if (activeBtn) {
       activeBtn.classList.remove('opacity-40');
-      activeBtn.classList.add('opacity-100', 'font-bold');
+      activeBtn.classList.add('opacity-100', 'font-semibold');
     }
   }
 
@@ -653,19 +608,30 @@
     overlay.classList.toggle('open');
     
     if (overlay.classList.contains('open')) {
-      line1.style.transform = 'translateY(2px) rotate(45deg)';
-      line2.style.transform = 'translateY(-2px) rotate(-45deg)';
+      line1.style.transform = 'translateY(2.5px) rotate(45deg)';
+      line2.style.transform = 'translateY(-2.5px) rotate(-45deg)';
     } else {
       line1.style.transform = 'none';
       line2.style.transform = 'none';
     }
   }
 
-  // Jauge de scroll connectée
+  // Jauge de progression de scroll + Bouton Back-to-Top
   window.addEventListener('scroll', () => {
     const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
     document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+
+    const bttBtn = document.getElementById('back-to-top');
+    if (window.scrollY > 300) {
+      bttBtn.classList.add('show');
+    } else {
+      bttBtn.classList.remove('show');
+    }
   });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   // Mode sombre
   function toggleTheme() {
@@ -689,7 +655,7 @@
 
   document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
 
-  // Curseur Fluide (Physics)
+  // Physique fluide pour le curseur
   const cursor = document.getElementById('custom-cursor');
   const ring = document.getElementById('custom-cursor-ring');
   let mouseX = 0, mouseY = 0;
@@ -706,8 +672,8 @@
 
   function animateRing() {
     if (ring) {
-      ringX += (mouseX - ringX) * 0.15;
-      ringY += (mouseY - ringY) * 0.15;
+      ringX += (mouseX - ringX) * 0.14;
+      ringY += (mouseY - ringY) * 0.14;
       ring.style.left = ringX + 'px';
       ring.style.top = ringY + 'px';
     }
