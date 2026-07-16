@@ -10,35 +10,82 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #FCF8F8;
-    --text: #20161A;
-    --text-muted: #6E5E65;
-    --line: rgba(32, 22, 26, 0.08);
-    --accent: #E297A7;
+    --bg: #FDFBFB;
+    --text: #1C1417;
+    --text-muted: #7C6E74;
+    --line: rgba(28, 20, 23, 0.06);
+    --accent: #DDA0AD;
   }
   .dark {
-    --bg: #0F0A0C;
-    --text: #F5EFEB;
-    --text-muted: #A39097;
-    --line: rgba(245, 239, 235, 0.08);
-    --accent: #E9A1B1;
+    --bg: #0B0809;
+    --text: #F3ECEF;
+    --text-muted: #9E8E94;
+    --line: rgba(243, 236, 239, 0.06);
+    --accent: #E5A9B7;
   }
   
   body {
     background-color: var(--bg);
     color: var(--text);
     font-family: 'Plus Jakarta Sans', sans-serif;
-    transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background-color 1s cubic-bezier(0.16, 1, 0.3, 1), color 1s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-x: hidden;
+  }
+
+  /* Curseur personnalisé fluide (Désactivé sur mobile pour l'ergonomie) */
+  @media (min-width: 768px) {
+    #custom-cursor {
+      width: 8px;
+      height: 8px;
+      background-color: var(--text);
+      border-radius: 50%;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 9999;
+      transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+    }
+    #custom-cursor-ring {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform 0.1s ease-out, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+    }
+    body:hover #custom-cursor, body:hover #custom-cursor-ring {
+      opacity: 1;
+    }
+    .hover-active #custom-cursor {
+      width: 4px;
+      height: 4px;
+      background-color: var(--accent);
+    }
+    .hover-active #custom-cursor-ring {
+      width: 55px;
+      height: 55px;
+      border-color: var(--accent);
+    }
+    /* On cache le vrai curseur par défaut sur desktop pour laisser place au personnalisé */
+    a, button, input, textarea, .project-row {
+      cursor: none !important;
+    }
+    body {
+      cursor: none;
+    }
   }
 
   .serif {
     font-family: 'Playfair Display', serif;
   }
 
-  /* Transition discrète sur les liens */
+  /* Liens avec ligne d'accentuation élégante */
   .hover-link {
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .hover-link::after {
     content: '';
@@ -46,51 +93,64 @@
     width: 100%;
     transform: scaleX(0);
     height: 1px;
-    bottom: -2px;
+    bottom: -3px;
     left: 0;
     background-color: var(--accent);
     transform-origin: bottom right;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .hover-link:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
   }
 
-  /* Animation d'apparition purement textuelle */
-  .reveal-text {
+  /* Effet d'apparition au défilement (Scroll Reveal) */
+  .reveal-section {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(30px);
+    transition: opacity 1.5s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .reveal-text.active {
+  .reveal-section.active {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* Liste de projets façon "Judie" : pas de cartes, juste des lignes */
+  /* Liste de projets ultra-épurée à la Judie */
   .project-row {
     border-bottom: 1px solid var(--line);
-    transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+  .project-row::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .project-row:hover::before {
+    transform: scaleX(1);
   }
   .project-row:hover {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding-left: 16px;
+    color: var(--accent);
   }
 
-  /* Cache les barres de défilement */
-  .no-scrollbar::-webkit-scrollbar { display: none; }
-  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-  /* Inputs épurés, juste une ligne basse */
+  /* Formulaire sans aucune boîte */
   .minimal-input {
     background: transparent;
     border: none;
     border-bottom: 1px solid var(--line);
     border-radius: 0;
-    padding: 1rem 0;
+    padding: 1.2rem 0;
     color: var(--text);
-    transition: border-color 0.4s ease;
+    transition: border-color 0.5s ease;
+    font-weight: 300;
   }
   .minimal-input:focus {
     outline: none;
@@ -100,153 +160,159 @@
 </head>
 <body class="selection:bg-[var(--accent)] selection:text-white">
 
-<!-- Header Navigation -->
+<!-- Éléments de curseur personnalisé (générés uniquement sur desktop) -->
+<div id="custom-cursor" class="hidden md:block opacity-0"></div>
+<div id="custom-cursor-ring" class="hidden md:block opacity-0"></div>
+
+<!-- Header / Barre de navigation aérienne -->
 <nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-8 mix-blend-difference">
   <div class="flex justify-between items-center max-w-7xl mx-auto">
-    <a href="#top" class="text-lg md:text-xl font-light tracking-widest uppercase text-white">M.D</a>
-    <div class="flex items-center gap-8 text-[11px] font-medium uppercase tracking-[0.2em] text-white">
-      <a href="#parcours" class="hidden md:inline hover:opacity-70 transition">Parcours</a>
-      <a href="#projets" class="hidden md:inline hover:opacity-70 transition">Projets</a>
-      <a href="#competences" class="hidden md:inline hover:opacity-70 transition">Expertise</a>
-      <a href="#contact" class="hover:opacity-70 transition">Contact</a>
-      <button onclick="toggleTheme()" aria-label="Thème" class="p-1 hover:opacity-70 transition">
-        <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
+    <a href="#top" class="text-lg md:text-xl font-light tracking-[0.25em] uppercase text-white hover-target">M.D</a>
+    <div class="flex items-center gap-8 text-[10px] font-medium uppercase tracking-[0.25em] text-white">
+      <a href="#parcours" class="hidden md:inline hover:opacity-60 transition hover-target">Parcours</a>
+      <a href="#projets" class="hidden md:inline hover:opacity-60 transition hover-target">Projets</a>
+      <a href="#competences" class="hidden md:inline hover:opacity-60 transition hover-target">Expertise</a>
+      <a href="#contact" class="hover:opacity-60 transition hover-target">Contact</a>
+      <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-1 hover:opacity-60 transition hover-target">
+        <svg id="themeIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
       </button>
     </div>
   </div>
 </nav>
 
-<!-- Hero Section -->
+<!-- Hero Section (Minimalisme pur) -->
 <main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32">
   <div class="max-w-5xl mx-auto w-full">
-    <p class="text-[10px] uppercase tracking-[0.3em] mb-8" style="color: var(--text-muted)">
+    <p class="text-[10px] uppercase tracking-[0.35em] mb-10" style="color: var(--text-muted)">
       Étudiante en Ingénieur de gestion — Data & BI
     </p>
     
-    <h1 class="text-[clamp(2.5rem,7vw,5.5rem)] font-extralight leading-[1.05] tracking-tight mb-12">
+    <h1 class="text-[clamp(2.5rem,7.5vw,6rem)] font-extralight leading-[1.02] tracking-tight mb-16">
       Je structure la donnée,<br>
       <span class="serif italic font-normal">je clarifie les décisions.</span>
     </h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-end border-t border-[var(--line)] pt-12">
-      <p class="text-[14px] md:text-[15px] leading-relaxed font-light max-w-md" style="color: var(--text-muted)">
-        Actuellement en bachelier à l'Université de Mons, j'allie la rigueur de l'ingénierie et l'analyse stratégique pour transformer des données complexes en insights visuels et exploitables.
+      <p class="text-[14px] md:text-[15px] leading-relaxed font-light max-w-sm" style="color: var(--text-muted)">
+        Actuellement en deuxième année de bachelier à l'Université de Mons. Je m'efforce d'allier l'exactitude de l'analyse et la poésie de la simplicité visuelle.
       </p>
-      <div class="flex md:justify-end gap-6 text-[11px] uppercase tracking-[0.2em] font-medium">
-        <a href="#projets" class="hover-link">Explorer les projets ↓</a>
-        <a href="#contact" class="hover-link">Me contacter →</a>
+      <div class="flex md:justify-end gap-8 text-[11px] uppercase tracking-[0.25em] font-medium">
+        <a href="#projets" class="hover-link hover-target">Découvrir ↓</a>
+        <a href="#contact" class="hover-link hover-target">Écrire →</a>
       </div>
     </div>
   </div>
 </main>
 
-<!-- Section Parcours (Style liste épurée) -->
-<section id="parcours" class="px-6 md:px-16 py-32 max-w-5xl mx-auto reveal-text">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-[var(--line)] pt-16">
+<!-- Section Parcours (Lignes chronologiques et asymétriques) -->
+<section id="parcours" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
     <div>
       <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold sticky top-32" style="color: var(--text-muted)">01 / Parcours</h2>
     </div>
-    <div class="md:col-span-2 space-y-16">
+    <div class="md:col-span-2 space-y-20">
       <div class="group">
-        <span class="text-[11px] font-mono tracking-widest block mb-3" style="color: var(--text-muted)">2024 — 2027</span>
-        <h3 class="text-xl font-light mb-2">Bachelier en Ingénieur de gestion</h3>
-        <p class="text-[12px] uppercase tracking-wider mb-4" style="color: var(--text-muted)">Université de Mons</p>
-        <p class="text-[13px] leading-relaxed font-light" style="color: var(--text-muted)">
-          Spécialisation en data et systèmes d'information. Étude approfondie de la microéconomie, de la comptabilité et de la modélisation statistique.
+        <span class="text-[11px] font-mono tracking-widest block mb-4" style="color: var(--text-muted)">2024 — 2027</span>
+        <h3 class="text-2xl font-light mb-3">Bachelier en Ingénieur de gestion</h3>
+        <p class="text-[11px] uppercase tracking-[0.2em] mb-4" style="color: var(--text-muted)">Université de Mons</p>
+        <p class="text-[14px] leading-relaxed font-light max-w-lg" style="color: var(--text-muted)">
+          Formation axée sur la rigueur quantitative et les processus décisionnels. J'y développe une passion pour la transformation de bases de données brutes en informations graphiques digestes.
         </p>
       </div>
 
       <div class="group border-t border-[var(--line)] pt-12">
-        <span class="text-[11px] font-mono tracking-widest block mb-3" style="color: var(--text-muted)">Février — Avril 2023</span>
-        <h3 class="text-xl font-light mb-2">Stage Social Media Manager</h3>
-        <p class="text-[12px] uppercase tracking-wider mb-4" style="color: var(--text-muted)">GabyLuxxy</p>
-        <p class="text-[13px] leading-relaxed font-light" style="color: var(--text-muted)">
-          Création de contenu visuel et analyse d'audience sur les plateformes numériques pour optimiser la conversion dans la revente de luxe.
+        <span class="text-[11px] font-mono tracking-widest block mb-4" style="color: var(--text-muted)">Février — Avril 2023</span>
+        <h3 class="text-2xl font-light mb-3">Social Media Management</h3>
+        <p class="text-[11px] uppercase tracking-[0.2em] mb-4" style="color: var(--text-muted)">GabyLuxxy</p>
+        <p class="text-[14px] leading-relaxed font-light max-w-lg" style="color: var(--text-muted)">
+          Création de maquettes, retouche esthétique de contenus visuels et suivi des statistiques d'engagement d'une audience haut de gamme.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Section Projets (Style tableau minimaliste) -->
-<section id="projets" class="px-6 md:px-16 py-32 max-w-5xl mx-auto reveal-text">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-[var(--line)] pt-16 mb-12">
+<!-- Section Projets (Interactivité fine sans carte) -->
+<section id="projets" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16 mb-16">
     <div>
       <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold" style="color: var(--text-muted)">02 / Projets</h2>
     </div>
     <div class="md:col-span-2">
-      <p class="text-[13px] font-light leading-relaxed" style="color: var(--text-muted)">
-        Une sélection de projets analytiques et visuels, conçus avec une attention particulière portée au design de l'information.
+      <p class="text-[14px] font-light leading-relaxed max-w-md" style="color: var(--text-muted)">
+        Chaque projet est une tentative d'épurer la complexité. Pas de fioritures, juste la donnée brute mise en lumière par une interface fluide.
       </p>
     </div>
   </div>
 
-  <div class="mt-12">
-    <div class="project-row py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+  <div class="mt-16 border-t border-[var(--line)]">
+    <!-- Projet 1 -->
+    <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
       <div>
-        <span class="text-[10px] font-mono block mb-1" style="color: var(--text-muted)">PYTHON / SQL / POWER BI</span>
-        <h3 class="text-lg font-light">Analyse économique de la Belgique</h3>
+        <span class="text-[10px] font-mono tracking-widest block mb-2" style="color: var(--text-muted)">PYTHON / SQL / POWER BI</span>
+        <h3 class="text-xl font-light">Visualisation de l'économie Belge</h3>
       </div>
-      <div class="flex items-center gap-8 w-full md:w-auto justify-between md:justify-end">
-        <span class="text-[13px] font-light" style="color: var(--text-muted)">2026</span>
-        <a href="#" class="hover-link text-[11px] uppercase tracking-wider font-semibold">Consulter ↗</a>
+      <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
+        <span class="text-[13px] font-light font-mono" style="color: var(--text-muted)">2026</span>
+        <span class="text-[11px] uppercase tracking-widest font-medium">Consulter ↗</span>
       </div>
     </div>
 
-    <div class="project-row py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <!-- Projet 2 -->
+    <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
       <div>
-        <span class="text-[10px] font-mono block mb-1" style="color: var(--text-muted)">LOOKER STUDIO / BIGQUERY</span>
-        <h3 class="text-lg font-light">Dashboard d'acquisition E-Commerce</h3>
+        <span class="text-[10px] font-mono tracking-widest block mb-2" style="color: var(--text-muted)">LOOKER STUDIO / BIGQUERY</span>
+        <h3 class="text-xl font-light">Dashboard d'acquisition E-Commerce</h3>
       </div>
-      <div class="flex items-center gap-8 w-full md:w-auto justify-between md:justify-end">
-        <span class="text-[13px] font-light" style="color: var(--text-muted)">En cours</span>
-        <span class="text-[11px] uppercase tracking-wider font-semibold opacity-40">Bientôt</span>
+      <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
+        <span class="text-[13px] font-light font-mono" style="color: var(--text-muted)">Bientôt</span>
+        <span class="text-[11px] uppercase tracking-widest font-medium opacity-40">—</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Section Compétences & Certifications -->
-<section id="competences" class="px-6 md:px-16 py-32 max-w-5xl mx-auto reveal-text">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-[var(--line)] pt-16">
+<section id="competences" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
     <div>
       <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold sticky top-32" style="color: var(--text-muted)">03 / Expertise</h2>
     </div>
-    <div class="md:col-span-2 space-y-16">
+    <div class="md:col-span-2 space-y-20">
       
       <!-- Outils & Skills -->
-      <div class="grid grid-cols-2 gap-8">
+      <div class="grid grid-cols-2 gap-12">
         <div>
-          <h4 class="text-xs uppercase tracking-widest font-semibold mb-6" style="color: var(--text-muted)">Outils</h4>
-          <ul class="space-y-3 text-[13px] font-light">
-            <li>Python</li>
-            <li>SQL</li>
-            <li>Power BI</li>
-            <li>Excel</li>
-            <li>Looker Studio</li>
+          <h4 class="text-[11px] uppercase tracking-widest font-semibold mb-8" style="color: var(--text-muted)">Technique</h4>
+          <ul class="space-y-4 text-[14px] font-light">
+            <li class="hover-target">Python</li>
+            <li class="hover-target">SQL & Modélisation</li>
+            <li class="hover-target">Power BI</li>
+            <li class="hover-target">Excel Avancé</li>
+            <li class="hover-target">Looker Studio</li>
           </ul>
         </div>
         <div>
-          <h4 class="text-xs uppercase tracking-widest font-semibold mb-6" style="color: var(--text-muted)">Langues</h4>
-          <ul class="space-y-3 text-[13px] font-light">
-            <li>Français <span class="opacity-50">— Langue maternelle</span></li>
-            <li>Anglais <span class="opacity-50">— B2</span></li>
-            <li>Néerlandais <span class="opacity-50">— B1</span></li>
+          <h4 class="text-[11px] uppercase tracking-widest font-semibold mb-8" style="color: var(--text-muted)">Langues</h4>
+          <ul class="space-y-4 text-[14px] font-light">
+            <li class="hover-target">Français <span class="text-[11px] opacity-50 block font-mono">Langue maternelle</span></li>
+            <li class="hover-target">Anglais <span class="text-[11px] opacity-50 block font-mono">Niveau B2</span></li>
+            <li class="hover-target">Néerlandais <span class="text-[11px] opacity-50 block font-mono">Niveau B1</span></li>
           </ul>
         </div>
       </div>
 
       <!-- Certifications -->
-      <div class="border-t border-[var(--line)] pt-12">
-        <h4 class="text-xs uppercase tracking-widest font-semibold mb-6" style="color: var(--text-muted)">Certifications</h4>
-        <div class="space-y-4 text-[13px] font-light">
-          <div class="flex justify-between">
+      <div class="border-t border-[var(--line)] pt-16">
+        <h4 class="text-[11px] uppercase tracking-widest font-semibold mb-8" style="color: var(--text-muted)">Certifications</h4>
+        <div class="space-y-6 text-[14px] font-light">
+          <div class="flex justify-between items-center py-2 border-b border-[var(--line)] hover-target">
             <span>Google Data Analytics</span>
-            <span class="opacity-50">En cours</span>
+            <span class="text-[11px] uppercase tracking-widest opacity-60 font-mono">En cours</span>
           </div>
-          <div class="flex justify-between">
+          <div class="flex justify-between items-center py-2 border-b border-[var(--line)] hover-target">
             <span>Microsoft Power BI Analyst (PL-300)</span>
-            <span class="opacity-50">En cours</span>
+            <span class="text-[11px] uppercase tracking-widest opacity-60 font-mono">En cours</span>
           </div>
         </div>
       </div>
@@ -256,38 +322,38 @@
 </section>
 
 <!-- Section Contact -->
-<footer id="contact" class="px-6 md:px-16 py-32 max-w-5xl mx-auto border-t border-[var(--line)]">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<footer id="contact" class="px-6 md:px-16 py-36 max-w-5xl mx-auto border-t border-[var(--line)]">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
     <div>
       <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold" style="color: var(--text-muted)">04 / Contact</h2>
     </div>
     <div class="md:col-span-2">
-      <h3 class="text-3xl md:text-5xl font-light leading-tight mb-12">
-        Travaillons ensemble sur <br class="hidden md:inline">
-        <span class="serif italic font-normal">vos projets de données.</span>
+      <h3 class="text-3xl md:text-5xl font-light leading-tight mb-16">
+        Pensons un projet ou <br class="hidden md:inline">
+        <span class="serif italic font-normal">échangeons tout simplement.</span>
       </h3>
 
-      <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="space-y-8 max-w-lg mb-16" novalidate>
+      <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="space-y-12 max-w-lg mb-20" novalidate>
         <div class="flex flex-col">
-          <label for="name" class="text-[10px] uppercase tracking-widest" style="color: var(--text-muted)">Nom</label>
-          <input type="text" id="name" name="name" class="minimal-input" required>
+          <label for="name" class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)">Nom complet</label>
+          <input type="text" id="name" name="name" class="minimal-input hover-target" required>
         </div>
         <div class="flex flex-col">
-          <label for="email" class="text-[10px] uppercase tracking-widest" style="color: var(--text-muted)">Email</label>
-          <input type="email" id="email" name="email" class="minimal-input" required>
+          <label for="email" class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)">Adresse email</label>
+          <input type="email" id="email" name="email" class="minimal-input hover-target" required>
         </div>
         <div class="flex flex-col">
-          <label for="message" class="text-[10px] uppercase tracking-widest" style="color: var(--text-muted)">Message</label>
-          <textarea id="message" name="message" rows="3" class="minimal-input resize-none" required></textarea>
+          <label for="message" class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)">Votre projet en quelques mots</label>
+          <textarea id="message" name="message" rows="3" class="minimal-input resize-none hover-target" required></textarea>
         </div>
-        <button type="submit" class="text-[11px] uppercase tracking-[0.2em] font-semibold hover-link pt-4">
-          Envoyer le message →
+        <button type="submit" class="text-[11px] uppercase tracking-[0.25em] font-semibold hover-link hover-target pt-4">
+          Transmettre le message →
         </button>
       </form>
 
-      <div class="flex gap-8 text-[12px] font-light">
-        <a href="mailto:melanied2502@gmail.com" class="hover-link">melanied2502@gmail.com</a>
-        <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" class="hover-link">LinkedIn</a>
+      <div class="flex flex-wrap gap-12 text-[13px] font-light">
+        <a href="mailto:melanied2502@gmail.com" class="hover-link hover-target">melanied2502@gmail.com</a>
+        <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" class="hover-link hover-target" target="_blank" rel="noopener">LinkedIn ↗</a>
       </div>
     </div>
   </div>
@@ -301,21 +367,59 @@
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }
 
-  // Restaurer le thème préféré au chargement
   if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
     document.documentElement.classList.add('dark');
   }
 
-  // Animation au scroll (purement textuel)
+  // Animation d'apparition au défilement
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
-  document.querySelectorAll('.reveal-text').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
+
+  // Gestion du curseur personnalisé avec physique fluide
+  const cursor = document.getElementById('custom-cursor');
+  const ring = document.getElementById('custom-cursor-ring');
+
+  let mouseX = 0, mouseY = 0;
+  let ringX = 0, ringY = 0;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    if (cursor) {
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
+    }
+  });
+
+  // Animation avec inertie de l'anneau extérieur
+  function animateRing() {
+    if (ring) {
+      ringX += (mouseX - ringX) * 0.15; // Ajuste cette valeur pour plus/moins d'inertie
+      ringY += (mouseY - ringY) * 0.15;
+      ring.style.left = ringX + 'px';
+      ring.style.top = ringY + 'px';
+    }
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Événements Hover pour élargir le curseur
+  document.querySelectorAll('.hover-target').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      document.body.classList.add('hover-active');
+    });
+    item.addEventListener('mouseleave', () => {
+      document.body.classList.remove('hover-active');
+    });
+  });
 </script>
 </body>
 </html>
