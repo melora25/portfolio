@@ -13,26 +13,28 @@
     --bg: #FDFBFB;
     --text: #1C1417;
     --text-muted: #7C6E74;
-    --line: rgba(28, 20, 23, 0.06);
+    --line: rgba(28, 20, 23, 0.08);
     --accent: #DDA0AD;
+    --nav-bg: rgba(253, 251, 251, 0.75);
   }
   .dark {
     --bg: #0B0809;
     --text: #F3ECEF;
     --text-muted: #9E8E94;
-    --line: rgba(243, 236, 239, 0.06);
+    --line: rgba(243, 236, 239, 0.08);
     --accent: #E5A9B7;
+    --nav-bg: rgba(11, 8, 9, 0.75);
   }
   
   body {
     background-color: var(--bg);
     color: var(--text);
     font-family: 'Plus Jakarta Sans', sans-serif;
-    transition: background-color 1s cubic-bezier(0.16, 1, 0.3, 1), color 1s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     overflow-x: hidden;
   }
 
-  /* Curseur personnalisé fluide (desktop uniquement) */
+  /* Curseur personnalisé fluide (uniquement sur PC) */
   @media (min-width: 1024px) {
     #custom-cursor {
       width: 8px;
@@ -78,7 +80,7 @@
     font-family: 'Playfair Display', serif;
   }
 
-  /* Liens élégants */
+  /* Liens avec lignes élégantes */
   .hover-link {
     position: relative;
     transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -100,7 +102,7 @@
     transform-origin: bottom left;
   }
 
-  /* Entrées de projet type galerie d'art */
+  /* Lignes de projets animées */
   .project-row {
     border-bottom: 1px solid var(--line);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -122,30 +124,50 @@
     transform: scaleX(1);
   }
   .project-row:hover {
-    padding-left: 12px;
+    padding-left: 16px;
+    color: var(--accent);
   }
 
-  /* Menu plein écran transition */
+  /* Menu plein écran */
   #menu-overlay {
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
   }
   #menu-overlay.open {
     opacity: 1;
     visibility: visible;
+    transform: translateY(0);
   }
 
-  /* Apparition dynamique scroll */
+  /* Éléments du menu qui glissent légèrement à l'ouverture */
+  #menu-overlay nav a {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #menu-overlay.open nav a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #menu-overlay.open nav a:nth-child(1) { transition-delay: 0.1s; }
+  #menu-overlay.open nav a:nth-child(2) { transition-delay: 0.2s; }
+  #menu-overlay.open nav a:nth-child(3) { transition-delay: 0.3s; }
+  #menu-overlay.open nav a:nth-child(4) { transition-delay: 0.4s; }
+
+  /* Apparition au scroll ultra-fluide */
   .reveal-section {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(30px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal-section.active {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* Inputs ultra minimalistes */
+  /* Inputs sans bordure */
   .minimal-input {
     background: transparent;
     border: none;
@@ -160,6 +182,15 @@
     outline: none;
     border-color: var(--accent);
   }
+
+  /* Animation délicate des items de liste au survol */
+  .skill-item {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+  }
+  .skill-item:hover {
+    transform: translateX(8px);
+    color: var(--accent);
+  }
 </style>
 </head>
 <body class="selection:bg-[var(--accent)] selection:text-white">
@@ -168,52 +199,52 @@
 <div id="custom-cursor" class="hidden lg:block opacity-0"></div>
 <div id="custom-cursor-ring" class="hidden lg:block opacity-0"></div>
 
-<!-- Header discret -->
-<nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-8 flex justify-between items-center mix-blend-difference text-white">
-  <a href="#top" class="text-lg font-light tracking-[0.25em] uppercase hover-target">M.D</a>
-  
-  <div class="flex items-center gap-8">
-    <!-- Sélecteur de langue haut de gamme -->
-    <div class="flex gap-3 text-[10px] font-mono tracking-widest mr-4">
-      <button onclick="setLanguage('fr')" class="lang-btn hover-target opacity-100 transition font-bold" id="lang-fr">FR</button>
-      <span class="opacity-30">/</span>
-      <button onclick="setLanguage('en')" class="lang-btn hover-target opacity-40 transition" id="lang-en">EN</button>
-      <span class="opacity-30">/</span>
-      <button onclick="setLanguage('nl')" class="lang-btn hover-target opacity-40 transition" id="lang-nl">NL</button>
+<!-- Navigation Haute en Verre Dépoli (Glassmorphism) -->
+<nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-6 border-b border-[rgba(28,20,23,0.04)] dark:border-[rgba(243,236,239,0.04)] backdrop-blur-md transition-all duration-500" style="background-color: var(--nav-bg);">
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <a href="#top" class="text-md font-light tracking-[0.25em] uppercase hover-target">M.D</a>
+    
+    <div class="flex items-center gap-8">
+      <!-- Sélecteur de langue -->
+      <div class="flex gap-2.5 text-[10px] tracking-[0.2em] font-medium">
+        <button onclick="setLanguage('fr')" class="lang-btn hover-target opacity-100 transition font-semibold" id="lang-fr">FR</button>
+        <span class="opacity-20">|</span>
+        <button onclick="setLanguage('en')" class="lang-btn hover-target opacity-40 transition" id="lang-en">EN</button>
+        <span class="opacity-20">|</span>
+        <button onclick="setLanguage('nl')" class="lang-btn hover-target opacity-40 transition" id="lang-nl">NL</button>
+      </div>
+
+      <!-- Mode Sombre / Clair -->
+      <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-1 hover:opacity-60 transition hover-target">
+        <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
+      </button>
+
+      <!-- Hamburger Menu Button -->
+      <button onclick="toggleMenu()" class="burger-btn flex flex-col justify-between w-6 h-3.5 z-50 hover-target focus:outline-none" aria-label="Menu">
+        <span id="burger-line-1" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left"></span>
+        <span id="burger-line-2" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left mt-[5px]"></span>
+      </button>
     </div>
-
-    <!-- Dark Mode -->
-    <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-1 hover:opacity-60 transition hover-target mr-2">
-      <svg id="themeIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
-    </button>
-
-    <!-- Bouton Hamburger élégant -->
-    <button onclick="toggleMenu()" class="burger-btn flex flex-col justify-between w-5 h-3 z-50 hover-target focus:outline-none" aria-label="Menu">
-      <span id="burger-line-1" class="w-full h-[1px] bg-white transition-all duration-300"></span>
-      <span id="burger-line-2" class="w-full h-[1px] bg-white transition-all duration-300"></span>
-    </button>
   </div>
 </nav>
 
 <!-- Menu Plein Écran (Overlay) -->
-<div id="menu-overlay" class="fixed inset-0 bg-[#0B0809] text-white z-40 opacity-0 visibility-hidden flex flex-col justify-center px-6 md:px-20 transition-all">
-  <div class="max-w-4xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
-    <!-- Liens principaux -->
+<div id="menu-overlay" class="fixed inset-0 z-40 flex flex-col justify-center px-6 md:px-20" style="background-color: var(--bg);">
+  <div class="max-w-4xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-16">
     <nav class="flex flex-col gap-6 text-4xl md:text-6xl font-extralight">
       <a href="#parcours" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-parcours">Mon Parcours</a>
       <a href="#projets" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-projets">Mes Projets</a>
       <a href="#competences" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-competences">Expertise & Outils</a>
       <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-contact">Me Contacter</a>
     </nav>
-    <!-- Infos complémentaires -->
-    <div class="text-[12px] uppercase tracking-[0.2em] space-y-6 font-light" style="color: #9E8E94">
+    <div class="text-[12px] uppercase tracking-[0.2em] space-y-6 font-light" style="color: var(--text-muted)">
       <div>
         <p class="font-bold mb-1" data-i18n="menu-location-title">Localisation</p>
-        <p data-i18n="menu-location-val">Belgique — Disponible à distance</p>
+        <p class="text-[var(--text)] font-light" data-i18n="menu-location-val">Belgique — Disponible à distance</p>
       </div>
       <div>
         <p class="font-bold mb-1" data-i18n="menu-social-title">Réseaux</p>
-        <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" target="_blank" class="block hover-target text-white hover-link">LinkedIn ↗</a>
+        <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" target="_blank" class="block hover-target text-[var(--text)] hover-link">LinkedIn ↗</a>
       </div>
     </div>
   </div>
@@ -222,10 +253,10 @@
 <!-- Section d'Accueil (Hero) -->
 <main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32">
   <div class="max-w-5xl mx-auto w-full">
-    <!-- Badge recrutement haut de gamme -->
-    <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[rgba(221,160,173,0.05)]">
+    <!-- Badge recrutement -->
+    <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[rgba(221,160,173,0.04)]">
       <span class="w-2 h-2 rounded-full bg-[#A2D2A1] animate-pulse"></span>
-      <span class="text-[10px] font-mono tracking-widest uppercase" style="color: var(--text-muted)" data-i18n="hero-status">Disponible pour un stage / alternance en Data</span>
+      <span class="text-[10px] tracking-[0.2em] uppercase font-medium" style="color: var(--text-muted)" data-i18n="hero-status">Disponible pour un stage / alternance en Data</span>
     </div>
     
     <h1 class="text-[clamp(2.3rem,7vw,5.5rem)] font-extralight leading-[1.05] tracking-tight mb-16">
@@ -237,7 +268,7 @@
       <p class="text-[14px] md:text-[15px] leading-relaxed font-light max-w-md" style="color: var(--text-muted)" data-i18n="hero-desc">
         Étudiante en Ingénieur de gestion à l'Université de Mons. Mon objectif est de transformer le bruit de la donnée brute en récits visuels limpides et porteurs de valeur pour l'entreprise.
       </p>
-      <div class="flex md:justify-end gap-8 text-[11px] uppercase tracking-[0.25em] font-medium">
+      <div class="flex md:justify-end gap-8 text-[11px] uppercase tracking-[0.2em] font-semibold">
         <a href="#projets" class="hover-link hover-target" data-i18n="hero-cta-1">Consulter mes travaux ↓</a>
         <a href="#contact" class="hover-link hover-target" data-i18n="hero-cta-2">Me contacter →</a>
       </div>
@@ -249,14 +280,14 @@
 <section id="parcours" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold sticky top-32" style="color: var(--text-muted)">01 / PROFILE & PATH</h2>
+      <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)">01 / PROFILE & PATH</h2>
     </div>
     <div class="md:col-span-2 space-y-20">
       <!-- Études -->
       <div class="group">
-        <span class="text-[11px] font-mono tracking-widest block mb-4" style="color: var(--text-muted)">2024 — 2027</span>
+        <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)">2024 — 2027</span>
         <h3 class="text-2xl font-light mb-3" data-i18n="edu-title">Bachelier en Ingénieur de gestion</h3>
-        <p class="text-[11px] uppercase tracking-[0.2em] mb-4" style="color: var(--text-muted)">Université de Mons</p>
+        <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)">Université de Mons</p>
         <p class="text-[14px] leading-relaxed font-light max-w-lg" style="color: var(--text-muted)" data-i18n="edu-desc">
           Formation d'excellence combinant les sciences économiques et mathématiques de l'ingénieur. Modélisation statistique avancée et analyse des structures d'information d'entreprise.
         </p>
@@ -264,9 +295,9 @@
 
       <!-- Expérience -->
       <div class="group border-t border-[var(--line)] pt-12">
-        <span class="text-[11px] font-mono tracking-widest block mb-4" style="color: var(--text-muted)">2023</span>
+        <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)">2023</span>
         <h3 class="text-2xl font-light mb-3" data-i18n="exp-title">Social Media Management</h3>
-        <p class="text-[11px] uppercase tracking-[0.2em] mb-4" style="color: var(--text-muted)">GabyLuxxy</p>
+        <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)">GabyLuxxy</p>
         <p class="text-[14px] leading-relaxed font-light max-w-lg" style="color: var(--text-muted)" data-i18n="exp-desc">
           Traitement d'images, direction de la charte esthétique et exploitation d'analytics pour guider l'impact visuel et l'engagement d'une audience e-commerce de luxe.
         </p>
@@ -279,7 +310,7 @@
 <section id="projets" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16 mb-16">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold" style="color: var(--text-muted)">02 / WORK</h2>
+      <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)">02 / WORK</h2>
     </div>
     <div class="md:col-span-2">
       <p class="text-[14px] font-light leading-relaxed max-w-md" style="color: var(--text-muted)" data-i18n="work-intro">
@@ -292,70 +323,85 @@
     <!-- Projet 1 -->
     <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
       <div>
-        <span class="text-[10px] font-mono tracking-widest block mb-2" style="color: var(--text-muted)">PYTHON / SQL / POWER BI</span>
+        <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">PYTHON / SQL / POWER BI</span>
         <h3 class="text-xl font-light" data-i18n="p1-title">Visualisation de l'économie Belge</h3>
       </div>
       <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
-        <span class="text-[13px] font-light font-mono" style="color: var(--text-muted)">2026</span>
-        <span class="text-[11px] uppercase tracking-widest font-medium" data-i18n="p-view">Consulter ↗</span>
+        <span class="text-[13px] font-light" style="color: var(--text-muted)">2026</span>
+        <span class="text-[11px] uppercase tracking-[0.15em] font-semibold" data-i18n="p-view">Consulter ↗</span>
       </div>
     </div>
 
     <!-- Projet 2 -->
     <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
       <div>
-        <span class="text-[10px] font-mono tracking-widest block mb-2" style="color: var(--text-muted)">LOOKER STUDIO / BIGQUERY</span>
+        <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">LOOKER STUDIO / BIGQUERY</span>
         <h3 class="text-xl font-light" data-i18n="p2-title">Dashboard d'acquisition E-Commerce</h3>
       </div>
       <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
-        <span class="text-[13px] font-light font-mono" style="color: var(--text-muted)" data-i18n="p-soon">Bientôt</span>
-        <span class="text-[11px] uppercase tracking-widest font-medium opacity-40">—</span>
+        <span class="text-[13px] font-light" style="color: var(--text-muted)" data-i18n="p-soon">Bientôt</span>
+        <span class="text-[11px] uppercase tracking-[0.15em] font-semibold opacity-40">—</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Section Compétences & Certifications -->
+<!-- Section Compétences & Qualités (Optimisée pour recruteur) -->
 <section id="competences" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold sticky top-32" style="color: var(--text-muted)">03 / CAPABILITIES</h2>
+      <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)">03 / CAPABILITIES</h2>
     </div>
     <div class="md:col-span-2 space-y-20">
       
-      <!-- Outils & Skills -->
-      <div class="grid grid-cols-2 gap-12">
+      <!-- Outils, Qualités & Langues -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
+        <!-- Compétences Techniques -->
         <div>
-          <h4 class="text-[11px] uppercase tracking-widest font-semibold mb-8" style="color: var(--text-muted)" data-i18n="skills-tech">Technique</h4>
+          <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-tech">Technique</h4>
           <ul class="space-y-4 text-[14px] font-light">
-            <li class="hover-target">Python</li>
-            <li class="hover-target">SQL & Modélisation</li>
-            <li class="hover-target">Power BI</li>
-            <li class="hover-target">Excel Avancé</li>
-            <li class="hover-target">Looker Studio</li>
+            <li class="skill-item hover-target">Python</li>
+            <li class="skill-item hover-target">SQL & Modélisation</li>
+            <li class="skill-item hover-target">Power BI</li>
+            <li class="skill-item hover-target">Excel Avancé</li>
+            <li class="skill-item hover-target">Looker Studio</li>
           </ul>
         </div>
+        
+        <!-- Qualités / Forces professionnelles -->
         <div>
-          <h4 class="text-[11px] uppercase tracking-widest font-semibold mb-8" style="color: var(--text-muted)" data-i18n="skills-lang">Langues</h4>
+          <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-soft">Atouts</h4>
           <ul class="space-y-4 text-[14px] font-light">
-            <li class="hover-target"><span data-i18n="lang-fr-val">Français</span> <span class="text-[11px] opacity-50 block font-mono" data-i18n="lang-native">Langue maternelle</span></li>
-            <li class="hover-target"><span data-i18n="lang-en-val">Anglais</span> <span class="text-[11px] opacity-50 block font-mono" data-i18n="lang-b2">Niveau B2</span></li>
-            <li class="hover-target"><span data-i18n="lang-nl-val">Néerlandais</span> <span class="text-[11px] opacity-50 block font-mono" data-i18n="lang-b1">Niveau B1</span></li>
+            <li class="skill-item hover-target" data-i18n="soft-1">Rigueur quantitative</li>
+            <li class="skill-item hover-target" data-i18n="soft-2">Esprit de synthèse</li>
+            <li class="skill-item hover-target" data-i18n="soft-3">Aisance visuelle</li>
+            <li class="skill-item hover-target" data-i18n="soft-4">Autonomie</li>
+            <li class="skill-item hover-target" data-i18n="soft-5">Adaptabilité</li>
+          </ul>
+        </div>
+
+        <!-- Langues -->
+        <div>
+          <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-lang">Langues</h4>
+          <ul class="space-y-5 text-[14px] font-light">
+            <li class="skill-item hover-target"><span data-i18n="lang-fr-val">Français</span> <span class="text-[11px] opacity-50 block" data-i18n="lang-native">Langue maternelle</span></li>
+            <li class="skill-item hover-target"><span data-i18n="lang-en-val">Anglais</span> <span class="text-[11px] opacity-50 block" data-i18n="lang-b2">Niveau B2</span></li>
+            <li class="skill-item hover-target"><span data-i18n="lang-nl-val">Néerlandais</span> <span class="text-[11px] opacity-50 block" data-i18n="lang-b1">Niveau B1</span></li>
           </ul>
         </div>
       </div>
 
-      <!-- Certifications (Super rassurant pour un recruteur) -->
+      <!-- Certifications -->
       <div class="border-t border-[var(--line)] pt-16">
-        <h4 class="text-[11px] uppercase tracking-widest font-semibold mb-8" style="color: var(--text-muted)">Certifications</h4>
+        <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)">Certifications</h4>
         <div class="space-y-6 text-[14px] font-light">
-          <div class="flex justify-between items-center py-2 border-b border-[var(--line)] hover-target">
+          <div class="flex justify-between items-center py-3 border-b border-[var(--line)] hover-target skill-item">
             <span>Google Data Analytics Professional</span>
-            <span class="text-[11px] uppercase tracking-widest opacity-60 font-mono" data-i18n="cert-progress">En cours</span>
+            <span class="text-[11px] uppercase tracking-[0.15em] opacity-60 font-semibold" data-i18n="cert-progress">En cours</span>
           </div>
-          <div class="flex justify-between items-center py-2 border-b border-[var(--line)] hover-target">
+          <div class="flex justify-between items-center py-3 border-b border-[var(--line)] hover-target skill-item">
             <span>Microsoft Certified: Power BI Data Analyst Associate</span>
-            <span class="text-[11px] uppercase tracking-widest opacity-60 font-mono" data-i18n="cert-progress">En cours</span>
+            <span class="text-[11px] uppercase tracking-[0.15em] opacity-60 font-semibold" data-i18n="cert-progress">En cours</span>
           </div>
         </div>
       </div>
@@ -364,11 +410,11 @@
   </div>
 </section>
 
-<!-- Section Contact / Footer -->
+<!-- Section Contact -->
 <footer id="contact" class="px-6 md:px-16 py-36 max-w-5xl mx-auto border-t border-[var(--line)]">
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
     <div>
-      <h2 class="text-[11px] uppercase tracking-[0.3em] font-semibold" style="color: var(--text-muted)">04 / CONNECT</h2>
+      <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)">04 / CONNECT</h2>
     </div>
     <div class="md:col-span-2">
       <h3 class="text-3xl md:text-5xl font-light leading-tight mb-16">
@@ -378,18 +424,18 @@
 
       <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="space-y-12 max-w-lg mb-20" novalidate>
         <div class="flex flex-col">
-          <label for="name" class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
+          <label for="name" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
           <input type="text" id="name" name="name" class="minimal-input hover-target" required>
         </div>
         <div class="flex flex-col">
-          <label for="email" class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="form-email">Adresse email</label>
+          <label for="email" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-email">Adresse email</label>
           <input type="email" id="email" name="email" class="minimal-input hover-target" required>
         </div>
         <div class="flex flex-col">
-          <label for="message" class="text-[10px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="form-message">Votre message</label>
+          <label for="message" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-message">Votre message</label>
           <textarea id="message" name="message" rows="3" class="minimal-input resize-none hover-target" required></textarea>
         </div>
-        <button type="submit" class="text-[11px] uppercase tracking-[0.25em] font-semibold hover-link hover-target pt-4" data-i18n="form-submit">
+        <button type="submit" class="text-[11px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-4" data-i18n="form-submit">
           Envoyer le message →
         </button>
       </form>
@@ -429,7 +475,13 @@
       "p-view": "Consulter ↗",
       "p-soon": "Bientôt",
       "skills-tech": "Technique",
+      "skills-soft": "Atouts",
       "skills-lang": "Langues",
+      "soft-1": "Rigueur quantitative",
+      "soft-2": "Esprit de synthèse",
+      "soft-3": "Aisance visuelle",
+      "soft-4": "Autonomie de travail",
+      "soft-5": "Forte adaptabilité",
       "lang-fr-val": "Français",
       "lang-en-val": "Anglais",
       "lang-nl-val": "Néerlandais",
@@ -468,7 +520,13 @@
       "p-view": "View Project ↗",
       "p-soon": "Coming Soon",
       "skills-tech": "Technical Skills",
+      "skills-soft": "Key Assets",
       "skills-lang": "Languages",
+      "soft-1": "Quantitative rigor",
+      "soft-2": "Synthesis mindset",
+      "soft-3": "Visual design sense",
+      "soft-4": "Self-reliance",
+      "soft-5": "High adaptability",
       "lang-fr-val": "French",
       "lang-en-val": "English",
       "lang-nl-val": "Dutch",
@@ -507,7 +565,13 @@
       "p-view": "Bekijken ↗",
       "p-soon": "Binnenkort",
       "skills-tech": "Technische Vaardigheden",
+      "skills-soft": "Sterke punten",
       "skills-lang": "Talen",
+      "soft-1": "Kwantitatieve precisie",
+      "soft-2": "Synthetisch denkvermogen",
+      "soft-3": "Visueel inzicht",
+      "soft-4": "Zelfstandigheid",
+      "soft-5": "Groot aanpassingsvermogen",
       "lang-fr-val": "Frans",
       "lang-en-val": "Engels",
       "lang-nl-val": "Nederlands",
@@ -537,13 +601,13 @@
 
     // Mettre à jour l'état visuel des boutons de langue
     document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.classList.remove('opacity-100', 'font-bold');
+      btn.classList.remove('opacity-100', 'font-semibold');
       btn.classList.add('opacity-40');
     });
     const activeBtn = document.getElementById(`lang-${lang}`);
     if (activeBtn) {
       activeBtn.classList.remove('opacity-40');
-      activeBtn.classList.add('opacity-100', 'font-bold');
+      activeBtn.classList.add('opacity-100', 'font-semibold');
     }
   }
 
@@ -556,8 +620,9 @@
     overlay.classList.toggle('open');
     
     if (overlay.classList.contains('open')) {
-      line1.style.transform = 'translateY(5px) rotate(45deg)';
-      line2.style.transform = 'translateY(-6px) rotate(-45deg)';
+      // Rotation fluide en croix
+      line1.style.transform = 'translateY(2px) rotate(45deg)';
+      line2.style.transform = 'translateY(-2px) rotate(-45deg)';
     } else {
       line1.style.transform = 'none';
       line2.style.transform = 'none';
