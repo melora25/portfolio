@@ -7,7 +7,7 @@
 <meta name="description" content="Portfolio de Mélanie Dupriez, Business Data Analyst spécialisée en Business Intelligence, structuration de données et interfaces décisionnelles.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght=200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght=200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #FDFBFB;
@@ -128,12 +128,12 @@ body {
   color: var(--accent);
 }
 
-/* Menu plein écran */
+/* Menu plein écran moderne et épuré */
 #menu-overlay {
   opacity: 0;
   visibility: hidden;
-  transform: translateY(-20px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+  transform: translateY(-10px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
 }
 #menu-overlay.open {
   opacity: 1;
@@ -141,21 +141,21 @@ body {
   transform: translateY(0);
 }
 
-/* Éléments du menu qui glissent légèrement à l'ouverture */
+/* Éléments du menu qui glissent légèrement */
 #menu-overlay nav a {
   opacity: 0;
-  transform: translateY(15px);
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(10px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 #menu-overlay.open nav a {
   opacity: 1;
   transform: translateY(0);
 }
-#menu-overlay.open nav a:nth-child(1) { transition-delay: 0.1s; }
-#menu-overlay.open nav a:nth-child(2) { transition-delay: 0.2s; }
-#menu-overlay.open nav a:nth-child(3) { transition-delay: 0.3s; }
-#menu-overlay.open nav a:nth-child(4) { transition-delay: 0.4s; }
-#menu-overlay.open nav a:nth-child(5) { transition-delay: 0.5s; }
+#menu-overlay.open nav a:nth-child(1) { transition-delay: 0.05s; }
+#menu-overlay.open nav a:nth-child(2) { transition-delay: 0.1s; }
+#menu-overlay.open nav a:nth-child(3) { transition-delay: 0.15s; }
+#menu-overlay.open nav a:nth-child(4) { transition-delay: 0.2s; }
+#menu-overlay.open nav a:nth-child(5) { transition-delay: 0.25s; }
 
 /* Apparition au scroll ultra-fluide */
 .reveal-section {
@@ -239,27 +239,34 @@ body {
 </div>
 </nav>
 
-<!-- Menu Plein Écran (Overlay) -->
+<!-- Menu Plein Écran Épuré -->
 <div id="menu-overlay" class="fixed inset-0 z-40 flex flex-col justify-center px-6 md:px-20" style="background-color: var(--bg);">
-<div class="max-w-4xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-16">
-  <nav class="flex flex-col gap-6 text-4xl md:text-6xl font-extralight">
-    <a href="#parcours" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-parcours">Mon Parcours</a>
-    <a href="#projets" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-projets">Mes Projets</a>
-    <a href="#competences" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-competences">Compétences & Outils</a>
-    <a href="#certifications" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-certs">Certifications</a>
-    <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-contact">Recrutement & Collaboration</a>
+<div class="max-w-4xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+  <nav class="flex flex-col gap-5 text-2xl md:text-4xl font-light">
+    <a href="#parcours" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-parcours">Mon Parcours</a>
+    <a href="#projets" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-projets">Mes Projets</a>
+    <a href="#competences" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-competences">Compétences & Outils</a>
+    <a href="#certifications" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-certs">Certifications</a>
+    <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors" data-i18n="nav-contact">Recrutement & Collaboration</a>
   </nav>
-  <div class="text-[12px] uppercase tracking-[0.2em] space-y-6 font-light" style="color: var(--text-muted)">
+  <div class="text-[11px] uppercase tracking-[0.2em] space-y-5 font-light" style="color: var(--text-muted)">
     <div>
       <p class="font-bold mb-1" data-i18n="menu-location-title">Localisation</p>
       <p class="text-[var(--text)] font-light" data-i18n="menu-location-val">Belgique — Disponible en télétravail</p>
     </div>
     <div>
       <p class="font-bold mb-1" data-i18n="menu-social-title">Réseaux</p>
-      <div class="space-y-2">
+      <div class="space-y-1">
         <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" target="_blank" class="block hover-target text-[var(--text)] hover-link">LinkedIn ↗</a>
         <a href="https://github.com" target="_blank" class="block hover-target text-[var(--text)] hover-link">GitHub ↗</a>
       </div>
+    </div>
+    <!-- Bouton Thème Intégré au Menu -->
+    <div class="pt-2">
+      <button onclick="toggleTheme()" class="flex items-center gap-2 hover-target hover:text-[var(--accent)] transition text-[10px] uppercase font-bold tracking-[0.2em]">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
+        <span data-i18n="menu-theme-btn">Changer d'ambiance</span>
+      </button>
     </div>
   </div>
 </div>
@@ -268,7 +275,7 @@ body {
 <!-- Section d'Accueil (Hero) -->
 <main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32">
 <div class="max-w-5xl mx-auto w-full">
-  <!-- Badge recrutement mis à jour -->
+  <!-- Badge recrutement -->
   <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[rgba(221,160,173,0.04)]">
     <span class="w-2 h-2 rounded-full bg-[#A2D2A1] animate-pulse"></span>
     <span class="text-[10px] tracking-[0.2em] uppercase font-medium" style="color: var(--text-muted)" data-i18n="hero-status">Ouverte aux opportunités de stage et d'emploi</span>
@@ -286,7 +293,7 @@ body {
     <span class="serif italic font-normal" data-i18n="hero-title-2">je guide vos décisions pour optimiser vos performances.</span>
   </h2>
 
-  <!-- Descriptif mis à jour -->
+  <!-- Descriptif -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end border-t border-[var(--line)] pt-12 pb-16">
     <p class="text-[14px] md:text-[15px] leading-relaxed font-light max-w-md" style="color: var(--text-muted)" data-i18n="hero-desc">
       Ingénieure de gestion et Business Data Analyst, je traduis des architectures de données complexes en leviers de performance stratégique. Je conçois également des interfaces web sur mesure pour fluidifier et simplifier la visualisation de vos indicateurs clés.
@@ -297,7 +304,7 @@ body {
     </div>
   </div>
 
-  <!-- Statistiques clés de Mélanie -->
+  <!-- Statistiques clés -->
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
     <div class="stat-box p-6 rounded-lg">
       <p class="text-3xl font-light mb-1">2027</p>
@@ -317,7 +324,7 @@ body {
     </div>
   </div>
 
-  <!-- Section "Ce que je recherche" épurée et élégante pour les recruteurs -->
+  <!-- Section Objectif & Disponibilité -->
   <div class="mt-20 pt-10 border-t border-[rgba(221,160,173,0.15)] max-w-3xl">
     <h4 class="text-[10px] uppercase tracking-[0.25em] font-bold mb-4" style="color: var(--accent)" data-i18n="seeking-title">Objectif & Disponibilité</h4>
     <p class="text-lg md:text-xl font-light leading-relaxed mb-3" data-i18n="seeking-desc">
@@ -378,7 +385,7 @@ body {
 </div>
 </section>
 
-<!-- Section Projets (Un aperçu de mon travail) -->
+<!-- Section Projets -->
 <section id="projets" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16 mb-16">
   <div>
@@ -428,7 +435,7 @@ body {
   <div class="md:col-span-2 space-y-20">
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
-      <!-- Outils (Sans logos) -->
+      <!-- Outils -->
       <div>
         <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-tech">Outils</h4>
         <ul class="space-y-4 text-[14px] font-light">
@@ -469,7 +476,7 @@ body {
 </div>
 </section>
 
-<!-- Section Certifications (Épurée sans logos ni sous-titre) -->
+<!-- Section Certifications -->
 <section id="certifications" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
@@ -477,27 +484,18 @@ body {
   </div>
   <div class="md:col-span-2">
     <div class="space-y-4 text-[14px] font-light">
-      <!-- Certification 1 -->
       <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
         <span>Microsoft Certified: Power BI Data Analyst Associate</span>
       </div>
-
-      <!-- Certification 2 -->
       <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
         <span>Google Data Analytics Professional Certificate</span>
       </div>
-
-      <!-- Certification 3 -->
       <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
         <span>Meta Data Analyst Professional Certificate</span>
       </div>
-
-      <!-- Certification 4 -->
       <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
         <span>IBM Data Analyst Professional Certificate</span>
       </div>
-
-      <!-- Certification 5 -->
       <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
         <span>Tableau Certified Data Analyst</span>
       </div>
@@ -506,7 +504,7 @@ body {
 </div>
 </section>
 
-<!-- Section Contact -->
+<!-- Section Contact / Pied de page -->
 <footer id="contact" class="px-6 md:px-16 py-36 max-w-5xl mx-auto border-t border-[var(--line)]">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
   <div>
@@ -518,7 +516,7 @@ body {
       <span class="serif italic font-normal" data-i18n="contact-cta-2">ou discutons d'un recrutement.</span>
     </h3>
 
-    <!-- Formulaire Formspree sans redirection -->
+    <!-- Formulaire Formspree -->
     <form id="contactForm" class="space-y-12 max-w-lg mb-20" novalidate>
       <div class="flex flex-col">
         <label for="name" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
@@ -537,7 +535,6 @@ body {
         <textarea id="message" name="message" rows="3" class="minimal-input resize-none hover-target" required></textarea>
       </div>
       
-      <!-- Feedback de statut d'envoi -->
       <div id="formStatus" class="text-[12px] font-light hidden"></div>
 
       <button type="submit" id="submitBtn" class="text-[11px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-4" data-i18n="form-submit">
@@ -556,12 +553,13 @@ body {
   </div>
 </div>
 
+<!-- Pied de page mis à jour (Phrase optimisée avec les données au pluriel) -->
 <div class="border-t border-[var(--line)] pt-16 mt-20 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
   <div>
     <p class="text-md font-light tracking-[0.25em] uppercase">Mélanie Dupriez</p>
-    <p class="text-[11px] font-light mt-1" style="color: var(--text-muted)" data-i18n="footer-sub">Business Data Analyst, je mets la donnée au service de vos décisions.</p>
+    <p class="text-[11px] font-light mt-1 max-w-md" style="color: var(--text-muted)" data-i18n="footer-sub">Business Data Analyst, je transforme vos données en leviers de performance stratégique.</p>
   </div>
-  <p class="text-[11px] font-light" style="color: var(--text-muted)">
+  <p class="text-[11px] font-light text-right" style="color: var(--text-muted)">
     &copy; 2026 Mélanie Dupriez. Tous droits réservés.<br>
     <span data-i18n="footer-credit">Fait avec soin en Belgique</span>
   </p>
@@ -569,7 +567,7 @@ body {
 </footer>
 
 <script>
-// Dictionnaire de traduction optimisé (FR / EN / NL)
+// Dictionnaire de traduction optimisé
 const translations = {
 fr: {
   "nav-parcours": "Mon Parcours",
@@ -580,6 +578,7 @@ fr: {
   "menu-location-title": "Localisation",
   "menu-location-val": "Belgique — Disponible en télétravail",
   "menu-social-title": "Réseaux",
+  "menu-theme-btn": "Changer d'ambiance",
   "hero-status": "Ouverte aux opportunités de stage et d'emploi",
   "hero-title-1": "Je structure vos données,",
   "hero-title-2": "je guide vos décisions pour optimiser vos performances.",
@@ -627,7 +626,7 @@ fr: {
   "form-message": "Votre message",
   "form-submit": "Envoyer le message →",
   "footer-info-title": "Ou retrouvez-moi sur :",
-  "footer-sub": "Business Data Analyst, je mets la donnée au service de vos décisions.",
+  "footer-sub": "Business Data Analyst, je transforme vos données en leviers de performance stratégique.",
   "footer-credit": "Fait avec soin en Belgique"
 },
 en: {
@@ -639,6 +638,7 @@ en: {
   "menu-location-title": "Location",
   "menu-location-val": "Belgium — Remote Friendly",
   "menu-social-title": "Socials",
+  "menu-theme-btn": "Switch Atmosphere",
   "hero-status": "Open for Internship and Employment Opportunities",
   "hero-title-1": "Structuring your data,",
   "hero-title-2": "guiding your decisions to optimize performance.",
@@ -686,7 +686,7 @@ en: {
   "form-message": "Your message",
   "form-submit": "Send Message →",
   "footer-info-title": "Or find me on:",
-  "footer-sub": "Business Data Analyst, bridging data and operational intelligence.",
+  "footer-sub": "Business Data Analyst, turning your data into strategic performance drivers.",
   "footer-credit": "Made with care in Belgium"
 },
 nl: {
@@ -698,6 +698,7 @@ nl: {
   "menu-location-title": "Locatie",
   "menu-location-val": "België — Beschikbaar voor remote werk",
   "menu-social-title": "Netwerken",
+  "menu-theme-btn": "Sfeer Wijzigen",
   "hero-status": "Beschikbaar voor een stage of baan in Data",
   "hero-title-1": "Ik structureer uw data,",
   "hero-title-2": "ik leid uw beslissingen om prestaties te optimaliseren.",
@@ -745,12 +746,11 @@ nl: {
   "form-message": "Uw bericht",
   "form-submit": "Bericht verzenden →",
   "footer-info-title": "Of vind me op:",
-  "footer-sub": "Business Data Analyst, ten dienste van uw operationele beslissingen.",
+  "footer-sub": "Business Data Analyst, ik transformeer uw data in strategische prestatie-indicatoren.",
   "footer-credit": "Gemaakt met zorg in België"
 }
 };
 
-// Changement dynamique de langue
 let currentLang = 'fr';
 function setLanguage(lang) {
   currentLang = lang;
@@ -761,7 +761,6 @@ function setLanguage(lang) {
     }
   });
 
-  // Mettre à jour l'état visuel des boutons de langue
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.remove('opacity-100', 'font-semibold');
     btn.classList.add('opacity-40');
@@ -773,7 +772,6 @@ function setLanguage(lang) {
   }
 }
 
-// Toggle du menu hamburger plein écran
 function toggleMenu() {
   const overlay = document.getElementById('menu-overlay');
   const line1 = document.getElementById('burger-line-1');
@@ -790,7 +788,6 @@ function toggleMenu() {
   }
 }
 
-// Gestion du Thème Sombre / Clair
 function toggleTheme() {
   document.documentElement.classList.toggle('dark');
   const isDark = document.documentElement.classList.contains('dark');
@@ -801,7 +798,6 @@ if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && w
   document.documentElement.classList.add('dark');
 }
 
-// Animation d'apparition au défilement
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -812,7 +808,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
 
-// Curseur avec physique fluide (uniquement si l'appareil supporte le hover)
+// Gestion du curseur physique
 const cursor = document.getElementById('custom-cursor');
 const ring = document.getElementById('custom-cursor-ring');
 let mouseX = 0, mouseY = 0;
@@ -843,7 +839,7 @@ document.querySelectorAll('.hover-target').forEach(item => {
   item.addEventListener('mouseleave', () => document.body.classList.remove('hover-active'));
 });
 
-// Envoi discret de Formspree sans redirection
+// Envoi asynchrone Formspree
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 const submitBtn = document.getElementById('submitBtn');
