@@ -206,17 +206,14 @@ body {
 </head>
 <body class="selection:bg-[var(--accent)] selection:text-white">
 
-<!-- Curseur personnalisé -->
 <div id="custom-cursor" class="hidden lg:block opacity-0"></div>
 <div id="custom-cursor-ring" class="hidden lg:block opacity-0"></div>
 
-<!-- Navigation Haute (Glassmorphism) -->
 <nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-6 border-b border-[rgba(28,20,23,0.04)] dark:border-[rgba(243,236,239,0.04)] backdrop-blur-md transition-all duration-500" style="background-color: var(--nav-bg);">
 <div class="max-w-7xl mx-auto flex justify-between items-center">
   <a href="#top" class="text-md font-light tracking-[0.25em] uppercase hover-target">M.D</a>
 
   <div class="flex items-center gap-8">
-    <!-- Sélecteur de langue -->
     <div class="flex gap-2.5 text-[10px] tracking-[0.2em] font-medium">
       <button onclick="setLanguage('fr')" class="lang-btn hover-target opacity-100 transition font-semibold" id="lang-fr">FR</button>
       <span class="opacity-20">|</span>
@@ -225,12 +222,10 @@ body {
       <button onclick="setLanguage('nl')" class="lang-btn hover-target opacity-40 transition" id="lang-nl">NL</button>
     </div>
 
-    <!-- Mode Sombre / Clair -->
     <button onclick="toggleTheme()" aria-label="Toggle Theme" class="p-1 hover:opacity-60 transition hover-target">
       <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
     </button>
 
-    <!-- Hamburger Menu Button -->
     <button onclick="toggleMenu()" class="burger-btn flex flex-col justify-between w-6 h-3.5 z-50 hover-target focus:outline-none" aria-label="Menu">
       <span id="burger-line-1" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left"></span>
       <span id="burger-line-2" class="w-full h-[1px] bg-[var(--text)] transition-all duration-300 origin-left mt-[5px]"></span>
@@ -239,7 +234,6 @@ body {
 </div>
 </nav>
 
-<!-- Menu Plein Écran Épuré -->
 <div id="menu-overlay" class="fixed inset-0 z-40 flex flex-col justify-center px-6 md:px-20" style="background-color: var(--bg);">
 <div class="max-w-4xl mx-auto w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
   <nav class="flex flex-col gap-5 text-2xl md:text-4xl font-light">
@@ -261,7 +255,6 @@ body {
         <a href="https://github.com" target="_blank" class="block hover-target text-[var(--text)] hover-link">GitHub ↗</a>
       </div>
     </div>
-    <!-- Bouton Thème Intégré au Menu -->
     <div class="pt-2">
       <button onclick="toggleTheme()" class="flex items-center gap-2 hover-target hover:text-[var(--accent)] transition text-[10px] uppercase font-bold tracking-[0.2em]">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/></svg>
@@ -272,10 +265,8 @@ body {
 </div>
 </div>
 
-<!-- Section d'Accueil (Hero) -->
 <main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32">
 <div class="max-w-5xl mx-auto w-full">
-  <!-- Badge recrutement -->
   <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[rgba(221,160,173,0.04)]">
     <span class="w-2 h-2 rounded-full bg-[#A2D2A1] animate-pulse"></span>
     <span class="text-[10px] tracking-[0.2em] uppercase font-medium" style="color: var(--text-muted)" data-i18n="hero-status">Ouverte aux opportunités de stage et d'emploi</span>
@@ -293,7 +284,6 @@ body {
     <span class="serif italic font-normal" data-i18n="hero-title-2">je guide vos décisions pour optimiser vos performances.</span>
   </h2>
 
-  <!-- Descriptif -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end border-t border-[var(--line)] pt-12 pb-16">
     <p class="text-[14px] md:text-[15px] leading-relaxed font-light max-w-md" style="color: var(--text-muted)" data-i18n="hero-desc">
       Ingénieure de gestion et Business Data Analyst, je traduis des architectures de données complexes en leviers de performance stratégique. Je conçois également des interfaces web sur mesure pour fluidifier et simplifier la visualisation de vos indicateurs clés.
@@ -304,7 +294,6 @@ body {
     </div>
   </div>
 
-  <!-- Statistiques clés -->
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
     <div class="stat-box p-6 rounded-lg">
       <p class="text-3xl font-light mb-1">2027</p>
@@ -324,7 +313,6 @@ body {
     </div>
   </div>
 
-  <!-- Section Objectif & Disponibilité -->
   <div class="mt-20 pt-10 border-t border-[rgba(221,160,173,0.15)] max-w-3xl">
     <h4 class="text-[10px] uppercase tracking-[0.25em] font-bold mb-4" style="color: var(--accent)" data-i18n="seeking-title">Objectif & Disponibilité</h4>
     <p class="text-lg md:text-xl font-light leading-relaxed mb-3" data-i18n="seeking-desc">
@@ -333,50 +321,46 @@ body {
     <div class="flex gap-4 items-center text-[12px] font-light" style="color: var(--text-muted)">
       <span class="flex items-center gap-1.5">
         <span class="w-1 h-1 rounded-full bg-[var(--accent)]"></span>
-        Belgique
+        <span data-i18n="seeking-country">Belgique</span>
       </span>
       <span>•</span>
       <span class="flex items-center gap-1.5">
         <span class="w-1 h-1 rounded-full bg-[var(--accent)]"></span>
-        Disponible pour le télétravail
+        <span data-i18n="seeking-remote">Disponible pour le télétravail</span>
       </span>
     </div>
   </div>
 </div>
 </main>
 
-<!-- Section Parcours (Formation & Expérience) -->
 <section id="parcours" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)">01 / Formation & Expérience</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)" data-i18n="section-01">01 / Formation & Expérience</h2>
   </div>
   <div class="md:col-span-2 space-y-20">
-    <!-- Études Actuelles -->
     <div class="group">
       <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)">2024 — 2027</span>
       <h3 class="text-2xl font-light mb-3" data-i18n="edu-title">Bachelier en Ingénieur de gestion</h3>
-      <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)">Université de Mons — Bachelier, 3 ans</p>
+      <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)" data-i18n="edu-school">Université de Mons — Bachelier, 3 ans</p>
       <p class="text-[14px] leading-relaxed font-light max-w-lg" style="color: var(--text-muted)" data-i18n="edu-desc">
         Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information. Modélisation statistique avancée et analyse des structures d'information d'entreprise.
       </p>
     </div>
 
-    <!-- Expérience Pro -->
     <div class="group border-t border-[var(--line)] pt-12">
-      <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)">Fév. — Avr. 2023</span>
+      <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)" data-i18n="exp-date">Fév. — Avr. 2023</span>
       <h3 class="text-2xl font-light mb-3" data-i18n="exp-title">Social Media Manager</h3>
-      <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)">GabyLuxxy · Stage en télétravail · Revente de luxe</p>
+      <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)" data-i18n="exp-company">GabyLuxxy · Stage en télétravail · Revente de luxe</p>
       <p class="text-[14px] leading-relaxed font-light max-w-lg" style="color: var(--text-muted)" data-i18n="exp-desc">
         Gestion des réseaux sociaux, création de contenu visuel, traitement des images et analyse analytique des indicateurs de performance pour guider l'engagement.
       </p>
     </div>
 
-    <!-- Diplôme Photographe -->
     <div class="group border-t border-[var(--line)] pt-12">
-      <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)">2022 — 2024</span>
+      <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)" data-i18n="photo-date">2022 — 2024</span>
       <h3 class="text-2xl font-light mb-3" data-i18n="photo-title">Diplôme de Photographe</h3>
-      <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)">5e — 6e secondaire</p>
+      <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)" data-i18n="photo-school">5e — 6e secondaire</p>
       <p class="text-[14px] leading-relaxed font-light max-w-lg" style="color: var(--text-muted)" data-i18n="photo-desc">
         Photographie, montage photo & vidéo, direction de la charte esthétique et notions fondamentales de marketing et publicité.
       </p>
@@ -385,11 +369,10 @@ body {
 </div>
 </section>
 
-<!-- Section Projets -->
 <section id="projets" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16 mb-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)">02 / WORK</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)" data-i18n="section-02">02 / WORK</h2>
   </div>
   <div class="md:col-span-2">
     <h3 class="text-2xl font-light mb-4" data-i18n="project-section-title">Un aperçu de mon travail</h3>
@@ -400,7 +383,6 @@ body {
 </div>
 
 <div class="mt-16 border-t border-[var(--line)]">
-  <!-- Projet 1 -->
   <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
     <div>
       <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">PYTHON / SQL / POWER BI</span>
@@ -412,7 +394,6 @@ body {
     </div>
   </div>
 
-  <!-- Projet 2 -->
   <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
     <div>
       <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">LOOKER STUDIO / BIGQUERY</span>
@@ -426,16 +407,14 @@ body {
 </div>
 </section>
 
-<!-- Section Compétences & Outils -->
 <section id="competences" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)">03 / COMPETENCES</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)" data-i18n="section-03">03 / COMPETENCES</h2>
   </div>
   <div class="md:col-span-2 space-y-20">
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
-      <!-- Outils -->
       <div>
         <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-tech">Outils</h4>
         <ul class="space-y-4 text-[14px] font-light">
@@ -448,7 +427,6 @@ body {
         </ul>
       </div>
 
-      <!-- Qualités -->
       <div>
         <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-soft">Qualités</h4>
         <ul class="space-y-4 text-[14px] font-light">
@@ -461,7 +439,6 @@ body {
         </ul>
       </div>
 
-      <!-- Langues -->
       <div>
         <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-lang">Langues</h4>
         <ul class="space-y-5 text-[14px] font-light">
@@ -476,11 +453,10 @@ body {
 </div>
 </section>
 
-<!-- Section Certifications -->
 <section id="certifications" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)">04 / CERTIFICATIONS</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)" data-i18n="section-04">04 / CERTIFICATIONS</h2>
   </div>
   <div class="md:col-span-2">
     <div class="space-y-4 text-[14px] font-light">
@@ -504,11 +480,10 @@ body {
 </div>
 </section>
 
-<!-- Section Contact / Pied de page -->
 <footer id="contact" class="px-6 md:px-16 py-36 max-w-5xl mx-auto border-t border-[var(--line)]">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)">05 / RECRUTEMENT</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)" data-i18n="section-05">05 / RECRUTEMENT</h2>
   </div>
   <div class="md:col-span-2">
     <h3 class="text-3xl md:text-5xl font-light leading-tight mb-16">
@@ -516,7 +491,6 @@ body {
       <span class="serif italic font-normal" data-i18n="contact-cta-2">ou discutons d'un recrutement.</span>
     </h3>
 
-    <!-- Formulaire Formspree -->
     <form id="contactForm" class="space-y-12 max-w-lg mb-20" novalidate>
       <div class="flex flex-col">
         <label for="name" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
@@ -553,21 +527,20 @@ body {
   </div>
 </div>
 
-<!-- Pied de page -->
 <div class="border-t border-[var(--line)] pt-16 mt-20 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
   <div>
     <p class="text-md font-light tracking-[0.25em] uppercase">Mélanie Dupriez</p>
     <p class="text-[11px] font-light mt-1 max-w-md" style="color: var(--text-muted)" data-i18n="footer-sub">Business Data Analyst, je transforme vos données en leviers de performance stratégique.</p>
   </div>
   <p class="text-[11px] font-light text-right" style="color: var(--text-muted)">
-    &copy; 2026 Mélanie Dupriez. Tous droits réservés.<br>
+    &copy; 2026 Mélanie Dupriez. <span data-i18n="footer-rights">Tous droits réservés.</span><br>
     <span data-i18n="footer-credit">Fait avec soin en Belgique</span>
   </p>
 </div>
 </footer>
 
 <script>
-// Dictionnaire de traduction mis à jour
+// Dictionnaire de traduction mis à jour et complet
 const translations = {
 fr: {
   "nav-parcours": "Mon Parcours",
@@ -592,18 +565,28 @@ fr: {
   "stat-certs": "Certifications visées",
   "seeking-title": "Objectif & Disponibilité",
   "seeking-desc": "Je recherche activement un stage ou un premier emploi en tant que <strong>Business Data Analyst</strong> ou en <strong>Business Intelligence</strong>.",
+  "seeking-country": "Belgique",
+  "seeking-remote": "Disponible pour le télétravail",
+  "section-01": "01 / Formation & Expérience",
   "edu-title": "Bachelier en Ingénieur de gestion",
+  "edu-school": "Université de Mons — Bachelier, 3 ans",
   "edu-desc": "Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information. Modélisation statistique avancée et analyse des structures d'information d'entreprise.",
+  "exp-date": "Fév. — Avr. 2023",
   "exp-title": "Social Media Manager",
+  "exp-company": "GabyLuxxy · Stage en télétravail · Revente de luxe",
   "exp-desc": "Gestion des réseaux sociaux, création de contenu visuel, traitement des images et analyse analytique des indicateurs de performance pour guider l'engagement.",
+  "photo-date": "2022 — 2024",
   "photo-title": "Diplôme de Photographe",
+  "photo-school": "5e — 6e secondaire",
   "photo-desc": "Photographie, montage photo & vidéo, direction de la charte esthétique et notions fondamentales de marketing et de publicité.",
+  "section-02": "02 / WORK",
   "project-section-title": "Un aperçu de mon travail",
   "work-intro": "Sélection de réalisations analytiques et de projets personnels.",
   "p1-title": "Visualisation de l'économie Belge",
   "p2-title": "Dashboard d'acquisition E-Commerce",
   "p-view": "Consulter ↗",
   "p-soon": "Bientôt",
+  "section-03": "03 / COMPETENCES",
   "skills-tech": "Outils",
   "skills-soft": "Qualités",
   "skills-lang": "Langues",
@@ -619,6 +602,8 @@ fr: {
   "lang-native": "C2 / Langue maternelle",
   "lang-b2": "Niveau B2",
   "lang-b1": "Niveau B1",
+  "section-04": "04 / CERTIFICATIONS",
+  "section-05": "05 / RECRUTEMENT",
   "contact-cta-1": "Collaborons ensemble",
   "contact-cta-2": "ou discutons d'un recrutement.",
   "form-name": "Nom complet",
@@ -628,6 +613,7 @@ fr: {
   "form-submit": "Envoyer le message →",
   "footer-info-title": "Ou retrouvez-moi sur :",
   "footer-sub": "Business Data Analyst, je transforme vos données en leviers de performance stratégique.",
+  "footer-rights": "Tous droits réservés.",
   "footer-credit": "Fait avec soin en Belgique"
 },
 en: {
@@ -653,18 +639,28 @@ en: {
   "stat-certs": "Certifications targeted",
   "seeking-title": "Objective & Availability",
   "seeking-desc": "I am actively seeking an internship or a first job as a <strong>Business Data Analyst</strong> or in <strong>Business Intelligence</strong>.",
-  "edu-title": "Bachelor's in Business Engineering",
+  "seeking-country": "Belgium",
+  "seeking-remote": "Available for remote work",
+  "section-01": "01 / Education & Experience",
+  "edu-title": "Bachelor in Business Engineering",
+  "edu-school": "University of Mons — Bachelor, 3 years",
   "edu-desc": "Data & computer science specialization. Multidisciplinary program in economics, finance, management, and information systems. Advanced statistical modeling.",
+  "exp-date": "Feb. — Apr. 2023",
   "exp-title": "Social Media Manager",
+  "exp-company": "GabyLuxxy · Remote Internship · Luxury Resale",
   "exp-desc": "Social media management, visual content creation, image processing, and performance indicators (KPIs) analysis.",
+  "photo-date": "2022 — 2024",
   "photo-title": "Photography Diploma",
+  "photo-school": "5th — 6th secondary",
   "photo-desc": "Photography, photo & video editing, aesthetic identity steering, and core marketing and advertising fundamentals.",
+  "section-02": "02 / WORK",
   "project-section-title": "A glimpse of my work",
   "work-intro": "A selection of analytical accomplishments and personal projects.",
   "p1-title": "Belgian Economic Data Engine",
   "p2-title": "E-Commerce Acquisition Dashboard",
   "p-view": "View Project ↗",
   "p-soon": "Coming Soon",
+  "section-03": "03 / SKILLS",
   "skills-tech": "Tools",
   "skills-soft": "Traits",
   "skills-lang": "Languages",
@@ -680,6 +676,8 @@ en: {
   "lang-native": "C2 / Native speaker",
   "lang-b2": "B2 Upper-Intermediate",
   "lang-b1": "B1 Intermediate",
+  "section-04": "04 / CERTIFICATIONS",
+  "section-05": "05 / RECRUITMENT",
   "contact-cta-1": "Let's build together",
   "contact-cta-2": "or discuss recruitment.",
   "form-name": "Full name",
@@ -689,6 +687,7 @@ en: {
   "form-submit": "Send Message →",
   "footer-info-title": "Or find me on:",
   "footer-sub": "Business Data Analyst, turning your data into strategic performance drivers.",
+  "footer-rights": "All rights reserved.",
   "footer-credit": "Made with care in Belgium"
 },
 nl: {
@@ -698,7 +697,7 @@ nl: {
   "nav-certs": "Certificeringen",
   "nav-contact": "Werving & Contact",
   "menu-location-title": "Locatie",
-  "menu-location-val": "België — Beschikbaar voor remote werk",
+  "menu-location-val": "België — Beschikbaar pour remote werk",
   "menu-social-title": "Netwerken",
   "menu-theme-btn": "Sfeer Wijzigen",
   "hero-status": "Beschikbaar voor een stage of baan in Data",
@@ -714,18 +713,28 @@ nl: {
   "stat-certs": "Certificeringen",
   "seeking-title": "Doelstelling & Beschikbaarheid",
   "seeking-desc": "Ik ben actief op zoek naar een stage of een eerste baan als <strong>Business Data Analyst</strong> of in <strong>Business Intelligence</strong>.",
+  "seeking-country": "België",
+  "seeking-remote": "Beschikbaar voor remote werk",
+  "section-01": "01 / Opleiding & Ervaring",
   "edu-title": "Bachelor in de Handelsingenieur",
+  "edu-school": "Universiteit van Bergen — Bachelor, 3 jaar",
   "edu-desc": "Specialisatie in data & informatica. Multidisciplinair programma in economie, financiën, management en informatiesystemen. Geavanceerde statistische modellering.",
+  "exp-date": "Feb. — Apr. 2023",
   "exp-title": "Social Media Manager",
+  "exp-company": "GabyLuxxy · Remote Stage · Luxe Wederverkoop",
   "exp-desc": "Social media beheer, visuele contentcreatie, fotobewerking en analytische evaluatie van prestatie-indicatoren (KPI's).",
+  "photo-date": "2022 — 2024",
   "photo-title": "Diploma Fotografie",
+  "photo-school": "5e — 6e middelbaar",
   "photo-desc": "Fotografie, foto- en videobewerking, artistieke sturing en basisprincipes van marketing en reclame.",
+  "section-02": "02 / WORK",
   "project-section-title": "Een blik op mijn werk",
   "work-intro": "Een selectie van analytische realisaties en persoonlijke projecten.",
   "p1-title": "Visuele Analyse van de Belgische Economie",
   "p2-title": "E-Commerce Acquisitie Dashboard",
   "p-view": "Bekijken ↗",
   "p-soon": "Binnenkort",
+  "section-03": "03 / EXPERTISE",
   "skills-tech": "Tools",
   "skills-soft": "Kwaliteiten",
   "skills-lang": "Talen",
@@ -741,6 +750,8 @@ nl: {
   "lang-native": "C2 / Moedertaal",
   "lang-b2": "B2-niveau",
   "lang-b1": "B1-niveau",
+  "section-04": "04 / CERTIFICERINGEN",
+  "section-05": "05 / WERVING",
   "contact-cta-1": "Laten we samenwerken",
   "contact-cta-2": "of rekrutering bespreken.",
   "form-name": "Volledige naam",
@@ -750,6 +761,7 @@ nl: {
   "form-submit": "Bericht verzenden →",
   "footer-info-title": "Of vind me op:",
   "footer-sub": "Business Data Analyst, ik transformeer uw data in strategische prestatie-indicatoren.",
+  "footer-rights": "Alle rechten voorbehouden.",
   "footer-credit": "Gemaakt met zorg in België"
 }
 };
