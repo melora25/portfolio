@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mélanie Dupriez — Portfolio</title>
-<meta name="description" content="Portfolio de Mélanie Dupriez, étudiante en Ingénieur de gestion et Data Analyst passionnée par la visualisation et la Business Intelligence.">
+<meta name="description" content="Portfolio de Mélanie Dupriez, Business Data Analyst spécialisée en Business Intelligence, structuration de données et interfaces décisionnelles.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght=200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg: #FDFBFB;
@@ -245,9 +245,9 @@ body {
   <nav class="flex flex-col gap-6 text-4xl md:text-6xl font-extralight">
     <a href="#parcours" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-parcours">Mon Parcours</a>
     <a href="#projets" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-projets">Mes Projets</a>
-    <a href="#competences" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-competences">Expertise & Outils</a>
+    <a href="#competences" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-competences">Compétences & Outils</a>
     <a href="#certifications" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-certs">Certifications</a>
-    <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-contact">Me Contacter</a>
+    <a href="#contact" onclick="toggleMenu()" class="hover-target hover:text-[var(--accent)] transition-colors serif italic" data-i18n="nav-contact">Recrutement & Collaboration</a>
   </nav>
   <div class="text-[12px] uppercase tracking-[0.2em] space-y-6 font-light" style="color: var(--text-muted)">
     <div>
@@ -259,7 +259,6 @@ body {
       <div class="space-y-2">
         <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" target="_blank" class="block hover-target text-[var(--text)] hover-link">LinkedIn ↗</a>
         <a href="https://github.com" target="_blank" class="block hover-target text-[var(--text)] hover-link">GitHub ↗</a>
-        <a href="https://instagram.com" target="_blank" class="block hover-target text-[var(--text)] hover-link">Instagram ↗</a>
       </div>
     </div>
   </div>
@@ -269,32 +268,32 @@ body {
 <!-- Section d'Accueil (Hero) -->
 <main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32">
 <div class="max-w-5xl mx-auto w-full">
-  <!-- Badge recrutement -->
+  <!-- Badge recrutement mis à jour -->
   <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[rgba(221,160,173,0.04)]">
     <span class="w-2 h-2 rounded-full bg-[#A2D2A1] animate-pulse"></span>
-    <span class="text-[10px] tracking-[0.2em] uppercase font-medium" style="color: var(--text-muted)" data-i18n="hero-status">Disponible pour un stage / alternance en Data</span>
+    <span class="text-[10px] tracking-[0.2em] uppercase font-medium" style="color: var(--text-muted)" data-i18n="hero-status">Ouverte aux opportunités de stage et d'emploi</span>
   </div>
 
   <h1 class="text-[clamp(2.3rem,7vw,5.5rem)] font-extralight leading-[1.05] tracking-tight mb-4">
     Mélanie Dupriez
   </h1>
   <p class="text-[clamp(1.1rem,3vw,1.8rem)] font-light mb-12" style="color: var(--text-muted)">
-    Data Analyst · <span class="serif italic">Ingénieure de gestion</span>
+    Business Data Analyst · <span class="serif italic">Ingénieure de gestion</span>
   </p>
 
   <h2 class="text-3xl md:text-5xl font-extralight tracking-tight mb-12 max-w-3xl">
-    <span data-i18n="hero-title-1">Je structure la donnée,</span><br>
-    <span class="serif italic font-normal" data-i18n="hero-title-2">je clarifie les décisions stratégiques.</span>
+    <span data-i18n="hero-title-1">Je structure vos données,</span><br>
+    <span class="serif italic font-normal" data-i18n="hero-title-2">je guide vos décisions pour optimiser vos performances.</span>
   </h2>
 
-  <!-- Nouveau bloc de description avec vos mots précis -->
+  <!-- Descriptif mis à jour -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end border-t border-[var(--line)] pt-12 pb-16">
     <p class="text-[14px] md:text-[15px] leading-relaxed font-light max-w-md" style="color: var(--text-muted)" data-i18n="hero-desc">
-      Ingénieure de gestion spécialisée en Data, je transforme vos données en diagnostics précis et en recommandations concrètes pour optimiser vos processus et maximiser votre performance.
+      Ingénieure de gestion et Business Data Analyst, je traduis des architectures de données complexes en leviers de performance stratégique. Je conçois également des interfaces web sur mesure pour fluidifier et simplifier la visualisation de vos indicateurs clés.
     </p>
     <div class="flex md:justify-end gap-8 text-[11px] uppercase tracking-[0.2em] font-semibold">
-      <a href="#projets" class="hover-link hover-target" data-i18n="hero-cta-1">Voir mes projets ↓</a>
-      <a href="#contact" class="hover-link hover-target" data-i18n="hero-cta-2">Discutons de vos projets →</a>
+      <a href="#projets" class="hover-link hover-target" data-i18n="hero-cta-1">Découvrir mes travaux ↓</a>
+      <a href="#contact" class="hover-link hover-target" data-i18n="hero-cta-2">Me recruter / Collaborer →</a>
     </div>
   </div>
 
@@ -314,17 +313,27 @@ body {
     </div>
     <div class="stat-box p-6 rounded-lg">
       <p class="text-3xl font-light mb-1">5</p>
-      <p class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="stat-certs">Certifications en cours</p>
+      <p class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="stat-certs">Certifications visées</p>
     </div>
   </div>
 
-  <!-- Ce que je recherche -->
-  <div class="mt-16 p-8 rounded-lg border border-[var(--line)] bg-[rgba(221,160,173,0.02)] max-w-3xl">
-    <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold mb-3" style="color: var(--accent)" data-i18n="seeking-title">Ce que je recherche</h4>
-    <p class="text-[14px] font-light leading-relaxed mb-1" data-i18n="seeking-desc">
-      Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à la donnée.
+  <!-- Section "Ce que je recherche" épurée et élégante pour les recruteurs -->
+  <div class="mt-20 pt-10 border-t border-[rgba(221,160,173,0.15)] max-w-3xl">
+    <h4 class="text-[10px] uppercase tracking-[0.25em] font-bold mb-4" style="color: var(--accent)" data-i18n="seeking-title">Objectif & Disponibilité</h4>
+    <p class="text-lg md:text-xl font-light leading-relaxed mb-3" data-i18n="seeking-desc">
+      Je recherche activement un stage ou un premier emploi en tant que <strong class="font-normal text-[var(--accent)]">Business Data Analyst</strong> ou en <strong class="font-normal text-[var(--accent)]">Business Intelligence</strong>.
     </p>
-    <span class="text-[11px] font-light italic" style="color: var(--text-muted)" data-i18n="seeking-loc">Belgique · Disponible en télétravail</span>
+    <div class="flex gap-4 items-center text-[12px] font-light" style="color: var(--text-muted)">
+      <span class="flex items-center gap-1.5">
+        <span class="w-1 h-1 rounded-full bg-[var(--accent)]"></span>
+        Belgique
+      </span>
+      <span>•</span>
+      <span class="flex items-center gap-1.5">
+        <span class="w-1 h-1 rounded-full bg-[var(--accent)]"></span>
+        Disponible pour le télétravail
+      </span>
+    </div>
   </div>
 </div>
 </main>
@@ -378,7 +387,7 @@ body {
   <div class="md:col-span-2">
     <h3 class="text-2xl font-light mb-4" data-i18n="project-section-title">Un aperçu de mon travail</h3>
     <p class="text-[14px] font-light leading-relaxed max-w-md" style="color: var(--text-muted)" data-i18n="work-intro">
-      Sélection de réalisations analytiques et de projets personnels alliant rigueur technique, requêtes complexes et sens de la lisibilité graphique.
+      Sélection de réalisations analytiques et de projets personnels.
     </p>
   </div>
 </div>
@@ -414,21 +423,21 @@ body {
 <section id="competences" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)">03 / CAPABILITIES</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)">03 / COMPETENCES</h2>
   </div>
   <div class="md:col-span-2 space-y-20">
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
-      <!-- Compétences Techniques (Modifié avec vos 6 outils) -->
+      <!-- Outils (Sans logos) -->
       <div>
         <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-tech">Outils</h4>
         <ul class="space-y-4 text-[14px] font-light">
-          <li class="skill-item hover-target flex items-center gap-2"><span class="text-[9px] font-semibold px-1.5 py-0.5 rounded border border-[var(--line)]">Py</span> Python</li>
-          <li class="skill-item hover-target flex items-center gap-2"><span class="text-[9px] font-semibold px-1.5 py-0.5 rounded border border-[var(--line)]">SQL</span> SQL & Modélisation</li>
-          <li class="skill-item hover-target flex items-center gap-2"><span class="text-[9px] font-semibold px-1.5 py-0.5 rounded border border-[var(--line)]">PBI</span> Power BI</li>
-          <li class="skill-item hover-target flex items-center gap-2"><span class="text-[9px] font-semibold px-1.5 py-0.5 rounded border border-[var(--line)]">Tb</span> Tableau</li>
-          <li class="skill-item hover-target flex items-center gap-2"><span class="text-[9px] font-semibold px-1.5 py-0.5 rounded border border-[var(--line)]">Xl</span> Excel</li>
-          <li class="skill-item hover-target flex items-center gap-2"><span class="text-[9px] font-semibold px-1.5 py-0.5 rounded border border-[var(--line)]">Cv</span> Canva</li>
+          <li class="skill-item hover-target">Python</li>
+          <li class="skill-item hover-target">SQL & Modélisation</li>
+          <li class="skill-item hover-target">Power BI</li>
+          <li class="skill-item hover-target">Tableau</li>
+          <li class="skill-item hover-target">Excel</li>
+          <li class="skill-item hover-target">Canva</li>
         </ul>
       </div>
 
@@ -460,59 +469,37 @@ body {
 </div>
 </section>
 
-<!-- Section Certifications (Mise à jour complète avec 5 certifications) -->
+<!-- Section Certifications (Épurée sans logos ni sous-titre) -->
 <section id="certifications" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
     <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)">04 / CERTIFICATIONS</h2>
   </div>
   <div class="md:col-span-2">
-    <h4 class="text-2xl font-light mb-8" data-i18n="cert-title">En cours d'obtention</h4>
-    
     <div class="space-y-4 text-[14px] font-light">
       <!-- Certification 1 -->
       <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
-        <span class="flex items-center gap-3">
-          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded border border-[var(--line)]">Mi</span>
-          Microsoft Certified: Power BI Data Analyst Associate
-        </span>
-        <span class="text-[11px] uppercase tracking-[0.15em] opacity-60 font-semibold" data-i18n="cert-progress">En cours</span>
+        <span>Microsoft Certified: Power BI Data Analyst Associate</span>
       </div>
 
       <!-- Certification 2 -->
       <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
-        <span class="flex items-center gap-3">
-          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded border border-[var(--line)]">Go</span>
-          Google Data Analytics Professional Certificate
-        </span>
-        <span class="text-[11px] uppercase tracking-[0.15em] opacity-60 font-semibold" data-i18n="cert-progress">En cours</span>
+        <span>Google Data Analytics Professional Certificate</span>
       </div>
 
       <!-- Certification 3 -->
       <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
-        <span class="flex items-center gap-3">
-          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded border border-[var(--line)]">Me</span>
-          Meta Data Analyst Professional Certificate
-        </span>
-        <span class="text-[11px] uppercase tracking-[0.15em] opacity-60 font-semibold" data-i18n="cert-progress">En cours</span>
+        <span>Meta Data Analyst Professional Certificate</span>
       </div>
 
       <!-- Certification 4 -->
       <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
-        <span class="flex items-center gap-3">
-          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded border border-[var(--line)]">IB</span>
-          IBM Data Analyst Professional Certificate
-        </span>
-        <span class="text-[11px] uppercase tracking-[0.15em] opacity-60 font-semibold" data-i18n="cert-progress">En cours</span>
+        <span>IBM Data Analyst Professional Certificate</span>
       </div>
 
       <!-- Certification 5 -->
       <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
-        <span class="flex items-center gap-3">
-          <span class="text-[9px] font-bold px-1.5 py-0.5 rounded border border-[var(--line)]">Ta</span>
-          Tableau Certified Data Analyst
-        </span>
-        <span class="text-[11px] uppercase tracking-[0.15em] opacity-60 font-semibold" data-i18n="cert-progress">En cours</span>
+        <span>Tableau Certified Data Analyst</span>
       </div>
     </div>
   </div>
@@ -523,32 +510,37 @@ body {
 <footer id="contact" class="px-6 md:px-16 py-36 max-w-5xl mx-auto border-t border-[var(--line)]">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)">05 / CONNECT</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)">05 / RECRUTEMENT</h2>
   </div>
   <div class="md:col-span-2">
     <h3 class="text-3xl md:text-5xl font-light leading-tight mb-16">
-      <span data-i18n="contact-cta-1">Discutons de vos projets</span> <br class="hidden md:inline">
-      <span class="serif italic font-normal" data-i18n="contact-cta-2">ou d'une opportunité de stage.</span>
+      <span data-i18n="contact-cta-1">Collaborons ensemble</span> <br class="hidden md:inline">
+      <span class="serif italic font-normal" data-i18n="contact-cta-2">ou discutons d'un recrutement.</span>
     </h3>
 
-    <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="space-y-12 max-w-lg mb-20" novalidate>
+    <!-- Formulaire Formspree sans redirection -->
+    <form id="contactForm" class="space-y-12 max-w-lg mb-20" novalidate>
       <div class="flex flex-col">
         <label for="name" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
-        <input type="text" id="name" name="name" value="Mélanie Dupriez" class="minimal-input hover-target" required>
+        <input type="text" id="name" name="name" class="minimal-input hover-target" required>
       </div>
       <div class="flex flex-col">
         <label for="email" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-email">Adresse email</label>
-        <input type="email" id="email" name="email" placeholder="vous@email.com" class="minimal-input hover-target" required>
+        <input type="email" id="email" name="email" class="minimal-input hover-target" required>
       </div>
       <div class="flex flex-col">
         <label for="subject" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-subject">Sujet</label>
-        <input type="text" id="subject" name="subject" value="Proposition de stage / collaboration" class="minimal-input hover-target" required>
+        <input type="text" id="subject" name="subject" class="minimal-input hover-target" required>
       </div>
       <div class="flex flex-col">
         <label for="message" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-message">Votre message</label>
-        <textarea id="message" name="message" rows="3" class="minimal-input resize-none hover-target" required>Bonjour Mélanie, je souhaite...</textarea>
+        <textarea id="message" name="message" rows="3" class="minimal-input resize-none hover-target" required></textarea>
       </div>
-      <button type="submit" class="text-[11px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-4" data-i18n="form-submit">
+      
+      <!-- Feedback de statut d'envoi -->
+      <div id="formStatus" class="text-[12px] font-light hidden"></div>
+
+      <button type="submit" id="submitBtn" class="text-[11px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-4" data-i18n="form-submit">
         Envoyer le message →
       </button>
     </form>
@@ -556,10 +548,9 @@ body {
     <div class="flex flex-col gap-6 mb-16">
       <p class="text-[11px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="footer-info-title">Ou retrouvez-moi sur :</p>
       <div class="flex flex-wrap gap-12 text-[13px] font-light">
-        <a href="mailto:melanie.dupriez@email.be" class="hover-link hover-target">melanie.dupriez@email.be</a>
+        <a href="mailto:melanied2502@gmail.com" class="hover-link hover-target">melanied2502@gmail.com</a>
         <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" class="hover-link hover-target" target="_blank" rel="noopener">LinkedIn ↗</a>
         <a href="https://github.com" class="hover-link hover-target" target="_blank" rel="noopener">GitHub ↗</a>
-        <a href="https://instagram.com" class="hover-link hover-target" target="_blank" rel="noopener">Instagram ↗</a>
       </div>
     </div>
   </div>
@@ -568,11 +559,11 @@ body {
 <div class="border-t border-[var(--line)] pt-16 mt-20 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
   <div>
     <p class="text-md font-light tracking-[0.25em] uppercase">Mélanie Dupriez</p>
-    <p class="text-[11px] font-light mt-1" style="color: var(--text-muted)" data-i18n="footer-sub">Data analyst en formation, je mets la donnée au service de vos décisions.</p>
+    <p class="text-[11px] font-light mt-1" style="color: var(--text-muted)" data-i18n="footer-sub">Business Data Analyst, je mets la donnée au service de vos décisions.</p>
   </div>
   <p class="text-[11px] font-light" style="color: var(--text-muted)">
     &copy; 2026 Mélanie Dupriez. Tous droits réservés.<br>
-    <span data-i18n="footer-credit">Made with ❤️ in Belgium</span>
+    <span data-i18n="footer-credit">Fait avec soin en Belgique</span>
   </p>
 </div>
 </footer>
@@ -583,25 +574,24 @@ const translations = {
 fr: {
   "nav-parcours": "Mon Parcours",
   "nav-projets": "Mes Projets",
-  "nav-competences": "Expertise & Outils",
+  "nav-competences": "Compétences & Outils",
   "nav-certs": "Certifications",
-  "nav-contact": "Me Contacter",
+  "nav-contact": "Recrutement & Collaboration",
   "menu-location-title": "Localisation",
   "menu-location-val": "Belgique — Disponible en télétravail",
   "menu-social-title": "Réseaux",
-  "hero-status": "Disponible pour un stage / alternance en Data",
-  "hero-title-1": "Je structure la donnée,",
-  "hero-title-2": "je clarifie les décisions stratégiques.",
-  "hero-desc": "Ingénieure de gestion spécialisée en Data, je transforme vos données en diagnostics précis et en recommandations concrètes pour optimiser vos processus et maximiser votre performance.",
-  "hero-cta-1": "Voir mes projets ↓",
-  "hero-cta-2": "Discutons de vos projets →",
+  "hero-status": "Ouverte aux opportunités de stage et d'emploi",
+  "hero-title-1": "Je structure vos données,",
+  "hero-title-2": "je guide vos décisions pour optimiser vos performances.",
+  "hero-desc": "Ingénieure de gestion et Business Data Analyst, je traduis des architectures de données complexes en leviers de performance stratégique. Je conçois également des interfaces web sur mesure pour fluidifier et simplifier la visualisation de vos indicateurs clés.",
+  "hero-cta-1": "Découvrir mes travaux ↓",
+  "hero-cta-2": "Me recruter / Collaborer →",
   "stat-grad": "Diplôme prévu",
   "stat-langs": "Langues parlées",
   "stat-tools": "Outils maîtrisés",
-  "stat-certs": "Certifications en cours",
-  "seeking-title": "Ce que je recherche",
-  "seeking-desc": "Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à la donnée.",
-  "seeking-loc": "Belgique · Disponible en télétravail",
+  "stat-certs": "Certifications visées",
+  "seeking-title": "Objectif & Disponibilité",
+  "seeking-desc": "Je recherche activement un stage ou un premier emploi en tant que <strong>Business Data Analyst</strong> ou en <strong>Business Intelligence</strong>.",
   "edu-title": "Bachelier en Ingénieur de gestion",
   "edu-desc": "Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information. Modélisation statistique avancée et analyse des structures d'information d'entreprise.",
   "exp-title": "Social Media Manager",
@@ -609,7 +599,7 @@ fr: {
   "photo-title": "Diplôme de Photographe",
   "photo-desc": "Photographie, montage photo & vidéo, direction de la charte esthétique et notions fondamentales de marketing et de publicité.",
   "project-section-title": "Un aperçu de mon travail",
-  "work-intro": "Sélection de réalisations analytiques et de projets personnels alliant rigueur technique, requêtes complexes et sens de la lisibilité graphique.",
+  "work-intro": "Sélection de réalisations analytiques et de projets personnels.",
   "p1-title": "Visualisation de l'économie Belge",
   "p2-title": "Dashboard d'acquisition E-Commerce",
   "p-view": "Consulter ↗",
@@ -629,41 +619,38 @@ fr: {
   "lang-native": "C2 / Langue maternelle",
   "lang-b2": "Niveau B2",
   "lang-b1": "Niveau B1",
-  "cert-title": "En cours d'obtention",
-  "cert-progress": "En cours",
-  "contact-cta-1": "Discutons de vos projets",
-  "contact-cta-2": "ou d'une opportunité de stage.",
+  "contact-cta-1": "Collaborons ensemble",
+  "contact-cta-2": "ou discutons d'un recrutement.",
   "form-name": "Nom complet",
   "form-email": "Adresse email",
   "form-subject": "Sujet",
   "form-message": "Votre message",
   "form-submit": "Envoyer le message →",
   "footer-info-title": "Ou retrouvez-moi sur :",
-  "footer-sub": "Data analyst en formation, je mets la donnée au service de vos décisions.",
-  "footer-credit": "Made with ❤️ in Belgium"
+  "footer-sub": "Business Data Analyst, je mets la donnée au service de vos décisions.",
+  "footer-credit": "Fait avec soin en Belgique"
 },
 en: {
   "nav-parcours": "My Path",
   "nav-projets": "My Projects",
   "nav-competences": "Skills & Tools",
   "nav-certs": "Certifications",
-  "nav-contact": "Contact",
+  "nav-contact": "Recruitment & Contact",
   "menu-location-title": "Location",
   "menu-location-val": "Belgium — Remote Friendly",
   "menu-social-title": "Socials",
-  "hero-status": "Open for a Data Internship / Apprenticeship",
-  "hero-title-1": "Structuring data,",
-  "hero-title-2": "empowering strategic decisions.",
-  "hero-desc": "Management Engineer specialized in Data, I turn your data into precise diagnostics and concrete recommendations to optimize your processes and maximize your performance.",
-  "hero-cta-1": "See my projects ↓",
-  "hero-cta-2": "Let's discuss projects →",
+  "hero-status": "Open for Internship and Employment Opportunities",
+  "hero-title-1": "Structuring your data,",
+  "hero-title-2": "guiding your decisions to optimize performance.",
+  "hero-desc": "Management Engineer and Business Data Analyst, I translate complex data architectures into strategic performance drivers. I also build custom web interfaces to simplify and fluidify key indicator visualization.",
+  "hero-cta-1": "See my work ↓",
+  "hero-cta-2": "Hire Me / Collaborate →",
   "stat-grad": "Expected Graduation",
   "stat-langs": "Languages spoken",
   "stat-tools": "Tools mastered",
-  "stat-certs": "Certifications in progress",
-  "seeking-title": "What I am seeking",
-  "seeking-desc": "Internship or job in data analysis / business intelligence, ideally remote or in Belgium. Available to discuss any data-related project.",
-  "seeking-loc": "Belgium · Remote Friendly",
+  "stat-certs": "Certifications targeted",
+  "seeking-title": "Objective & Availability",
+  "seeking-desc": "I am actively seeking an internship or a first job as a <strong>Business Data Analyst</strong> or in <strong>Business Intelligence</strong>.",
   "edu-title": "Bachelor's in Business Engineering",
   "edu-desc": "Data & computer science specialization. Multidisciplinary program in economics, finance, management, and information systems. Advanced statistical modeling.",
   "exp-title": "Social Media Manager",
@@ -671,7 +658,7 @@ en: {
   "photo-title": "Photography Diploma",
   "photo-desc": "Photography, photo & video editing, aesthetic identity steering, and core marketing and advertising fundamentals.",
   "project-section-title": "A glimpse of my work",
-  "work-intro": "A tailored selection of analytics and personal projects combining technical precision, complex querying, and visual elegance.",
+  "work-intro": "A selection of analytical accomplishments and personal projects.",
   "p1-title": "Belgian Economic Data Engine",
   "p2-title": "E-Commerce Acquisition Dashboard",
   "p-view": "View Project ↗",
@@ -691,41 +678,38 @@ en: {
   "lang-native": "C2 / Native speaker",
   "lang-b2": "B2 Upper-Intermediate",
   "lang-b1": "B1 Intermediate",
-  "cert-title": "In Progress",
-  "cert-progress": "In Progress",
   "contact-cta-1": "Let's build together",
-  "contact-cta-2": "or discuss internship openings.",
+  "contact-cta-2": "or discuss recruitment.",
   "form-name": "Full name",
   "form-email": "Email address",
   "form-subject": "Subject",
   "form-message": "Your message",
   "form-submit": "Send Message →",
   "footer-info-title": "Or find me on:",
-  "footer-sub": "Data analyst in training, bridging data and operational intelligence.",
-  "footer-credit": "Made with ❤️ in Belgium"
+  "footer-sub": "Business Data Analyst, bridging data and operational intelligence.",
+  "footer-credit": "Made with care in Belgium"
 },
 nl: {
   "nav-parcours": "Mijn Traject",
   "nav-projets": "Mijn Projecten",
   "nav-competences": "Expertise & Tools",
   "nav-certs": "Certificeringen",
-  "nav-contact": "Contact",
+  "nav-contact": "Werving & Contact",
   "menu-location-title": "Locatie",
   "menu-location-val": "België — Beschikbaar voor remote werk",
   "menu-social-title": "Netwerken",
-  "hero-status": "Beschikbaar voor een stage / leerwerkplek in Data",
-  "hero-title-1": "Ik structureer data,",
-  "hero-title-2": "ik verhelder strategische beslissingen.",
-  "hero-desc": "Handelsingenieur gespecialiseerd in Data, ik verander uw data in nauwkeurige diagnoses en concrete aanbevelingen om uw processen te optimaliseren en uw prestaties te maximaliseren.",
-  "hero-cta-1": "Bekijk mijn projecten ↓",
-  "hero-cta-2": "Laten we praten →",
+  "hero-status": "Beschikbaar voor een stage of baan in Data",
+  "hero-title-1": "Ik structureer uw data,",
+  "hero-title-2": "ik leid uw beslissingen om prestaties te optimaliseren.",
+  "hero-desc": "Handelsingenieur en Business Data Analyst, ik vertaal complexe data-architecturen in strategische prestatie-indicatoren. Ik ontwerp ook webinterfaces om de visualisatie van uw data te vereenvoudigen.",
+  "hero-cta-1": "Ontdek mijn werk ↓",
+  "hero-cta-2": "Werk samen / Rekruteer →",
   "stat-grad": "Verwacht Diploma",
   "stat-langs": "Gesproken talen",
   "stat-tools": "Beheerste tools",
   "stat-certs": "Certificeringen",
-  "seeking-title": "Wat ik zoek",
-  "seeking-desc": "Stage of job in data-analyse / business intelligence, bij voorkeur op afstand of in België. Beschikbaar om elk dataproject te bespreken.",
-  "seeking-loc": "België · Beschikbaar voor remote werk",
+  "seeking-title": "Doelstelling & Beschikbaarheid",
+  "seeking-desc": "Ik ben actief op zoek naar een stage of een eerste baan als <strong>Business Data Analyst</strong> of in <strong>Business Intelligence</strong>.",
   "edu-title": "Bachelor in de Handelsingenieur",
   "edu-desc": "Specialisatie in data & informatica. Multidisciplinair programma in economie, financiën, management en informatiesystemen. Geavanceerde statistische modellering.",
   "exp-title": "Social Media Manager",
@@ -733,7 +717,7 @@ nl: {
   "photo-title": "Diploma Fotografie",
   "photo-desc": "Fotografie, foto- en videobewerking, artistieke sturing en basisprincipes van marketing en reclame.",
   "project-section-title": "Een blik op mijn werk",
-  "work-intro": "Een selectie van analytische en persoonlijke projecten die technische precisie, complexe queries en grafische helderheid combineren.",
+  "work-intro": "Een selectie van analytische realisaties en persoonlijke projecten.",
   "p1-title": "Visuele Analyse van de Belgische Economie",
   "p2-title": "E-Commerce Acquisitie Dashboard",
   "p-view": "Bekijken ↗",
@@ -753,18 +737,16 @@ nl: {
   "lang-native": "C2 / Moedertaal",
   "lang-b2": "B2-niveau",
   "lang-b1": "B1-niveau",
-  "cert-title": "In uitvoering",
-  "cert-progress": "In uitvoering",
-  "contact-cta-1": "Laten we praten",
-  "contact-cta-2": "over een project of stagekans.",
+  "contact-cta-1": "Laten we samenwerken",
+  "contact-cta-2": "of rekrutering bespreken.",
   "form-name": "Volledige naam",
   "form-email": "E-mailadres",
   "form-subject": "Onderwerp",
   "form-message": "Uw bericht",
   "form-submit": "Bericht verzenden →",
   "footer-info-title": "Of vind me op:",
-  "footer-sub": "Data analyst in opleiding, ten dienste van uw beslissingen.",
-  "footer-credit": "Made with ❤️ in Belgium"
+  "footer-sub": "Business Data Analyst, ten dienste van uw operationele beslissingen.",
+  "footer-credit": "Gemaakt met zorg in België"
 }
 };
 
@@ -859,6 +841,44 @@ animateRing();
 document.querySelectorAll('.hover-target').forEach(item => {
   item.addEventListener('mouseenter', () => document.body.classList.add('hover-active'));
   item.addEventListener('mouseleave', () => document.body.classList.remove('hover-active'));
+});
+
+// Envoi discret de Formspree sans redirection
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+const submitBtn = document.getElementById('submitBtn');
+
+contactForm.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const data = new FormData(contactForm);
+  submitBtn.disabled = true;
+  submitBtn.innerText = currentLang === 'fr' ? 'Envoi...' : (currentLang === 'en' ? 'Sending...' : 'Verzenden...');
+  
+  fetch("https://formspree.io/f/xkodnpbj", {
+    method: "POST",
+    body: data,
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(response => {
+    formStatus.classList.remove('hidden');
+    if (response.ok) {
+      formStatus.innerText = currentLang === 'fr' ? 'Merci ! Votre message a été transmis avec succès.' : (currentLang === 'en' ? 'Thank you! Your message was sent successfully.' : 'Bedankt! Uw bericht is succesvol verzonden.');
+      formStatus.style.color = '#A2D2A1';
+      contactForm.reset();
+    } else {
+      formStatus.innerText = currentLang === 'fr' ? 'Une erreur est survenue lors de l\'envoi.' : (currentLang === 'en' ? 'An error occurred during submission.' : 'Er is een fout opgetreden bij het verzenden.');
+      formStatus.style.color = '#E5A9B7';
+    }
+    submitBtn.disabled = false;
+    submitBtn.innerText = currentLang === 'fr' ? 'Envoyer le message →' : (currentLang === 'en' ? 'Send Message →' : 'Bericht verzenden →');
+  }).catch(error => {
+    formStatus.classList.remove('hidden');
+    formStatus.innerText = currentLang === 'fr' ? 'Erreur de connexion.' : 'Connection error.';
+    formStatus.style.color = '#E5A9B7';
+    submitBtn.disabled = false;
+  });
 });
 </script>
 </body>
