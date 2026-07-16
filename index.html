@@ -5,175 +5,206 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mélanie Dupriez — Étudiante en Ingénieur de gestion, Data & BI</title>
 <meta name="description" content="Portfolio de Mélanie Dupriez, étudiante en Ingénieur de gestion passionnée par la data et la visualisation. Ouverte à un stage ou un emploi en data analyse.">
-<meta name="theme-color" content="#F2F9FF">
+<meta name="theme-color" content="#FFF6F8">
 <meta property="og:title" content="Mélanie Dupriez — Portfolio">
 <meta property="og:description" content="Portfolio de data analyste — je transforme la donnée en décisions claires.">
 <meta property="og:type" content="website">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg1:#F2F9FF; --bg2:#FFF5D7; --bg3:#FFCCE1; --bg4:#F2F9FF;
-    --ink:#3B2A34; --ink-soft:#8A7480;
-    --glass:rgba(255,255,255,0.3); --glass-strong:rgba(255,255,255,0.8); --glass-border:rgba(255,255,255,0.4);
-    --menu-bg:rgba(255,255,255,0.94);
-    --shadow:rgba(225,149,171,0.1);
-    --g1:#E195AB; --g2:#EDAFC0; --g3:#FFCCE1;
-    --card:transparent;
+    /* Palette Rose Poudré, Or Rose et Champagne Cristallin */
+    --bg1:#FFF6F8; --bg2:#FFFBF3; --bg3:#FFE5EC; --bg4:#F4F8FC;
+    --ink:#2C1E25; --ink-soft:#7D6874;
+    --glass:rgba(255, 255, 255, 0.45); 
+    --glass-strong:rgba(255, 255, 255, 0.85); 
+    --glass-border:rgba(255, 194, 209, 0.35);
+    --menu-bg:rgba(255, 255, 255, 0.96);
+    --shadow:rgba(235, 155, 175, 0.12);
+    --g1:#E297A7; --g2:#EBC0B5; --g3:#F5D6C6;
+    --card:rgba(255, 255, 255, 0.25);
   }
   .dark{
-    --bg1:#221A1F; --bg2:#241C22; --bg3:#2A1E26; --bg4:#1E171B;
-    --ink:#FBF1F4; --ink-soft:#C7ABB6;
-    --glass:rgba(45,32,40,0.3); --glass-strong:rgba(50,36,45,0.75); --glass-border:rgba(255,255,255,0.05);
-    --menu-bg:rgba(35,25,32,0.94);
-    --shadow:rgba(0,0,0,0.1);
-    --g1:#E9A7BB; --g2:#F2C4A8; --g3:#F6D9A8;
-    --card:transparent;
+    /* Mode sombre : Nuit Cuivrée, Prune Profond et Or Doux */
+    --bg1:#160F13; --bg2:#1E1419; --bg3:#2A1B22; --bg4:#120B0E;
+    --ink:#FCF7F9; --ink-soft:#BBA7B3;
+    --glass:rgba(30, 20, 26, 0.45); 
+    --glass-strong:rgba(25, 17, 21, 0.88); 
+    --glass-border:rgba(235, 155, 175, 0.15);
+    --menu-bg:rgba(25, 17, 21, 0.98);
+    --shadow:rgba(0, 0, 0, 0.3);
+    --g1:#E9A1B1; --g2:#F0C9C0; --g3:#F7E0D4;
+    --card:rgba(40, 28, 35, 0.2);
   }
   *{ -webkit-tap-highlight-color: transparent; }
   html,body{ height:100%; }
   body{
     color:var(--ink);
-    font-family:'Manrope',sans-serif;
+    font-family:'Plus Jakarta Sans',sans-serif;
     font-weight:400;
-    transition:background-color .6s ease,color .6s ease;
+    transition:background-color .8s cubic-bezier(0.16, 1, 0.3, 1), color .8s cubic-bezier(0.16, 1, 0.3, 1);
     position:relative;
     background:
-      radial-gradient(50% 45% at 8% 5%, var(--bg1) 0%, transparent 100%),
-      radial-gradient(45% 40% at 90% 10%, var(--bg3) 0%, transparent 100%),
-      radial-gradient(55% 45% at 30% 95%, var(--bg4) 0%, transparent 100%),
-      radial-gradient(45% 40% at 95% 85%, var(--bg2) 0%, transparent 100%),
+      radial-gradient(60% 55% at 10% 8%, var(--bg1) 0%, transparent 100%),
+      radial-gradient(50% 50% at 85% 15%, var(--bg3) 0%, transparent 100%),
+      radial-gradient(65% 55% at 25% 90%, var(--bg4) 0%, transparent 100%),
+      radial-gradient(50% 50% at 90% 80%, var(--bg2) 0%, transparent 100%),
       var(--bg1);
     background-attachment:fixed;
   }
-  h1,h2,h3{ font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.02em; }
-  .logo-serif{ font-family:'Cormorant Garamond',serif; font-weight:600; }
-  .italic-serif{ font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; }
+  
+  /* Typographies Typées Luxe */
+  h1{ font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; letter-spacing:-0.03em; }
+  h2, h3{ font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; letter-spacing:-0.02em; }
+  .logo-serif{ font-family:'Playfair Display',serif; font-weight:500; letter-spacing:0.04em; }
+  .italic-serif{ font-family:'Playfair Display',serif; font-style:italic; font-weight:400; }
 
+  /* Effet de brillance et transition sur les icônes */
   .icon-animate {
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .card-fluid:hover .icon-animate {
-    transform: translateY(-4px) scale(1.12);
+    transform: translateY(-6px) scale(1.08);
   }
 
   .grad-text{
-    background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));
+    background:linear-gradient(135deg, var(--g1), var(--g2), var(--g3));
     -webkit-background-clip:text; background-clip:text; color:transparent;
   }
 
+  /* Glassmorphism Premium */
   .glass{
     background:var(--glass);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
     border:1px solid var(--glass-border);
+    box-shadow:0 8px 32px 0 var(--shadow);
   }
   .nav-surface{
     background:var(--glass-strong);
-    backdrop-filter:blur(20px) saturate(160%);
-    -webkit-backdrop-filter:blur(20px) saturate(160%);
+    backdrop-filter:blur(24px) saturate(140%);
+    -webkit-backdrop-filter:blur(24px) saturate(140%);
     border-bottom:1px solid var(--glass-border);
   }
 
+  /* Bouton Signature Couture */
   .btn-grad{
-    background:linear-gradient(90deg,var(--g1),var(--g2));
+    background:linear-gradient(135deg, var(--g1), var(--g2));
     color:#fff; font-weight:600;
-    box-shadow:0 10px 26px var(--shadow);
-    transition:transform .3s ease, box-shadow .3s ease;
+    box-shadow:0 10px 30px var(--shadow);
+    transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .4s cubic-bezier(0.16, 1, 0.3, 1), filter .3s ease;
   }
-  .btn-grad:hover{ transform:translateY(-2px); box-shadow:0 16px 34px var(--shadow); }
+  .btn-grad:hover{ 
+    transform:translateY(-3px); 
+    box-shadow:0 18px 38px var(--shadow);
+    filter: brightness(1.03);
+  }
 
   .btn-ghost{
     border:1px solid var(--glass-border);
     background:var(--glass);
-    transition:transform .3s ease;
+    transition:transform .4s cubic-bezier(0.16, 1, 0.3, 1), background-color .4s;
   }
-  .btn-ghost:hover{ transform:translateY(-2px); }
+  .btn-ghost:hover{ 
+    transform:translateY(-3px);
+    background: var(--glass-strong);
+  }
 
-  a:focus-visible, button:focus-visible{ outline:2px solid var(--g2); outline-offset:3px; border-radius:6px; }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--g2); outline-offset:3px; border-radius:8px; }
 
-  .reveal{ opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s ease; }
+  /* Animations d'apparition fluides */
+  .reveal{ opacity:0; transform:translateY(30px); transition:opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
   .reveal.active{ opacity:1; transform:translateY(0); }
 
+  /* Cartes de présentation */
   .card-fluid {
     background: var(--card);
-    transition: transform 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: 0 10px 30px -10px var(--shadow);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.5s;
   }
   .card-fluid:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    background: var(--glass-strong);
+    box-shadow: 0 20px 40px -10px var(--shadow);
   }
 
-  .bar-track{ height:6px; border-radius:999px; background:var(--glass); overflow:hidden; }
-  .bar-fill{ height:100%; border-radius:999px; background:linear-gradient(90deg,var(--g1),var(--g2)); }
+  /* Barres de compétences au tracé fin */
+  .bar-track{ height:4px; border-radius:999px; background:var(--glass); overflow:hidden; }
+  .bar-fill{ height:100%; border-radius:999px; background:linear-gradient(90deg, var(--g1), var(--g2)); }
 
+  /* Badges épurés */
   .badge-fluid {
-    padding: 0.5rem 1rem;
+    padding: 0.55rem 1.1rem;
     border-radius: 999px;
     background: var(--glass);
     border: 1px solid var(--glass-border);
-    transition: transform 0.3s ease, background 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s, border-color 0.4s;
   }
   .badge-fluid:hover {
     transform: translateY(-2px);
     background: var(--glass-strong);
+    border-color: var(--g1);
   }
 
   .dot{
-    width:6px; height:6px; border-radius:999px;
-    background:linear-gradient(90deg,var(--g1),var(--g2));
+    width:5px; height:5px; border-radius:999px;
+    background:linear-gradient(135deg, var(--g1), var(--g2));
     display:inline-block;
   }
 
-  ::selection{ background:var(--g2); color:#fff; }
+  ::selection{ background:var(--g1); color:#fff; }
 
   @media (prefers-reduced-motion: reduce){
     .reveal{ transition:none; opacity:1; transform:none; }
     * { scroll-behavior:auto !important; }
   }
+  
   .lang-menu-surface{
     background:var(--menu-bg);
-    backdrop-filter:blur(28px) saturate(180%);
-    -webkit-backdrop-filter:blur(28px) saturate(180%);
-    border:1px solid var(--glass-border);
-    box-shadow:0 16px 40px var(--shadow);
+    backdrop-filter:blur(32px) saturate(180%);
+    -webkit-backdrop-filter:blur(32px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow:0 20px 50px var(--shadow);
   }
-  .lang-option{ background:transparent; }
+  .lang-option{ background:transparent; transition: background-color 0.3s; }
   .lang-option:hover{ background:var(--glass); }
 
-  /* Parallax hero blobs */
+  /* Sphères d'ambiance Parallax adoucies */
   .parallax-layer{ position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
-  .parallax-layer span{ position:absolute; border-radius:50%; filter:blur(60px); opacity:.5; }
-  .parallax-layer .p1{ width:34vw; height:34vw; top:-6%; left:-4%; background:var(--bg3); }
-  .parallax-layer .p2{ width:28vw; height:28vw; top:14%; right:-6%; background:var(--bg2); }
-  .parallax-layer .p3{ width:30vw; height:30vw; bottom:-8%; left:22%; background:var(--g1); opacity:.25; }
+  .parallax-layer span{ position:absolute; border-radius:50%; filter:blur(100px); opacity:.4; }
+  .parallax-layer .p1{ width:40vw; height:40vw; top:-10%; left:-5%; background:var(--bg3); }
+  .parallax-layer .p2{ width:35vw; height:35vw; top:20%; right:-8%; background:var(--bg2); }
+  .parallax-layer .p3{ width:38vw; height:38vw; bottom:-10%; left:15%; background:var(--g1); opacity:.2; }
   @media (prefers-reduced-motion: reduce){ .parallax-layer span{ transition:none !important; } }
 
-  /* Mobile hamburger menu */
-  .hamburger-line{ display:block; width:20px; height:2px; background:currentColor; border-radius:2px; transition:transform .3s ease, opacity .3s ease; }
-  #mobileMenu{ transition:max-height .4s ease, opacity .3s ease; }
+  /* Menu Hamburguer */
+  .hamburger-line{ display:block; width:18px; height:2px; background:currentColor; border-radius:2px; transition:transform .4s ease, opacity .4s ease; }
+  #mobileMenu{ transition:max-height .5s cubic-bezier(0.16, 1, 0.3, 1), opacity .4s ease; }
 
-  /* Back to top */
+  /* Back to top discret */
   #backToTop{
-    position:fixed; right:22px; bottom:22px; z-index:40;
-    width:44px; height:44px; border-radius:50%;
+    position:fixed; right:24px; bottom:24px; z-index:40;
+    width:48px; height:48px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
-    opacity:0; pointer-events:none; transform:translateY(10px);
-    transition:opacity .35s ease, transform .35s ease;
+    opacity:0; pointer-events:none; transform:translateY(15px);
+    transition:opacity .4s cubic-bezier(0.16, 1, 0.3, 1), transform .4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   #backToTop.show{ opacity:1; pointer-events:auto; transform:translateY(0); }
 
-  /* Contact form */
+  /* Inputs de formulaire sophistiqués */
   .field-input{
-    width:100%; padding:1.1rem 1.4rem; border-radius:16px;
+    width:100%; padding:1.2rem 1.5rem; border-radius:20px;
     background:var(--glass); border:1px solid var(--glass-border);
-    color:var(--ink); font-size:.95rem; line-height: 1.6; font-family:'Manrope',sans-serif;
-    outline:none; transition:border-color .25s ease, box-shadow .25s ease;
+    color:var(--ink); font-size:.95rem; line-height: 1.6; font-family:'Plus Jakarta Sans',sans-serif;
+    outline:none; transition:border-color .3s ease, box-shadow .3s ease, background-color .3s;
   }
-  .field-input::placeholder{ color:var(--ink-soft); }
-  .field-input:focus{ border-color:var(--g1); box-shadow:0 0 0 3px rgba(225,149,171,0.25); }
-  .field-input.field-error{ border-color:#D9534F; }
-  .field-error-msg{ display:none; color:#D9534F; font-size:.72rem; margin-top:.35rem; text-align:left; }
+  .field-input::placeholder{ color:var(--ink-soft); opacity: 0.7; }
+  .field-input:focus{ border-color:var(--g1); background: var(--glass-strong); box-shadow:0 0 0 4px rgba(226,151,167,0.15); }
+  .field-input.field-error{ border-color:#E06D7B; }
+  .field-error-msg{ display:none; color:#E06D7B; font-size:.78rem; margin-top:.45rem; text-align:left; font-weight: 500; }
   .field-error-msg.show{ display:block; }
   .form-success{ display:none; }
   .form-success.show{ display:block; }
@@ -181,34 +212,38 @@
 </head>
 <body>
 
-<div class="parallax-layer" aria-hidden="true"><span class="p1" data-speed="0.15"></span><span class="p2" data-speed="0.25"></span><span class="p3" data-speed="0.1"></span></div>
+<div class="parallax-layer" aria-hidden="true">
+  <span class="p1" data-speed="0.12"></span>
+  <span class="p2" data-speed="0.2"></span>
+  <span class="p3" data-speed="0.08"></span>
+</div>
 
-<nav class="fixed top-0 w-full z-50 nav-surface px-6 md:px-14 py-4">
-  <div class="flex justify-between items-center">
-    <a href="#top" class="text-lg md:text-xl tracking-wide logo-serif">Mélanie Dupriez</a>
-    <div class="flex items-center gap-4 md:gap-7 text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.12em]" style="color:var(--ink-soft)">
-      <a href="#parcours" data-i18n="nav.path" class="hidden md:inline hover:opacity-70 transition">Parcours</a>
-      <a href="#projets" data-i18n="nav.projects" class="hidden md:inline hover:opacity-70 transition">Projets</a>
-      <a href="#competences" data-i18n="nav.skills" class="hidden md:inline hover:opacity-70 transition">Compétences</a>
+<nav class="fixed top-0 w-full z-50 nav-surface px-6 md:px-16 py-5">
+  <div class="flex justify-between items-center max-w-7xl mx-auto">
+    <a href="#top" class="text-xl md:text-2xl logo-serif">Mélanie Dupriez</a>
+    <div class="flex items-center gap-5 md:gap-8 text-[11px] md:text-[12px] font-semibold uppercase tracking-[0.15em]" style="color:var(--ink-soft)">
+      <a href="#parcours" data-i18n="nav.path" class="hidden md:inline hover:opacity-75 transition">Parcours</a>
+      <a href="#projets" data-i18n="nav.projects" class="hidden md:inline hover:opacity-75 transition">Projets</a>
+      <a href="#competences" data-i18n="nav.skills" class="hidden md:inline hover:opacity-75 transition">Compétences</a>
     <div class="relative">
-      <button onclick="toggleLangMenu()" id="langBtn" class="hover:opacity-70 transition flex items-center justify-center" aria-haspopup="listbox" aria-expanded="false" aria-label="Changer de langue">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <button onclick="toggleLangMenu()" id="langBtn" class="hover:opacity-75 transition flex items-center justify-center p-1" aria-haspopup="listbox" aria-expanded="false" aria-label="Changer de langue">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="9"/>
           <path d="M3 12h18"/>
           <path d="M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/>
         </svg>
       </button>
-      <div id="langMenu" role="listbox" class="hidden absolute right-0 mt-3 w-36 rounded-2xl overflow-hidden py-1.5 z-50 lang-menu-surface">
-        <button role="option" onclick="selectLang('FR')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">Français <span class="check text-xs" style="color:var(--g2)"></span></button>
-        <button role="option" onclick="selectLang('EN')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">English <span class="check text-xs" style="color:var(--g2)"></span></button>
-        <button role="option" onclick="selectLang('NL')" class="lang-option w-full text-left px-4 py-2 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">Nederlands <span class="check text-xs" style="color:var(--g2)"></span></button>
+      <div id="langMenu" role="listbox" class="hidden absolute right-0 mt-4 w-40 rounded-2xl overflow-hidden py-2 z-50 lang-menu-surface">
+        <button role="option" onclick="selectLang('FR')" class="lang-option w-full text-left px-5 py-2.5 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">Français <span class="check text-xs" style="color:var(--g1)"></span></button>
+        <button role="option" onclick="selectLang('EN')" class="lang-option w-full text-left px-5 py-2.5 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">English <span class="check text-xs" style="color:var(--g1)"></span></button>
+        <button role="option" onclick="selectLang('NL')" class="lang-option w-full text-left px-5 py-2.5 text-[12px] font-semibold normal-case tracking-normal hover:opacity-70 transition flex items-center justify-between">Nederlands <span class="check text-xs" style="color:var(--g1)"></span></button>
       </div>
     </div>
-    <button onclick="toggleTheme()" id="themeBtn" aria-label="Basculer le thème clair / sombre" class="hover:opacity-70 transition flex items-center justify-center">
-      <svg id="iconMoon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      <svg id="iconSun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    <button onclick="toggleTheme()" id="themeBtn" aria-label="Basculer le thème clair / sombre" class="hover:opacity-75 transition flex items-center justify-center p-1">
+      <svg id="iconMoon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="iconSun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="hidden"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
     </button>
-      <a href="#contact" data-i18n="nav.contact" class="hidden sm:inline btn-grad rounded-full px-5 py-2 normal-case tracking-normal font-semibold text-[12px]">Contact</a>
+      <a href="#contact" data-i18n="nav.contact" class="hidden sm:inline btn-grad rounded-full px-6 py-2.5 normal-case tracking-normal font-semibold text-[11px] uppercase tracking-wider">Contact</a>
       <button onclick="toggleMobileMenu()" id="hamburgerBtn" class="md:hidden flex flex-col gap-[5px] p-1" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobileMenu">
         <span class="hamburger-line" id="hLine1"></span>
         <span class="hamburger-line" id="hLine2"></span>
@@ -218,158 +253,160 @@
   </div>
 
   <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 opacity-0">
-    <div class="flex flex-col gap-1 pt-5 pb-3 text-sm font-semibold" style="color:var(--ink-soft)">
-      <a href="#parcours" data-i18n="nav.path" class="py-2" onclick="closeMobileMenu()">Parcours</a>
-      <a href="#projets" data-i18n="nav.projects" class="py-2" onclick="closeMobileMenu()">Projets</a>
-      <a href="#competences" data-i18n="nav.skills" class="py-2" onclick="closeMobileMenu()">Compétences</a>
-      <a href="#contact" data-i18n="nav.contact" class="py-2" onclick="closeMobileMenu()">Contact</a>
+    <div class="flex flex-col gap-1 pt-6 pb-3 text-[13px] uppercase tracking-widest font-semibold" style="color:var(--ink-soft)">
+      <a href="#parcours" data-i18n="nav.path" class="py-2.5 border-b border-[rgba(255,194,209,0.15)]" onclick="closeMobileMenu()">Parcours</a>
+      <a href="#projets" data-i18n="nav.projects" class="py-2.5 border-b border-[rgba(255,194,209,0.15)]" onclick="closeMobileMenu()">Projets</a>
+      <a href="#competences" data-i18n="nav.skills" class="py-2.5 border-b border-[rgba(255,194,209,0.15)]" onclick="closeMobileMenu()">Compétences</a>
+      <a href="#contact" data-i18n="nav.contact" class="py-2.5" onclick="closeMobileMenu()">Contact</a>
     </div>
   </div>
 </nav>
 
-<header id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-14 pt-28 pb-16">
+<header id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32 pb-20">
   <div class="max-w-5xl mx-auto w-full text-center">
-    <span class="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold mb-8" style="color:var(--ink-soft)">
+    <span class="glass inline-flex items-center gap-2.5 rounded-full px-5 py-2 text-[11px] font-semibold tracking-wider uppercase mb-8" style="color:var(--ink-soft)">
+      <span class="w-1.5 h-1.5 rounded-full" style="background:var(--g1)"></span>
       <span data-i18n="hero.eyebrow">Étudiante en Ingénieur de gestion — Data & BI</span>
     </span>
 
-    <h1 class="text-[clamp(2.2rem,6vw,4.6rem)] leading-[1.1] mb-6">
+    <h1 class="text-[clamp(2.4rem,5.8vw,4.4rem)] leading-[1.12] mb-8">
       <span data-i18n="hero.line1">Je transforme les données</span><br>
       <span class="italic-serif grad-text" data-i18n="hero.line2">en décisions claires.</span>
     </h1>
 
-    <p class="max-w-2xl mx-auto text-sm md:text-base leading-relaxed mb-10" style="color:var(--ink-soft)" data-i18n="hero.sub">
+    <p class="max-w-2xl mx-auto text-[14px] md:text-[16px] leading-relaxed mb-12 font-light" style="color:var(--ink-soft)" data-i18n="hero.sub">
       Ingénieure de gestion spécialisée en Data, je transforme vos données en diagnostics précis et en recommandations concrètes pour optimiser vos processus et maximiser votre performance.
     </p>
 
-    <div class="flex flex-wrap justify-center gap-4 mb-6">
-      <a href="#contact" class="btn-grad rounded-full px-8 py-3.5 text-sm">Discutons de vos projets</a>
-      <a href="#projets" class="btn-ghost rounded-full px-7 py-3 text-sm font-semibold" data-i18n="hero.cta2">Voir mes projets ↓</a>
+    <div class="flex flex-wrap justify-center gap-5 mb-8">
+      <a href="#contact" class="btn-grad rounded-full px-9 py-4 text-[13px] tracking-wide uppercase font-bold">Discutons de vos projets</a>
+      <a href="#projets" class="btn-ghost rounded-full px-8 py-3.5 text-[13px] tracking-wide font-semibold" data-i18n="hero.cta2">Voir mes projets ↓</a>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[12px] font-semibold mb-16" style="color:var(--ink-soft)">
-      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check1">Disponible immédiatement</span></span>
-      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check2">Télétravail possible</span></span>
-      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check3">Basée en Belgique</span></span>
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-3 text-[11px] font-semibold tracking-wider uppercase mb-20" style="color:var(--ink-soft)">
+      <span class="inline-flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--g1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check1">Disponible immédiatement</span></span>
+      <span class="inline-flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--g1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check2">Télétravail possible</span></span>
+      <span class="inline-flex items-center gap-2"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--g1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check3">Basée en Belgique</span></span>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto text-left border-t border-dashed border-[rgba(225,149,171,0.15)] pt-12">
-      <div class="card-fluid flex flex-col">
-        <div class="text-left mb-4 icon-animate">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon1" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto text-left border-t border-dashed border-[rgba(225,149,171,0.25)] pt-14">
+      <div class="card-fluid p-8 flex flex-col">
+        <div class="text-left mb-5 icon-animate">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon1)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon1" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g2)"/></linearGradient></defs><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
         </div>
-        <h3 class="text-base font-extrabold mb-2" data-i18n="proof.data.title">Data Analysis</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.data.desc">Traduction de données brutes en insights décisionnels.</p>
+        <h3 class="text-base font-bold mb-2.5" data-i18n="proof.data.title">Data Analysis</h3>
+        <p class="text-[13px] leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.data.desc">Traduction de données brutes en insights décisionnels.</p>
       </div>
 
-      <div class="card-fluid flex flex-col">
-        <div class="text-left mb-4 icon-animate">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon2" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M8 5L2 12l6 7M16 5l6 7-6 7"/></svg>
+      <div class="card-fluid p-8 flex flex-col">
+        <div class="text-left mb-5 icon-animate">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon2" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g2)"/></linearGradient></defs><path d="M8 5L2 12l6 7M16 5l6 7-6 7"/></svg>
         </div>
-        <h3 class="text-base font-extrabold mb-2" data-i18n="proof.web.title">Web Development</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.web.desc">Conception d'interfaces web pour présenter vos résultats.</p>
+        <h3 class="text-base font-bold mb-2.5" data-i18n="proof.web.title">Web Development</h3>
+        <p class="text-[13px] leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.web.desc">Conception d'interfaces web pour présenter vos résultats.</p>
       </div>
 
-      <div class="card-fluid flex flex-col">
-        <div class="text-left mb-4 icon-animate">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon3" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/></svg>
+      <div class="card-fluid p-8 flex flex-col">
+        <div class="text-left mb-5 icon-animate">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon3)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon3" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g2)"/></linearGradient></defs><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/></svg>
         </div>
-        <h3 class="text-base font-extrabold mb-2" data-i18n="proof.strategy.title">Business Strategy</h3>
-        <p class="text-sm leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.strategy.desc">Optimisation des processus basée sur des diagnostics précis.</p>
+        <h3 class="text-base font-bold mb-2.5" data-i18n="proof.strategy.title">Business Strategy</h3>
+        <p class="text-[13px] leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.strategy.desc">Optimisation des processus basée sur des diagnostics précis.</p>
       </div>
     </div>
   </div>
 
-  <div class="max-w-5xl mx-auto w-full mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-t border-b border-dashed border-[rgba(225,149,171,0.15)] py-10">
-    <div class="card-fluid">
-      <p class="text-4xl font-extrabold grad-text">2027</p>
-      <p class="text-[11px] uppercase tracking-widest mt-2 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.grad">Diplôme prévu</p>
+  <div class="max-w-5xl mx-auto w-full mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-t border-b border-dashed border-[rgba(225,149,171,0.25)] py-12">
+    <div class="card-fluid border-none shadow-none bg-transparent hover:transform-none">
+      <p class="text-5xl font-light grad-text">2027</p>
+      <p class="text-[10px] uppercase tracking-[0.2em] mt-3 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.grad">Diplôme prévu</p>
     </div>
-    <div class="card-fluid">
-      <p class="text-4xl font-extrabold grad-text">3</p>
-      <p class="text-[11px] uppercase tracking-widest mt-2 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.langs">Langues parlées</p>
+    <div class="card-fluid border-none shadow-none bg-transparent hover:transform-none">
+      <p class="text-5xl font-light grad-text">3</p>
+      <p class="text-[10px] uppercase tracking-[0.2em] mt-3 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.langs">Langues parlées</p>
     </div>
-    <div class="card-fluid">
-      <p class="text-4xl font-extrabold grad-text">6</p>
-      <p class="text-[11px] uppercase tracking-widest mt-2 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.tools">Outils maîtrisés</p>
+    <div class="card-fluid border-none shadow-none bg-transparent hover:transform-none">
+      <p class="text-5xl font-light grad-text">6</p>
+      <p class="text-[10px] uppercase tracking-[0.2em] mt-3 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.tools">Outils maîtrisés</p>
     </div>
-    <div class="card-fluid">
-      <p class="text-4xl font-extrabold grad-text">5</p>
-      <p class="text-[11px] uppercase tracking-widest mt-2 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.certs">Certifications en cours</p>
+    <div class="card-fluid border-none shadow-none bg-transparent hover:transform-none">
+      <p class="text-5xl font-light grad-text">5</p>
+      <p class="text-[10px] uppercase tracking-[0.2em] mt-3 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.certs">Certifications en cours</p>
     </div>
   </div>
 
-  <div class="max-w-3xl mx-auto w-full mt-14 text-center">
-    <p class="text-[11px] uppercase tracking-[0.2em] font-bold grad-text mb-3" data-i18n="hero.seeking.label">Ce que je recherche</p>
-    <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto" style="color:var(--ink-soft)" data-i18n="hero.seeking.desc">
+  <div class="max-w-3xl mx-auto w-full mt-16 text-center">
+    <p class="text-[11px] uppercase tracking-[0.25em] font-bold grad-text mb-4" data-i18n="hero.seeking.label">Ce que je recherche</p>
+    <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-light" style="color:var(--ink-soft)" data-i18n="hero.seeking.desc">
       Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à la donnée.
     </p>
   </div>
 </header>
 
-<section id="parcours" class="px-6 md:px-14 py-20 max-w-4xl mx-auto reveal">
+<section id="parcours" class="px-6 md:px-16 py-24 max-w-4xl mx-auto reveal">
   <h2 class="text-3xl md:text-4xl text-center mb-3" data-i18n="path.title">Parcours</h2>
-  <p class="text-center text-sm mb-16" style="color:var(--ink-soft)" data-i18n="path.sub">Formation & expérience</p>
+  <p class="text-center text-xs tracking-widest uppercase mb-20" style="color:var(--ink-soft)" data-i18n="path.sub">Formation & expérience</p>
 
-  <div class="relative border-l border-dashed border-[rgba(225,149,171,0.3)] ml-4 md:ml-32 space-y-12">
-    <div class="relative pl-8 card-fluid">
-      <span class="absolute -left-[5px] top-2 dot"></span>
-      <span class="text-xs font-bold grad-text block mb-1">2024 — 2027</span>
-      <h3 class="text-xl md:text-2xl font-extrabold" data-i18n="path.edu1.title">Ingénieur de gestion</h3>
-      <p class="text-xs mt-0.5 font-semibold" style="color:var(--ink-soft)" data-i18n="path.edu1.sub">Université de Mons — Bachelier, 3 ans</p>
-      <p class="text-sm mt-3 leading-relaxed max-w-2xl" style="color:var(--ink-soft)" data-i18n="path.edu1.desc">Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information.</p>
+  <div class="relative border-l border-dashed border-[rgba(225,149,171,0.35)] ml-4 md:ml-32 space-y-14">
+    <div class="relative pl-8 card-fluid p-8 md:p-10">
+      <span class="absolute -left-[3px] top-10 dot"></span>
+      <span class="text-xs font-bold tracking-widest uppercase grad-text block mb-2">2024 — 2027</span>
+      <h3 class="text-xl md:text-2xl font-semibold mb-1" data-i18n="path.edu1.title">Ingénieur de gestion</h3>
+      <p class="text-xs font-semibold uppercase tracking-wider mb-4" style="color:var(--ink-soft)" data-i18n="path.edu1.sub">Université de Mons — Bachelier, 3 ans</p>
+      <p class="text-[13px] leading-relaxed max-w-2xl font-light" style="color:var(--ink-soft)" data-i18n="path.edu1.desc">Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information.</p>
     </div>
 
-    <div class="relative pl-8 card-fluid">
-      <span class="absolute -left-[5px] top-2 dot"></span>
-      <span class="text-xs font-bold grad-text block mb-1" data-i18n="path.stage.date">Fév. — avr. 2023</span>
-      <h3 class="text-xl md:text-2xl font-extrabold" data-i18n="path.stage.title">Social Media Manager — GabyLuxxy</h3>
-      <p class="text-xs mt-0.5 font-semibold" style="color:var(--ink-soft)" data-i18n="path.stage.sub">Stage en télétravail · Revente de luxe</p>
-      <p class="text-sm mt-3 leading-relaxed max-w-2xl" style="color:var(--ink-soft)" data-i18n="path.stage.desc">Gestion des réseaux sociaux, création de contenu, analyse des performances.</p>
+    <div class="relative pl-8 card-fluid p-8 md:p-10">
+      <span class="absolute -left-[3px] top-10 dot"></span>
+      <span class="text-xs font-bold tracking-widest uppercase grad-text block mb-2" data-i18n="path.stage.date">Fév. — avr. 2023</span>
+      <h3 class="text-xl md:text-2xl font-semibold mb-1" data-i18n="path.stage.title">Social Media Manager — GabyLuxxy</h3>
+      <p class="text-xs font-semibold uppercase tracking-wider mb-4" style="color:var(--ink-soft)" data-i18n="path.stage.sub">Stage en télétravail · Revente de luxe</p>
+      <p class="text-[13px] leading-relaxed max-w-2xl font-light" style="color:var(--ink-soft)" data-i18n="path.stage.desc">Gestion des réseaux sociaux, création de contenu, analyse des performances.</p>
     </div>
 
-    <div class="relative pl-8 card-fluid">
-      <span class="absolute -left-[5px] top-2 dot"></span>
-      <span class="text-xs font-bold grad-text block mb-1">2022 — 2024</span>
-      <h3 class="text-xl md:text-2xl font-extrabold" data-i18n="path.edu2.title">Diplôme de Photographe</h3>
-      <p class="text-xs mt-0.5 font-semibold" style="color:var(--ink-soft)" data-i18n="path.edu2.sub">5e — 6e secondaire</p>
-      <p class="text-sm mt-3 leading-relaxed max-w-2xl" style="color:var(--ink-soft)" data-i18n="path.edu2.desc">Photographie, montage photo & vidéo, notions de marketing et publicité.</p>
+    <div class="relative pl-8 card-fluid p-8 md:p-10">
+      <span class="absolute -left-[3px] top-10 dot"></span>
+      <span class="text-xs font-bold tracking-widest uppercase grad-text block mb-2">2022 — 2024</span>
+      <h3 class="text-xl md:text-2xl font-semibold mb-1" data-i18n="path.edu2.title">Diplôme de Photographe</h3>
+      <p class="text-xs font-semibold uppercase tracking-wider mb-4" style="color:var(--ink-soft)" data-i18n="path.edu2.sub">5e — 6e secondaire</p>
+      <p class="text-[13px] leading-relaxed max-w-2xl font-light" style="color:var(--ink-soft)" data-i18n="path.edu2.desc">Photographie, montage photo & vidéo, notions de marketing et publicité.</p>
     </div>
   </div>
 </section>
 
-<section id="projets" class="px-6 md:px-14 py-20 max-w-5xl mx-auto reveal">
+<section id="projets" class="px-6 md:px-16 py-24 max-w-6xl mx-auto reveal">
   <h2 class="text-3xl md:text-4xl text-center mb-3" data-i18n="projects.title">Mes projets personnels</h2>
-  <p class="text-center text-sm mb-2" style="color:var(--ink-soft)" data-i18n="projects.sub">Un aperçu de mon travail</p>
-  <p class="text-center text-xs mb-12 flex items-center justify-center gap-2" style="color:var(--ink-soft)">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l-7 7 7 7M15 5l7 7-7 7"/></svg>
+  <p class="text-center text-xs tracking-widest uppercase mb-3" style="color:var(--ink-soft)" data-i18n="projects.sub">Un aperçu de mon travail</p>
+  <p class="text-center text-[10px] uppercase tracking-wider mb-14 flex items-center justify-center gap-2" style="color:var(--ink-soft)">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l-7 7 7 7M15 5l7 7-7 7"/></svg>
     <span data-i18n="projects.drag">Faites glisser pour parcourir</span>
   </p>
 
-  <div id="projectsTrack" class="flex gap-8 overflow-x-auto pb-6 px-1 cursor-grab select-none" style="scroll-snap-type:x mandatory; scrollbar-width:none;">
-    <article class="card-fluid shrink-0 w-[85%] sm:w-[440px] flex flex-col" style="scroll-snap-align:center;">
-      <div class="rounded-2xl overflow-hidden mb-6">
-        <img src="https://picsum.photos/seed/melanie-belgique-data/760/420" alt="Aperçu du dashboard Analyse économique de la Belgique" class="w-full h-48 object-cover" loading="lazy">
+  <div id="projectsTrack" class="flex gap-8 overflow-x-auto pb-8 px-2 cursor-grab select-none" style="scroll-snap-type:x mandatory; scrollbar-width:none;">
+    <article class="card-fluid shrink-0 w-[90%] sm:w-[480px] flex flex-col p-6" style="scroll-snap-align:center;">
+      <div class="rounded-[20px] overflow-hidden mb-6 relative group">
+        <div class="absolute inset-0 bg-gradient-to-t from-[rgba(44,30,37,0.4)] to-transparent z-10"></div>
+        <img src="https://picsum.photos/seed/melanie-belgique-data/760/420" alt="Aperçu du dashboard Analyse économique de la Belgique" class="w-full h-52 object-cover transition transform duration-700 group-hover:scale-105" loading="lazy">
       </div>
-      <div class="flex flex-col flex-1">
-        <h3 class="text-2xl font-extrabold mb-3" data-i18n="p1.title">Analyse économique de la Belgique</h3>
-        <p class="text-sm leading-relaxed mb-6" style="color:var(--ink-soft)" data-i18n="p1.desc">
+      <div class="flex flex-col flex-1 px-2">
+        <h3 class="text-xl md:text-2xl font-semibold mb-3" data-i18n="p1.title">Analyse économique de la Belgique</h3>
+        <p class="text-[13px] leading-relaxed mb-6 font-light" style="color:var(--ink-soft)" data-i18n="p1.desc">
           Storytelling dashboard interactif présentant l'évolution des indicateurs économiques belges (PIB, chômage, inflation) avec des visualisations dynamiques et une narration guidée.
         </p>
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)">Python</span>
-          <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)">Power BI</span>
-          <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)">SQL</span>
-          <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)">Excel</span>
+        <div class="flex flex-wrap gap-2.5 mb-8">
+          <span class="badge-fluid text-[11px] font-medium" style="color:var(--ink-soft)">Python</span>
+          <span class="badge-fluid text-[11px] font-medium" style="color:var(--ink-soft)">Power BI</span>
+          <span class="badge-fluid text-[11px] font-medium" style="color:var(--ink-soft)">SQL</span>
+          <span class="badge-fluid text-[11px] font-medium" style="color:var(--ink-soft)">Excel</span>
         </div>
-        <a href="#" onclick="return !document.body.classList.contains('was-dragging')" class="text-sm font-bold grad-text hover:opacity-80 transition inline-flex items-center gap-1" data-i18n="projects.view">Voir le projet ↗</a>
+        <a href="#" onclick="return !document.body.classList.contains('was-dragging')" class="text-xs font-bold uppercase tracking-wider grad-text hover:opacity-85 transition inline-flex items-center gap-2 mt-auto" data-i18n="projects.view">Voir le projet ↗</a>
       </div>
     </article>
 
-    <article class="card-fluid shrink-0 w-[85%] sm:w-[440px] flex flex-col justify-center border border-dashed border-[rgba(225,149,171,0.25)] rounded-3xl p-8" style="scroll-snap-align:center;">
+    <article class="card-fluid shrink-0 w-[90%] sm:w-[480px] flex flex-col justify-center border border-dashed border-[rgba(225,149,171,0.35)] rounded-[24px] p-10" style="scroll-snap-align:center;">
       <div class="text-center">
-        <h3 class="text-xl font-extrabold mb-2" data-i18n="projects.more.title">Prochain projet</h3>
-        <p class="text-sm max-w-xs mx-auto" style="color:var(--ink-soft)" data-i18n="projects.more">D'autres projets à venir.</p>
+        <h3 class="text-lg font-semibold mb-2" data-i18n="projects.more.title">Prochain projet</h3>
+        <p class="text-[13px] max-w-xs mx-auto font-light" style="color:var(--ink-soft)" data-i18n="projects.more">D'autres projets à venir.</p>
       </div>
     </article>
   </div>
@@ -377,31 +414,31 @@
   <style>#projectsTrack::-webkit-scrollbar{ display:none; }</style>
 </section>
 
-<section id="competences" class="px-6 md:px-14 py-20 max-w-5xl mx-auto reveal">
+<section id="competences" class="px-6 md:px-16 py-24 max-w-6xl mx-auto reveal">
   <h2 class="text-3xl md:text-4xl text-center mb-3" data-i18n="skills.title">Compétences</h2>
-  <p class="text-center text-sm mb-16" style="color:var(--ink-soft)" data-i18n="skills.sub">Langues, outils & qualités</p>
+  <p class="text-center text-xs tracking-widest uppercase mb-20" style="color:var(--ink-soft)" data-i18n="skills.sub">Langues, outils & qualités</p>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-    <div class="card-fluid">
-      <p class="text-xs uppercase tracking-widest font-bold grad-text mb-8" data-i18n="skills.langs.label">Langues</p>
-      <div class="space-y-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    <div class="card-fluid p-8 md:p-10">
+      <p class="text-[10px] uppercase tracking-[0.25em] font-bold grad-text mb-10" data-i18n="skills.langs.label">Langues</p>
+      <div class="space-y-7">
         <div>
-          <div class="flex justify-between text-sm mb-2 font-semibold"><span data-i18n="skills.lang.fr">Français</span><span style="color:var(--ink-soft)">C2</span></div>
+          <div class="flex justify-between text-[13px] mb-2.5 font-semibold"><span data-i18n="skills.lang.fr">Français</span><span style="color:var(--ink-soft)" class="text-xs font-medium">C2</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
         </div>
         <div>
-          <div class="flex justify-between text-sm mb-2 font-semibold"><span data-i18n="skills.lang.en">Anglais</span><span style="color:var(--ink-soft)">B2</span></div>
+          <div class="flex justify-between text-[13px] mb-2.5 font-semibold"><span data-i18n="skills.lang.en">Anglais</span><span style="color:var(--ink-soft)" class="text-xs font-medium">B2</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:78%"></div></div>
         </div>
         <div>
-          <div class="flex justify-between text-sm mb-2 font-semibold"><span data-i18n="skills.lang.nl">Néerlandais</span><span style="color:var(--ink-soft)">B1</span></div>
+          <div class="flex justify-between text-[13px] mb-2.5 font-semibold"><span data-i18n="skills.lang.nl">Néerlandais</span><span style="color:var(--ink-soft)" class="text-xs font-medium">B1</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
         </div>
       </div>
     </div>
 
-    <div class="card-fluid">
-      <p class="text-xs uppercase tracking-widest font-bold grad-text mb-8" data-i18n="skills.tools.label">Outils</p>
+    <div class="card-fluid p-8 md:p-10">
+      <p class="text-[10px] uppercase tracking-[0.25em] font-bold grad-text mb-10" data-i18n="skills.tools.label">Outils</p>
       <div class="flex flex-wrap gap-3">
         <span class="badge-fluid text-xs font-semibold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#3776AB"></span>Python</span>
         <span class="badge-fluid text-xs font-semibold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#F29111"></span>SQL</span>
@@ -412,8 +449,8 @@
       </div>
     </div>
 
-    <div class="card-fluid">
-      <p class="text-xs uppercase tracking-widest font-bold grad-text mb-8" data-i18n="skills.qualities.label">Qualités</p>
+    <div class="card-fluid p-8 md:p-10">
+      <p class="text-[10px] uppercase tracking-[0.25em] font-bold grad-text mb-10" data-i18n="skills.qualities.label">Qualités</p>
       <div class="flex flex-wrap gap-3">
         <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q1">Rigueur</span>
         <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q2">Curiosité</span>
@@ -425,80 +462,80 @@
     </div>
   </div>
 
-  <div class="mt-24 border-t border-dashed border-[rgba(225,149,171,0.15)] pt-14">
-    <div class="flex items-center gap-3 mb-10">
-      <h3 class="text-xl md:text-2xl font-extrabold" data-i18n="certs.title">Certifications</h3>
-      <span class="text-xs font-semibold opacity-60" data-i18n="certs.status">— En cours d'obtention</span>
+  <div class="mt-28 border-t border-dashed border-[rgba(225,149,171,0.25)] pt-16">
+    <div class="flex items-center gap-4 mb-12">
+      <h3 class="text-xl md:text-2xl font-semibold" data-i18n="certs.title">Certifications</h3>
+      <span class="text-xs uppercase tracking-widest opacity-60 font-medium" style="color:var(--ink-soft)" data-i18n="certs.status">— En cours d'obtention</span>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.1)] pb-4">
-        <span class="text-xs font-bold opacity-50 flex items-center gap-2"><span class="dot"></span>Microsoft</span>
-        <span class="text-sm font-semibold text-right">Power BI Data Analyst Associate</span>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-6">
+      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.15)] pb-5 px-4 bg-transparent hover:transform-none shadow-none rounded-none">
+        <span class="text-[11px] uppercase tracking-wider font-semibold opacity-60 flex items-center gap-2"><span class="dot"></span>Microsoft</span>
+        <span class="text-[13px] font-semibold text-right">Power BI Data Analyst Associate</span>
       </div>
-      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.1)] pb-4">
-        <span class="text-xs font-bold opacity-50 flex items-center gap-2"><span class="dot"></span>Google</span>
-        <span class="text-sm font-semibold text-right">Data Analytics Professional Certificate</span>
+      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.15)] pb-5 px-4 bg-transparent hover:transform-none shadow-none rounded-none">
+        <span class="text-[11px] uppercase tracking-wider font-semibold opacity-60 flex items-center gap-2"><span class="dot"></span>Google</span>
+        <span class="text-[13px] font-semibold text-right">Data Analytics Professional Certificate</span>
       </div>
-      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.1)] pb-4">
-        <span class="text-xs font-bold opacity-50 flex items-center gap-2"><span class="dot"></span>Meta</span>
-        <span class="text-sm font-semibold text-right" data-i18n="certs.meta">Certificat professionnel Data Analyst</span>
+      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.15)] pb-5 px-4 bg-transparent hover:transform-none shadow-none rounded-none">
+        <span class="text-[11px] uppercase tracking-wider font-semibold opacity-60 flex items-center gap-2"><span class="dot"></span>Meta</span>
+        <span class="text-[13px] font-semibold text-right" data-i18n="certs.meta">Certificat professionnel Data Analyst</span>
       </div>
-      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.1)] pb-4">
-        <span class="text-xs font-bold opacity-50 flex items-center gap-2"><span class="dot"></span>IBM</span>
-        <span class="text-sm font-semibold text-right">Data Analyst Professional Certificate</span>
+      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.15)] pb-5 px-4 bg-transparent hover:transform-none shadow-none rounded-none">
+        <span class="text-[11px] uppercase tracking-wider font-semibold opacity-60 flex items-center gap-2"><span class="dot"></span>IBM</span>
+        <span class="text-[13px] font-semibold text-right">Data Analyst Professional Certificate</span>
       </div>
-      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.1)] pb-4 md:col-span-2">
-        <span class="text-xs font-bold opacity-50 flex items-center gap-2"><span class="dot"></span>Tableau</span>
-        <span class="text-sm font-semibold text-right" data-i18n="certs.tableau">Certified Data Analyst</span>
+      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.15)] pb-5 px-4 bg-transparent hover:transform-none shadow-none rounded-none md:col-span-2">
+        <span class="text-[11px] uppercase tracking-wider font-semibold opacity-60 flex items-center gap-2"><span class="dot"></span>Tableau</span>
+        <span class="text-[13px] font-semibold text-right" data-i18n="certs.tableau">Certified Data Analyst</span>
       </div>
     </div>
   </div>
 </section>
 
-<footer id="contact" class="px-6 md:px-14 py-20">
-  <div class="max-w-4xl mx-auto py-10 relative overflow-hidden">
+<footer id="contact" class="px-6 md:px-16 py-24 border-t border-dashed border-[rgba(225,149,171,0.15)]">
+  <div class="max-w-5xl mx-auto py-10 relative overflow-hidden">
     <div class="relative grid grid-cols-1 md:grid-cols-2 gap-16">
       <div class="text-center md:text-left flex flex-col justify-center">
-        <h2 class="text-3xl md:text-4xl font-extrabold mb-5" data-i18n="contact.title">Ouverte à un stage ou<br>un emploi en data analyse.</h2>
-        <p class="text-sm mb-8" style="color:var(--ink-soft)" data-i18n="contact.sub">N'hésitez pas à me contacter.</p>
+        <h2 class="text-3xl md:text-4xl font-light leading-tight mb-6" data-i18n="contact.title">Ouverte à un stage ou<br>un emploi en data analyse.</h2>
+        <p class="text-[14px] mb-8 font-light" style="color:var(--ink-soft)" data-i18n="contact.sub">N'hésitez pas à me contacter.</p>
         <div>
-          <a href="mailto:melanied2502@gmail.com" class="btn-grad inline-block rounded-full px-8 py-3.5 text-sm mb-8">melanied2502@gmail.com</a>
+          <a href="mailto:melanied2502@gmail.com" class="btn-grad inline-block rounded-full px-8 py-4 text-xs font-bold tracking-wider uppercase mb-8">melanied2502@gmail.com</a>
         </div>
-        <div class="flex justify-center md:justify-start gap-5">
-          <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" aria-label="LinkedIn" class="hover:opacity-70 transition text-[var(--ink-soft)]">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        <div class="flex justify-center md:justify-start gap-6">
+          <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" aria-label="LinkedIn" class="hover:opacity-75 transition text-[var(--ink-soft)]">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
           </a>
-          <a href="#" aria-label="GitHub" class="hover:opacity-70 transition text-[var(--ink-soft)]">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.01-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a10.98 10.98 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+          <a href="#" aria-label="GitHub" class="hover:opacity-75 transition text-[var(--ink-soft)]">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.01-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.18 1.18a10.98 10.98 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.58.24 2.75.12 3.04.74.81 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.26 5.68.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
           </a>
         </div>
       </div>
 
       <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="text-left flex flex-col justify-center" novalidate>
-        <div class="mb-4">
+        <div class="mb-5">
           <input type="text" id="cf-name" name="name" class="field-input w-full" data-i18n-placeholder="form.name" placeholder="Votre nom">
           <p class="field-error-msg" data-i18n="form.err.name">Merci d'indiquer votre nom.</p>
         </div>
         
-        <div class="mb-4">
+        <div class="mb-5">
           <input type="email" id="cf-email" name="email" class="field-input w-full" data-i18n-placeholder="form.email" placeholder="Votre e-mail">
           <p class="field-error-msg" data-i18n="form.err.email">Merci d'indiquer un e-mail valide.</p>
         </div>
         
-        <div class="mb-5">
+        <div class="mb-6">
           <textarea id="cf-message" name="message" rows="4" class="field-input w-full" data-i18n-placeholder="form.message" placeholder="Votre message"></textarea>
           <p class="field-error-msg" data-i18n="form.err.message">Merci d'écrire un message.</p>
         </div>
         
         <div>
-          <button type="submit" class="btn-grad rounded-full px-8 py-3.5 text-sm w-full sm:w-auto" data-i18n="form.submit">Envoyer</button>
+          <button type="submit" class="btn-grad rounded-full px-8 py-4 text-xs tracking-wider uppercase w-full sm:w-auto" data-i18n="form.submit">Envoyer</button>
         </div>
         
-        <p class="form-success text-sm mt-4 font-semibold" style="color:var(--g1)" data-i18n="form.success">Merci ! Votre message a bien été envoyé.</p>
+        <p class="form-success text-sm mt-5 font-semibold" style="color:var(--g1)" data-i18n="form.success">Merci ! Votre message a bien été envoyé.</p>
       </form>
     </div>
   </div>
-  <p class="text-center mt-14 text-xs font-semibold opacity-50">© 2026 Mélanie Dupriez</p>
+  <p class="text-center mt-20 text-[11px] uppercase tracking-[0.2em] font-medium opacity-40">© 2026 Mélanie Dupriez</p>
 </footer>
 
 <button id="backToTop" class="btn-grad" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut de page">
