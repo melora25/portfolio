@@ -12,24 +12,43 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        animation: {
+          'blob': 'blob 14s infinite alternate',
+        },
+        keyframes: {
+          blob: {
+            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+            '33%': { transform: 'translate(40px, -60px) scale(1.12)' },
+            '66%': { transform: 'translate(-30px, 30px) scale(0.95)' },
+            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+          }
+        }
+      }
+    }
+  }
+</script>
 <style>
   :root{
     --bg1:#F2F9FF; --bg2:#FFF5D7; --bg3:#FFCCE1; --bg4:#F2F9FF;
     --ink:#3B2A34; --ink-soft:#8A7480;
-    --glass:rgba(255,255,255,0.3); --glass-strong:rgba(255,255,255,0.8); --glass-border:rgba(255,255,255,0.4);
+    --glass:rgba(255,255,255,0.25); --glass-strong:rgba(255,255,255,0.7); --glass-border:rgba(255,255,255,0.45);
     --menu-bg:rgba(255,255,255,0.94);
-    --shadow:rgba(225,149,171,0.1);
+    --shadow:rgba(225,149,171,0.12);
     --g1:#E195AB; --g2:#EDAFC0; --g3:#FFCCE1;
-    --card:transparent;
+    --card:rgba(255,255,255,0.2);
   }
   .dark{
-    --bg1:#221A1F; --bg2:#241C22; --bg3:#2A1E26; --bg4:#1E171B;
+    --bg1:#0b080c; --bg2:#170f14; --bg3:#1c1118; --bg4:#0e090d;
     --ink:#FBF1F4; --ink-soft:#C7ABB6;
-    --glass:rgba(45,32,40,0.3); --glass-strong:rgba(50,36,45,0.75); --glass-border:rgba(255,255,255,0.05);
-    --menu-bg:rgba(35,25,32,0.94);
-    --shadow:rgba(0,0,0,0.1);
+    --glass:rgba(35,22,30,0.35); --glass-strong:rgba(40,25,35,0.75); --glass-border:rgba(255,255,255,0.06);
+    --menu-bg:rgba(25,15,22,0.94);
+    --shadow:rgba(0,0,0,0.3);
     --g1:#E9A7BB; --g2:#F2C4A8; --g3:#F6D9A8;
-    --card:transparent;
+    --card:rgba(255,255,255,0.02);
   }
   *{ -webkit-tap-highlight-color: transparent; }
   html,body{ height:100%; }
@@ -39,13 +58,8 @@
     font-weight:400;
     transition:background-color .6s ease,color .6s ease;
     position:relative;
-    background:
-      radial-gradient(50% 45% at 8% 5%, var(--bg1) 0%, transparent 100%),
-      radial-gradient(45% 40% at 90% 10%, var(--bg3) 0%, transparent 100%),
-      radial-gradient(55% 45% at 30% 95%, var(--bg4) 0%, transparent 100%),
-      radial-gradient(45% 40% at 95% 85%, var(--bg2) 0%, transparent 100%),
-      var(--bg1);
-    background-attachment:fixed;
+    background-color: var(--bg1);
+    overflow-x: hidden;
   }
   h1,h2,h3{ font-family:'Manrope',sans-serif; font-weight:800; letter-spacing:-0.02em; }
   .logo-serif{ font-family:'Cormorant Garamond',serif; font-weight:600; }
@@ -65,14 +79,14 @@
 
   .glass{
     background:var(--glass);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
     border:1px solid var(--glass-border);
   }
   .nav-surface{
     background:var(--glass-strong);
-    backdrop-filter:blur(20px) saturate(160%);
-    -webkit-backdrop-filter:blur(20px) saturate(160%);
+    backdrop-filter:blur(24px) saturate(160%);
+    -webkit-backdrop-filter:blur(24px) saturate(160%);
     border-bottom:1px solid var(--glass-border);
   }
 
@@ -80,28 +94,34 @@
     background:linear-gradient(90deg,var(--g1),var(--g2));
     color:#fff; font-weight:600;
     box-shadow:0 10px 26px var(--shadow);
-    transition:transform .3s ease, box-shadow .3s ease;
+    transition:all .3s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .btn-grad:hover{ transform:translateY(-2px); box-shadow:0 16px 34px var(--shadow); }
+  .btn-grad:hover{ transform:translateY(-3px) scale(1.02); box-shadow:0 20px 38px var(--shadow); }
 
   .btn-ghost{
     border:1px solid var(--glass-border);
     background:var(--glass);
-    transition:transform .3s ease;
+    transition:all .3s ease;
   }
-  .btn-ghost:hover{ transform:translateY(-2px); }
+  .btn-ghost:hover{ transform:translateY(-2px); background:var(--glass-strong); }
 
   a:focus-visible, button:focus-visible{ outline:2px solid var(--g2); outline-offset:3px; border-radius:6px; }
 
-  .reveal{ opacity:0; transform:translateY(20px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal{ opacity:0; transform:translateY(30px); transition:opacity .9s cubic-bezier(0.16, 1, 0.3, 1), transform .9s cubic-bezier(0.16, 1, 0.3, 1); }
   .reveal.active{ opacity:1; transform:translateY(0); }
 
   .card-fluid {
     background: var(--card);
-    transition: transform 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .card-fluid:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    background: var(--glass);
+    box-shadow: 0 20px 40px var(--shadow);
+    border-color: var(--g1);
   }
 
   .bar-track{ height:6px; border-radius:999px; background:var(--glass); overflow:hidden; }
@@ -141,13 +161,9 @@
   .lang-option{ background:transparent; }
   .lang-option:hover{ background:var(--glass); }
 
-  /* Parallax hero blobs */
-  .parallax-layer{ position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
-  .parallax-layer span{ position:absolute; border-radius:50%; filter:blur(60px); opacity:.5; }
-  .parallax-layer .p1{ width:34vw; height:34vw; top:-6%; left:-4%; background:var(--bg3); }
-  .parallax-layer .p2{ width:28vw; height:28vw; top:14%; right:-6%; background:var(--bg2); }
-  .parallax-layer .p3{ width:30vw; height:30vw; bottom:-8%; left:22%; background:var(--g1); opacity:.25; }
-  @media (prefers-reduced-motion: reduce){ .parallax-layer span{ transition:none !important; } }
+  /* Liquid background blobs */
+  .animated-bg-layer { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .bg-blob { position: absolute; border-radius: 50%; filter: blur(90px); }
 
   /* Mobile hamburger menu */
   .hamburger-line{ display:block; width:20px; height:2px; background:currentColor; border-radius:2px; transition:transform .3s ease, opacity .3s ease; }
@@ -181,7 +197,14 @@
 </head>
 <body>
 
-<div class="parallax-layer" aria-hidden="true"><span class="p1" data-speed="0.15"></span><span class="p2" data-speed="0.25"></span><span class="p3" data-speed="0.1"></span></div>
+<canvas id="interactiveCanvas" class="fixed inset-0 z-[-1] pointer-events-none"></canvas>
+<div class="animated-bg-layer" aria-hidden="true">
+  <div class="bg-blob bg-[var(--bg3)] opacity-40 dark:opacity-20 w-[45vw] h-[45vw] -top-10 -left-10 animate-blob"></div>
+  <div class="bg-blob bg-[var(--bg2)] opacity-40 dark:opacity-15 w-[40vw] h-[40vw] top-1/4 -right-10 animate-blob" style="animation-delay: -3s;"></div>
+  <div class="bg-blob bg-[var(--g1)] opacity-20 dark:opacity-10 w-[50vw] h-[50vw] -bottom-20 left-1/3 animate-blob" style="animation-delay: -7s;"></div>
+</div>
+
+<div class="fixed inset-0 z-[-1] bg-[linear-gradient(to_right,rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:6rem_6rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
 <nav class="fixed top-0 w-full z-50 nav-surface px-6 md:px-14 py-4">
   <div class="flex justify-between items-center">
@@ -229,50 +252,54 @@
 
 <header id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-14 pt-28 pb-16">
   <div class="max-w-5xl mx-auto w-full text-center">
-    <span class="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold mb-8" style="color:var(--ink-soft)">
+    <span class="glass inline-flex items-center gap-2.5 rounded-full px-4 py-2 text-[11px] font-bold mb-8 tracking-wider uppercase cursor-default" style="color:var(--ink)">
+      <span class="flex h-2 w-2 relative">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--g1)] opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-[var(--g1)]"></span>
+      </span>
       <span data-i18n="hero.eyebrow">Étudiante en Ingénieur de gestion — Data & BI</span>
     </span>
 
-    <h1 class="text-[clamp(2.2rem,6vw,4.6rem)] leading-[1.1] mb-6">
+    <h1 class="text-[clamp(2.2rem,6vw,4.6rem)] font-extrabold tracking-tight leading-[1.1] mb-6">
       <span data-i18n="hero.line1">Je transforme les données</span><br>
       <span class="italic-serif grad-text" data-i18n="hero.line2">en décisions claires.</span>
     </h1>
 
-    <p class="max-w-2xl mx-auto text-sm md:text-base leading-relaxed mb-10" style="color:var(--ink-soft)" data-i18n="hero.sub">
+    <p class="max-w-2xl mx-auto text-sm md:text-base leading-relaxed mb-10 font-medium" style="color:var(--ink-soft)" data-i18n="hero.sub">
       Ingénieure de gestion spécialisée en Data, je transforme vos données en diagnostics précis et en recommandations concrètes pour optimiser vos processus et maximiser votre performance.
     </p>
 
-    <div class="flex flex-wrap justify-center gap-4 mb-6">
-      <a href="#contact" class="btn-grad rounded-full px-8 py-3.5 text-sm">Discutons de vos projets</a>
-      <a href="#projets" class="btn-ghost rounded-full px-7 py-3 text-sm font-semibold" data-i18n="hero.cta2">Voir mes projets ↓</a>
+    <div class="flex flex-wrap justify-center gap-4 mb-8">
+      <a href="#contact" class="btn-grad rounded-full px-8 py-4 text-sm tracking-wide">Discutons de vos projets</a>
+      <a href="#projets" class="btn-ghost rounded-full px-7 py-3.5 text-sm font-semibold tracking-wide" data-i18n="hero.cta2">Voir mes projets ↓</a>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[12px] font-semibold mb-16" style="color:var(--ink-soft)">
-      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check1">Disponible immédiatement</span></span>
-      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check2">Télétravail possible</span></span>
-      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check3">Basée en Belgique</span></span>
+    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-[12px] font-bold mb-16" style="color:var(--ink-soft)">
+      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check1">Disponible immédiatement</span></span>
+      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check2">Télétravail possible</span></span>
+      <span class="inline-flex items-center gap-1.5"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--g1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span data-i18n="hero.check3">Basée en Belgique</span></span>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto text-left border-t border-dashed border-[rgba(225,149,171,0.15)] pt-12">
-      <div class="card-fluid flex flex-col">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto text-left border-t border-dashed border-[rgba(225,149,171,0.15)] pt-12">
+      <div class="card-fluid flex flex-col p-6 rounded-2xl">
         <div class="text-left mb-4 icon-animate">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon1" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon1" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
         </div>
         <h3 class="text-base font-extrabold mb-2" data-i18n="proof.data.title">Data Analysis</h3>
         <p class="text-sm leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.data.desc">Traduction de données brutes en insights décisionnels.</p>
       </div>
 
-      <div class="card-fluid flex flex-col">
+      <div class="card-fluid flex flex-col p-6 rounded-2xl">
         <div class="text-left mb-4 icon-animate">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon2" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M8 5L2 12l6 7M16 5l6 7-6 7"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon2" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><path d="M8 5L2 12l6 7M16 5l6 7-6 7"/></svg>
         </div>
         <h3 class="text-base font-extrabold mb-2" data-i18n="proof.web.title">Web Development</h3>
         <p class="text-sm leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.web.desc">Conception d'interfaces web pour présenter vos résultats.</p>
       </div>
 
-      <div class="card-fluid flex flex-col">
+      <div class="card-fluid flex flex-col p-6 rounded-2xl">
         <div class="text-left mb-4 icon-animate">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon3" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/></svg>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><defs><linearGradient id="gradIcon3" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="var(--g1)"/><stop offset="100%" stop-color="var(--g3)"/></linearGradient></defs><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/></svg>
         </div>
         <h3 class="text-base font-extrabold mb-2" data-i18n="proof.strategy.title">Business Strategy</h3>
         <p class="text-sm leading-relaxed" style="color:var(--ink-soft)" data-i18n="proof.strategy.desc">Optimisation des processus basée sur des diagnostics précis.</p>
@@ -280,28 +307,28 @@
     </div>
   </div>
 
-  <div class="max-w-5xl mx-auto w-full mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-t border-b border-dashed border-[rgba(225,149,171,0.15)] py-10">
-    <div class="card-fluid">
+  <div class="max-w-5xl mx-auto w-full mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 text-center border-t border-b border-dashed border-[rgba(225,149,171,0.15)] py-10">
+    <div class="card-fluid p-6 rounded-2xl">
       <p class="text-4xl font-extrabold grad-text">2027</p>
-      <p class="text-[11px] uppercase tracking-widest mt-2 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.grad">Diplôme prévu</p>
+      <p class="text-[11px] uppercase tracking-widest mt-2 font-bold" style="color:var(--ink-soft)" data-i18n="stat.grad">Diplôme prévu</p>
     </div>
-    <div class="card-fluid">
+    <div class="card-fluid p-6 rounded-2xl">
       <p class="text-4xl font-extrabold grad-text">3</p>
-      <p class="text-[11px] uppercase tracking-widest mt-2 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.langs">Langues parlées</p>
+      <p class="text-[11px] uppercase tracking-widest mt-2 font-bold" style="color:var(--ink-soft)" data-i18n="stat.langs">Langues parlées</p>
     </div>
-    <div class="card-fluid">
+    <div class="card-fluid p-6 rounded-2xl">
       <p class="text-4xl font-extrabold grad-text">6</p>
-      <p class="text-[11px] uppercase tracking-widest mt-2 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.tools">Outils maîtrisés</p>
+      <p class="text-[11px] uppercase tracking-widest mt-2 font-bold" style="color:var(--ink-soft)" data-i18n="stat.tools">Outils maîtrisés</p>
     </div>
-    <div class="card-fluid">
+    <div class="card-fluid p-6 rounded-2xl">
       <p class="text-4xl font-extrabold grad-text">5</p>
-      <p class="text-[11px] uppercase tracking-widest mt-2 font-semibold" style="color:var(--ink-soft)" data-i18n="stat.certs">Certifications en cours</p>
+      <p class="text-[11px] uppercase tracking-widest mt-2 font-bold" style="color:var(--ink-soft)" data-i18n="stat.certs">Certifications en cours</p>
     </div>
   </div>
 
   <div class="max-w-3xl mx-auto w-full mt-14 text-center">
-    <p class="text-[11px] uppercase tracking-[0.2em] font-bold grad-text mb-3" data-i18n="hero.seeking.label">Ce que je recherche</p>
-    <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto" style="color:var(--ink-soft)" data-i18n="hero.seeking.desc">
+    <p class="text-[11px] uppercase tracking-[0.2em] font-extrabold grad-text mb-3" data-i18n="hero.seeking.label">Ce que je recherche</p>
+    <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium" style="color:var(--ink-soft)" data-i18n="hero.seeking.desc">
       Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à la donnée.
     </p>
   </div>
@@ -309,67 +336,68 @@
 
 <section id="parcours" class="px-6 md:px-14 py-20 max-w-4xl mx-auto reveal">
   <h2 class="text-3xl md:text-4xl text-center mb-3" data-i18n="path.title">Parcours</h2>
-  <p class="text-center text-sm mb-16" style="color:var(--ink-soft)" data-i18n="path.sub">Formation & expérience</p>
+  <p class="text-center text-sm mb-16 font-semibold" style="color:var(--ink-soft)" data-i18n="path.sub">Formation & expérience</p>
 
   <div class="relative border-l border-dashed border-[rgba(225,149,171,0.3)] ml-4 md:ml-32 space-y-12">
-    <div class="relative pl-8 card-fluid">
-      <span class="absolute -left-[5px] top-2 dot"></span>
+    <div class="relative pl-8 card-fluid p-6 rounded-2xl">
+      <span class="absolute -left-[5px] top-8 dot"></span>
       <span class="text-xs font-bold grad-text block mb-1">2024 — 2027</span>
       <h3 class="text-xl md:text-2xl font-extrabold" data-i18n="path.edu1.title">Ingénieur de gestion</h3>
-      <p class="text-xs mt-0.5 font-semibold" style="color:var(--ink-soft)" data-i18n="path.edu1.sub">Université de Mons — Bachelier, 3 ans</p>
-      <p class="text-sm mt-3 leading-relaxed max-w-2xl" style="color:var(--ink-soft)" data-i18n="path.edu1.desc">Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information.</p>
+      <p class="text-xs mt-0.5 font-bold" style="color:var(--ink-soft)" data-i18n="path.edu1.sub">Université de Mons — Bachelier, 3 ans</p>
+      <p class="text-sm mt-3 leading-relaxed max-w-2xl font-medium" style="color:var(--ink-soft)" data-i18n="path.edu1.desc">Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information.</p>
     </div>
 
-    <div class="relative pl-8 card-fluid">
-      <span class="absolute -left-[5px] top-2 dot"></span>
+    <div class="relative pl-8 card-fluid p-6 rounded-2xl">
+      <span class="absolute -left-[5px] top-8 dot"></span>
       <span class="text-xs font-bold grad-text block mb-1" data-i18n="path.stage.date">Fév. — avr. 2023</span>
       <h3 class="text-xl md:text-2xl font-extrabold" data-i18n="path.stage.title">Social Media Manager — GabyLuxxy</h3>
-      <p class="text-xs mt-0.5 font-semibold" style="color:var(--ink-soft)" data-i18n="path.stage.sub">Stage en télétravail · Revente de luxe</p>
-      <p class="text-sm mt-3 leading-relaxed max-w-2xl" style="color:var(--ink-soft)" data-i18n="path.stage.desc">Gestion des réseaux sociaux, création de contenu, analyse des performances.</p>
+      <p class="text-xs mt-0.5 font-bold" style="color:var(--ink-soft)" data-i18n="path.stage.sub">Stage en télétravail · Revente de luxe</p>
+      <p class="text-sm mt-3 leading-relaxed max-w-2xl font-medium" style="color:var(--ink-soft)" data-i18n="path.stage.desc">Gestion des réseaux sociaux, création de contenu, analyse des performances.</p>
     </div>
 
-    <div class="relative pl-8 card-fluid">
-      <span class="absolute -left-[5px] top-2 dot"></span>
+    <div class="relative pl-8 card-fluid p-6 rounded-2xl">
+      <span class="absolute -left-[5px] top-8 dot"></span>
       <span class="text-xs font-bold grad-text block mb-1">2022 — 2024</span>
       <h3 class="text-xl md:text-2xl font-extrabold" data-i18n="path.edu2.title">Diplôme de Photographe</h3>
-      <p class="text-xs mt-0.5 font-semibold" style="color:var(--ink-soft)" data-i18n="path.edu2.sub">5e — 6e secondaire</p>
-      <p class="text-sm mt-3 leading-relaxed max-w-2xl" style="color:var(--ink-soft)" data-i18n="path.edu2.desc">Photographie, montage photo & vidéo, notions de marketing et publicité.</p>
+      <p class="text-xs mt-0.5 font-bold" style="color:var(--ink-soft)" data-i18n="path.edu2.sub">5e — 6e secondaire</p>
+      <p class="text-sm mt-3 leading-relaxed max-w-2xl font-medium" style="color:var(--ink-soft)" data-i18n="path.edu2.desc">Photographie, montage photo & vidéo, notions de marketing et publicité.</p>
     </div>
   </div>
 </section>
 
 <section id="projets" class="px-6 md:px-14 py-20 max-w-5xl mx-auto reveal">
   <h2 class="text-3xl md:text-4xl text-center mb-3" data-i18n="projects.title">Mes projets personnels</h2>
-  <p class="text-center text-sm mb-2" style="color:var(--ink-soft)" data-i18n="projects.sub">Un aperçu de mon travail</p>
-  <p class="text-center text-xs mb-12 flex items-center justify-center gap-2" style="color:var(--ink-soft)">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l-7 7 7 7M15 5l7 7-7 7"/></svg>
+  <p class="text-center text-sm mb-2 font-semibold" style="color:var(--ink-soft)" data-i18n="projects.sub">Un aperçu de mon travail</p>
+  <p class="text-center text-xs mb-12 flex items-center justify-center gap-2 font-bold" style="color:var(--ink-soft)">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5l-7 7 7 7M12 5l7 7-7 7"/></svg>
     <span data-i18n="projects.drag">Faites glisser pour parcourir</span>
   </p>
 
   <div id="projectsTrack" class="flex gap-8 overflow-x-auto pb-6 px-1 cursor-grab select-none" style="scroll-snap-type:x mandatory; scrollbar-width:none;">
-    <article class="card-fluid shrink-0 w-[85%] sm:w-[440px] flex flex-col" style="scroll-snap-align:center;">
-      <div class="rounded-2xl overflow-hidden mb-6">
-        <img src="https://picsum.photos/seed/melanie-belgique-data/760/420" alt="Aperçu du dashboard Analyse économique de la Belgique" class="w-full h-48 object-cover" loading="lazy">
+    <article class="card-fluid shrink-0 w-[85%] sm:w-[440px] flex flex-col p-6 rounded-3xl" style="scroll-snap-align:center;">
+      <div class="rounded-2xl overflow-hidden mb-6 relative group">
+        <img src="https://picsum.photos/seed/melanie-belgique-data/760/420" alt="Aperçu du dashboard Analyse économique de la Belgique" class="w-full h-48 object-cover transition duration-500 group-hover:scale-105" loading="lazy">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"></div>
       </div>
       <div class="flex flex-col flex-1">
         <h3 class="text-2xl font-extrabold mb-3" data-i18n="p1.title">Analyse économique de la Belgique</h3>
-        <p class="text-sm leading-relaxed mb-6" style="color:var(--ink-soft)" data-i18n="p1.desc">
+        <p class="text-sm leading-relaxed mb-6 font-medium" style="color:var(--ink-soft)" data-i18n="p1.desc">
           Storytelling dashboard interactif présentant l'évolution des indicateurs économiques belges (PIB, chômage, inflation) avec des visualisations dynamiques et une narration guidée.
         </p>
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)">Python</span>
-          <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)">Power BI</span>
-          <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)">SQL</span>
-          <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)">Excel</span>
+        <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+          <span class="badge-fluid text-xs font-bold" style="color:var(--ink-soft)">Python</span>
+          <span class="badge-fluid text-xs font-bold" style="color:var(--ink-soft)">Power BI</span>
+          <span class="badge-fluid text-xs font-bold" style="color:var(--ink-soft)">SQL</span>
+          <span class="badge-fluid text-xs font-bold" style="color:var(--ink-soft)">Excel</span>
         </div>
-        <a href="#" onclick="return !document.body.classList.contains('was-dragging')" class="text-sm font-bold grad-text hover:opacity-80 transition inline-flex items-center gap-1" data-i18n="projects.view">Voir le projet ↗</a>
+        <a href="#" onclick="return !document.body.classList.contains('was-dragging')" class="text-sm font-extrabold tracking-wide grad-text hover:opacity-80 transition inline-flex items-center gap-1" data-i18n="projects.view">Voir le projet ↗</a>
       </div>
     </article>
 
-    <article class="card-fluid shrink-0 w-[85%] sm:w-[440px] flex flex-col justify-center border border-dashed border-[rgba(225,149,171,0.25)] rounded-3xl p-8" style="scroll-snap-align:center;">
-      <div class="text-center">
+    <article class="card-fluid shrink-0 w-[85%] sm:w-[440px] flex flex-col justify-center border border-dashed border-[rgba(225,149,171,0.35)] rounded-3xl p-8" style="scroll-snap-align:center;">
+      <div class="text-center py-12">
         <h3 class="text-xl font-extrabold mb-2" data-i18n="projects.more.title">Prochain projet</h3>
-        <p class="text-sm max-w-xs mx-auto" style="color:var(--ink-soft)" data-i18n="projects.more">D'autres projets à venir.</p>
+        <p class="text-sm max-w-xs mx-auto font-medium" style="color:var(--ink-soft)" data-i18n="projects.more">D'autres projets à venir.</p>
       </div>
     </article>
   </div>
@@ -379,48 +407,48 @@
 
 <section id="competences" class="px-6 md:px-14 py-20 max-w-5xl mx-auto reveal">
   <h2 class="text-3xl md:text-4xl text-center mb-3" data-i18n="skills.title">Compétences</h2>
-  <p class="text-center text-sm mb-16" style="color:var(--ink-soft)" data-i18n="skills.sub">Langues, outils & qualités</p>
+  <p class="text-center text-sm mb-16 font-semibold" style="color:var(--ink-soft)" data-i18n="skills.sub">Langues, outils & qualités</p>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-    <div class="card-fluid">
-      <p class="text-xs uppercase tracking-widest font-bold grad-text mb-8" data-i18n="skills.langs.label">Langues</p>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="card-fluid p-6 rounded-2xl">
+      <p class="text-xs uppercase tracking-widest font-extrabold grad-text mb-8" data-i18n="skills.langs.label">Langues</p>
       <div class="space-y-6">
         <div>
-          <div class="flex justify-between text-sm mb-2 font-semibold"><span data-i18n="skills.lang.fr">Français</span><span style="color:var(--ink-soft)">C2</span></div>
+          <div class="flex justify-between text-sm mb-2 font-bold"><span data-i18n="skills.lang.fr">Français</span><span style="color:var(--ink-soft)">C2</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
         </div>
         <div>
-          <div class="flex justify-between text-sm mb-2 font-semibold"><span data-i18n="skills.lang.en">Anglais</span><span style="color:var(--ink-soft)">B2</span></div>
+          <div class="flex justify-between text-sm mb-2 font-bold"><span data-i18n="skills.lang.en">Anglais</span><span style="color:var(--ink-soft)">B2</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:78%"></div></div>
         </div>
         <div>
-          <div class="flex justify-between text-sm mb-2 font-semibold"><span data-i18n="skills.lang.nl">Néerlandais</span><span style="color:var(--ink-soft)">B1</span></div>
+          <div class="flex justify-between text-sm mb-2 font-bold"><span data-i18n="skills.lang.nl">Néerlandais</span><span style="color:var(--ink-soft)">B1</span></div>
           <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
         </div>
       </div>
     </div>
 
-    <div class="card-fluid">
-      <p class="text-xs uppercase tracking-widest font-bold grad-text mb-8" data-i18n="skills.tools.label">Outils</p>
+    <div class="card-fluid p-6 rounded-2xl">
+      <p class="text-xs uppercase tracking-widest font-extrabold grad-text mb-8" data-i18n="skills.tools.label">Outils</p>
       <div class="flex flex-wrap gap-3">
-        <span class="badge-fluid text-xs font-semibold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#3776AB"></span>Python</span>
-        <span class="badge-fluid text-xs font-semibold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#F29111"></span>SQL</span>
-        <span class="badge-fluid text-xs font-semibold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#F2C811"></span>Power BI</span>
-        <span class="badge-fluid text-xs font-semibold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#1F77B4"></span>Tableau</span>
-        <span class="badge-fluid text-xs font-semibold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#1D6F42"></span>Excel</span>
-        <span class="badge-fluid text-xs font-semibold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#8B3DFF"></span>Canva</span>
+        <span class="badge-fluid text-xs font-bold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#3776AB"></span>Python</span>
+        <span class="badge-fluid text-xs font-bold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#F29111"></span>SQL</span>
+        <span class="badge-fluid text-xs font-bold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#F2C811"></span>Power BI</span>
+        <span class="badge-fluid text-xs font-bold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#1F77B4"></span>Tableau</span>
+        <span class="badge-fluid text-xs font-bold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#1D6F42"></span>Excel</span>
+        <span class="badge-fluid text-xs font-bold inline-flex items-center gap-2" style="color:var(--ink-soft)"><span class="w-1.5 h-1.5 rounded-full" style="background:#8B3DFF"></span>Canva</span>
       </div>
     </div>
 
-    <div class="card-fluid">
-      <p class="text-xs uppercase tracking-widest font-bold grad-text mb-8" data-i18n="skills.qualities.label">Qualités</p>
+    <div class="card-fluid p-6 rounded-2xl">
+      <p class="text-xs uppercase tracking-widest font-extrabold grad-text mb-8" data-i18n="skills.qualities.label">Qualités</p>
       <div class="flex flex-wrap gap-3">
-        <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q1">Rigueur</span>
-        <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q2">Curiosité</span>
-        <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q3">Autonomie</span>
-        <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q4">Sens du détail</span>
-        <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q5">Créativité</span>
-        <span class="badge-fluid text-xs font-semibold" style="color:var(--ink-soft)" data-i18n="skills.q6">Adaptabilité</span>
+        <span class="badge-fluid text-xs font-bold" style="color:var(--ink-soft)" data-i18n="skills.q1">Rigueur</span>
+        <span class="badge-fluid text-xs font-bold" style="color:var(--ink-soft)" data-i18n="skills.q2">Curiosité</span>
+        <span class="badge-fluid text-xs font-bold" style="color:var(--ink-soft)" data-i18n="skills.q3">Autonomie</span>
+        <span class="badge-fluid text-xs font-bold" style="color:var(--ink-soft)" data-i18n="skills.q4">Sens du détail</span>
+        <span class="badge-fluid text-xs font-bold" style="color:var(--ink-soft)" data-i18n="skills.q5">Créativité</span>
+        <span class="badge-fluid text-xs font-bold" style="color:var(--ink-soft)" data-i18n="skills.q6">Adaptabilité</span>
       </div>
     </div>
   </div>
@@ -428,28 +456,28 @@
   <div class="mt-24 border-t border-dashed border-[rgba(225,149,171,0.15)] pt-14">
     <div class="flex items-center gap-3 mb-10">
       <h3 class="text-xl md:text-2xl font-extrabold" data-i18n="certs.title">Certifications</h3>
-      <span class="text-xs font-semibold opacity-60" data-i18n="certs.status">— En cours d'obtention</span>
+      <span class="text-xs font-bold opacity-60" data-i18n="certs.status">— En cours d'obtention</span>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
-      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.1)] pb-4">
-        <span class="text-xs font-bold opacity-50 flex items-center gap-2"><span class="dot"></span>Microsoft</span>
-        <span class="text-sm font-semibold text-right">Power BI Data Analyst Associate</span>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+      <div class="card-fluid flex items-center justify-between p-4 rounded-xl">
+        <span class="text-xs font-bold opacity-60 flex items-center gap-2"><span class="dot"></span>Microsoft</span>
+        <span class="text-sm font-bold">Power BI Data Analyst Associate</span>
       </div>
-      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.1)] pb-4">
-        <span class="text-xs font-bold opacity-50 flex items-center gap-2"><span class="dot"></span>Google</span>
-        <span class="text-sm font-semibold text-right">Data Analytics Professional Certificate</span>
+      <div class="card-fluid flex items-center justify-between p-4 rounded-xl">
+        <span class="text-xs font-bold opacity-60 flex items-center gap-2"><span class="dot"></span>Google</span>
+        <span class="text-sm font-bold">Data Analytics Professional Certificate</span>
       </div>
-      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.1)] pb-4">
-        <span class="text-xs font-bold opacity-50 flex items-center gap-2"><span class="dot"></span>Meta</span>
-        <span class="text-sm font-semibold text-right" data-i18n="certs.meta">Certificat professionnel Data Analyst</span>
+      <div class="card-fluid flex items-center justify-between p-4 rounded-xl">
+        <span class="text-xs font-bold opacity-60 flex items-center gap-2"><span class="dot"></span>Meta</span>
+        <span class="text-sm font-bold" data-i18n="certs.meta">Certificat professionnel Data Analyst</span>
       </div>
-      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.1)] pb-4">
-        <span class="text-xs font-bold opacity-50 flex items-center gap-2"><span class="dot"></span>IBM</span>
-        <span class="text-sm font-semibold text-right">Data Analyst Professional Certificate</span>
+      <div class="card-fluid flex items-center justify-between p-4 rounded-xl">
+        <span class="text-xs font-bold opacity-60 flex items-center gap-2"><span class="dot"></span>IBM</span>
+        <span class="text-sm font-bold">Data Analyst Professional Certificate</span>
       </div>
-      <div class="card-fluid flex items-center justify-between border-b border-[rgba(225,149,171,0.1)] pb-4 md:col-span-2">
-        <span class="text-xs font-bold opacity-50 flex items-center gap-2"><span class="dot"></span>Tableau</span>
-        <span class="text-sm font-semibold text-right" data-i18n="certs.tableau">Certified Data Analyst</span>
+      <div class="card-fluid flex items-center justify-between p-4 rounded-xl md:col-span-2">
+        <span class="text-xs font-bold opacity-60 flex items-center gap-2"><span class="dot"></span>Tableau</span>
+        <span class="text-sm font-bold" data-i18n="certs.tableau">Certified Data Analyst</span>
       </div>
     </div>
   </div>
@@ -460,9 +488,9 @@
     <div class="relative grid grid-cols-1 md:grid-cols-2 gap-16">
       <div class="text-center md:text-left flex flex-col justify-center">
         <h2 class="text-3xl md:text-4xl font-extrabold mb-5" data-i18n="contact.title">Ouverte à un stage ou<br>un emploi en data analyse.</h2>
-        <p class="text-sm mb-8" style="color:var(--ink-soft)" data-i18n="contact.sub">N'hésitez pas à me contacter.</p>
+        <p class="text-sm mb-8 font-semibold" style="color:var(--ink-soft)" data-i18n="contact.sub">N'hésitez pas à me contacter.</p>
         <div>
-          <a href="mailto:melanied2502@gmail.com" class="btn-grad inline-block rounded-full px-8 py-3.5 text-sm mb-8">melanied2502@gmail.com</a>
+          <a href="mailto:melanied2502@gmail.com" class="btn-grad inline-block rounded-full px-8 py-4 text-sm mb-8 tracking-wide">melanied2502@gmail.com</a>
         </div>
         <div class="flex justify-center md:justify-start gap-5">
           <a href="https://be.linkedin.com/in/m%C3%A9lanie-dupriez-b9617729a" aria-label="LinkedIn" class="hover:opacity-70 transition text-[var(--ink-soft)]">
@@ -476,29 +504,29 @@
 
       <form id="contactForm" action="https://formspree.io/f/xkodnpbj" method="POST" class="text-left flex flex-col justify-center" novalidate>
         <div class="mb-4">
-          <input type="text" id="cf-name" name="name" class="field-input w-full" data-i18n-placeholder="form.name" placeholder="Votre nom">
-          <p class="field-error-msg" data-i18n="form.err.name">Merci d'indiquer votre nom.</p>
+          <input type="text" id="cf-name" name="name" class="field-input w-full font-medium" data-i18n-placeholder="form.name" placeholder="Votre nom">
+          <p class="field-error-msg font-bold" data-i18n="form.err.name">Merci d'indiquer votre nom.</p>
         </div>
         
         <div class="mb-4">
-          <input type="email" id="cf-email" name="email" class="field-input w-full" data-i18n-placeholder="form.email" placeholder="Votre e-mail">
-          <p class="field-error-msg" data-i18n="form.err.email">Merci d'indiquer un e-mail valide.</p>
+          <input type="email" id="cf-email" name="email" class="field-input w-full font-medium" data-i18n-placeholder="form.email" placeholder="Votre e-mail">
+          <p class="field-error-msg font-bold" data-i18n="form.err.email">Merci d'indiquer un e-mail valide.</p>
         </div>
         
         <div class="mb-5">
-          <textarea id="cf-message" name="message" rows="4" class="field-input w-full" data-i18n-placeholder="form.message" placeholder="Votre message"></textarea>
-          <p class="field-error-msg" data-i18n="form.err.message">Merci d'écrire un message.</p>
+          <textarea id="cf-message" name="message" rows="4" class="field-input w-full font-medium" data-i18n-placeholder="form.message" placeholder="Votre message"></textarea>
+          <p class="field-error-msg font-bold" data-i18n="form.err.message">Merci d'écrire un message.</p>
         </div>
         
         <div>
-          <button type="submit" class="btn-grad rounded-full px-8 py-3.5 text-sm w-full sm:w-auto" data-i18n="form.submit">Envoyer</button>
+          <button type="submit" class="btn-grad rounded-full px-8 py-4 text-sm w-full sm:w-auto tracking-wide" data-i18n="form.submit">Envoyer</button>
         </div>
         
-        <p class="form-success text-sm mt-4 font-semibold" style="color:var(--g1)" data-i18n="form.success">Merci ! Votre message a bien été envoyé.</p>
+        <p class="form-success text-sm mt-4 font-bold" style="color:var(--g1)" data-i18n="form.success">Merci ! Votre message a bien été envoyé.</p>
       </form>
     </div>
   </div>
-  <p class="text-center mt-14 text-xs font-semibold opacity-50">© 2026 Mélanie Dupriez</p>
+  <p class="text-center mt-14 text-xs font-bold opacity-50">© 2026 Mélanie Dupriez</p>
 </footer>
 
 <button id="backToTop" class="btn-grad" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut de page">
@@ -523,7 +551,7 @@
       'nav.path':'Parcours','nav.projects':'Projets','nav.skills':'Compétences','nav.contact':'Contact','nav.theme':'Thème',
       'hero.eyebrow':'Étudiante en Ingénieur de gestion — Data & BI',
       'hero.line1':'Je transforme les données','hero.line2':' en décisions claires.',
-      'hero.sub':"Ingénieure de gestion spécialisée en Data, je transforme vos données en diagnostics précis et en recommandations concrètes pour optimiser vos processus et maximiser votre performance.",
+      'hero.sub':"Ingénieure de gestion spécialisée en Data, je transforme vos données en diagnostics précis et en recommendations concrètes pour optimiser vos processus et maximiser votre performance.",
       'hero.cta1':'Discutons de vos projets','hero.cta2':'Voir mes projets ↓',
       'proof.data.title':'Data Analysis','proof.data.desc':'Traduction de données brutes en insights décisionnels.',
       'proof.web.title':'Web Development','proof.web.desc':"Conception d'interfaces web pour présenter vos résultats.",
@@ -534,7 +562,7 @@
       'form.success':'Merci ! Votre message a bien été envoyé.',
       'hero.seeking.label':'Ce que je recherche',
       'hero.seeking.desc':"Stage ou emploi en data analyse / business intelligence, idéalement en télétravail ou en Belgique. Disponible pour discuter de tout projet lié à l'analyse de données.",
-      'stat.grad':'Diplôme prévu','stat.langs':'Langues parlées','stat.tools':'Outils maîtrisés','stat.certs':'Certifications en cours',
+      'stat.grad':'Diplôme prévu','stat.langs':'Langues parlées','stat.tools':'Outils maîtrisés','stat.tools':'Outils maîtrisés','stat.certs':'Certifications en cours',
       'path.title':'Parcours','path.sub':'Formation & expérience',
       'path.edu1.title':'Ingénieur de gestion','path.edu1.sub':'Université de Mons — Bachelier, 3 ans',
       'path.edu1.desc':"Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information.",
@@ -615,7 +643,7 @@
       'projects.title':'Mijn persoonlijke projecten','projects.sub':'Een blik op mijn werk','projects.more':'Meer projecten binnenkort.',
       'projects.drag':'Sleep om te bladeren','projects.view':'Bekijk project ↗','projects.more.title':'Volgend project',
       'p1.title':'Economische analyse van België',
-      'p1.desc':"Interactief storytelling-dashboard over de evolutie van de Belgische economische indicatoren (bbp, werkloosheid, inflatie) met dynamische visualisaties en un geleid verhaal.",
+      'p1.desc':"Interactief storytelling-dashboard over de evolutie van de Belgische economische indicatoren (bbp, werkloosheid, inflatie) met dynamische visualisaties en een geleid verhaal.",
       'skills.title':'Vaardigheden','skills.sub':'Talen, tools & kwaliteiten',
       'skills.langs.label':'Talen','skills.lang.fr':'Frans','skills.lang.en':'Engels','skills.lang.nl':'Nederlands',
       'skills.tools.label':'Tools','skills.qualities.label':'Kwaliteiten',
@@ -689,15 +717,88 @@
     document.getElementById('hLine3').style.transform = '';
   }
 
+  // Back to top & parallax backup script
   window.addEventListener('scroll', ()=>{
     const y = window.scrollY;
     const btt = document.getElementById('backToTop');
     if(btt) btt.classList.toggle('show', y > 500);
-    document.querySelectorAll('.parallax-layer span[data-speed]').forEach(el=>{
-      const speed = parseFloat(el.getAttribute('data-speed'));
-      el.style.transform = `translateY(${y * speed}px)`;
-    });
   }, { passive:true });
+
+  // ─── CANVAS INTERACTIF (PARTICULES MAGIQUES) ───
+  (function initCanvasParticles() {
+    const canvas = document.getElementById('interactiveCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const mouse = { x: null, y: null, radius: 140 };
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    window.addEventListener('mouseleave', () => { mouse.x = null; mouse.y = null; });
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.2;
+        this.speedY = (Math.random() - 0.5) * 0.2;
+        this.baseAlpha = Math.random() * 0.3 + 0.1;
+        this.alpha = this.baseAlpha;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+        if (mouse.x !== null && mouse.y !== null) {
+          let dx = this.x - mouse.x;
+          let dy = this.y - mouse.y;
+          let dist = Math.hypot(dx, dy);
+          if (dist < mouse.radius) {
+            let force = (mouse.radius - dist) / mouse.radius;
+            this.x += (dx / dist) * force * 1.5;
+            this.y += (dy / dist) * force * 1.5;
+            this.alpha = Math.min(0.7, this.baseAlpha + force * 0.4);
+          } else if (this.alpha > this.baseAlpha) {
+            this.alpha -= 0.01;
+          }
+        } else if (this.alpha > this.baseAlpha) {
+          this.alpha -= 0.01;
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = document.documentElement.classList.contains('dark') ? '#EDAFC0' : '#3B2A34';
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function setup() {
+      particles = [];
+      const count = Math.min(60, (canvas.width * canvas.height) / 20000);
+      for (let i = 0; i < count; i++) particles.push(new Particle());
+    }
+    function loop() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(loop);
+    }
+    setup();
+    loop();
+    window.addEventListener('resize', setup);
+  })();
 
   (function setupContactForm(){
     const form = document.getElementById('contactForm');
