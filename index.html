@@ -34,6 +34,37 @@ body {
   overflow-x: hidden;
 }
 
+.glass-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 999px;
+  overflow: hidden;
+
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.25);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.35),
+      rgba(255,255,255,0.05)
+    );
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  box-shadow:
+    inset 1px 1px 10px rgba(255,255,255,0.4),
+    0 10px 30px rgba(221,160,173,0.15);
+
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease;
+}
+
 /* Curseur personnalisé fluide (uniquement sur PC) */
 @media (min-width: 1024px) {
   #custom-cursor {
@@ -511,9 +542,18 @@ body {
       
       <div id="formStatus" class="text-[12px] font-light hidden"></div>
 
-      <button type="submit" id="submitBtn" class="text-[11px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-4" data-i18n="form-submit">
-        Envoyer le message →
-      </button>
+      <button 
+type="submit" 
+id="submitBtn"
+class="group relative overflow-hidden rounded-full px-8 py-4 text-[11px] uppercase tracking-[0.2em] font-semibold border border-[var(--line)] transition-all duration-500 hover:border-[var(--accent)]"
+>
+<span class="relative z-10 group-hover:text-white transition-colors duration-500">
+Envoyer le message →
+</span>
+
+<span class="absolute inset-0 bg-[var(--accent)] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
+
+</button>
     </form>
 
     <div class="flex flex-col gap-6 mb-16">
