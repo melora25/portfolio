@@ -202,9 +202,175 @@ body {
   transform: translateY(-4px);
   background-color: rgba(221, 160, 173, 0.02);
 }
+/* ================================
+ PREMIUM PORTFOLIO EFFECTS 2026
+================================ */
+
+/* Scroll progress */
+#scroll-progress {
+  position: fixed;
+  top:0;
+  left:0;
+  height:2px;
+  width:0%;
+  background:var(--accent);
+  z-index:99999;
+  transition:width .1s linear;
+}
+
+
+/* Aurora background */
+body::before {
+  content:"";
+  position:fixed;
+  inset:-30%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(221,160,173,.18), transparent 30%),
+    radial-gradient(circle at 80% 30%, rgba(255,200,220,.12), transparent 35%),
+    radial-gradient(circle at 50% 90%, rgba(221,160,173,.15), transparent 30%);
+  filter:blur(80px);
+  z-index:-2;
+  animation:aurora 18s ease-in-out infinite alternate;
+}
+
+@keyframes aurora {
+  from {
+    transform:translate3d(-3%,0,0) scale(1);
+  }
+  to {
+    transform:translate3d(3%,5%,0) scale(1.1);
+  }
+}
+
+
+/* Grain texture */
+body::after {
+ content:"";
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ opacity:.035;
+ z-index:9997;
+ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+
+/* Premium reveal */
+.reveal-section {
+ opacity:0;
+ filter:blur(10px);
+ transform:translateY(40px);
+ transition:
+ opacity 1.2s cubic-bezier(.16,1,.3,1),
+ transform 1.2s cubic-bezier(.16,1,.3,1),
+ filter 1.2s;
+}
+
+.reveal-section.active {
+ opacity:1;
+ filter:blur(0);
+ transform:none;
+}
+
+
+/* Liquid glass */
+.liquid-glass {
+ position:relative;
+ overflow:hidden;
+ backdrop-filter:blur(20px);
+ background:
+ rgba(255,255,255,.08);
+ border:1px solid rgba(255,255,255,.25);
+ box-shadow:
+ inset 0 0 20px rgba(255,255,255,.15),
+ 0 10px 40px rgba(0,0,0,.08);
+ transition:.5s;
+}
+
+.liquid-glass:hover {
+ transform:translateY(-4px) scale(1.03);
+}
+
+
+/* Shine effect */
+.liquid-glass::before {
+ content:"";
+ position:absolute;
+ inset:-100%;
+ background:
+ linear-gradient(
+ 120deg,
+ transparent,
+ rgba(255,255,255,.35),
+ transparent
+ );
+ transform:translateX(-100%);
+ transition:.8s;
+}
+
+.liquid-glass:hover::before {
+ transform:translateX(100%);
+}
+
+
+/* Magnetic hover */
+.magnetic {
+ transition:transform .25s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* Text reveal */
+.word-reveal {
+ opacity:0;
+ transform:translateY(20px);
+ display:inline-block;
+ transition:
+ opacity .8s ease,
+ transform .8s ease;
+}
+
+.word-reveal.show {
+ opacity:1;
+ transform:none;
+}
+
+
+/* Cards 3D */
+.card-interactive {
+ transform-style:preserve-3d;
+ transition:.4s;
+}
+
+.card-interactive:hover {
+ transform:
+ perspective(800px)
+ rotateX(4deg)
+ rotateY(-4deg)
+ translateY(-8px);
+}
+
+
+/* cursor glow */
+#cursor-glow {
+ position:fixed;
+ width:300px;
+ height:300px;
+ border-radius:50%;
+ pointer-events:none;
+ background:radial-gradient(
+ circle,
+ rgba(221,160,173,.18),
+ transparent 70%
+ );
+ transform:translate(-50%,-50%);
+ z-index:-1;
+}
 </style>
 </head>
 <body class="selection:bg-[var(--accent)] selection:text-white">
+
+<div id="scroll-progress"></div>
+<div id="cursor-glow"></div>
 
 <div id="custom-cursor" class="hidden lg:block opacity-0"></div>
 <div id="custom-cursor-ring" class="hidden lg:block opacity-0"></div>
@@ -511,9 +677,13 @@ body {
       
       <div id="formStatus" class="text-[12px] font-light hidden"></div>
 
-      <button type="submit" id="submitBtn" class="text-[11px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-4" data-i18n="form-submit">
-        Envoyer le message →
-      </button>
+      <button 
+type="submit" 
+id="submitBtn" 
+class="liquid-glass magnetic text-[11px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-4 px-8 py-4 rounded-full" 
+data-i18n="form-submit">
+  Envoyer le message →
+</button>
     </form>
 
     <div class="flex flex-col gap-6 mb-16">
@@ -890,6 +1060,78 @@ contactForm.addEventListener('submit', function(e) {
     formStatus.style.color = '#E5A9B7';
     submitBtn.disabled = false;
   });
+});
+/* Scroll progress */
+
+const progress = document.getElementById("scroll-progress");
+
+window.addEventListener("scroll",()=>{
+
+let height =
+document.documentElement.scrollHeight -
+window.innerHeight;
+
+let scrolled =
+(window.scrollY / height)*100;
+
+progress.style.width=scrolled+"%";
+
+});
+
+
+
+/* Cursor glow */
+
+const glow=document.getElementById("cursor-glow");
+
+window.addEventListener("mousemove",(e)=>{
+
+glow.style.left=e.clientX+"px";
+glow.style.top=e.clientY+"px";
+
+});
+
+
+
+/* Magnetic buttons */
+
+document.querySelectorAll(".magnetic")
+.forEach(btn=>{
+
+btn.addEventListener("mousemove",(e)=>{
+
+const rect=btn.getBoundingClientRect();
+
+const x=e.clientX-rect.left-rect.width/2;
+const y=e.clientY-rect.top-rect.height/2;
+
+btn.style.transform=
+`translate(${x*.15}px,${y*.15}px)`;
+
+});
+
+
+btn.addEventListener("mouseleave",()=>{
+
+btn.style.transform="";
+
+});
+
+});
+
+
+
+/* Word reveal */
+
+document.querySelectorAll(".word-reveal")
+.forEach((word,i)=>{
+
+setTimeout(()=>{
+
+word.classList.add("show");
+
+},i*80);
+
 });
 </script>
 </body>
