@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr" class="scroll-smooth" style="scroll-padding-top: 100px;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
   --text-muted: #7C6E74;
   --line: rgba(28, 20, 23, 0.08);
   --accent: #DDA0AD;
-  --nav-bg: rgba(253, 251, 251, 0.75);
+  --nav-bg: rgba(253, 251, 251, 0.85);
 }
 .dark {
   --bg: #0B0809;
@@ -23,7 +23,7 @@
   --text-muted: #9E8E94;
   --line: rgba(243, 236, 239, 0.08);
   --accent: #E5A9B7;
-  --nav-bg: rgba(11, 8, 9, 0.75);
+  --nav-bg: rgba(11, 8, 9, 0.85);
 }
 
 body {
@@ -32,6 +32,48 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-x: hidden;
+}
+
+/* TEXTURE NOISE (Grain photographique très léger) */
+#noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* NAVBAR INTELLIGENTE */
+#main-nav {
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-color: transparent;
+  border-bottom-color: transparent;
+  transition: padding 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+#main-nav.scrolled {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom-color: var(--line);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+.dark #main-nav.scrolled {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* STATS CARDS ELEGANTES */
+.stat-box {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stat-box:hover {
+  transform: translateY(-4px);
+}
+.stat-box:hover .counter-number {
+  transform: scale(1.05);
+  color: var(--accent);
+  text-shadow: 0 0 15px rgba(221, 160, 173, 0.4);
+}
+.dark .stat-box:hover .counter-number {
+  text-shadow: 0 0 15px rgba(229, 169, 183, 0.3);
 }
 
 /* BARRE DE PROGRESSION MINIMALISTE */
@@ -169,7 +211,7 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Fade Up granulaire */
+/* Fade Up granulaire - En cascade */
 .fade-in-up {
   opacity: 0;
   transform: translateY(35px);
@@ -180,11 +222,11 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-.delay-1 { transition-delay: 0.1s; }
-.delay-2 { transition-delay: 0.2s; }
-.delay-3 { transition-delay: 0.3s; }
-.delay-4 { transition-delay: 0.4s; }
-.delay-5 { transition-delay: 0.5s; }
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.45s; }
+.delay-4 { transition-delay: 0.6s; }
+.delay-5 { transition-delay: 0.75s; }
 
 /* Text Reveal */
 .text-reveal-word { display: inline-block; overflow: hidden; vertical-align: bottom; }
@@ -297,16 +339,19 @@ body {
 /* Compteur de statistiques animé */
 .counter-number {
   display: inline-block;
-  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.6s ease;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.6s ease, text-shadow 0.6s ease;
   will-change: transform;
 }
 .counter-number.pop {
-  transform: scale(1.15);
+  transform: scale(1.1);
   color: var(--accent);
 }
 </style>
 </head>
 <body class="selection:bg-[var(--accent)] selection:text-white">
+
+<!-- CALQUE TEXTURE BRUIT -->
+<div id="noise-overlay" class="fixed inset-0 pointer-events-none z-[-1] opacity-[0.03] dark:opacity-[0.05]"></div>
 
 <!-- 1. BARRE DE PROGRESSION -->
 <div id="progress-bar"></div>
@@ -314,7 +359,8 @@ body {
 <div id="custom-cursor" class="hidden lg:block opacity-0"></div>
 <div id="custom-cursor-ring" class="hidden lg:block opacity-0"></div>
 
-<nav class="fixed top-0 w-full z-50 px-6 md:px-16 py-6 border-b border-[rgba(28,20,23,0.04)] dark:border-[rgba(243,236,239,0.04)] backdrop-blur-md transition-all duration-500" style="background-color: var(--nav-bg);">
+<!-- NAVBAR INTELLIGENTE -->
+<nav id="main-nav" class="fixed top-0 w-full z-50 px-6 md:px-16 border-b">
 <div class="max-w-7xl mx-auto flex justify-between items-center">
   <a href="#top" class="text-md font-light tracking-[0.25em] uppercase hover-target">M.D</a>
 
@@ -400,22 +446,23 @@ body {
     </div>
   </div>
 
+  <!-- STATS CARDS -->
   <div class="hero-elem d4 grid grid-cols-2 md:grid-cols-4 mt-8 pt-12 border-t border-[var(--line)] gap-y-12 mb-12">
-    <div class="text-center border-r border-[var(--line)] px-2">
+    <div class="stat-box text-center border-r border-[var(--line)] px-2">
       <span class="text-4xl md:text-5xl font-light mb-2 counter-number" data-target="2027">2020</span>
-      <p class="text-[10px] uppercase tracking-[0.15em] mt-4" style="color: var(--text-muted)" data-i18n="stat-grad">Diplôme prévu</p>
+      <p class="text-[10px] uppercase tracking-[0.15em] mt-4 transition-colors duration-300" style="color: var(--text-muted)" data-i18n="stat-grad">Diplôme prévu</p>
     </div>
-    <div class="text-center md:border-r border-[var(--line)] px-2">
+    <div class="stat-box text-center md:border-r border-[var(--line)] px-2">
       <span class="text-4xl md:text-5xl font-light mb-2 counter-number" data-target="3">0</span>
-      <p class="text-[10px] uppercase tracking-[0.15em] mt-4" style="color: var(--text-muted)" data-i18n="stat-langs">Langues parlées</p>
+      <p class="text-[10px] uppercase tracking-[0.15em] mt-4 transition-colors duration-300" style="color: var(--text-muted)" data-i18n="stat-langs">Langues parlées</p>
     </div>
-    <div class="text-center border-r border-[var(--line)] px-2">
+    <div class="stat-box text-center border-r border-[var(--line)] px-2">
       <span class="text-4xl md:text-5xl font-light mb-2 counter-number" data-target="6">0</span>
-      <p class="text-[10px] uppercase tracking-[0.15em] mt-4" style="color: var(--text-muted)" data-i18n="stat-tools">Outils maîtrisés</p>
+      <p class="text-[10px] uppercase tracking-[0.15em] mt-4 transition-colors duration-300" style="color: var(--text-muted)" data-i18n="stat-tools">Outils maîtrisés</p>
     </div>
-    <div class="text-center px-2">
+    <div class="stat-box text-center px-2">
       <span class="text-4xl md:text-5xl font-light mb-2 counter-number" data-target="5">0</span>
-      <p class="text-[10px] uppercase tracking-[0.15em] mt-4" style="color: var(--text-muted)" data-i18n="stat-certs">Certifications visées</p>
+      <p class="text-[10px] uppercase tracking-[0.15em] mt-4 transition-colors duration-300" style="color: var(--text-muted)" data-i18n="stat-certs">Certifications visées</p>
     </div>
   </div>
 
@@ -459,7 +506,7 @@ body {
         Spécialisation data & informatique. Formation pluridisciplinaire en économie, finance, gestion et systèmes d'information. Modélisation statistique avancée et analyse des structures d'information d'entreprise.
       </p>
     </div>
-    <div class="group border-t border-[var(--line)] pt-12 fade-in-up delay-1">
+    <div class="group border-t border-[var(--line)] pt-12 fade-in-up delay-2">
       <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)" data-i18n="exp-date">Fév. — Avr. 2023</span>
       <h3 class="text-2xl font-light mb-3" data-i18n="exp-title">Social Media Manager</h3>
       <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)" data-i18n="exp-company">GabyLuxxy · Stage en télétravail · Revente de luxe</p>
@@ -467,7 +514,7 @@ body {
         Gestion des réseaux sociaux, création de contenu visuel, traitement des images et analyse analytique des indicateurs de performance pour guider l'engagement.
       </p>
     </div>
-    <div class="group border-t border-[var(--line)] pt-12 fade-in-up delay-1">
+    <div class="group border-t border-[var(--line)] pt-12 fade-in-up delay-3">
       <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)" data-i18n="photo-date">2022 — 2024</span>
       <h3 class="text-2xl font-light mb-3" data-i18n="photo-title">Diplôme de Photographe</h3>
       <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)" data-i18n="photo-school">5e — 6e secondaire</p>
@@ -493,23 +540,37 @@ body {
 </div>
 
 <div class="mt-16 border-t border-[var(--line)]">
-  <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target fade-in-up">
-    <div>
+  <!-- Projet 1 avec miniature -->
+  <div class="group project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target fade-in-up delay-3">
+    <div class="relative z-20">
       <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">PYTHON / SQL / POWER BI</span>
       <h3 class="text-xl font-light" data-i18n="p1-title">Visualisation de l'économie Belge</h3>
     </div>
-    <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
+    
+    <!-- Miniature d'aperçu (Image illustrative Power BI / Data abstraite) -->
+    <div class="absolute right-[25%] top-1/2 -translate-y-1/2 w-48 h-28 rounded-lg overflow-hidden shadow-xl border border-[var(--line)] opacity-0 transform translate-x-8 transition-all duration-[600ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:opacity-100 group-hover:translate-x-0 hidden md:block pointer-events-none z-10">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&q=80" alt="Preview Data" class="w-full h-full object-cover">
+    </div>
+
+    <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end relative z-20">
       <span class="text-[13px] font-light" style="color: var(--text-muted)">2026</span>
       <span class="text-[11px] uppercase tracking-[0.15em] font-semibold" data-i18n="p-view">Consulter ↗</span>
     </div>
   </div>
 
-  <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target fade-in-up delay-1">
-    <div>
+  <!-- Projet 2 avec miniature -->
+  <div class="group project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target fade-in-up delay-4">
+    <div class="relative z-20">
       <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">LOOKER STUDIO / BIGQUERY</span>
       <h3 class="text-xl font-light" data-i18n="p2-title">Dashboard d'acquisition E-Commerce</h3>
     </div>
-    <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
+
+    <!-- Miniature d'aperçu (Image illustrative Dashboard) -->
+    <div class="absolute right-[25%] top-1/2 -translate-y-1/2 w-48 h-28 rounded-lg overflow-hidden shadow-xl border border-[var(--line)] opacity-0 transform translate-x-8 transition-all duration-[600ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:opacity-100 group-hover:translate-x-0 hidden md:block pointer-events-none z-10">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" alt="Preview Dashboard" class="w-full h-full object-cover">
+    </div>
+
+    <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end relative z-20">
       <span class="text-[13px] font-light" style="color: var(--text-muted)" data-i18n="p-soon">Bientôt</span>
       <span class="text-[11px] uppercase tracking-[0.15em] font-semibold opacity-40">—</span>
     </div>
@@ -1020,12 +1081,20 @@ if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && w
 }
 updateThemeIcon(document.documentElement.classList.contains('dark'));
 
-// GESTION DU SCROLL : Barre de progression, Indicateur, Back to Top
+// GESTION DU SCROLL : Navbar, Barre de progression, Indicateur, Back to Top
 window.addEventListener('scroll', () => {
   const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   const scrolled = (winScroll / height) * 100;
   
+  // Smart Navbar
+  const mainNav = document.getElementById('main-nav');
+  if (winScroll > 50) {
+    mainNav.classList.add('scrolled');
+  } else {
+    mainNav.classList.remove('scrolled');
+  }
+
   // Progress Bar
   const progressBar = document.getElementById('progress-bar');
   if (progressBar) progressBar.style.width = scrolled + "%";
@@ -1045,7 +1114,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Fade In Up Global
+// Fade In Up Global (Animation cascade)
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) entry.target.classList.add('active');
@@ -1064,7 +1133,6 @@ const counterObserver = new IntersectionObserver((entries, obs) => {
       const increment = (target - start) / (duration / 16); 
       let count = start;
 
-      // On attend que les animations de la page se terminent avant de compter
       setTimeout(() => {
         const updateCounter = () => {
           count += increment;
@@ -1077,7 +1145,7 @@ const counterObserver = new IntersectionObserver((entries, obs) => {
           }
         };
         updateCounter();
-      }, 2000); // 2 secondes de délai
+      }, 2000); 
 
       obs.unobserve(el);
     }
