@@ -1080,7 +1080,7 @@ contactForm.addEventListener('submit', function(e) {
   }).then(response => { 
     formStatus.classList.remove('hidden'); 
     if (response.ok) { 
-      formStatus.innerText = currentLang === 'fr' ? 'Merci ! Votre message a été transmis avec succès.' : (currentLang === 'en' ? 'Thank you! Your message was sent successfully.' : 'Bedankt! Uw bericht is succesvol verzonden.'); 
+      formStatus.innerText = currentLang === 'fr' ? 'Merci ! Votre message a été envoyé avec succès.' : (currentLang === 'en' ? 'Thank you! Your message has been sent successfully.' : 'Bedankt! Uw bericht is succesvol verzonden.'); 
       formStatus.style.color = '#A2D2A1'; 
       contactForm.reset(); 
     } else { 
