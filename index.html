@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr" class="scroll-smooth snap-y snap-mandatory">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +32,12 @@ body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-x: hidden;
+}
+
+/* Scroll Snap Sections */
+section, main, footer {
+  snap-align: start;
+  snap-stop: always;
 }
 
 /* Curseur personnalisé fluide */
@@ -68,7 +74,7 @@ body {
     height: 55px;
     border-color: var(--accent);
   }
-  a, button, input, textarea, .project-row, .lang-btn, .burger-btn, .card-interactive {
+  a, button, input, textarea, .project-row, .lang-btn, .burger-btn, .card-interactive, .stat-box {
     cursor: none !important;
   }
   body {
@@ -95,20 +101,34 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Effet texte défilant (Wipe Reveal) */
-.wipe-text-container span {
+/* Text Reveal (Lettre par Lettre) */
+.text-reveal-word {
   display: inline-block;
-  clip-path: inset(0 100% 0 0);
-  animation: wipeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow: hidden;
+  vertical-align: bottom;
 }
-.wipe-text-container span.w1 { animation-delay: 0.5s; }
-.wipe-text-container span.w2 { animation-delay: 1.2s; }
-
-@keyframes wipeIn {
-  to { clip-path: inset(0 0 0 0); }
+.text-reveal-char {
+  display: inline-block;
+  transform: translateY(110%);
+  animation: charReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes charReveal {
+  to { transform: translateY(0); }
 }
 
-/* BOUTONS EFFET GLASS (Eau / Verre) */
+/* Typing Effect Cursor */
+.typing-cursor::after {
+  content: '|';
+  animation: blink 0.8s infinite;
+  color: var(--accent);
+  margin-left: 2px;
+  font-weight: 200;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* BOUTONS EFFET GLASS (Eau / Verre / Brillance) */
 .glass-btn {
   position: relative;
   display: inline-flex;
@@ -130,22 +150,40 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
 }
-/* Reflet lumineux type eau */
-.glass-btn::before {
+
+/* Shine Effect (Brillance) */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+.shine-effect::after {
   content: '';
   position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-  transform: skewX(-25deg);
-  transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  top: -50%; left: -60%;
+  width: 30%; height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
 }
-.dark .glass-btn::before {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+.dark .shine-effect::after {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
 }
-.glass-btn:hover::before {
-  left: 100%;
+.shine-effect:hover::after {
+  opacity: 1;
+  left: 130%;
 }
+
 .glass-btn:hover {
   transform: translateY(-4px);
   background: rgba(255, 255, 255, 0.25);
@@ -233,10 +271,10 @@ body {
 #menu-overlay.open nav a:nth-child(4) { transition-delay: 0.2s; }
 #menu-overlay.open nav a:nth-child(5) { transition-delay: 0.25s; }
 
-/* Apparition au scroll ultra-fluide */
+/* Apparition au scroll ultra-fluide (Scroll Reveal) */
 .reveal-section {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(40px);
   transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal-section.active {
@@ -356,14 +394,15 @@ body {
   <h1 class="hero-elem d2 text-[clamp(2.3rem,7vw,5.5rem)] font-extralight leading-[1.05] tracking-tight mb-4">
     Mélanie Dupriez
   </h1>
-  <p class="hero-elem d3 text-[clamp(1.1rem,3vw,1.8rem)] font-light mb-12" style="color: var(--text-muted)">
-    Business Data Analyst · <span class="serif italic" data-i18n="hero-subtitle-serif">Ingénieure de gestion</span>
+  
+  <!-- Typing Effect Container -->
+  <p class="hero-elem d3 text-[clamp(1.1rem,3vw,1.8rem)] font-light mb-12 min-h-[2.5rem]" style="color: var(--text-muted)">
+    <span id="typing-text" class="typing-cursor"></span>
   </p>
 
-  <!-- Conteneur d'animation "Wipe" (apparition par défilement progressif) -->
-  <h2 class="wipe-text-container text-3xl md:text-5xl font-extralight tracking-tight mb-12 max-w-3xl leading-[1.3]">
-    <span class="w1 block" data-i18n="hero-title-1">Je structure vos données,</span>
-    <span class="w2 serif italic font-normal block" data-i18n="hero-title-2">je guide vos décisions pour optimiser vos performances.</span>
+  <!-- Text Reveal H2 -->
+  <h2 id="reveal-header" class="text-3xl md:text-5xl font-extralight tracking-tight mb-12 max-w-3xl leading-[1.3]">
+    <!-- Injecté de manière dynamique par le script JS pour l'effet Reveal -->
   </h2>
 
   <div class="hero-elem d4 flex flex-col md:flex-row gap-12 justify-between border-t border-[var(--line)] pt-12 pb-16">
@@ -371,27 +410,27 @@ body {
       Ingénieure de gestion et Business Data Analyst, je traduis des architectures de données complexes en leviers de performance stratégique. Je conçois également des interfaces web sur mesure pour fluidifier et simplifier la visualisation de vos indicateurs clés.
     </p>
     
-    <!-- Boutons Glassmorphism / Effet Eau Brillante -->
+    <!-- Boutons Glassmorphism / Effet Eau Brillante + Shine Effect -->
     <div class="flex flex-col sm:flex-row md:justify-end gap-6 text-[11px] uppercase tracking-[0.2em] font-semibold items-start md:items-center">
-      <a href="#projets" class="glass-btn hover-target" data-i18n="hero-cta-1">Découvrir mes travaux ↓</a>
-      <a href="#contact" class="glass-btn hover-target" data-i18n="hero-cta-2">Me recruter / Collaborer →</a>
+      <a href="#projets" class="glass-btn shine-effect hover-target" data-i18n="hero-cta-1">Découvrir mes travaux ↓</a>
+      <a href="#contact" class="glass-btn shine-effect hover-target" data-i18n="hero-cta-2">Me recruter / Collaborer →</a>
     </div>
   </div>
 
   <div class="hero-elem d4 grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-    <div class="stat-box p-6 rounded-lg">
+    <div class="stat-box shine-effect p-6 rounded-lg">
       <p class="text-3xl font-light mb-1">2027</p>
       <p class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="stat-grad">Diplôme prévu</p>
     </div>
-    <div class="stat-box p-6 rounded-lg">
+    <div class="stat-box shine-effect p-6 rounded-lg">
       <p class="text-3xl font-light mb-1">3</p>
       <p class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="stat-langs">Langues parlées</p>
     </div>
-    <div class="stat-box p-6 rounded-lg">
+    <div class="stat-box shine-effect p-6 rounded-lg">
       <p class="text-3xl font-light mb-1">6</p>
       <p class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="stat-tools">Outils maîtrisés</p>
     </div>
-    <div class="stat-box p-6 rounded-lg">
+    <div class="stat-box shine-effect p-6 rounded-lg">
       <p class="text-3xl font-light mb-1">5</p>
       <p class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="stat-certs">Certifications visées</p>
     </div>
@@ -686,6 +725,7 @@ fr: {
   "lang-b2": "Niveau B2",
   "lang-b1": "Niveau B1",
   "section-04": "04 / CERTIFICATIONS",
+  "section-04": "04 / CERTIFICATIONS",
   "section-05": "05 / CONTACT",
   "contact-cta-1": "Collaborons ensemble",
   "contact-cta-2": "ou discutons d'un recrutement.",
@@ -780,7 +820,7 @@ nl: {
   "nav-certs": "Certificeringen",
   "nav-contact": "Contact",
   "menu-location-title": "Locatie",
-  "menu-location-val": "België — Beschikbaar pour remote werk",
+  "menu-location-val": "België — Beschikbaar voor remote werk",
   "menu-social-title": "Netwerken",
   "hero-status": "Beschikbaar voor een stage of baan in Data",
   "hero-subtitle-serif": "Handelsingenieur",
@@ -877,6 +917,96 @@ document.addEventListener('click', function(e) {
   }
 });
 
+/* TYPING EFFECT CONFIG */
+const typingPhrases = {
+  fr: ["Business Data Analyst", "Ingénieure de gestion"],
+  en: ["Business Data Analyst", "Business Engineer"],
+  nl: ["Business Data Analyst", "Handelsingenieur"]
+};
+
+let typingIdx = 0;
+let charIdx = 0;
+let isDeleting = false;
+let typingTimeout;
+
+function handleTyping() {
+  const phrases = typingPhrases[currentLang];
+  const currentPhrase = phrases[typingIdx];
+  const typingEl = document.getElementById('typing-text');
+  
+  if (!typingEl) return;
+
+  if (isDeleting) {
+    typingEl.textContent = currentPhrase.substring(0, charIdx - 1);
+    charIdx--;
+  } else {
+    typingEl.textContent = currentPhrase.substring(0, charIdx + 1);
+    charIdx++;
+  }
+
+  let delay = isDeleting ? 40 : 80;
+
+  if (!isDeleting && charIdx === currentPhrase.length) {
+    delay = 2000; // Pause à la fin de la phrase
+    isDeleting = true;
+  } else if (isDeleting && charIdx === 0) {
+    isDeleting = false;
+    typingIdx = (typingIdx + 1) % phrases.length;
+    delay = 500; // Pause avant de retaper
+  }
+
+  typingTimeout = setTimeout(handleTyping, delay);
+}
+
+/* TEXT REVEAL ANIMATION INJECTOR */
+function triggerTextReveal() {
+  const container = document.getElementById('reveal-header');
+  if (!container) return;
+  
+  const textLine1 = translations[currentLang]["hero-title-1"];
+  const textLine2 = translations[currentLang]["hero-title-2"];
+  
+  container.innerHTML = '';
+
+  // Création élégante de la ligne 1
+  const div1 = document.createElement('div');
+  div1.className = "block overflow-hidden";
+  textLine1.split(' ').forEach((word, wordIdx) => {
+    const wordSpan = document.createElement('span');
+    wordSpan.className = "text-reveal-word mr-3";
+    
+    Array.from(word).forEach((char, charIdx) => {
+      const charSpan = document.createElement('span');
+      charSpan.className = "text-reveal-char";
+      charSpan.style.animationDelay = `${(wordIdx * 0.08) + (charIdx * 0.02)}s`;
+      charSpan.textContent = char;
+      wordSpan.appendChild(charSpan);
+    });
+    div1.appendChild(wordSpan);
+  });
+
+  // Création de la ligne 2 (italique / serif)
+  const div2 = document.createElement('div');
+  div2.className = "block overflow-hidden serif italic font-normal mt-1";
+  textLine2.split(' ').forEach((word, wordIdx) => {
+    const wordSpan = document.createElement('span');
+    wordSpan.className = "text-reveal-word mr-3";
+    
+    Array.from(word).forEach((char, charIdx) => {
+      const charSpan = document.createElement('span');
+      charSpan.className = "text-reveal-char";
+      // Décalage pour démarrer après la première ligne
+      charSpan.style.animationDelay = `${0.6 + (wordIdx * 0.08) + (charIdx * 0.02)}s`;
+      charSpan.textContent = char;
+      wordSpan.appendChild(charSpan);
+    });
+    div2.appendChild(wordSpan);
+  });
+
+  container.appendChild(div1);
+  container.appendChild(div2);
+}
+
 function setLanguage(lang) {
   currentLang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -890,6 +1020,14 @@ function setLanguage(lang) {
   if (langDisplay) {
     langDisplay.innerText = lang.toUpperCase();
   }
+
+  // Redémarrer le Typing & le Text Reveal pour s'adapter à la langue
+  clearTimeout(typingTimeout);
+  typingIdx = 0;
+  charIdx = 0;
+  isDeleting = false;
+  handleTyping();
+  triggerTextReveal();
 }
 
 function toggleMenu() {
@@ -932,6 +1070,7 @@ if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && w
 }
 updateThemeIcon(document.documentElement.classList.contains('dark'));
 
+// Configuration du Scroll Reveal (Apparition au scroll)
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -942,6 +1081,7 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
 
+// Gestion de la souris personnalisée fluide
 const cursor = document.getElementById('custom-cursor');
 const ring = document.getElementById('custom-cursor-ring');
 let mouseX = 0, mouseY = 0;
@@ -953,7 +1093,6 @@ window.addEventListener('mousemove', (e) => {
   if (cursor) {
     cursor.style.left = mouseX + 'px';
     cursor.style.top = mouseY + 'px';
-    // Rendre le curseur visible dès que la souris bouge
     cursor.classList.remove('opacity-0');
   }
   if (ring) {
@@ -975,6 +1114,12 @@ animateRing();
 document.querySelectorAll('.hover-target').forEach(item => {
   item.addEventListener('mouseenter', () => document.body.classList.add('hover-active'));
   item.addEventListener('mouseleave', () => document.body.classList.remove('hover-active'));
+});
+
+// Lancement au chargement de la page
+window.addEventListener('DOMContentLoaded', () => {
+  handleTyping();
+  triggerTextReveal();
 });
 
 const contactForm = document.getElementById('contactForm');
