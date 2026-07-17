@@ -45,7 +45,7 @@ body {
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 9999;
-    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
   }
   #custom-cursor-ring {
     width: 40px;
@@ -56,7 +56,7 @@ body {
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 9998;
-    transition: transform 0.08s ease-out, width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.08s ease-out, width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
   }
   .hover-active #custom-cursor {
     width: 4px;
@@ -953,6 +953,11 @@ window.addEventListener('mousemove', (e) => {
   if (cursor) {
     cursor.style.left = mouseX + 'px';
     cursor.style.top = mouseY + 'px';
+    // Rendre le curseur visible dès que la souris bouge
+    cursor.classList.remove('opacity-0');
+  }
+  if (ring) {
+    ring.classList.remove('opacity-0');
   }
 });
 
