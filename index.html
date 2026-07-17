@@ -180,7 +180,15 @@ body {
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
 
-.text-reveal-word { display: inline-block; overflow: hidden; vertical-align: bottom; }
+/* CORRECTION : Ajustement du padding/margin pour éviter les lettres coupées (g, p, y, et italiques) */
+.text-reveal-word { 
+  display: inline-block; 
+  overflow: hidden; 
+  vertical-align: bottom; 
+  padding-bottom: 0.2em; 
+  margin-bottom: -0.2em;
+  padding-right: 0.1em;
+}
 .text-reveal-char {
   display: inline-block;
   transform: translateY(110%);
@@ -669,13 +677,30 @@ function handleTyping() {
 function triggerTextReveal() {
   const container = document.getElementById('reveal-header');
   if (!container) return;
-  const textLine1 = translations[currentLang]["hero-title-1"];
-  const textLine2 = translations[currentLang]["hero-title-2"];
+  const textLine1 = translations[currentLang] ? translations[currentLang]["hero-title-1"] : "Titre ligne 1";
+  const textLine2 = translations[currentLang] ? translations[currentLang]["hero-title-2"] : "Titre ligne 2";
   container.innerHTML = '';
+  
   const div1 = document.createElement('div'); div1.className = "block overflow-hidden";
-  textLine1.split(' ').forEach((word, wordIdx) => { const wordSpan = document.createElement('span'); wordSpan.className = "text-reveal-word mr-3"; Array.from(word).forEach((char, charIdx) => { const charSpan = document.createElement('span'); charSpan.className = "text-reveal-char"; charSpan.style.animationDelay = `${(wordIdx * 0.08) + (charIdx * 0.02)}s`; charSpan.textContent = char; wordSpan.appendChild(charSpan); }); div1.appendChild(wordSpan); });
+  textLine1.split(' ').forEach((word, wordIdx) => { 
+    const wordSpan = document.createElement('span'); wordSpan.className = "text-reveal-word mr-3"; 
+    Array.from(word).forEach((char, charIdx) => { 
+      const charSpan = document.createElement('span'); charSpan.className = "text-reveal-char"; 
+      charSpan.style.animationDelay = `${(wordIdx * 0.08) + (charIdx * 0.02)}s`; charSpan.textContent = char; wordSpan.appendChild(charSpan); 
+    }); 
+    div1.appendChild(wordSpan); 
+  });
+  
   const div2 = document.createElement('div'); div2.className = "block overflow-hidden serif italic font-normal mt-1";
-  textLine2.split(' ').forEach((word, wordIdx) => { const wordSpan = document.createElement('span'); wordSpan.className = "text-reveal-word mr-3"; Array.from(word).forEach((char, charIdx) => { const charSpan = document.createElement('span'); charSpan.className = "text-reveal-char"; charSpan.style.animationDelay = `${0.6 + (wordIdx * 0.08) + (charIdx * 0.02)}s`; charSpan.textContent = char; wordSpan.appendChild(charSpan); }); div2.appendChild(wordSpan); });
+  textLine2.split(' ').forEach((word, wordIdx) => { 
+    const wordSpan = document.createElement('span'); wordSpan.className = "text-reveal-word mr-3"; 
+    Array.from(word).forEach((char, charIdx) => { 
+      const charSpan = document.createElement('span'); charSpan.className = "text-reveal-char"; 
+      charSpan.style.animationDelay = `${0.6 + (wordIdx * 0.08) + (charIdx * 0.02)}s`; charSpan.textContent = char; wordSpan.appendChild(charSpan); 
+    }); 
+    div2.appendChild(wordSpan); 
+  });
+  
   container.appendChild(div1); container.appendChild(div2);
 }
 
