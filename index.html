@@ -34,7 +34,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Curseur personnalisé fluide (uniquement sur PC) */
+/* Curseur personnalisé fluide */
 @media (min-width: 1024px) {
   #custom-cursor {
     width: 8px;
@@ -80,7 +80,85 @@ body {
   font-family: 'Playfair Display', serif;
 }
 
-/* Liens avec lignes élégantes */
+/* Animations d'entrée fluides */
+.hero-elem {
+  opacity: 0;
+  transform: translateY(25px);
+  animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-elem.d1 { animation-delay: 0.1s; }
+.hero-elem.d2 { animation-delay: 0.2s; }
+.hero-elem.d3 { animation-delay: 0.3s; }
+.hero-elem.d4 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Effet texte défilant (Wipe Reveal) */
+.wipe-text-container span {
+  display: inline-block;
+  clip-path: inset(0 100% 0 0);
+  animation: wipeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.wipe-text-container span.w1 { animation-delay: 0.5s; }
+.wipe-text-container span.w2 { animation-delay: 1.2s; }
+
+@keyframes wipeIn {
+  to { clip-path: inset(0 0 0 0); }
+}
+
+/* BOUTONS EFFET GLASS (Eau / Verre) */
+.glass-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 32px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05), inset 0 2px 4px rgba(255, 255, 255, 0.8), inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+.dark .glass-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+}
+/* Reflet lumineux type eau */
+.glass-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dark .glass-btn::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+.glass-btn:hover::before {
+  left: 100%;
+}
+.glass-btn:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.dark .glass-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Liens textuels avec lignes élégantes */
 .hover-link {
   position: relative;
   transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -140,8 +218,6 @@ body {
   visibility: visible;
   transform: translateY(0);
 }
-
-/* Éléments du menu qui glissent légèrement */
 #menu-overlay nav a {
   opacity: 0;
   transform: translateY(10px);
@@ -184,7 +260,6 @@ body {
   border-color: var(--accent);
 }
 
-/* Animation délicate des items au survol */
 .skill-item {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
 }
@@ -215,20 +290,27 @@ body {
 
   <div class="flex items-center gap-6 md:gap-8">
     
-    <!-- Sélecteur de langue avec icône Globe -->
-    <button onclick="cycleLanguage()" class="flex items-center gap-1.5 p-1 hover:opacity-60 transition hover-target" aria-label="Changer de langue">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      <span id="current-lang-display" class="text-[10px] tracking-[0.2em] font-semibold uppercase mt-[1px]">FR</span>
-    </button>
+    <!-- Sélecteur de langue interactif (Dropdown) -->
+    <div class="relative" id="lang-container">
+      <button onclick="toggleLangMenu(event)" class="flex items-center gap-1.5 p-1 hover:opacity-60 transition hover-target" aria-label="Changer de langue">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span id="current-lang-display" class="text-[10px] tracking-[0.2em] font-semibold uppercase mt-[1px]">FR</span>
+      </button>
+      
+      <!-- Menu déroulant des langues -->
+      <div id="lang-dropdown" class="absolute top-full left-1/2 -translate-x-1/2 mt-4 flex flex-col p-2 rounded-2xl border border-[var(--line)] bg-[var(--bg)] backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.3)] opacity-0 pointer-events-none translate-y-[-10px] transition-all duration-300">
+        <button onclick="selectLang('fr', event)" class="w-full text-center text-[10px] tracking-[0.2em] font-semibold uppercase px-4 py-2 hover:bg-[var(--accent)] hover:text-white rounded-lg transition hover-target">FR</button>
+        <button onclick="selectLang('en', event)" class="w-full text-center text-[10px] tracking-[0.2em] font-semibold uppercase px-4 py-2 hover:bg-[var(--accent)] hover:text-white rounded-lg transition hover-target mt-1">EN</button>
+        <button onclick="selectLang('nl', event)" class="w-full text-center text-[10px] tracking-[0.2em] font-semibold uppercase px-4 py-2 hover:bg-[var(--accent)] hover:text-white rounded-lg transition hover-target mt-1">NL</button>
+      </div>
+    </div>
 
     <!-- Thème Soleil / Lune -->
     <button onclick="toggleTheme()" aria-label="Changer le thème" class="p-1 hover:opacity-60 transition hover-target">
-      <div id="themeIcon">
-        <!-- Rempli en JS -->
-      </div>
+      <div id="themeIcon"></div>
     </button>
 
-    <!-- Menu Hamburger 3 lignes -->
+    <!-- Menu Hamburger -->
     <button onclick="toggleMenu()" class="burger-btn flex flex-col justify-center items-center gap-[4px] w-6 h-6 z-50 hover-target focus:outline-none" aria-label="Menu">
       <span id="burger-line-1" class="w-5 h-[1px] bg-[var(--text)] transition-transform duration-300"></span>
       <span id="burger-line-2" class="w-5 h-[1px] bg-[var(--text)] transition-opacity duration-300"></span>
@@ -265,34 +347,38 @@ body {
 
 <main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32">
 <div class="max-w-5xl mx-auto w-full">
-  <div class="inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[rgba(221,160,173,0.04)]">
+  
+  <div class="hero-elem d1 inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[rgba(221,160,173,0.04)]">
     <span class="w-2 h-2 rounded-full bg-[#A2D2A1] animate-pulse"></span>
     <span class="text-[10px] tracking-[0.2em] uppercase font-medium" style="color: var(--text-muted)" data-i18n="hero-status">Ouverte aux opportunités de stage et d'emploi</span>
   </div>
 
-  <h1 class="text-[clamp(2.3rem,7vw,5.5rem)] font-extralight leading-[1.05] tracking-tight mb-4">
+  <h1 class="hero-elem d2 text-[clamp(2.3rem,7vw,5.5rem)] font-extralight leading-[1.05] tracking-tight mb-4">
     Mélanie Dupriez
   </h1>
-  <p class="text-[clamp(1.1rem,3vw,1.8rem)] font-light mb-12" style="color: var(--text-muted)">
+  <p class="hero-elem d3 text-[clamp(1.1rem,3vw,1.8rem)] font-light mb-12" style="color: var(--text-muted)">
     Business Data Analyst · <span class="serif italic" data-i18n="hero-subtitle-serif">Ingénieure de gestion</span>
   </p>
 
-  <h2 class="text-3xl md:text-5xl font-extralight tracking-tight mb-12 max-w-3xl">
-    <span data-i18n="hero-title-1">Je structure vos données,</span><br>
-    <span class="serif italic font-normal" data-i18n="hero-title-2">je guide vos décisions pour optimiser vos performances.</span>
+  <!-- Conteneur d'animation "Wipe" (apparition par défilement progressif) -->
+  <h2 class="wipe-text-container text-3xl md:text-5xl font-extralight tracking-tight mb-12 max-w-3xl leading-[1.3]">
+    <span class="w1 block" data-i18n="hero-title-1">Je structure vos données,</span>
+    <span class="w2 serif italic font-normal block" data-i18n="hero-title-2">je guide vos décisions pour optimiser vos performances.</span>
   </h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end border-t border-[var(--line)] pt-12 pb-16">
+  <div class="hero-elem d4 flex flex-col md:flex-row gap-12 justify-between border-t border-[var(--line)] pt-12 pb-16">
     <p class="text-[14px] md:text-[15px] leading-relaxed font-light max-w-md" style="color: var(--text-muted)" data-i18n="hero-desc">
       Ingénieure de gestion et Business Data Analyst, je traduis des architectures de données complexes en leviers de performance stratégique. Je conçois également des interfaces web sur mesure pour fluidifier et simplifier la visualisation de vos indicateurs clés.
     </p>
-    <div class="flex md:justify-end gap-8 text-[11px] uppercase tracking-[0.2em] font-semibold">
-      <a href="#projets" class="hover-link hover-target" data-i18n="hero-cta-1">Découvrir mes travaux ↓</a>
-      <a href="#contact" class="hover-link hover-target" data-i18n="hero-cta-2">Me recruter / Collaborer →</a>
+    
+    <!-- Boutons Glassmorphism / Effet Eau Brillante -->
+    <div class="flex flex-col sm:flex-row md:justify-end gap-6 text-[11px] uppercase tracking-[0.2em] font-semibold items-start md:items-center">
+      <a href="#projets" class="glass-btn hover-target" data-i18n="hero-cta-1">Découvrir mes travaux ↓</a>
+      <a href="#contact" class="glass-btn hover-target" data-i18n="hero-cta-2">Me recruter / Collaborer →</a>
     </div>
   </div>
 
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+  <div class="hero-elem d4 grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
     <div class="stat-box p-6 rounded-lg">
       <p class="text-3xl font-light mb-1">2027</p>
       <p class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="stat-grad">Diplôme prévu</p>
@@ -311,7 +397,7 @@ body {
     </div>
   </div>
 
-  <div class="mt-20 pt-10 border-t border-[rgba(221,160,173,0.15)] max-w-3xl">
+  <div class="hero-elem d4 mt-20 pt-10 border-t border-[rgba(221,160,173,0.15)] max-w-3xl">
     <h4 class="text-[10px] uppercase tracking-[0.25em] font-bold mb-4" style="color: var(--accent)" data-i18n="seeking-title">Objectif & Disponibilité</h4>
     <p class="text-lg md:text-xl font-light leading-relaxed mb-3" data-i18n="seeking-desc">
       Je recherche activement un stage ou un premier emploi en tant que <strong class="font-normal text-[var(--accent)]">Business Data Analyst</strong> ou en <strong class="font-normal text-[var(--accent)]">Business Intelligence</strong>.
@@ -560,7 +646,7 @@ fr: {
   "stat-tools": "Outils maîtrisés",
   "stat-certs": "Certifications visées",
   "seeking-title": "Objectif & Disponibilité",
-  "seeking-desc": "Je recherche activement un stage ou un premier emploi en tant que <strong>Business Data Analyst</strong> ou en <strong>Business Intelligence</strong>.",
+  "seeking-desc": "Je recherche activement un stage ou un premier emploi en tant que <strong class='font-normal text-[var(--accent)]'>Business Data Analyst</strong> ou en <strong class='font-normal text-[var(--accent)]'>Business Intelligence</strong>.",
   "seeking-country": "Belgique",
   "seeking-remote": "Disponible pour le télétravail",
   "section-01": "01 / Formation & Expérience",
@@ -634,7 +720,7 @@ en: {
   "stat-tools": "Tools mastered",
   "stat-certs": "Certifications targeted",
   "seeking-title": "Objective & Availability",
-  "seeking-desc": "I am actively seeking an internship or a first job as a <strong>Business Data Analyst</strong> or in <strong>Business Intelligence</strong>.",
+  "seeking-desc": "I am actively seeking an internship or a first job as a <strong class='font-normal text-[var(--accent)]'>Business Data Analyst</strong> or in <strong class='font-normal text-[var(--accent)]'>Business Intelligence</strong>.",
   "seeking-country": "Belgium",
   "seeking-remote": "Available for remote work",
   "section-01": "01 / Education & Experience",
@@ -708,7 +794,7 @@ nl: {
   "stat-tools": "Beheerste tools",
   "stat-certs": "Certificeringen",
   "seeking-title": "Doelstelling & Beschikbaarheid",
-  "seeking-desc": "Ik ben actief op zoek naar een stage of een eerste baan als <strong>Business Data Analyst</strong> of in <strong>Business Intelligence</strong>.",
+  "seeking-desc": "Ik ben actief op zoek naar een stage of een eerste baan als <strong class='font-normal text-[var(--accent)]'>Business Data Analyst</strong> of in <strong class='font-normal text-[var(--accent)]'>Business Intelligence</strong>.",
   "seeking-country": "België",
   "seeking-remote": "Beschikbaar voor remote werk",
   "section-01": "01 / Opleiding & Ervaring",
@@ -763,14 +849,33 @@ nl: {
 }
 };
 
-const langs = ['fr', 'en', 'nl'];
 let currentLang = 'fr';
 
-function cycleLanguage() {
-  let idx = langs.indexOf(currentLang);
-  idx = (idx + 1) % langs.length;
-  setLanguage(langs[idx]);
+/* MENU DÉROULANT DES LANGUES */
+function toggleLangMenu(e) {
+  if (e) e.stopPropagation();
+  const dropdown = document.getElementById('lang-dropdown');
+  if (dropdown.classList.contains('opacity-0')) {
+    dropdown.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+  } else {
+    dropdown.classList.add('opacity-0', 'pointer-events-none', 'translate-y-[-10px]');
+  }
 }
+
+function selectLang(lang, e) {
+  if (e) e.stopPropagation();
+  setLanguage(lang);
+  toggleLangMenu();
+}
+
+// Fermer le menu langue si on clique ailleurs
+document.addEventListener('click', function(e) {
+  const dropdown = document.getElementById('lang-dropdown');
+  const container = document.getElementById('lang-container');
+  if (dropdown && !dropdown.classList.contains('opacity-0') && container && !container.contains(e.target)) {
+    toggleLangMenu();
+  }
+});
 
 function setLanguage(lang) {
   currentLang = lang;
@@ -809,10 +914,8 @@ function toggleMenu() {
 function updateThemeIcon(isDark) {
   const themeIconContainer = document.getElementById('themeIcon');
   if (isDark) {
-    // Soleil (pour passer au mode clair)
     themeIconContainer.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
   } else {
-    // Lune (pour passer au mode sombre)
     themeIconContainer.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
   }
 }
@@ -824,7 +927,6 @@ function toggleTheme() {
   updateThemeIcon(isDark);
 }
 
-// Initialisation du thème au chargement
 if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
   document.documentElement.classList.add('dark');
 }
@@ -840,7 +942,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
 
-// Gestion du curseur physique
 const cursor = document.getElementById('custom-cursor');
 const ring = document.getElementById('custom-cursor-ring');
 let mouseX = 0, mouseY = 0;
@@ -871,7 +972,6 @@ document.querySelectorAll('.hover-target').forEach(item => {
   item.addEventListener('mouseleave', () => document.body.classList.remove('hover-active'));
 });
 
-// Envoi asynchrone Formspree
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 const submitBtn = document.getElementById('submitBtn');
