@@ -86,7 +86,7 @@ section, main, footer {
   font-family: 'Playfair Display', serif;
 }
 
-/* Animations d'entrée fluides */
+/* Animations d'entrée fluides (Hero) */
 .hero-elem {
   opacity: 0;
   transform: translateY(25px);
@@ -100,6 +100,24 @@ section, main, footer {
 @keyframes fadeInUp {
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* Nouvelles Animations au défilement granulaires (Fade Up) */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.fade-in-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Délais pour les effets d'escalier (Stagger) */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
 
 /* Text Reveal (Lettre par Lettre) */
 .text-reveal-word {
@@ -128,7 +146,7 @@ section, main, footer {
   50% { opacity: 0; }
 }
 
-/* BOUTONS EFFET GLASS (Eau / Verre / Brillance) */
+/* BOUTONS EFFET GLASS */
 .glass-btn {
   position: relative;
   display: inline-flex;
@@ -271,17 +289,6 @@ section, main, footer {
 #menu-overlay.open nav a:nth-child(4) { transition-delay: 0.2s; }
 #menu-overlay.open nav a:nth-child(5) { transition-delay: 0.25s; }
 
-/* Apparition au scroll ultra-fluide (Scroll Reveal) */
-.reveal-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal-section.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* Inputs sans bordure */
 .minimal-input {
   background: transparent;
@@ -328,7 +335,7 @@ section, main, footer {
 
   <div class="flex items-center gap-6 md:gap-8">
     
-    <!-- Sélecteur de langue interactif (Dropdown) -->
+    <!-- Sélecteur de langue interactif -->
     <div class="relative" id="lang-container">
       <button onclick="toggleLangMenu(event)" class="flex items-center gap-1.5 p-1 hover:opacity-60 transition hover-target" aria-label="Changer de langue">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -395,14 +402,12 @@ section, main, footer {
     Mélanie Dupriez
   </h1>
   
-  <!-- Typing Effect Container -->
   <p class="hero-elem d3 text-[clamp(1.1rem,3vw,1.8rem)] font-light mb-12 min-h-[2.5rem]" style="color: var(--text-muted)">
     <span id="typing-text" class="typing-cursor"></span>
   </p>
 
-  <!-- Text Reveal H2 -->
   <h2 id="reveal-header" class="text-3xl md:text-5xl font-extralight tracking-tight mb-12 max-w-3xl leading-[1.3]">
-    <!-- Injecté de manière dynamique par le script JS pour l'effet Reveal -->
+    <!-- Injecté dynamiquement par JS -->
   </h2>
 
   <div class="hero-elem d4 flex flex-col md:flex-row gap-12 justify-between border-t border-[var(--line)] pt-12 pb-16">
@@ -410,7 +415,6 @@ section, main, footer {
       Ingénieure de gestion et Business Data Analyst, je traduis des architectures de données complexes en leviers de performance stratégique. Je conçois également des interfaces web sur mesure pour fluidifier et simplifier la visualisation de vos indicateurs clés.
     </p>
     
-    <!-- Boutons Glassmorphism / Effet Eau Brillante + Shine Effect -->
     <div class="flex flex-col sm:flex-row md:justify-end gap-6 text-[11px] uppercase tracking-[0.2em] font-semibold items-start md:items-center">
       <a href="#projets" class="glass-btn shine-effect hover-target" data-i18n="hero-cta-1">Découvrir mes travaux ↓</a>
       <a href="#contact" class="glass-btn shine-effect hover-target" data-i18n="hero-cta-2">Me recruter / Collaborer →</a>
@@ -456,13 +460,13 @@ section, main, footer {
 </div>
 </main>
 
-<section id="parcours" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
+<section id="parcours" class="px-6 md:px-16 py-36 max-w-5xl mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)" data-i18n="section-01">01 / Formation & Expérience</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32 fade-in-up" style="color: var(--text-muted)" data-i18n="section-01">01 / Formation & Expérience</h2>
   </div>
   <div class="md:col-span-2 space-y-20">
-    <div class="group">
+    <div class="group fade-in-up delay-1">
       <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)">2024 — 2027</span>
       <h3 class="text-2xl font-light mb-3" data-i18n="edu-title">Bachelier en Ingénieur de gestion</h3>
       <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)" data-i18n="edu-school">Université de Mons — Bachelier, 3 ans</p>
@@ -471,7 +475,7 @@ section, main, footer {
       </p>
     </div>
 
-    <div class="group border-t border-[var(--line)] pt-12">
+    <div class="group border-t border-[var(--line)] pt-12 fade-in-up delay-1">
       <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)" data-i18n="exp-date">Fév. — Avr. 2023</span>
       <h3 class="text-2xl font-light mb-3" data-i18n="exp-title">Social Media Manager</h3>
       <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)" data-i18n="exp-company">GabyLuxxy · Stage en télétravail · Revente de luxe</p>
@@ -480,7 +484,7 @@ section, main, footer {
       </p>
     </div>
 
-    <div class="group border-t border-[var(--line)] pt-12">
+    <div class="group border-t border-[var(--line)] pt-12 fade-in-up delay-1">
       <span class="text-[11px] tracking-[0.15em] block mb-4" style="color: var(--text-muted)" data-i18n="photo-date">2022 — 2024</span>
       <h3 class="text-2xl font-light mb-3" data-i18n="photo-title">Diplôme de Photographe</h3>
       <p class="text-[11px] uppercase tracking-[0.15em] mb-4" style="color: var(--text-muted)" data-i18n="photo-school">5e — 6e secondaire</p>
@@ -492,21 +496,21 @@ section, main, footer {
 </div>
 </section>
 
-<section id="projets" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
+<section id="projets" class="px-6 md:px-16 py-36 max-w-5xl mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16 mb-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)" data-i18n="section-02">02 / WORK</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold fade-in-up" style="color: var(--text-muted)" data-i18n="section-02">02 / WORK</h2>
   </div>
   <div class="md:col-span-2">
-    <h3 class="text-2xl font-light mb-4" data-i18n="project-section-title">Un aperçu de mon travail</h3>
-    <p class="text-[14px] font-light leading-relaxed max-w-md" style="color: var(--text-muted)" data-i18n="work-intro">
+    <h3 class="text-2xl font-light mb-4 fade-in-up delay-1" data-i18n="project-section-title">Un aperçu de mon travail</h3>
+    <p class="text-[14px] font-light leading-relaxed max-w-md fade-in-up delay-2" style="color: var(--text-muted)" data-i18n="work-intro">
       Sélection de réalisations analytiques et de projets personnels.
     </p>
   </div>
 </div>
 
 <div class="mt-16 border-t border-[var(--line)]">
-  <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
+  <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target fade-in-up">
     <div>
       <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">PYTHON / SQL / POWER BI</span>
       <h3 class="text-xl font-light" data-i18n="p1-title">Visualisation de l'économie Belge</h3>
@@ -517,7 +521,7 @@ section, main, footer {
     </div>
   </div>
 
-  <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target">
+  <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target fade-in-up delay-1">
     <div>
       <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">LOOKER STUDIO / BIGQUERY</span>
       <h3 class="text-xl font-light" data-i18n="p2-title">Dashboard d'acquisition E-Commerce</h3>
@@ -530,15 +534,15 @@ section, main, footer {
 </div>
 </section>
 
-<section id="competences" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
+<section id="competences" class="px-6 md:px-16 py-36 max-w-5xl mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)" data-i18n="section-03">03 / COMPETENCES</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32 fade-in-up" style="color: var(--text-muted)" data-i18n="section-03">03 / COMPETENCES</h2>
   </div>
   <div class="md:col-span-2 space-y-20">
 
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
-      <div>
+      <div class="fade-in-up delay-1">
         <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-tech">Outils</h4>
         <ul class="space-y-4 text-[14px] font-light">
           <li class="skill-item hover-target">Python</li>
@@ -550,7 +554,7 @@ section, main, footer {
         </ul>
       </div>
 
-      <div>
+      <div class="fade-in-up delay-2">
         <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-soft">Qualités</h4>
         <ul class="space-y-4 text-[14px] font-light">
           <li class="skill-item hover-target" data-i18n="soft-1">Rigueur</li>
@@ -562,7 +566,7 @@ section, main, footer {
         </ul>
       </div>
 
-      <div>
+      <div class="fade-in-up delay-3">
         <h4 class="text-[11px] uppercase tracking-[0.15em] font-bold mb-8" style="color: var(--text-muted)" data-i18n="skills-lang">Langues</h4>
         <ul class="space-y-5 text-[14px] font-light">
           <li class="skill-item hover-target"><span data-i18n="lang-fr-val">Français</span> <span class="text-[11px] opacity-50 block" data-i18n="lang-native">C2 / Langue maternelle</span></li>
@@ -576,26 +580,26 @@ section, main, footer {
 </div>
 </section>
 
-<section id="certifications" class="px-6 md:px-16 py-36 max-w-5xl mx-auto reveal-section">
+<section id="certifications" class="px-6 md:px-16 py-36 max-w-5xl mx-auto">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-[var(--line)] pt-16">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32" style="color: var(--text-muted)" data-i18n="section-04">04 / CERTIFICATIONS</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold sticky top-32 fade-in-up" style="color: var(--text-muted)" data-i18n="section-04">04 / CERTIFICATIONS</h2>
   </div>
   <div class="md:col-span-2">
     <div class="space-y-4 text-[14px] font-light">
-      <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
+      <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item fade-in-up delay-1">
         <span>Microsoft Certified: Power BI Data Analyst Associate</span>
       </div>
-      <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
+      <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item fade-in-up delay-2">
         <span>Google Data Analytics Professional Certificate</span>
       </div>
-      <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
+      <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item fade-in-up delay-3">
         <span>Meta Data Analyst Professional Certificate</span>
       </div>
-      <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
+      <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item fade-in-up delay-4">
         <span>IBM Data Analyst Professional Certificate</span>
       </div>
-      <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item">
+      <div class="flex justify-between items-center py-4 border-b border-[var(--line)] hover-target skill-item fade-in-up delay-5">
         <span>Tableau Certified Data Analyst</span>
       </div>
     </div>
@@ -606,15 +610,15 @@ section, main, footer {
 <footer id="contact" class="px-6 md:px-16 py-36 max-w-5xl mx-auto border-t border-[var(--line)]">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
   <div>
-    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold" style="color: var(--text-muted)" data-i18n="section-05">05 / CONTACT</h2>
+    <h2 class="text-[11px] uppercase tracking-[0.25em] font-semibold fade-in-up" style="color: var(--text-muted)" data-i18n="section-05">05 / CONTACT</h2>
   </div>
   <div class="md:col-span-2">
-    <h3 class="text-3xl md:text-5xl font-light leading-tight mb-16">
+    <h3 class="text-3xl md:text-5xl font-light leading-tight mb-16 fade-in-up delay-1">
       <span data-i18n="contact-cta-1">Collaborons ensemble</span> <br class="hidden md:inline">
       <span class="serif italic font-normal" data-i18n="contact-cta-2">ou discutons d'un recrutement.</span>
     </h3>
 
-    <form id="contactForm" class="space-y-12 max-w-lg mb-20" novalidate>
+    <form id="contactForm" class="space-y-12 max-w-lg mb-20 fade-in-up delay-2" novalidate>
       <div class="flex flex-col">
         <label for="name" class="text-[10px] uppercase tracking-[0.15em]" style="color: var(--text-muted)" data-i18n="form-name">Nom complet</label>
         <input type="text" id="name" name="name" class="minimal-input hover-target" required>
@@ -639,7 +643,7 @@ section, main, footer {
       </button>
     </form>
 
-    <div class="flex flex-col gap-6 mb-16">
+    <div class="flex flex-col gap-6 mb-16 fade-in-up delay-3">
       <p class="text-[11px] uppercase tracking-[0.2em]" style="color: var(--text-muted)" data-i18n="footer-info-title">Ou retrouvez-moi sur :</p>
       <div class="flex flex-wrap gap-12 text-[13px] font-light">
         <a href="mailto:melanied2502@gmail.com" class="hover-link hover-target">melanied2502@gmail.com</a>
@@ -650,7 +654,7 @@ section, main, footer {
   </div>
 </div>
 
-<div class="border-t border-[var(--line)] pt-16 mt-20 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+<div class="border-t border-[var(--line)] pt-16 mt-20 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 fade-in-up delay-4">
   <div>
     <p class="text-md font-light tracking-[0.25em] uppercase">Mélanie Dupriez</p>
     <p class="text-[11px] font-light mt-1 max-w-md" style="color: var(--text-muted)" data-i18n="footer-sub">Business Data Analyst, je transforme vos données en leviers de performance stratégique.</p>
@@ -724,7 +728,6 @@ fr: {
   "lang-native": "C2 / Langue maternelle",
   "lang-b2": "Niveau B2",
   "lang-b1": "Niveau B1",
-  "section-04": "04 / CERTIFICATIONS",
   "section-04": "04 / CERTIFICATIONS",
   "section-05": "05 / CONTACT",
   "contact-cta-1": "Collaborons ensemble",
@@ -947,12 +950,12 @@ function handleTyping() {
   let delay = isDeleting ? 40 : 80;
 
   if (!isDeleting && charIdx === currentPhrase.length) {
-    delay = 2000; // Pause à la fin de la phrase
+    delay = 2000;
     isDeleting = true;
   } else if (isDeleting && charIdx === 0) {
     isDeleting = false;
     typingIdx = (typingIdx + 1) % phrases.length;
-    delay = 500; // Pause avant de retaper
+    delay = 500;
   }
 
   typingTimeout = setTimeout(handleTyping, delay);
@@ -968,7 +971,6 @@ function triggerTextReveal() {
   
   container.innerHTML = '';
 
-  // Création élégante de la ligne 1
   const div1 = document.createElement('div');
   div1.className = "block overflow-hidden";
   textLine1.split(' ').forEach((word, wordIdx) => {
@@ -985,7 +987,6 @@ function triggerTextReveal() {
     div1.appendChild(wordSpan);
   });
 
-  // Création de la ligne 2 (italique / serif)
   const div2 = document.createElement('div');
   div2.className = "block overflow-hidden serif italic font-normal mt-1";
   textLine2.split(' ').forEach((word, wordIdx) => {
@@ -995,7 +996,6 @@ function triggerTextReveal() {
     Array.from(word).forEach((char, charIdx) => {
       const charSpan = document.createElement('span');
       charSpan.className = "text-reveal-char";
-      // Décalage pour démarrer après la première ligne
       charSpan.style.animationDelay = `${0.6 + (wordIdx * 0.08) + (charIdx * 0.02)}s`;
       charSpan.textContent = char;
       wordSpan.appendChild(charSpan);
@@ -1021,7 +1021,6 @@ function setLanguage(lang) {
     langDisplay.innerText = lang.toUpperCase();
   }
 
-  // Redémarrer le Typing & le Text Reveal pour s'adapter à la langue
   clearTimeout(typingTimeout);
   typingIdx = 0;
   charIdx = 0;
@@ -1070,16 +1069,16 @@ if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && w
 }
 updateThemeIcon(document.documentElement.classList.contains('dark'));
 
-// Configuration du Scroll Reveal (Apparition au scroll)
-const observer = new IntersectionObserver((entries) => {
+// Configuration du Fade In Up avec IntersectionObserver
+const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('active');
     }
   });
-}, { threshold: 0.08 });
+}, { threshold: 0.15 });
 
-document.querySelectorAll('.reveal-section').forEach(el => observer.observe(el));
+document.querySelectorAll('.fade-in-up').forEach(el => fadeObserver.observe(el));
 
 // Gestion de la souris personnalisée fluide
 const cursor = document.getElementById('custom-cursor');
