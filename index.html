@@ -164,7 +164,6 @@ body {
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
 
-/* Correction du padding/margin pour éviter les lettres coupées (g, p, y, et italiques) */
 .text-reveal-word { 
   display: inline-block; 
   overflow: hidden; 
@@ -189,6 +188,23 @@ body {
 }
 @keyframes blink { 50% { opacity: 0; } }
 
+/* Badge Disponibilité (Relief et Glow) */
+.status-badge {
+  box-shadow: 0 4px 20px rgba(221, 160, 173, 0.15), inset 0 0 8px rgba(221, 160, 173, 0.1);
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+.dark .status-badge {
+  box-shadow: 0 4px 20px rgba(229, 169, 183, 0.1), inset 0 0 8px rgba(229, 169, 183, 0.05);
+}
+.status-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(221, 160, 173, 0.25), inset 0 0 12px rgba(221, 160, 173, 0.15);
+}
+.dark .status-badge:hover {
+  box-shadow: 0 6px 24px rgba(229, 169, 183, 0.2), inset 0 0 12px rgba(229, 169, 183, 0.1);
+}
+
+/* Glassmorphism et Brillance renforcés */
 .glass-btn {
   position: relative;
   display: inline-flex;
@@ -196,19 +212,19 @@ body {
   justify-content: center;
   padding: 16px 32px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05), inset 0 2px 4px rgba(255, 255, 255, 0.8), inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08), inset 0 2px 4px rgba(255, 255, 255, 0.9), inset 0 -2px 4px rgba(0, 0, 0, 0.05);
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
 }
 .dark .glass-btn {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.1), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.15), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
 }
 .shine-effect { position: relative; overflow: hidden; }
 .shine-effect::after {
@@ -216,24 +232,24 @@ body {
   position: absolute;
   top: -50%; left: -60%;
   width: 30%; height: 200%;
-  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
   transform: rotate(30deg);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0;
 }
-.dark .shine-effect::after { background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%); }
+.dark .shine-effect::after { background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.25) 50%, rgba(255,255,255,0) 100%); }
 .shine-effect:hover::after { opacity: 1; left: 130%; }
 
 .glass-btn:hover {
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(255, 255, 255, 1);
-  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.12), inset 0 2px 4px rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 0.7);
 }
 .dark .glass-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .hover-link { position: relative; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -254,6 +270,15 @@ body {
 }
 .project-row:hover::before { transform: scaleX(1); }
 .project-row:hover { padding-left: 16px; color: var(--accent); }
+
+/* Effet Glow sur les statistiques */
+.stat-glow {
+  text-shadow: 0 0 24px rgba(221, 160, 173, 0.4);
+  transition: text-shadow 0.5s ease;
+}
+.dark .stat-glow {
+  text-shadow: 0 0 24px rgba(229, 169, 183, 0.35);
+}
 
 #menu-overlay {
   opacity: 0; visibility: hidden; transform: translateY(-10px);
@@ -357,7 +382,7 @@ body {
 <main id="top" class="min-h-screen flex flex-col justify-center px-6 md:px-16 pt-32 pb-24 relative">
 <div class="max-w-5xl mx-auto w-full">
   
-  <div class="hero-elem d1 inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[rgba(221,160,173,0.04)]">
+  <div class="hero-elem d1 inline-flex items-center gap-3 mb-8 px-4 py-1.5 rounded-full border border-[var(--line)] bg-[rgba(221,160,173,0.04)] status-badge">
     <span class="w-2 h-2 rounded-full bg-[#A2D2A1] animate-pulse"></span>
     <span class="text-[10px] tracking-[0.2em] uppercase font-medium" style="color: var(--text-muted)" data-i18n="hero-status">Ouverte aux opportunités de stage et d'emploi</span>
   </div>
@@ -386,19 +411,19 @@ body {
 
   <div class="hero-elem d4 grid grid-cols-2 md:grid-cols-4 mt-8 pt-12 border-t border-[var(--line)] gap-y-12 mb-12">
     <div class="text-center border-r border-[var(--line)] px-2">
-      <span class="text-4xl md:text-5xl font-light mb-2 counter-number" data-target="2027">2020</span>
+      <span class="text-4xl md:text-5xl font-light mb-2 counter-number stat-glow" data-target="2027">2020</span>
       <p class="text-[10px] uppercase tracking-[0.15em] mt-4" style="color: var(--text-muted)" data-i18n="stat-grad">Diplôme prévu</p>
     </div>
     <div class="text-center md:border-r border-[var(--line)] px-2">
-      <span class="text-4xl md:text-5xl font-light mb-2 counter-number" data-target="3">0</span>
+      <span class="text-4xl md:text-5xl font-light mb-2 counter-number stat-glow" data-target="3">0</span>
       <p class="text-[10px] uppercase tracking-[0.15em] mt-4" style="color: var(--text-muted)" data-i18n="stat-langs">Langues parlées</p>
     </div>
     <div class="text-center border-r border-[var(--line)] px-2">
-      <span class="text-4xl md:text-5xl font-light mb-2 counter-number" data-target="6">0</span>
+      <span class="text-4xl md:text-5xl font-light mb-2 counter-number stat-glow" data-target="6">0</span>
       <p class="text-[10px] uppercase tracking-[0.15em] mt-4" style="color: var(--text-muted)" data-i18n="stat-tools">Outils maîtrisés</p>
     </div>
     <div class="text-center px-2">
-      <span class="text-4xl md:text-5xl font-light mb-2 counter-number" data-target="5">0</span>
+      <span class="text-4xl md:text-5xl font-light mb-2 counter-number stat-glow" data-target="5">0</span>
       <p class="text-[10px] uppercase tracking-[0.15em] mt-4" style="color: var(--text-muted)" data-i18n="stat-certs">Certifications visées</p>
     </div>
   </div>
@@ -476,23 +501,33 @@ body {
 </div>
 
 <div class="mt-16 border-t border-[var(--line)]">
-  <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target fade-in-up">
-    <div>
-      <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">PYTHON / SQL / POWER BI</span>
-      <h3 class="text-xl font-light" data-i18n="p1-title">Visualisation de l'économie Belge</h3>
+  <div class="project-row py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target fade-in-up group">
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-6 w-full md:w-auto">
+      <div class="hidden md:block w-32 h-20 rounded-lg overflow-hidden bg-[var(--line)] relative shrink-0">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=400&auto=format&fit=crop" alt="Thumbnail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
+      </div>
+      <div>
+        <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">PYTHON / SQL / POWER BI</span>
+        <h3 class="text-xl font-light" data-i18n="p1-title">Visualisation de l'économie Belge</h3>
+      </div>
     </div>
-    <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
+    <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end mt-4 md:mt-0">
       <span class="text-[13px] font-light" style="color: var(--text-muted)">2026</span>
       <span class="text-[11px] uppercase tracking-[0.15em] font-semibold" data-i18n="p-view">Consulter ↗</span>
     </div>
   </div>
 
-  <div class="project-row py-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target fade-in-up delay-1">
-    <div>
-      <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">LOOKER STUDIO / BIGQUERY</span>
-      <h3 class="text-xl font-light" data-i18n="p2-title">Dashboard d'acquisition E-Commerce</h3>
+  <div class="project-row py-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 hover-target fade-in-up delay-1 group">
+    <div class="flex flex-col md:flex-row items-start md:items-center gap-6 w-full md:w-auto">
+      <div class="hidden md:block w-32 h-20 rounded-lg overflow-hidden bg-[var(--line)] relative shrink-0">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=400&auto=format&fit=crop" alt="Thumbnail" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out">
+      </div>
+      <div>
+        <span class="text-[10px] tracking-[0.15em] block mb-2" style="color: var(--text-muted)">LOOKER STUDIO / BIGQUERY</span>
+        <h3 class="text-xl font-light" data-i18n="p2-title">Dashboard d'acquisition E-Commerce</h3>
+      </div>
     </div>
-    <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end">
+    <div class="flex items-center gap-12 w-full md:w-auto justify-between md:justify-end mt-4 md:mt-0">
       <span class="text-[13px] font-light" style="color: var(--text-muted)" data-i18n="p-soon">Bientôt</span>
       <span class="text-[11px] uppercase tracking-[0.15em] font-semibold opacity-40">—</span>
     </div>
@@ -604,7 +639,7 @@ body {
       
       <div id="formStatus" class="text-[12px] font-light hidden"></div>
 
-      <button type="submit" id="submitBtn" class="text-[11px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-4" data-i18n="form-submit">
+      <button type="submit" id="submitBtn" class="text-[11px] uppercase tracking-[0.2em] font-semibold hover-link hover-target pt-4 glass-btn shine-effect border-0" style="padding: 12px 24px;" data-i18n="form-submit">
         Envoyer le message →
       </button>
     </form>
@@ -645,9 +680,6 @@ body {
 </button>
 
 <script>
-// Objet de traductions complet — chaque clé data-i18n présente sur la page a désormais
-// une valeur pour FR, EN et NL, ce qui corrige le problème d'affichage incomplet
-// lors du changement de langue.
 const translations = {
   fr: {
     "nav-parcours": "Mon Parcours",
