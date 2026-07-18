@@ -179,7 +179,8 @@ body {
 }
 .text-reveal-char {
   display: inline-block;
-  transform: translateY(110%);
+  /* Augmenté à 150% pour masquer entièrement la lettre avant l'animation */
+  transform: translateY(150%);
   animation: charReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @keyframes charReveal { to { transform: translateY(0); } }
