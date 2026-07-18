@@ -164,13 +164,18 @@ body {
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
 
+/* Correction des lettres coupées pour la police Serif italique */
 .text-reveal-word { 
   display: inline-block; 
   overflow: hidden; 
   vertical-align: bottom; 
-  padding-bottom: 0.2em; 
-  margin-bottom: -0.2em;
-  padding-right: 0.1em;
+  padding-top: 0.2em;
+  padding-bottom: 0.4em; 
+  margin-top: -0.2em;
+  margin-bottom: -0.4em;
+  padding-left: 0.1em;
+  padding-right: 0.2em;
+  margin-left: -0.1em;
 }
 .text-reveal-char {
   display: inline-block;
@@ -964,7 +969,7 @@ function triggerTextReveal() {
   
   container.innerHTML = '';
   
-  const div1 = document.createElement('div'); div1.className = "block overflow-hidden";
+  const div1 = document.createElement('div'); div1.className = "block";
   textLine1.split(' ').forEach((word, wordIdx) => { 
     const wordSpan = document.createElement('span'); wordSpan.className = "text-reveal-word mr-3"; 
     Array.from(word).forEach((char, charIdx) => { 
@@ -974,7 +979,7 @@ function triggerTextReveal() {
     div1.appendChild(wordSpan); 
   });
   
-  const div2 = document.createElement('div'); div2.className = "block overflow-hidden serif italic font-normal mt-1";
+  const div2 = document.createElement('div'); div2.className = "block serif italic font-normal mt-2";
   textLine2.split(' ').forEach((word, wordIdx) => { 
     const wordSpan = document.createElement('span'); wordSpan.className = "text-reveal-word mr-3"; 
     Array.from(word).forEach((char, charIdx) => { 
