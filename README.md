@@ -1,27 +1,27 @@
-# Mélanie Dupriez — Business Data Analyst & Développeuse
+# Mélanie Dupriez — Business Data Analyst
 
-Je transforme des données brutes en véritables leviers stratégiques, en mêlant **Data Storytelling** et **interfaces web sur mesure**.
+Je transforme des données brutes en leviers stratégiques grâce au **Data Storytelling** et à une analyse orientée business rigoureuse.
 
 ## 🚀 Qui je suis
 
-Je suis Business Data Analyst, et mon rôle, c’est de faire le lien entre les chiffres et les décisions. Je ne me contente pas d’analyser : je construis les outils pour visualiser l’information et je raconte l’histoire derrière les données. Mon but ? Aider les entreprises à prendre des décisions éclairées, grâce à des reportings percutants et des interfaces interactives pensées sur mesure[cite: 1].
+Je suis Business Data Analyst. Mon rôle est de faire le pont entre les chiffres et la prise de décision. Je ne me contente pas d'analyser : je construis les outils pour visualiser l'information et je raconte l'histoire derrière les données pour aider les entreprises à prendre des décisions éclairées.
 
 ## 💡 Ce que je vous apporte
 
-* **Dashboard Storytelling** : des tableaux de bord intuitifs qui transforment des métriques complexes en insights clairs, directement exploitables[cite: 1].
-* **Interfaces web de données personnalisées** : des applications web sur mesure pour rendre la visualisation de données accessible, interactive et impactante — bien au-delà de ce que proposent les outils BI classiques[cite: 1].
-* **Analyse orientée business** : chaque projet, qu’il s’agisse d’une interface ou d’un rapport, est conçu pour répondre à un objectif stratégique précis[cite: 1].
+* **Dashboard Storytelling** : Conception de tableaux de bord intuitifs qui transforment des métriques complexes en insights clairs, directement exploitables.
+* **Analyse orientée business** : Chaque projet est pensé pour répondre à un objectif stratégique précis, garantissant une pertinence maximale pour l'entreprise.
+* **Visualisation sur mesure** : Pour des projets nécessitant une approche spécifique, j'ai la capacité de concevoir des interfaces de visualisation personnalisées, au-delà des standards habituels de la BI.
 
 ## 🛠️ Stack technique
 
-* **Data & BI** : SQL, Python, Power BI, Tableau[cite: 1].  
-* **Développement web** : HTML5, Tailwind CSS, JavaScript (animations sur mesure, composants interactifs)[cite: 1].
+* **Data & BI** : SQL, Python, Power BI, Tableau.
+* **Outils complémentaires** : HTML5, Tailwind CSS, JavaScript (utilisés pour la création d'interfaces de visualisation sur mesure si le projet le nécessite).
 
 ## 📂 Découvrez mon portfolio
 
-Envie de voir mes projets en action et d’explorer mes interfaces de visualisation ?
+Envie de voir mes projets en action et d’explorer ma façon de visualiser les données ?
 
-👉 **[Accédez à mon portfolio](https://melaniedupriez.vercel.app)**[cite: 1]
+👉 **[Accédez à mon portfolio](https://melaniedupriez.vercel.app)**
 
 ---
-*Ouverte aux stages et aux postes en Business Intelligence et analyse de données. Construisons ensemble les outils de demain.*
+*Ouverte aux stages et aux postes en Business Intelligence et analyse de données.*
